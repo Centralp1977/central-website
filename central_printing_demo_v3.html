@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>セントラル印刷株式会社</title>
+<style>
+/* ===== RESET & ROOT ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#0E7AC4;--blue-d:#0A5A93;--blue-l:#E8F4FC;
+  --cyan:#00AEEF;--mag:#EC008C;--yel:#FFF200;--blk:#231F20;
+  --white:#fff;--gray:#F4F7FA;--gmid:#DDE4ED;
+  --text:#1A2B3C;--sub:#566879;
+  --hh:68px;
+  --radius:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Hiragino Sans','ヒラギノ角ゴ ProN','Yu Gothic UI','Meiryo UI',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+
+/* ===== LOADING SCREEN ===== */
+#loading{
+  position:fixed;inset:0;z-index:9999;
+  background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+#loading.hide{opacity:0;visibility:hidden}
+.ld-logo{width:320px;max-width:80vw;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.ld-logo.show{opacity:1;transform:translateY(0)}
+.ld-paper{
+  position:relative;width:280px;height:180px;margin-top:32px;overflow:hidden;
+}
+.ld-paper-bg{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:240px;height:160px;
+  background:#f8f8f8;border:1px solid #ddd;border-radius:4px;
+  box-shadow:0 4px 20px rgba(0,0,0,.10);
+}
+.ld-paper-slide{
+  position:absolute;bottom:-180px;left:50%;transform:translateX(-50%);
+  width:220px;height:160px;
+  background:#fff;border:1px solid #ccc;border-radius:3px;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  transition:bottom .7s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;
+  padding:16px;
+}
+.ld-paper-slide.out{bottom:10px}
+/* 紙の中身(線) */
+.ld-line{height:2px;border-radius:1px;width:80%}
+.ld-line:nth-child(1){background:#0E7AC4;opacity:.7}
+.ld-line:nth-child(2){background:#ddd;width:90%}
+.ld-line:nth-child(3){background:#ddd;width:70%}
+.ld-line:nth-child(4){background:#ddd;width:80%}
+.ld-line:nth-child(5){background:#ddd;width:60%}
+/* CMYKバー on paper */
+.ld-cmyk{display:flex;height:3px;width:80%;border-radius:1px;overflow:hidden;margin-top:4px}
+.ld-cmyk span{flex:1}
+.ld-msg{margin-top:20px;font-size:13px;color:#999;letter-spacing:2px}
+
+/* ===== HEADER ===== */
+#hdr{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--hh);
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--gmid);
+}
+.hdr-in{
+  max-width:1280px;margin:0 auto;height:100%;
+  display:flex;align-items:center;padding:0 24px;gap:20px;
+}
+.logo-a{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+.logo-a img{height:46px;width:auto;object-fit:contain}
+
+/* desktop nav */
+nav.desk{display:flex;align-items:center;gap:0;margin-left:auto}
+.nl{
+  padding:10px 14px;border-radius:8px;
+  font-size:14px;font-weight:700;color:var(--sub);
+  text-decoration:none;white-space:nowrap;
+  transition:color .2s,background .2s;
+  letter-spacing:.3px;
+}
+.nl:hover,.nl.on{color:var(--blue);background:var(--blue-l)}
+.ncta{
+  margin-left:10px;padding:10px 22px;
+  background:var(--blue);color:#fff;
+  border-radius:8px;font-size:14px;font-weight:800;
+  text-decoration:none;white-space:nowrap;
+  transition:background .15s,transform .1s;
+  letter-spacing:.3px;
+}
+.ncta:hover{background:var(--blue-d);transform:translateY(-1px)}
+
+/* hamburger */
+.hmb{
+  display:none;flex-direction:column;justify-content:center;gap:6px;
+  width:44px;height:44px;padding:10px;cursor:pointer;
+  background:none;border:none;margin-left:auto;border-radius:8px;
+  transition:background .2s;
+}
+.hmb:hover{background:var(--gray)}
+.hmb span{display:block;height:2.5px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s,width .3s}
+.hmb.open span:nth-child(1){transform:translateY(8.5px) rotate(45deg)}
+.hmb.open span:nth-child(2){opacity:0;width:0}
+.hmb.open span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg)}
+
+/* mobile nav — slide from right */
+#mnav{
+  position:fixed;top:var(--hh);left:0;right:0;bottom:0;
+  background:#fff;z-index:190;
+  display:flex;flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;
+}
+#mnav.open{transform:translateX(0)}
+.mnav-links{flex:1;padding:8px 0}
+.ml{
+  display:block;padding:20px 28px;
+  font-size:18px;font-weight:700;color:var(--text);
+  text-decoration:none;border-bottom:1px solid var(--gray);
+  transition:background .15s,color .15s;
+  letter-spacing:.3px;
+}
+.ml:hover{background:var(--blue-l);color:var(--blue)}
+.mnav-btns{padding:24px 20px 48px;display:flex;flex-direction:column;gap:14px}
+.mnav-btn{
+  display:block;padding:18px;border-radius:12px;
+  text-align:center;font-size:16px;font-weight:800;
+  text-decoration:none;letter-spacing:.5px;
+}
+.mnav-btn-a{background:var(--blue);color:#fff}
+.mnav-btn-b{background:var(--gray);color:var(--blue);border:2px solid var(--blue)}
+
+/* CMYK bar */
+.cmyk{height:4px;display:flex;position:absolute;bottom:0;left:0;right:0}
+.cmyk s{flex:1;text-decoration:none}
+
+/* ===== HERO ===== */
+#hero{
+  position:relative;min-height:100vh;
+  padding-top:var(--hh);
+  background:var(--blue);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+.slide.on{opacity:1}
+.sbg{position:absolute;inset:0;background-size:cover;background-position:center}
+/* 各スライドのグラデーション+パターン */
+.slide:nth-child(1) .sbg{background:linear-gradient(135deg,#0A4F80 0%,#0E7AC4 55%,#1a95e0 100%)}
+.slide:nth-child(2) .sbg{background:linear-gradient(135deg,#07406B 0%,#0c6aab 55%,#0E7AC4 100%)}
+.slide:nth-child(3) .sbg{background:linear-gradient(135deg,#0E7AC4 0%,#0050A0 55%,#003A78 100%)}
+.slide:nth-child(4) .sbg{background:linear-gradient(135deg,#1595e0 0%,#0E7AC4 50%,#084E8A 100%)}
+/* 半透明オーバーレイ(SVGビジュアル用) */
+.sovl{position:absolute;inset:0;opacity:.55}
+/* 右側ビジュアルパネル */
+.svis{
+  position:absolute;right:0;top:0;bottom:0;
+  width:55%;display:flex;align-items:center;justify-content:center;
+}
+.svis svg{width:100%;height:100%;max-height:100vh}
+/* 左下コンテンツ */
+.hero-body{
+  position:relative;z-index:10;
+  margin-top:auto;padding:0 48px 64px;
+  max-width:660px;
+}
+@media(max-width:768px){.hero-body{padding:0 24px 52px;max-width:100%}}
+.h-eye{font-size:11px;letter-spacing:4px;color:rgba(255,255,255,.75);margin-bottom:14px;font-weight:600}
+.h-tit{
+  font-size:clamp(28px,4.5vw,52px);
+  font-weight:900;color:#fff;line-height:1.25;margin-bottom:16px;
+  text-shadow:0 2px 20px rgba(0,0,0,.15);
+}
+.h-sub{
+  font-size:clamp(13px,1.5vw,16px);color:rgba(255,255,255,.88);
+  line-height:1.8;margin-bottom:30px;max-width:460px;font-weight:500;
+}
+.h-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hb{
+  padding:14px 28px;border-radius:10px;
+  font-size:15px;font-weight:800;text-decoration:none;
+  transition:transform .15s,box-shadow .15s;letter-spacing:.3px;
+}
+.hb:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.18)}
+.hb-p{background:#fff;color:var(--blue)}
+.hb-s{background:transparent;border:2px solid rgba(255,255,255,.65);color:#fff}
+.dots{position:absolute;bottom:26px;right:28px;z-index:20;display:flex;gap:9px}
+.dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.35);border:none;cursor:pointer;transition:background .3s,transform .3s}
+.dot.on{background:#fff;transform:scale(1.35)}
+.scnt{position:absolute;bottom:28px;left:48px;z-index:20;font-size:13px;color:rgba(255,255,255,.65);font-weight:600}
+@media(max-width:768px){.scnt{left:24px}}
+.scnt b{color:#fff}
+.slabel{
+  position:absolute;right:2%;top:50%;transform:translateY(-50%);
+  z-index:5;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.28);
+  backdrop-filter:blur(6px);
+  border-radius:16px;padding:28px 36px;
+  text-align:center;color:#fff;
+  max-width:380px;width:40%;
+}
+@media(max-width:900px){.slabel{display:none}}
+.scat{font-size:11px;letter-spacing:3px;opacity:.78;margin-bottom:10px;font-weight:600}
+.stit{font-size:clamp(16px,2vw,22px);font-weight:800;margin-bottom:8px}
+.sdesc{font-size:13px;opacity:.87;line-height:1.7;font-weight:500}
+
+/* ===== COMMON SECTION ===== */
+section{padding:76px 24px}
+.si{max-width:1280px;margin:0 auto}
+.slb{font-size:11px;letter-spacing:4px;color:var(--blue);font-weight:800;margin-bottom:8px;text-transform:uppercase}
+.sh{font-size:clamp(22px,3vw,34px);font-weight:900;margin-bottom:10px;letter-spacing:-.3px}
+.ss{font-size:15px;color:var(--sub);line-height:1.75;max-width:560px;font-weight:500}
+
+/* ===== SERVICES (スライド式) ===== */
+#services{background:var(--gray)}
+.svc-wrap{position:relative;margin-top:36px;overflow:hidden}
+.svc-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.svc-card{
+  flex:0 0 340px;background:#fff;border-radius:16px;
+  padding:32px 28px;margin-right:20px;
+  box-shadow:0 2px 12px rgba(14,122,196,.07);
+  transition:transform .2s,box-shadow .2s;
+}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(14,122,196,.13)}
+.svc-icon{font-size:36px;margin-bottom:16px}
+.svc-badge{
+  display:inline-block;padding:4px 12px;border-radius:20px;
+  font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:12px;
+}
+.badge-main{background:#FFF3E0;color:#E65100}
+.badge-std{background:var(--blue-l);color:var(--blue)}
+.svc-name{font-size:20px;font-weight:900;margin-bottom:8px}
+.svc-verb{font-size:13px;color:var(--blue);font-weight:700;margin-bottom:10px}
+.svc-desc{font-size:13px;color:var(--sub);line-height:1.7;font-weight:500}
+/* サービスカード内のミニリスト */
+.svc-list{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.svc-li{font-size:12px;color:var(--sub);display:flex;align-items:center;gap:6px;font-weight:500}
+.svc-li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
+/* スライドコントロール */
+.svc-nav{display:flex;gap:10px;margin-top:20px;align-items:center}
+.svc-btn{
+  width:40px;height:40px;border-radius:50%;border:2px solid var(--blue);
+  background:#fff;color:var(--blue);font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s,color .15s;font-weight:900;
+}
+.svc-btn:hover{background:var(--blue);color:#fff}
+.svc-dots{display:flex;gap:7px;margin-left:8px}
+.sdot{width:8px;height:8px;border-radius:50%;background:var(--gmid);border:none;cursor:pointer;transition:background .3s}
+.sdot.on{background:var(--blue)}
+
+/* ===== REASONS ===== */
+#reasons{background:var(--blue);color:#fff}
+.rg{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+.rc{text-align:center;padding:28px 12px;background:rgba(255,255,255,.1);border-radius:14px}
+.rn{font-size:clamp(30px,4vw,44px);font-weight:900;line-height:1.1}
+.ru{font-size:14px;opacity:.8;font-weight:600}
+.rl{font-size:13px;opacity:.75;margin-top:8px;font-weight:500}
+
+/* ===== WORKS ===== */
+#works{background:#fff}
+.wg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.wc{
+  border-radius:14px;overflow:hidden;background:var(--gray);
+  aspect-ratio:4/3;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:transform .2s,box-shadow .2s;
+}
+.wc:hover{transform:scale(1.02);box-shadow:0 10px 30px rgba(14,122,196,.15)}
+.wc svg{position:absolute;inset:0;width:100%;height:100%}
+.wo{
+  position:absolute;inset:0;
+  background:rgba(10,90,147,0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:16px;transition:background .3s;
+}
+.wc:hover .wo{background:rgba(10,90,147,.82)}
+.wm{opacity:0;color:#fff;text-align:center;transition:opacity .3s}
+.wc:hover .wm{opacity:1}
+.wm strong{font-size:15px;font-weight:800;display:block;margin-bottom:6px}
+.wm span{font-size:12px;opacity:.9;font-weight:500}
+.wm .wtap{
+  margin-top:12px;padding:8px 18px;border-radius:8px;
+  background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.6);
+  color:#fff;font-size:12px;font-weight:700;
+}
+
+/* ===== WORK DETAIL PAGE ===== */
+.wd-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+  overflow-y:auto;
+}
+.wd-overlay.open{display:block}
+.wd-box{
+  background:#fff;max-width:720px;width:94%;
+  margin:40px auto 40px;border-radius:20px;
+  overflow:hidden;
+  animation:slideup .35s ease;
+}
+@keyframes slideup{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.wd-hero{height:280px;position:relative;display:flex;align-items:center;justify-content:center}
+.wd-hero svg{position:absolute;inset:0;width:100%;height:100%}
+.wd-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.9);border:none;cursor:pointer;
+  font-size:18px;display:flex;align-items:center;justify-content:center;
+  z-index:2;transition:background .15s;font-weight:700;
+}
+.wd-close:hover{background:#fff}
+.wd-body{padding:32px}
+.wd-cat{font-size:11px;letter-spacing:3px;color:var(--blue);font-weight:800;margin-bottom:8px}
+.wd-title{font-size:24px;font-weight:900;margin-bottom:12px}
+.wd-desc{font-size:14px;color:var(--sub);line-height:1.8;font-weight:500;margin-bottom:20px}
+.wd-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.wd-spec{background:var(--gray);border-radius:10px;padding:14px}
+.wd-sk{font-size:11px;color:var(--sub);font-weight:600;margin-bottom:4px}
+.wd-sv{font-size:14px;font-weight:700}
+.wd-cta{
+  display:block;padding:16px;border-radius:10px;
+  background:var(--blue);color:#fff;text-align:center;
+  font-size:15px;font-weight:800;text-decoration:none;
+  transition:background .15s;
+}
+.wd-cta:hover{background:var(--blue-d)}
+
+/* ===== COMPANY ===== */
+#company{background:var(--gray)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.ci{background:#fff;border-radius:16px;padding:28px}
+.ci h3{font-size:16px;font-weight:800;color:var(--blue);margin-bottom:16px}
+.ir{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--gmid);font-size:14px;font-weight:500}
+.ir:last-child{border-bottom:none}
+.ik{color:var(--sub);min-width:72px;flex-shrink:0;font-weight:600}
+.cm{background:var(--blue-l);border-radius:16px;padding:28px;display:flex;flex-direction:column}
+.cm h3{font-size:16px;font-weight:800;color:var(--blue);margin-bottom:12px}
+.mph{flex:1;background:var(--gmid);border-radius:10px;display:flex;align-items:center;justify-content:center;min-height:150px;font-size:13px;color:var(--sub);margin-bottom:14px;font-weight:500}
+.bl{font-size:13px;color:var(--sub);margin-bottom:8px;font-weight:500;line-height:1.6}
+
+/* ===== NEWS ===== */
+#news{background:#fff}
+.nlist{margin-top:24px}
+.ni{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--gmid);font-size:14px;font-weight:500}
+.nd{color:var(--sub);font-size:12px;white-space:nowrap;font-weight:600}
+.ncat{padding:3px 10px;border-radius:5px;font-size:11px;font-weight:800;background:var(--blue-l);color:var(--blue);white-space:nowrap}
+.sns-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.sns-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;border-radius:10px;
+  background:var(--gray);font-size:14px;font-weight:700;
+  text-decoration:none;color:var(--text);
+  transition:background .2s;
+}
+.sns-btn:hover{background:var(--gmid)}
+
+/* ===== CTA ===== */
+#cta{background:var(--blue);color:#fff;text-align:center;padding:88px 24px}
+.ctanote{font-size:15px;opacity:.85;margin:12px 0 32px;font-weight:500}
+.ctabtns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cbm{padding:16px 38px;border-radius:10px;background:#fff;color:var(--blue);font-size:16px;font-weight:900;text-decoration:none;transition:transform .15s;display:inline-block;letter-spacing:.3px}
+.cbm:hover{transform:translateY(-2px)}
+.cbs{padding:16px 38px;border-radius:10px;border:2px solid rgba(255,255,255,.55);color:#fff;font-size:16px;font-weight:700;text-decoration:none;display:inline-block;transition:border-color .2s}
+.cbs:hover{border-color:#fff}
+
+/* ===== FOOTER ===== */
+footer{background:var(--blk);color:rgba(255,255,255,.65);padding:36px 24px 0}
+.fi{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-bottom:28px}
+.fl img{height:36px;width:auto;filter:invert(1) brightness(2)}
+.flinks{display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.flinks a{color:rgba(255,255,255,.55);text-decoration:none;font-weight:600}
+.flinks a:hover{color:#fff}
+.fc{font-size:12px;font-weight:500}
+.cmyk-f{height:4px;display:flex}
+.cmyk-f s{flex:1;text-decoration:none}
+
+/* reveal animation */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.vis{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  nav.desk{display:none}
+  .hmb{display:flex}
+  .rg{grid-template-columns:1fr 1fr}
+  .wg{grid-template-columns:1fr 1fr}
+  .cg{grid-template-columns:1fr}
+  .svc-card{flex:0 0 300px}
+}
+@media(max-width:580px){
+  .rg,.wg{grid-template-columns:1fr}
+  .h-btns{flex-direction:column}
+  .hb{text-align:center}
+  .flinks{flex-direction:column;gap:10px}
+  .wd-specs{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOADING ===== -->
+<div id="loading">
+  <img class="ld-logo" id="ldlogo" src="data:image/png;base64,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ILDKDUUoSkQE1oewrrq82WMhIiKi5nrymyAUloVYmg+Gl3911UEX9z0/tfamzxmtK1JtFgr2S6YIUFUxgZRHXHLLuusat7H+mIiIqFXtvVX6+bzBxz/uoYp07tMn+DlHftZ1zD/ReQfUqyGgFmLYFYBmHlVvEhljJjbdGX79E0cDN4ST/2nw5I6IiKgF7b1tdAsFD1XBgNrK4L//qf61lz0/s/7vb02Wtjxk0h0BEmmBqoOqZ+6gGcarTcDUS38EVtaRH2L/YyIioha29wJyw+TivbxRVZn47tsu6frlfz0ruX71B21l7AGT6rAmmTVQ4yfDMkMINZ8IRB2kMv77Zg+FiIiImm9vB+SGQsFDRJEbsBvvX7Gu8p03fqZ9xdeenlm3+p2JifU3WQsjmS6LICWAOKiG4tWD2/LRtFNATCCl4TA58uBkQGb9MRERUSubjppgQX65RWFZCAA5wP7y/IteFHYufLUmOk7zme55CFJQH8K7GuC9g3qdfCRrlmnfUvVIZo0dW3vXyy7OHT2o2ji5IyIiopY1nQFUsDRvce3Hw6mJ4gMWn9Kz+ZjTe7Vrv2U+yL7QG3ukT3cmNUg27sIJZdrXvINkZyHx0I3fqn3rtW9GfnkwdTJHRERErWk6N0NQrCiEAAS5AYNcDmv6ZAtW/+ZnAH4mAOa+LH/oeGbBM7Wt68hQEkcJdH+oGs+JZNpHBOqkvMnKxMYBAMDqjTwrIyIiomZSQW7AIr88mN7JbCIiIiKiHZtJqVSQzwuGYNDbCyzpVaxiqy2aJv1Q1h4TERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERHte4K8mmYPgujJ0kJ/s4dA9KQMYrXkdFCbPQ6iJ0sEvtljICIiIiIior1Isu+77OnNHgTRnqongbkjI/jUd/6AtnodtWYPiGgPJOvA6H6j9uAv/sUHmbqCRzJFUCKRxPCECW+4Zf3qQoGzyBRtQfWo4//W7EEQ7QlRhU9Y+C0TOE7WoDusIjQC4UVqihJRAAl4uxELT7gGQXsZ6hSQZg+MaNd5D9hMGZvXJbZc9ssjDgbuGFeFiIDvyBRJgQsSPHgpmlQBa+FtAgm1SKtB3RsGZIoWo1AYODUIgjpsot4IxwzIFCUKRQBpS2u92UMh2hsCqOfbMEWSqEJVAPXwULjJLx7QFC0KQOEBeC8wHoAHAzJFiveA8ZDQCY9cioWA78IUbY2pNgEe9UUUNQJApPHFA5miZurYZTymuGCLNyIiIiKibQQQZmSKKgXEAGJgIFu/OIFB0SNQCIxBY9rCgDPIFClm8n8sIwXFRCDliWaPgWiPiCoQWEhlDBOoISlVhJMnfFPZQif/rNvdtu19trX9+j7Bo++/o/V/u/qzdvY8O3r84z1m++fe0W3bvrYdjWtH993++bZ/3PZj2dFz7czjveZd/fsd/awdjX3753ui++zod7X9n7GD++zqsbD9+B8zFlEIHBxqGJ8wsLCAEzxqtemODqodvYgdvcjHe2GP94J39EJ3dgDt6ODYlf/QHu+X/3jPtycH3M6ec1cPvl39D+CJDu5t7/N4z7sr49/2OXb3zeeJXv/O7Oh3J5NdLELB6IR9gicgiob/D/ic4a3zpObNAAAAAElFTkSuQmCC" alt="セントラル印刷">
+  <div class="ld-paper" aria-hidden="true">
+    <div class="ld-paper-bg"></div>
+    <div class="ld-paper-slide" id="ldpaper">
+      <div class="ld-line"></div>
+      <div class="ld-line"></div>
+      <div class="ld-line"></div>
+      <div class="ld-line"></div>
+      <div class="ld-line"></div>
+      <div class="ld-cmyk">
+        <span style="background:#00AEEF"></span>
+        <span style="background:#EC008C"></span>
+        <span style="background:#FFF200"></span>
+        <span style="background:#231F20"></span>
+      </div>
+    </div>
+  </div>
+  <div class="ld-msg">PRINTING...</div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header id="hdr">
+  <div class="hdr-in">
+    <a class="logo-a" href="#"><img src="data:image/png;base64,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" alt="セントラル印刷株式会社"></a>
+    <nav class="desk">
+      <a class="nl" href="#services">サービス</a>
+      <a class="nl" href="#reasons">強み</a>
+      <a class="nl" href="#works">実績</a>
+      <a class="nl" href="#company">会社案内</a>
+      <a class="nl" href="#news">お知らせ</a>
+      <a class="ncta" href="#cta">お問い合わせ</a>
+    </nav>
+    <button class="hmb" id="hmb" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="cmyk" aria-hidden="true">
+    <s style="background:#00AEEF"></s><s style="background:#EC008C"></s>
+    <s style="background:#FFF200"></s><s style="background:#231F20"></s>
+  </div>
+</header>
+
+<!-- ===== MOBILE NAV ===== -->
+<nav id="mnav" aria-label="モバイルメニュー">
+  <div class="mnav-links">
+    <a class="ml" href="#services" onclick="closeMnav()">サービス</a>
+    <a class="ml" href="#reasons"  onclick="closeMnav()">選ばれる理由</a>
+    <a class="ml" href="#works"    onclick="closeMnav()">実績</a>
+    <a class="ml" href="#company"  onclick="closeMnav()">会社案内</a>
+    <a class="ml" href="#news"     onclick="closeMnav()">お知らせ</a>
+  </div>
+  <div class="mnav-btns">
+    <a class="mnav-btn mnav-btn-a" href="#cta" onclick="closeMnav()">📩 お問い合わせ</a>
+    <a class="mnav-btn mnav-btn-b" href="#cta" onclick="closeMnav()">📋 お見積り依頼</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="slides" id="slides">
+
+    <!-- S1: 複写伝票 -->
+    <div class="slide on">
+      <div class="sbg"></div>
+      <svg class="sovl" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <pattern id="grid1" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M40 0L0 0 0 40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="1200" height="700" fill="url(#grid1)"/>
+        <!-- 大きな伝票イメージ（右側） -->
+        <g transform="translate(580,60)">
+          <!-- 背後の伝票 -->
+          <rect x="20" y="20" width="500" height="360" rx="6" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="1" transform="rotate(4,270,200)"/>
+          <rect x="10" y="10" width="500" height="360" rx="6" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.25)" stroke-width="1" transform="rotate(2,270,200)"/>
+          <!-- メイン伝票 -->
+          <rect x="0" y="0" width="500" height="360" rx="6" fill="rgba(255,255,255,0.90)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <!-- タイトル帯 -->
+          <rect x="0" y="0" width="500" height="48" rx="6" fill="#0E7AC4" opacity="0.85"/>
+          <text x="24" y="31" font-size="16" fill="#fff" font-weight="bold" font-family="sans-serif">納　品　書　／　DELIVERY NOTE</text>
+          <!-- 罫線 -->
+          <line x1="20" y1="74" x2="480" y2="74" stroke="#0E7AC4" stroke-width="1.5" opacity="0.4"/>
+          <line x1="20" y1="100" x2="480" y2="100" stroke="#ccc" stroke-width="1"/>
+          <line x1="20" y1="126" x2="480" y2="126" stroke="#ccc" stroke-width="1"/>
+          <line x1="20" y1="152" x2="480" y2="152" stroke="#ccc" stroke-width="1"/>
+          <line x1="20" y1="178" x2="480" y2="178" stroke="#ccc" stroke-width="1"/>
+          <line x1="20" y1="204" x2="480" y2="204" stroke="#ccc" stroke-width="1"/>
+          <line x1="20" y1="230" x2="480" y2="230" stroke="#ccc" stroke-width="1"/>
+          <line x1="20" y1="256" x2="480" y2="256" stroke="#ccc" stroke-width="1"/>
+          <line x1="20" y1="282" x2="480" y2="282" stroke="#ccc" stroke-width="1"/>
+          <!-- 縦線 -->
+          <line x1="200" y1="60" x2="200" y2="310" stroke="#ccc" stroke-width="1"/>
+          <line x1="340" y1="60" x2="340" y2="310" stroke="#ccc" stroke-width="1"/>
+          <line x1="430" y1="60" x2="430" y2="310" stroke="#ccc" stroke-width="1"/>
+          <!-- テキストダミー -->
+          <rect x="30" y="80" width="120" height="10" rx="2" fill="#ccc" opacity="0.6"/>
+          <rect x="210" y="80" width="100" height="10" rx="2" fill="#ccc" opacity="0.5"/>
+          <rect x="30" y="108" width="90" height="8" rx="2" fill="#ccc" opacity="0.45"/>
+          <rect x="210" y="108" width="80" height="8" rx="2" fill="#ccc" opacity="0.4"/>
+          <rect x="30" y="134" width="110" height="8" rx="2" fill="#ccc" opacity="0.45"/>
+          <!-- 合計帯 -->
+          <rect x="340" y="292" width="140" height="28" rx="3" fill="#0E7AC4" opacity="0.15"/>
+          <text x="360" y="311" font-size="12" fill="#0E7AC4" font-weight="bold" font-family="sans-serif">合　計</text>
+          <rect x="350" y="305" width="100" height="10" rx="2" fill="#0E7AC4" opacity="0.3"/>
+          <!-- CMYK -->
+          <rect x="0" y="335" width="125" height="5" rx="1" fill="#00AEEF" opacity="0.9"/>
+          <rect x="126" y="335" width="125" height="5" rx="1" fill="#EC008C" opacity="0.9"/>
+          <rect x="252" y="335" width="124" height="5" rx="1" fill="#FFF200" opacity="0.9"/>
+          <rect x="377" y="335" width="123" height="5" rx="1" fill="#231F20" opacity="0.7"/>
+          <text x="20" y="355" font-size="11" fill="#0E7AC4" opacity="0.7" font-family="sans-serif">No Carbon Required — ノーカーボン複写</text>
+        </g>
+      </svg>
+      <div class="slabel">
+        <div class="scat">SLIP PRINTING — 複写伝票</div>
+        <div class="stit">ビジネスを支える伝票印刷</div>
+        <div class="sdesc">ノーカーボン複写から可変印刷まで。ベテラン営業が小ロット・短納期で対応します。</div>
+      </div>
+    </div>
+
+    <!-- S2: デザイン/DTP -->
+    <div class="slide">
+      <div class="sbg"></div>
+      <svg class="sovl" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <!-- チラシ/ポスター群 -->
+        <!-- ポスター1（後ろ） -->
+        <rect x="660" y="80" width="240" height="340" rx="8" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.2)" stroke-width="1" transform="rotate(-8,780,250)"/>
+        <!-- ポスター2 -->
+        <rect x="700" y="60" width="240" height="340" rx="8" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.28)" stroke-width="1" transform="rotate(-2,820,230)"/>
+        <!-- チラシ（手前メイン） -->
+        <rect x="740" y="50" width="300" height="420" rx="8" fill="rgba(255,255,255,0.93)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        <!-- チラシヘッダー -->
+        <rect x="740" y="50" width="300" height="90" rx="8" fill="#0E7AC4" opacity="0.82"/>
+        <rect x="740" y="122" width="300" height="18" fill="#0E7AC4" opacity="0.82"/>
+        <!-- CMYK dot pattern -->
+        <circle cx="820" cy="95" r="34" fill="#00AEEF" opacity="0.6"/>
+        <circle cx="860" cy="95" r="34" fill="#EC008C" opacity="0.55"/>
+        <circle cx="900" cy="95" r="34" fill="#FFF200" opacity="0.48"/>
+        <circle cx="870" cy="118" r="20" fill="rgba(35,31,32,.6)"/>
+        <!-- チラシ本文 -->
+        <rect x="762" y="155" width="256" height="12" rx="2" fill="#0E7AC4" opacity="0.6"/>
+        <rect x="762" y="178" width="210" height="9" rx="2" fill="#ccc" opacity="0.55"/>
+        <rect x="762" y="196" width="230" height="9" rx="2" fill="#ccc" opacity="0.48"/>
+        <rect x="762" y="214" width="190" height="9" rx="2" fill="#ccc" opacity="0.45"/>
+        <rect x="762" y="244" width="256" height="100" rx="4" fill="#0E7AC4" opacity="0.1"/>
+        <rect x="762" y="360" width="120" height="38" rx="6" fill="#0E7AC4" opacity="0.75"/>
+        <text x="822" y="384" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold" font-family="sans-serif">詳しくはこちら</text>
+        <!-- ロゴバッジ -->
+        <circle cx="660" cy="420" r="70" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.28)" stroke-width="2"/>
+        <text x="660" y="414" text-anchor="middle" font-size="14" fill="#fff" font-weight="bold" font-family="sans-serif">LOGO</text>
+        <text x="660" y="434" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.75)" font-family="sans-serif">DESIGN</text>
+        <!-- 定規 -->
+        <line x1="600" y1="520" x2="1100" y2="520" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="10,7"/>
+        <line x1="610" y1="40" x2="610" y2="540" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="10,7"/>
+      </svg>
+      <div class="slabel">
+        <div class="scat">DESIGN / DTP — デザイン制作</div>
+        <div class="stit">デザインから印刷まで一貫して</div>
+        <div class="sdesc">ロゴ・チラシ・ポスター・冊子。制作チームが企画からお手伝いします。</div>
+      </div>
+    </div>
+
+    <!-- S3: オンデマンド -->
+    <div class="slide">
+      <div class="sbg"></div>
+      <svg class="sovl" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <!-- プリンター本体 -->
+        <rect x="580" y="220" width="460" height="220" rx="16" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+        <!-- 上部パネル -->
+        <rect x="580" y="220" width="460" height="70" rx="16" fill="rgba(255,255,255,0.26)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <!-- パネルボタン -->
+        <rect x="880" y="238" width="120" height="34" rx="6" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="904" cy="255" r="7" fill="#00AEEF" opacity="0.9"/>
+        <circle cx="924" cy="255" r="7" fill="#EC008C" opacity="0.85"/>
+        <circle cx="944" cy="255" r="7" fill="#FFF200" opacity="0.8"/>
+        <circle cx="964" cy="255" r="6" fill="#231F20" opacity="0.65"/>
+        <!-- 排紙口 -->
+        <rect x="620" y="282" width="380" height="10" rx="5" fill="rgba(255,255,255,0.45)"/>
+        <!-- 排出紙1 -->
+        <rect x="650" y="168" width="300" height="130" rx="4" fill="rgba(255,255,255,0.93)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        <rect x="670" y="188" width="100" height="12" rx="2" fill="#0E7AC4" opacity="0.6"/>
+        <rect x="670" y="208" width="180" height="8" rx="2" fill="#ccc" opacity="0.55"/>
+        <rect x="670" y="222" width="150" height="8" rx="2" fill="#ccc" opacity="0.5"/>
+        <rect x="670" y="236" width="160" height="8" rx="2" fill="#ccc" opacity="0.45"/>
+        <!-- 排出紙2 -->
+        <rect x="640" y="135" width="300" height="50" rx="4" fill="rgba(255,255,255,0.65)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <!-- バッジ -->
+        <rect x="580" y="100" width="180" height="62" rx="12" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+        <text x="592" y="126" font-size="14" fill="#fff" font-weight="bold" font-family="sans-serif">小ロット対応</text>
+        <text x="592" y="148" font-size="12" fill="rgba(255,255,255,0.82)" font-family="sans-serif">1枚〜承ります</text>
+        <rect x="890" y="100" width="180" height="62" rx="12" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+        <text x="902" y="126" font-size="14" fill="#fff" font-weight="bold" font-family="sans-serif">短　納　期</text>
+        <text x="902" y="148" font-size="12" fill="rgba(255,255,255,0.82)" font-family="sans-serif">スピード対応</text>
+        <!-- 機種名 -->
+        <rect x="620" y="470" width="380" height="36" rx="8" fill="rgba(255,255,255,0.1)"/>
+        <text x="810" y="494" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.7)" font-family="sans-serif">RICOH ProC7210 / ProC5310 設備</text>
+      </svg>
+      <div class="slabel">
+        <div class="scat">ON DEMAND — オンデマンド印刷</div>
+        <div class="stit">1枚から、スピーディーに</div>
+        <div class="sdesc">小ロット・短納期はもちろん、ホワイト・メタリックの特殊カラーにも対応。</div>
+      </div>
+    </div>
+
+    <!-- S4: 冊子 -->
+    <div class="slide">
+      <div class="sbg"></div>
+      <svg class="sovl" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <!-- 本 積み重ね -->
+        <g transform="translate(560,60)">
+          <!-- 本4後ろ -->
+          <rect x="40" y="30" width="200" height="300" rx="5" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.22)" stroke-width="1" transform="rotate(-14,140,180)"/>
+          <!-- 本3 -->
+          <rect x="30" y="20" width="200" height="300" rx="5" fill="rgba(255,255,255,0.20)" stroke="rgba(255,255,255,0.28)" stroke-width="1" transform="rotate(-6,130,170)"/>
+          <!-- 本2 -->
+          <rect x="20" y="10" width="200" height="300" rx="5" fill="rgba(255,255,255,0.32)" stroke="rgba(255,255,255,0.36)" stroke-width="1" transform="rotate(3,120,160)"/>
+          <!-- 本1 手前 -->
+          <rect x="10" y="0" width="200" height="300" rx="5" fill="rgba(255,255,255,0.92)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+          <rect x="10" y="0" width="22" height="300" rx="3" fill="#0E7AC4" opacity="0.30"/>
+          <!-- 表紙デザイン -->
+          <rect x="38" y="24" width="162" height="120" rx="5" fill="#0E7AC4" opacity="0.16"/>
+          <rect x="48" y="38" width="142" height="14" rx="2" fill="#0E7AC4" opacity="0.55"/>
+          <rect x="48" y="58" width="110" height="9" rx="2" fill="#0A5A93" opacity="0.4"/>
+          <rect x="48" y="74" width="126" height="9" rx="2" fill="#0A5A93" opacity="0.35"/>
+          <!-- 著者 -->
+          <rect x="38" y="164" width="90" height="9" rx="2" fill="#ccc" opacity="0.6"/>
+          <rect x="38" y="180" width="140" height="8" rx="2" fill="#ccc" opacity="0.45"/>
+          <!-- 箔押し -->
+          <rect x="38" y="260" width="162" height="3" rx="1" fill="rgba(255,215,0,0.7)"/>
+          <text x="38" y="285" font-size="11" fill="#0E7AC4" opacity="0.7" font-family="sans-serif">装丁・箔押し対応</text>
+          <!-- 小口 -->
+          <rect x="210" y="0" width="10" height="300" rx="2" fill="rgba(180,180,180,0.5)"/>
+        </g>
+        <!-- バッジ左 -->
+        <circle cx="600" cy="480" r="75" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.28)" stroke-width="2"/>
+        <text x="600" y="474" text-anchor="middle" font-size="15" fill="#fff" font-weight="bold" font-family="sans-serif">自費出版</text>
+        <text x="600" y="496" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.8)" font-family="sans-serif">100部〜OK</text>
+        <!-- バッジ右 -->
+        <rect x="900" y="350" width="180" height="70" rx="12" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+        <text x="912" y="378" font-size="14" fill="#fff" font-weight="bold" font-family="sans-serif">箔押し対応</text>
+        <text x="912" y="400" font-size="12" fill="rgba(255,255,255,0.8)" font-family="sans-serif">装丁までお任せ</text>
+      </svg>
+      <div class="slabel">
+        <div class="scat">BOOK / BOOKLET — 冊子・書籍</div>
+        <div class="stit">あなたの一冊をともにつくる</div>
+        <div class="sdesc">企画・編集・装丁から製本まで。100部からの自費出版も丁寧に対応します。</div>
+      </div>
+    </div>
+
+  </div><!-- /slides -->
+
+  <div class="hero-body">
+    <div class="h-eye">CENTRAL PRINTING since 1977</div>
+    <h1 class="h-tit">伝票印刷から、<br>まだ見ぬ表現まで。</h1>
+    <p class="h-sub">新宿で生まれた複写伝票の技術を礎に、デザイン・冊子・オンデマンドまで。お客様のお客様に届くものづくりを、ともに。</p>
+    <div class="h-btns">
+      <a class="hb hb-p" href="#cta">お問い合わせ・お見積り</a>
+      <a class="hb hb-s" href="#works">実績を見る</a>
+    </div>
+  </div>
+  <div class="scnt"><b id="scur">1</b> / 4</div>
+  <div class="dots" id="dots">
+    <button class="dot on" onclick="goSlide(0)" aria-label="スライド1"></button>
+    <button class="dot" onclick="goSlide(1)" aria-label="スライド2"></button>
+    <button class="dot" onclick="goSlide(2)" aria-label="スライド3"></button>
+    <button class="dot" onclick="goSlide(3)" aria-label="スライド4"></button>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="si">
+    <div class="rev">
+      <div class="slb">SERVICES</div>
+      <h2 class="sh">サービス</h2>
+      <p class="ss">複写伝票を根幹に、印刷・デザイン・DTP・イベント企画まで。「まずは相談」から歓迎します。</p>
+    </div>
+    <div class="svc-wrap rev">
+      <div class="svc-track" id="svcTrack">
+
+        <!-- Card1: 複写伝票 -->
+        <div class="svc-card">
+          <div class="svc-icon">📋</div>
+          <div class="svc-badge badge-main">主力商品</div>
+          <div class="svc-name">複写伝票</div>
+          <div class="svc-verb">伝票をつくる</div>
+          <div class="svc-desc">創業以来の根幹商品。ノーカーボン複写から可変印刷・バリアブルDMまで、ベテラン営業と工場が小ロット・短納期で対応します。</div>
+          <div class="svc-list">
+            <div class="svc-li">ノーカーボン複写（2〜5枚）</div>
+            <div class="svc-li">可変印刷・バリアブルDM</div>
+            <div class="svc-li">封筒・厚紙・特殊紙印刷</div>
+            <div class="svc-li">仕様未確定でもご相談OK</div>
+          </div>
+        </div>
+
+        <!-- Card2: オンデマンド -->
+        <div class="svc-card">
+          <div class="svc-icon">🖨️</div>
+          <div class="svc-badge badge-std">印刷</div>
+          <div class="svc-name">オンデマンド印刷</div>
+          <div class="svc-verb">印刷する</div>
+          <div class="svc-desc">少部数×多品種×短納期に対応。RICOH ProC7210/5310を設備し、ホワイト・クリア・メタリックカラーなど特殊印刷も可能です。</div>
+          <div class="svc-list">
+            <div class="svc-li">1枚〜小ロット対応</div>
+            <div class="svc-li">厚紙・特殊紙印刷</div>
+            <div class="svc-li">ホワイト・メタリックカラー</div>
+            <div class="svc-li">チラシ・名刺・ポスター</div>
+          </div>
+        </div>
+
+        <!-- Card3: 冊子 -->
+        <div class="svc-card">
+          <div class="svc-icon">📚</div>
+          <div class="svc-badge badge-std">製本</div>
+          <div class="svc-name">冊子・書籍・自費出版</div>
+          <div class="svc-verb">つくる</div>
+          <div class="svc-desc">100部からの自費出版はオンデマンドで経費を抑えてご提案。箔押しや特殊装丁もご希望に沿って協力業者と連携し対応します。</div>
+          <div class="svc-list">
+            <div class="svc-li">自費出版・リプリント</div>
+            <div class="svc-li">箔押し・特殊装丁</div>
+            <div class="svc-li">企画・編集・組版まで</div>
+            <div class="svc-li">100部〜対応</div>
+          </div>
+        </div>
+
+        <!-- Card4: デザイン/DTP -->
+        <div class="svc-card">
+          <div class="svc-icon">🎨</div>
+          <div class="svc-badge badge-std">デザイン</div>
+          <div class="svc-name">デザイン・DTP</div>
+          <div class="svc-verb">デザインする</div>
+          <div class="svc-desc">実は営業より制作スタッフが多いセントラル印刷。版組み・デザイン・イラストと個性豊かなメンバーが、ロゴからポスターまで幅広く対応します。</div>
+          <div class="svc-list">
+            <div class="svc-li">ロゴ・CI・ブランディング</div>
+            <div class="svc-li">チラシ・ポスターデザイン</div>
+            <div class="svc-li">冊子・カタログの組版</div>
+            <div class="svc-li">イラスト制作</div>
+          </div>
+        </div>
+
+        <!-- Card5: イベント企画 -->
+        <div class="svc-card">
+          <div class="svc-icon">🎪</div>
+          <div class="svc-badge badge-std">企画</div>
+          <div class="svc-name">イベント企画・制作</div>
+          <div class="svc-verb">企画する</div>
+          <div class="svc-desc">イベントの告知物から当日使用するツール一式まで、企画段階から印刷・製作まで一括してサポートします。</div>
+          <div class="svc-list">
+            <div class="svc-li">イベントフライヤー・ポスター</div>
+            <div class="svc-li">プログラム・パンフレット</div>
+            <div class="svc-li">バナー・のぼり制作</div>
+            <div class="svc-li">企画・ディレクションも対応</div>
+          </div>
+        </div>
+
+        <!-- Card6: Web -->
+        <div class="svc-card">
+          <div class="svc-icon">💻</div>
+          <div class="svc-badge badge-std">Web</div>
+          <div class="svc-name">Webデザイン・制作</div>
+          <div class="svc-verb">Webをつくる</div>
+          <div class="svc-desc">印刷物と連動したWebデザイン・制作にも対応。ブランドの統一感を保ちながら、紙とWebの両方から情報を届けます。</div>
+          <div class="svc-list">
+            <div class="svc-li">ランディングページ制作</div>
+            <div class="svc-li">コーポレートサイト</div>
+            <div class="svc-li">印刷物とのブランド統合</div>
+            <div class="svc-li">SNS用バナー・素材</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="svc-nav rev">
+      <button class="svc-btn" id="svcPrev" aria-label="前へ">&#8592;</button>
+      <button class="svc-btn" id="svcNext" aria-label="次へ">&#8594;</button>
+      <div class="svc-dots" id="svcDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REASONS ===== -->
+<section id="reasons">
+  <div class="si">
+    <div class="rev" style="color:#fff">
+      <div class="slb" style="color:rgba(255,255,255,.75)">WHY CENTRAL</div>
+      <h2 class="sh" style="color:#fff">選ばれる理由</h2>
+    </div>
+    <div class="rg">
+      <div class="rc rev"><div class="rn">1977<div class="ru">年創業</div></div><div class="rl">老舗の信頼と実績</div></div>
+      <div class="rc rev"><div class="rn">49<div class="ru">期</div></div><div class="rl">事業継続の安心感</div></div>
+      <div class="rc rev"><div class="rn">小<div class="ru">ロット</div></div><div class="rl">1枚から対応可能</div></div>
+      <div class="rc rev"><div class="rn">2<div class="ru">拠点</div></div><div class="rl">新宿工場＋音羽本社</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORKS ===== -->
+<section id="works">
+  <div class="si">
+    <div class="rev">
+      <div class="slb">WORKS</div>
+      <h2 class="sh">制作実績</h2>
+      <p class="ss">タップすると詳しい内容をご覧いただけます。</p>
+    </div>
+    <div class="wg">
+
+      <div class="wc rev" onclick="openWork(0)">
+        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="40" width="300" height="220" rx="5" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="50" y="40" width="300" height="52" rx="5" fill="#0E7AC4" opacity="0.8"/><text x="200" y="73" text-anchor="middle" font-size="15" fill="#fff" font-weight="bold" font-family="sans-serif">納　品　書</text><line x1="70" y1="114" x2="330" y2="114" stroke="#ccc" stroke-width="1"/><line x1="70" y1="138" x2="330" y2="138" stroke="#ccc" stroke-width="1"/><line x1="70" y1="162" x2="330" y2="162" stroke="#ccc" stroke-width="1"/><line x1="70" y1="186" x2="330" y2="186" stroke="#ccc" stroke-width="1"/><line x1="70" y1="210" x2="330" y2="210" stroke="#ccc" stroke-width="1"/><line x1="200" y1="96" x2="200" y2="230" stroke="#ccc" stroke-width="0.8"/><line x1="280" y1="96" x2="280" y2="230" stroke="#ccc" stroke-width="0.8"/><rect x="70" y="100" width="80" height="8" rx="2" fill="#ccc" opacity="0.5"/><rect x="210" y="100" width="60" height="8" rx="2" fill="#ccc" opacity="0.4"/><rect x="50" y="235" width="75" height="4" rx="1" fill="#00AEEF"/><rect x="126" y="235" width="75" height="4" rx="1" fill="#EC008C"/><rect x="202" y="235" width="74" height="4" rx="1" fill="#FFF200"/><rect x="277" y="235" width="73" height="4" rx="1" fill="#231F20" opacity="0.7"/></svg>
+        <div class="wo"><div class="wm"><strong>複写伝票</strong><span>受注管理用 3枚複写</span><div class="wtap">詳しく見る →</div></div></div>
+      </div>
+
+      <div class="wc rev" onclick="openWork(1)">
+        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="130" y="30" width="160" height="230" rx="5" fill="#0E7AC4" opacity="0.22" stroke="#0E7AC4" stroke-width="1.5"/><rect x="130" y="30" width="22" height="230" rx="3" fill="#0E7AC4" opacity="0.32"/><rect x="162" y="52" width="116" height="90" rx="4" fill="#0E7AC4" opacity="0.13"/><rect x="172" y="66" width="96" height="11" rx="2" fill="#0E7AC4" opacity="0.55"/><rect x="172" y="84" width="76" height="8" rx="2" fill="#0A5A93" opacity="0.38"/><rect x="172" y="98" width="88" height="8" rx="2" fill="#0A5A93" opacity="0.32"/><rect x="162" y="172" width="70" height="8" rx="2" fill="#ccc" opacity="0.6"/><rect x="162" y="186" width="100" height="7" rx="2" fill="#ccc" opacity="0.45"/><rect x="260" y="50" width="120" height="170" rx="4" fill="#fff" stroke="#0A5A93" stroke-width="1.5" opacity="0.85"/><rect x="260" y="50" width="18" height="170" rx="2" fill="#0A5A93" opacity="0.22"/><rect x="284" y="66" width="84" height="60" rx="3" fill="#0A5A93" opacity="0.1"/><rect x="292" y="78" width="68" height="9" rx="2" fill="#0A5A93" opacity="0.45"/></svg>
+        <div class="wo"><div class="wm"><strong>冊子印刷</strong><span>自費出版 A5 / 120P</span><div class="wtap">詳しく見る →</div></div></div>
+      </div>
+
+      <div class="wc rev" onclick="openWork(2)">
+        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="30" width="300" height="230" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="50" y="30" width="300" height="80" rx="7" fill="#0E7AC4" opacity="0.82"/><rect x="50" y="102" width="300" height="8" fill="#0E7AC4" opacity="0.82"/><text x="200" y="78" text-anchor="middle" font-size="20" fill="#fff" font-weight="bold" font-family="sans-serif">OPEN</text><rect x="50" y="110" width="75" height="5" fill="#00AEEF"/><rect x="125" y="110" width="75" height="5" fill="#EC008C"/><rect x="200" y="110" width="75" height="5" fill="#FFF200"/><rect x="275" y="110" width="75" height="5" fill="#231F20" opacity="0.7"/><rect x="70" y="128" width="260" height="11" rx="2" fill="#ccc" opacity="0.5"/><rect x="70" y="148" width="210" height="9" rx="2" fill="#ccc" opacity="0.4"/><rect x="70" y="165" width="230" height="9" rx="2" fill="#ccc" opacity="0.4"/><rect x="70" y="190" width="110" height="60" rx="4" fill="#0E7AC4" opacity="0.15"/><rect x="195" y="190" width="135" height="60" rx="4" fill="#0A5A93" opacity="0.1"/></svg>
+        <div class="wo"><div class="wm"><strong>チラシデザイン</strong><span>A4 フルカラー</span><div class="wtap">詳しく見る →</div></div></div>
+      </div>
+
+      <div class="wc rev" onclick="openWork(3)">
+        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="65" width="300" height="190" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><polygon points="50,65 350,65 200,155" fill="#0E7AC4" opacity="0.18"/><polygon points="50,65 200,155 50,255" fill="#0E7AC4" opacity="0.09"/><polygon points="350,65 200,155 350,255" fill="#0E7AC4" opacity="0.09"/><rect x="72" y="88" width="90" height="34" rx="4" fill="#0E7AC4" opacity="0.14"/><text x="117" y="108" text-anchor="middle" font-size="11" fill="#0E7AC4" font-weight="bold" font-family="sans-serif">CENTRAL</text><rect x="200" y="168" width="120" height="10" rx="2" fill="#ccc" opacity="0.5"/><rect x="200" y="184" width="90" height="8" rx="2" fill="#ccc" opacity="0.4"/><rect x="200" y="198" width="100" height="8" rx="2" fill="#ccc" opacity="0.4"/><rect x="294" y="80" width="38" height="48" rx="2" fill="#0E7AC4" opacity="0.2" stroke="#0E7AC4" stroke-width="1" stroke-dasharray="3,2"/></svg>
+        <div class="wo"><div class="wm"><strong>封筒印刷</strong><span>長形3号 社名入り</span><div class="wtap">詳しく見る →</div></div></div>
+      </div>
+
+      <div class="wc rev" onclick="openWork(4)">
+        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="190" y="40" width="180" height="230" rx="5" fill="#fff" stroke="#0A5A93" stroke-width="1.5" opacity="0.75" transform="rotate(6,280,155)"/><rect x="170" y="45" width="180" height="230" rx="5" fill="#fff" stroke="#0E7AC4" stroke-width="1.5" opacity="0.85" transform="rotate(2,260,160)"/><rect x="150" y="50" width="180" height="230" rx="5" fill="#fff" stroke="#0E7AC4" stroke-width="1.5" opacity="0.95"/><g transform="translate(165,74)"><rect x="0" y="0" width="2" height="32" fill="#231F20"/><rect x="5" y="0" width="4" height="32" fill="#231F20"/><rect x="11" y="0" width="2" height="32" fill="#231F20"/><rect x="15" y="0" width="6" height="32" fill="#231F20"/><rect x="23" y="0" width="2" height="32" fill="#231F20"/><rect x="27" y="0" width="4" height="32" fill="#231F20"/><rect x="33" y="0" width="2" height="32" fill="#231F20"/><rect x="37" y="0" width="5" height="32" fill="#231F20"/><rect x="44" y="0" width="2" height="32" fill="#231F20"/><rect x="48" y="0" width="3" height="32" fill="#231F20"/><text x="0" y="46" font-size="8" fill="#231F20">1234567890</text></g><rect x="165" y="136" width="150" height="9" rx="2" fill="#0E7AC4" opacity="0.55"/><rect x="165" y="152" width="100" height="7" rx="2" fill="#ccc" opacity="0.45"/><rect x="165" y="165" width="120" height="7" rx="2" fill="#ccc" opacity="0.4"/><rect x="165" y="222" width="70" height="32" rx="4" fill="#0E7AC4" opacity="0.15"/><text x="200" y="242" text-anchor="middle" font-size="10" fill="#0E7AC4" font-weight="bold" font-family="sans-serif">可変印刷</text></svg>
+        <div class="wo"><div class="wm"><strong>可変印刷DM</strong><span>バリアブル 宛名差込</span><div class="wtap">詳しく見る →</div></div></div>
+      </div>
+
+      <div class="wc rev" onclick="openWork(5)">
+        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="100" y="24" width="200" height="260" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="2"/><rect x="100" y="24" width="200" height="130" rx="7" fill="#0E7AC4" opacity="0.78"/><rect x="100" y="146" width="200" height="8" fill="#0E7AC4" opacity="0.78"/><circle cx="158" cy="89" r="38" fill="#00AEEF" opacity="0.55"/><circle cx="200" cy="89" r="38" fill="#EC008C" opacity="0.5"/><circle cx="242" cy="89" r="38" fill="#FFF200" opacity="0.45"/><rect x="118" y="170" width="164" height="13" rx="2" fill="#0E7AC4" opacity="0.5"/><rect x="118" y="192" width="130" height="8" rx="2" fill="#ccc" opacity="0.5"/><rect x="118" y="208" width="144" height="8" rx="2" fill="#ccc" opacity="0.4"/><rect x="118" y="232" width="90" height="26" rx="5" fill="#0E7AC4" opacity="0.72"/><text x="163" y="250" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold" font-family="sans-serif">詳しくはこちら</text></svg>
+        <div class="wo"><div class="wm"><strong>ポスター</strong><span>B1 イベント告知</span><div class="wtap">詳しく見る →</div></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORK DETAIL OVERLAY ===== -->
+<div class="wd-overlay" id="wdOverlay" onclick="closeWork(event)">
+  <div class="wd-box" id="wdBox">
+    <div class="wd-hero" id="wdHero">
+      <button class="wd-close" onclick="closeWorkBtn()" aria-label="閉じる">✕</button>
+    </div>
+    <div class="wd-body">
+      <div class="wd-cat" id="wdCat"></div>
+      <div class="wd-title" id="wdTitle"></div>
+      <div class="wd-desc" id="wdDesc"></div>
+      <div class="wd-specs" id="wdSpecs"></div>
+      <a class="wd-cta" href="#cta" onclick="closeWorkBtn()">この印刷についてお問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMPANY ===== -->
+<section id="company">
+  <div class="si">
+    <div class="rev"><div class="slb">COMPANY</div><h2 class="sh">会社案内</h2><p class="ss">1977年、新宿に生まれた印刷会社。半世紀近くにわたり、お客様のものづくりを支えてきました。</p></div>
+    <div class="cg">
+      <div class="ci rev">
+        <h3>会社概要</h3>
+        <div class="ir"><span class="ik">社名</span><span>セントラル印刷株式会社</span></div>
+        <div class="ir"><span class="ik">創業</span><span>1977年（昭和52年）10月</span></div>
+        <div class="ir"><span class="ik">代表</span><span>代表取締役 ○○ ○○</span></div>
+        <div class="ir"><span class="ik">本社</span><span>〒112-0013 東京都文京区音羽1-20-14 MBS音羽ビル2F</span></div>
+        <div class="ir"><span class="ik">工場</span><span>〒162-0818 東京都新宿区築地町13 赤城ビル3F</span></div>
+        <div class="ir"><span class="ik">TEL</span><span>本社：03-5981-8911 / 工場：03-3267-4441</span></div>
+        <div class="ir"><span class="ik">事業</span><span>複写伝票・オンデマンド印刷・冊子製本・デザイン・イベント企画</span></div>
+      </div>
+      <div class="cm rev">
+        <h3>アクセス</h3>
+        <div class="mph">🗺️ Googleマップ（埋め込み予定）</div>
+        <div class="bl"><strong>本社・経理部（音羽）</strong><br>文京区音羽1-20-14 MBS音羽ビル2F / TEL 03-5981-8911</div>
+        <div class="bl" style="margin-top:10px"><strong>工場・営業部（新宿）</strong><br>新宿区築地町13 赤城ビル3F / TEL 03-3267-4441</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWS ===== -->
+<section id="news">
+  <div class="si">
+    <div class="rev"><div class="slb">NEWS</div><h2 class="sh">お知らせ</h2></div>
+    <div class="nlist rev">
+      <div class="ni"><span class="nd">2026.06.10</span><span class="ncat">お知らせ</span><span>ウェブサイトをリニューアルしました</span></div>
+      <div class="ni"><span class="nd">2026.05.20</span><span class="ncat">実績</span><span>冊子印刷の制作事例を追加しました</span></div>
+      <div class="ni"><span class="nd">2026.04.15</span><span class="ncat">複写伝票</span><span>複写伝票の小ロット対応プランを開始しました</span></div>
+      <div class="ni"><span class="nd">2026.03.01</span><span class="ncat">お知らせ</span><span>音羽堂オンラインショップをオープンしました</span></div>
+    </div>
+    <div class="sns-row rev">
+      <a class="sns-btn" href="#" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#E1306C" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#E1306C" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#E1306C"/></svg>
+        Instagram
+      </a>
+      <a class="sns-btn" href="#" aria-label="X（旧Twitter）">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4L10.5 12.5L4 20H6L11.5 14L16.5 20H20.5L13.7 11.2L20 4H18L12.7 9.7L8 4H4Z" fill="#000"/></svg>
+        X（Twitter）
+      </a>
+      <a class="sns-btn" href="https://cprint.base.shop/" aria-label="音羽堂">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9H21L20 20H4L3 9Z" stroke="#0E7AC4" stroke-width="2" stroke-linejoin="round"/><path d="M8 9V7C8 4.79 9.79 3 12 3C14.21 3 16 4.79 16 7V9" stroke="#0E7AC4" stroke-width="2" stroke-linecap="round"/></svg>
+        音羽堂 online shop
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta" style="background:var(--blue);color:#fff;text-align:center;padding:88px 24px">
+  <div class="si">
+    <div class="slb" style="color:rgba(255,255,255,.75)">CONTACT</div>
+    <h2 class="sh" style="color:#fff">複写伝票のお見積り、<br>お気軽にどうぞ</h2>
+    <p class="ctanote">小ロットからでも、仕様が未確定でもご相談ください</p>
+    <div class="ctabtns">
+      <a class="cbm" href="#">📩 お問い合わせ</a>
+      <a class="cbs" href="tel:0359818911">📞 03-5981-8911</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="fi">
+    <div class="fl"><img src="data:image/png;base64,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" alt="セントラル印刷"></div>
+    <div class="flinks">
+      <a href="#services">サービス</a><a href="#reasons">強み</a>
+      <a href="#works">実績</a><a href="#company">会社案内</a>
+      <a href="#news">お知らせ</a><a href="#cta">お問い合わせ</a>
+    </div>
+    <div class="fc">© 2026 Central Printing Co., Ltd.</div>
+  </div>
+  <div class="cmyk-f">
+    <s style="background:#00AEEF"></s><s style="background:#EC008C"></s>
+    <s style="background:#FFF200"></s><s style="background:#231F20"></s>
+  </div>
+</footer>
+
+<script>
+/* ===== LOADING ===== */
+window.addEventListener('load', () => {
+  const logo = document.getElementById('ldlogo');
+  const paper = document.getElementById('ldpaper');
+  const loading = document.getElementById('loading');
+  setTimeout(() => logo.classList.add('show'), 200);
+  setTimeout(() => paper.classList.add('out'), 700);
+  setTimeout(() => {
+    loading.classList.add('hide');
+    document.body.style.overflow = '';
+  }, 2200);
+});
+document.body.style.overflow = 'hidden';
+
+/* ===== HERO SLIDESHOW ===== */
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const scurEl = document.getElementById('scur');
+function goSlide(n) {
+  slides[cur].classList.remove('on'); dots[cur].classList.remove('on');
+  cur = n;
+  slides[cur].classList.add('on'); dots[cur].classList.add('on');
+  scurEl.textContent = cur + 1;
+}
+let stimer = setInterval(() => goSlide((cur + 1) % 4), 5000);
+dots.forEach((d, i) => d.addEventListener('click', () => {
+  clearInterval(stimer); goSlide(i);
+  stimer = setInterval(() => goSlide((cur + 1) % 4), 5000);
+}));
+
+/* ===== HAMBURGER ===== */
+const hmb = document.getElementById('hmb');
+const mnav = document.getElementById('mnav');
+function closeMnav() {
+  mnav.classList.remove('open'); hmb.classList.remove('open');
+  hmb.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+hmb.addEventListener('click', () => {
+  const open = mnav.classList.toggle('open');
+  hmb.classList.toggle('open');
+  hmb.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+/* ===== SERVICE SLIDER ===== */
+const track = document.getElementById('svcTrack');
+const cards = track.querySelectorAll('.svc-card');
+const dotsWrap = document.getElementById('svcDots');
+let svcCur = 0;
+let cardW = 360; // card width + gap
+
+function getCardW() {
+  if (!cards[0]) return 360;
+  return cards[0].offsetWidth + 20;
+}
+function buildSvcDots() {
+  dotsWrap.innerHTML = '';
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'sdot' + (i === 0 ? ' on' : '');
+    d.setAttribute('aria-label', 'サービス' + (i+1));
+    d.onclick = () => goSvc(i);
+    dotsWrap.appendChild(d);
+  });
+}
+function goSvc(n) {
+  svcCur = Math.max(0, Math.min(n, cards.length - 1));
+  cardW = getCardW();
+  track.style.transform = `translateX(-${svcCur * cardW}px)`;
+  dotsWrap.querySelectorAll('.sdot').forEach((d, i) => d.classList.toggle('on', i === svcCur));
+}
+document.getElementById('svcPrev').onclick = () => goSvc(svcCur - 1);
+document.getElementById('svcNext').onclick = () => goSvc(svcCur + 1);
+buildSvcDots();
+window.addEventListener('resize', () => goSvc(svcCur));
+
+/* ===== WORKS DETAIL ===== */
+const workData = [
+  {cat:'複写伝票', title:'受注管理用 3枚複写伝票', desc:'ノーカーボン紙を使用した3枚複写の受注伝票。上・中・下の3枚が1セットで、筆圧だけで複写されます。枚数・サイズ・罫線のレイアウトはすべてオーダーメイドで対応しています。小ロットから短納期で全国に発送可能です。', specs:[{k:'種別',v:'ノーカーボン複写'},{k:'枚数',v:'3枚複写'},{k:'納期',v:'要相談（最短3日〜）'},{k:'ロット',v:'50部〜対応'}], svgIndex:0},
+  {cat:'冊子・書籍', title:'自費出版 A5 / 120P', desc:'個人の詩集・句集・回想録など、100部からの自費出版に対応。企画・編集・組版から製本まで一貫して承ります。表紙デザインも制作チームがご提案します。', specs:[{k:'仕様',v:'A5 / 120ページ'},{k:'製本',v:'無線綴じ'},{k:'部数',v:'100部〜'},{k:'対応',v:'企画・編集・デザインも可'}], svgIndex:1},
+  {cat:'デザイン・DTP', title:'A4チラシ フルカラー制作', desc:'店舗のオープン告知チラシ。企画・コピーライティング・デザインから印刷まで一括対応。CMYKのカラーマネジメントにも精通した制作チームが、意図した色で仕上げます。', specs:[{k:'サイズ',v:'A4 両面'},{k:'カラー',v:'フルカラー（CMYK）'},{k:'納期',v:'デザイン込み10日〜'},{k:'備考',v:'企画・コピーも対応'}], svgIndex:2},
+  {cat:'封筒印刷', title:'長形3号 社名・ロゴ入り封筒', desc:'企業の社名・ロゴを印刷したビジネス封筒。オフセット印刷で鮮やかな仕上がりに。窓付き・糊なし・のり付きなど、各種仕様に対応します。', specs:[{k:'サイズ',v:'長形3号'},{k:'印刷',v:'1色〜フルカラー'},{k:'ロット',v:'500枚〜'},{k:'仕様',v:'窓付き・糊付き対応'}], svgIndex:3},
+  {cat:'可変印刷・DM', title:'バリアブルDM 宛名差込印刷', desc:'1枚ごとに宛名・番号・QRコードなどを変えて印刷するバリアブル印刷。DMの開封率・反応率向上に効果的です。住所リストをご用意いただければ、データ処理から印刷まで対応します。', specs:[{k:'種別',v:'バリアブル（可変）印刷'},{k:'差込',v:'宛名・番号・QR・バーコード'},{k:'ロット',v:'100部〜'},{k:'備考',v:'データ処理・発送も相談可'}], svgIndex:4},
+  {cat:'デザイン・DTP', title:'B1イベント告知ポスター', desc:'コンサート・展覧会・地域イベントなどの告知ポスター。視認性の高いデザインと、印刷現場の知識を活かした配色・出力で、目を引く仕上がりを実現します。', specs:[{k:'サイズ',v:'B1（1030×728mm）'},{k:'カラー',v:'フルカラー'},{k:'用紙',v:'コート135K'},{k:'備考',v:'小部数〜大部数対応'}], svgIndex:5},
+];
+const wdOverlay = document.getElementById('wdOverlay');
+const wdHero = document.getElementById('wdHero');
+function openWork(i) {
+  const d = workData[i];
+  document.getElementById('wdCat').textContent = d.cat;
+  document.getElementById('wdTitle').textContent = d.title;
+  document.getElementById('wdDesc').textContent = d.desc;
+  document.getElementById('wdSpecs').innerHTML = d.specs.map(s =>
+    `<div class="wd-spec"><div class="wd-sk">${s.k}</div><div class="wd-sv">${s.v}</div></div>`
+  ).join('');
+  // ヒーローSVGをworksグリッドから複製
+  const srcSvg = document.querySelectorAll('.wc svg')[i];
+  const existSvg = wdHero.querySelector('svg');
+  if (existSvg) existSvg.remove();
+  if (srcSvg) {
+    const clone = srcSvg.cloneNode(true);
+    clone.style.cssText = 'position:absolute;inset:0;width:100%;height:100%';
+    wdHero.prepend(clone);
+  }
+  wdOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWorkBtn() {
+  wdOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeWork(e) {
+  if (e.target === wdOverlay) closeWorkBtn();
+}
+
+/* ===== SCROLL REVEAL ===== */
+const revEls = document.querySelectorAll('.rev');
+const io = new IntersectionObserver(entries =>
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+  { threshold: 0.08 }
+);
+revEls.forEach(r => io.observe(r));
+
+/* ===== SCROLL SPY ===== */
+const navLinks = document.querySelectorAll('nav.desk .nl');
+const spy = new IntersectionObserver(entries =>
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('on'));
+      const l = document.querySelector(`nav.desk .nl[href="#${e.target.id}"]`);
+      if (l) l.classList.add('on');
+    }
+  }), { threshold: 0.3 }
+);
+document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+</script>
+</body>
+</html>
