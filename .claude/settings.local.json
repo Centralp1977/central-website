@@ -2,7 +2,17 @@
   "permissions": {
     "allow": [
       "Bash(gh auth *)",
-      "PowerShell(gh auth status 2>&1)"
+      "PowerShell(gh auth status 2>&1)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(gh pr create --title 'SEO: Add meta description tag to v5' --body ' *)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\okaga\\\\Desktop\\\\Central\\\\4.website\\\\Client\\\\260613_central_website\\\\central_printing_demo_v5.html\"\\)[406])",
+      "Bash(node /tmp/create_okurijyo.js)",
+      "Read(//c/tmp/**)",
+      "Bash(node create_okurijyo.js)",
+      "PowerShell(Get-Job)"
     ]
   }
 }

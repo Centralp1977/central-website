@@ -21,19 +21,19 @@ body{font-family:'Hiragino Sans','ヒラギノ角ゴ ProN','Yu Gothic UI','Meiry
 #loading.hide{opacity:0;visibility:hidden;pointer-events:none}
 .ld-logo{width:300px;max-width:78vw;opacity:0;transform:translateY(8px);transition:opacity .55s ease,transform .55s ease;filter:none}
 .ld-logo.show{opacity:1;transform:translateY(0)}
-.ld-paper-wrap{position:relative;width:220px;height:220px;margin-top:24px;background:transparent;border-radius:50%;border:6px solid var(--blue);display:flex;align-items:flex-start;justify-content:center;padding-top:16px}
-.ld-tray{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:140px;height:12px;background:#e0e4e8;border-radius:6px 6px 0 0;border:1px solid #ccc}
-.ld-sheet{position:absolute;top:28px;left:50%;transform:translateX(-50%);width:130px;height:0;overflow:hidden;background:#fff;border:1px solid #ccc;border-radius:0 0 4px 4px;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:height .8s cubic-bezier(.4,0,.2,1)}
-.ld-sheet.out{height:140px}
-.ld-sheet-inner{padding:12px 14px;display:flex;flex-direction:column;gap:6px}
-.ld-line{height:2px;border-radius:1px;background:#ddd}
-.ld-line:nth-child(1){background:#333;width:80%;opacity:.8}
-.ld-line:nth-child(2){width:90%}
-.ld-line:nth-child(3){width:70%}
-.ld-line:nth-child(4){width:85%}
-.ld-line:nth-child(5){width:60%}
-.ld-cmyk-strip{display:flex;height:3px;width:80%;border-radius:1px;overflow:hidden;margin-top:4px}
-.ld-cmyk-strip span{flex:1}
+.ld-paper-wrap{display:none}
+
+
+
+
+
+
+
+
+
+
+
+
 .ld-msg{margin-top:18px;font-size:12px;color:#333;letter-spacing:3px;font-weight:600}
 
 /* ── HEADER ── */
@@ -221,6 +221,11 @@ section{padding:76px 24px}
 .wd-overlay.open{display:block}
 .wd-box{background:#fff;max-width:740px;width:94%;margin:40px auto;border-radius:20px;overflow:hidden;animation:slideup .35s ease}
 @keyframes slideup{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.wd-thumbs{display:flex;gap:12px;overflow-x:auto;padding:16px 20px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.wd-thumbs::-webkit-scrollbar{display:none}
+.wd-thumb{flex:0 0 72px;width:72px;height:72px;border-radius:50%;overflow:hidden;border:3px solid var(--blue-l);cursor:pointer;transition:border-color .2s,transform .2s;background:#E8F4FC}
+.wd-thumb.active{border-color:var(--blue)}
+.wd-thumb svg{width:100%;height:100%}
 .wd-hero{height:280px;position:relative;display:flex;align-items:center;justify-content:center;background:var(--blue-l)}
 .wd-hero svg{position:absolute;inset:0;width:100%;height:100%}
 .wd-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:2;font-weight:800}
@@ -827,7 +832,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 <!-- WORK DETAIL OVERLAY -->
 <div class="wd-overlay" id="wdOverlay" onclick="closeWorkOvl(event)">
   <div class="wd-box">
-    <div class="wd-hero" id="wdHero"><button class="wd-close" onclick="closeWork()" aria-label="閉じる">✕</button></div>
+    <div class="wd-thumbs" id="wdThumbs"></div><div class="wd-thumbs" id="wdThumbs"></div><div class="wd-thumbs" id="wdThumbs"></div><div class="wd-hero" id="wdHero"><button class="wd-close" onclick="closeWork()" aria-label="閉じる">✕</button></div>
     <div class="wd-body">
       <div class="wd-cat" id="wdCat"></div>
       <div class="wd-title" id="wdTitle"></div>
@@ -1134,7 +1139,7 @@ function closeSvcOvl(e){if(e.target===svOverlay)closeSvc();}
 
 /* WORKS DETAIL */
 const workData=[
-  {cat:'複写伝票',title:'受注管理用 3枚複写伝票',desc:'ノーカーボン紙を使用した3枚複写の受注伝票。上・中・下の3枚が1セットで、筆圧だけで複写されます。枚数・サイズ・罫線のレイアウトはすべてオーダーメイドで対応しています。小ロットから短納期で全国に発送可能です。',specs:[{k:'種別',v:'ノーカーボン複写'},{k:'枚数',v:'3枚複写'},{k:'納期',v:'最短3営業日〜'},{k:'ロット',v:'50部〜対応'}],svgIdx:0},
+  {cat:'複写伝票',title:'受注管理用 3枚複写伝票',desc:'ノーカーボン紙を使用した3枚複写の受注伝票。上・中・下の3枚が1セットで、筆圧だけで複写されます。枚数・サイズ・罫線のレイアウトはすべてオーダーメイドで対応しています。小ロットから短納期で全国に発送可能です。',specs:[{k:'種別',v:'ノーカーボン複写'},{k:'枚数',v:'3枚複写'},{k:'納期',v:'最短3営業日〜'},{k:'ロット',v:'50部〜対応'}],svgIdx:0,thumbs:['<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="15" y="10" width="70" height="80" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="15" y="10" width="70" height="18" fill="#0E7AC4" opacity=".8"/><line x1="25" y1="38" x2="75" y2="38" stroke="#ccc" stroke-width="1"/><line x1="25" y1="50" x2="75" y2="50" stroke="#ccc" stroke-width="1"/><line x1="25" y1="62" x2="75" y2="62" stroke="#ccc" stroke-width="1"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="15" y="10" width="70" height="80" rx="2" fill="#fff" stroke="#0A5A93" stroke-width="1.5" opacity=".7"/><rect x="20" y="15" width="60" height="70" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="20" y="15" width="60" height="16" fill="#0E7AC4" opacity=".75"/><line x1="28" y1="40" x2="72" y2="40" stroke="#ccc" stroke-width="1"/><line x1="28" y1="52" x2="72" y2="52" stroke="#ccc" stroke-width="1"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="12" y="8" width="76" height="84" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="12" y="8" width="76" height="20" fill="#0E7AC4" opacity=".8"/><text x="50" y="23" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">納品書</text><line x1="22" y1="42" x2="78" y2="42" stroke="#ccc" stroke-width="1"/><line x1="22" y1="55" x2="78" y2="55" stroke="#ccc" stroke-width="1"/><line x1="22" y1="68" x2="78" y2="68" stroke="#ccc" stroke-width="1"/><rect x="12" y="88" width="19" height="4" fill="#00AEEF"/><rect x="31" y="88" width="19" height="4" fill="#EC008C"/><rect x="50" y="88" width="19" height="4" fill="#FFF200"/><rect x="69" y="88" width="19" height="4" fill="#231F20" opacity=".7"/></svg>']},
   {cat:'冊子・書籍',title:'自費出版 A5 / 120P',desc:'個人の詩集・句集・回想録など、100部からの自費出版に対応。企画・編集・組版から製本まで一貫して承ります。表紙デザインも制作チームがご提案します。',specs:[{k:'仕様',v:'A5 / 120ページ'},{k:'製本',v:'無線綴じ'},{k:'部数',v:'100部〜'},{k:'対応',v:'企画・編集・デザインも可'}],svgIdx:1},
   {cat:'デザイン・DTP',title:'A4チラシ フルカラー制作',desc:'店舗のオープン告知チラシ。企画・コピーライティング・デザインから印刷まで一括対応。CMYKのカラーマネジメントにも精通した制作チームが意図した色で仕上げます。',specs:[{k:'サイズ',v:'A4 両面'},{k:'カラー',v:'フルカラー（CMYK）'},{k:'納期',v:'デザイン込み10日〜'},{k:'備考',v:'企画・コピーも対応'}],svgIdx:2},
   {cat:'封筒印刷',title:'長形3号 社名・ロゴ入り封筒',desc:'企業の社名・ロゴを印刷したビジネス封筒。オフセット印刷で鮮やかな仕上がりに。窓付き・糊なし・のり付きなど各種仕様に対応します。',specs:[{k:'サイズ',v:'長形3号'},{k:'印刷',v:'1色〜フルカラー'},{k:'ロット',v:'500枚〜'},{k:'仕様',v:'窓付き・糊付き対応'}],svgIdx:3},
@@ -1152,7 +1157,20 @@ function openWork(i){
   const srcSvg=document.querySelectorAll('.wc svg')[i];
   const ex=wdHero.querySelector('svg');if(ex)ex.remove();
   if(srcSvg){const cl=srcSvg.cloneNode(true);cl.style.cssText='position:absolute;inset:0;width:100%;height:100%';wdHero.prepend(cl);}
+  const wdThumbs=document.getElementById('wdThumbs');
+  if(d.thumbs && d.thumbs.length){
+    wdThumbs.style.display='flex';
+    wdThumbs.innerHTML=d.thumbs.map((t,idx)=>`<div class="wd-thumb${idx===0?' active':''}" onclick="selectWdThumb(this)">${t}</div>`).join('');
+  }else{
+    wdThumbs.style.display='none';
+    wdThumbs.innerHTML='';
+  }
   wdOverlay.classList.add('open');document.body.style.overflow='hidden';
+}
+function selectWdThumb(el){
+  el.parentNode.querySelectorAll('.wd-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  el.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
 }
 function closeWork(){wdOverlay.classList.remove('open');document.body.style.overflow='';}
 function closeWorkOvl(e){if(e.target===wdOverlay)closeWork();}
@@ -1225,5 +1243,10 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
 </script>
 </body>
 </html>
+
+
+
+
+
 
 
