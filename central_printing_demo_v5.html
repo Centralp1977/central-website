@@ -148,9 +148,14 @@ section{padding:76px 24px}
 .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
 .sc-inner{position:absolute;inset:0}
 .sc-inner.fade-hidden{clip-path:inset(0 0 100% 0);transform:translateY(-10px)}
-.sc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path 1.4s cubic-bezier(.65,0,.2,1),transform 1.4s cubic-bezier(.65,0,.2,1)}
+.sc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path 1.8s cubic-bezier(.65,0,.2,1),transform 1.8s cubic-bezier(.65,0,.2,1)}
 .sc-scanline{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00AEEF,#EC008C,#FFF200,#231F20);opacity:0;pointer-events:none;z-index:5;box-shadow:0 0 12px rgba(0,174,239,.6)}
-.sc-inner.fade-show .sc-scanline{animation:scanDown 1.4s cubic-bezier(.65,0,.2,1) forwards}
+.sc-inner.fade-show .sc-scanline{animation:scanDown 1.8s cubic-bezier(.65,0,.2,1) forwards}
+.wc-inner{position:absolute;inset:0}
+.wc-inner.fade-hidden{clip-path:inset(0 0 100% 0);transform:translateY(-10px)}
+.wc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path 1.8s cubic-bezier(.65,0,.2,1),transform 1.8s cubic-bezier(.65,0,.2,1)}
+.wc-scanline{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00AEEF,#EC008C,#FFF200,#231F20);opacity:0;pointer-events:none;z-index:5;box-shadow:0 0 12px rgba(0,174,239,.6)}
+.wc-inner.fade-show .wc-scanline{animation:scanDown 1.8s cubic-bezier(.65,0,.2,1) forwards}
 @keyframes scanDown{0%{top:0;opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
 .sc{
   border-radius:14px;overflow:hidden;background:#fff;
@@ -809,29 +814,41 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   <div class="si">
     <div class="rev"><div class="slb">WORKS</div><h2 class="sh">制作実績</h2><p class="ss">タップすると詳しい内容をご覧いただけます。</p></div>
     <div class="wg">
-      <div class="wc rev" onclick="openWork(0)">
+      <div class="wc" onclick="openWork(0)">
+        <div class="wc-inner"><div class="wc-scanline"></div>
         <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="40" width="300" height="220" rx="5" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="50" y="40" width="300" height="52" rx="5" fill="#0E7AC4" opacity="0.8"/><text x="200" y="73" text-anchor="middle" font-size="15" fill="#fff" font-weight="bold" font-family="sans-serif">納　品　書</text><line x1="70" y1="114" x2="330" y2="114" stroke="#ccc" stroke-width="1"/><line x1="70" y1="138" x2="330" y2="138" stroke="#ccc" stroke-width="1"/><line x1="70" y1="162" x2="330" y2="162" stroke="#ccc" stroke-width="1"/><line x1="70" y1="186" x2="330" y2="186" stroke="#ccc" stroke-width="1"/><line x1="70" y1="210" x2="330" y2="210" stroke="#ccc" stroke-width="1"/><line x1="200" y1="96" x2="200" y2="230" stroke="#ccc" stroke-width="0.8"/><line x1="280" y1="96" x2="280" y2="230" stroke="#ccc" stroke-width="0.8"/><rect x="70" y="100" width="80" height="8" rx="2" fill="#ccc" opacity="0.5"/><rect x="210" y="100" width="60" height="8" rx="2" fill="#ccc" opacity="0.4"/><rect x="50" y="235" width="75" height="4" rx="1" fill="#00AEEF"/><rect x="126" y="235" width="75" height="4" rx="1" fill="#EC008C"/><rect x="202" y="235" width="74" height="4" rx="1" fill="#FFF200"/><rect x="277" y="235" width="73" height="4" rx="1" fill="#231F20" opacity="0.7"/></svg>
         <div class="wo"><div class="wm"><strong>複写伝票</strong><span>受注管理用 3枚複写</span><div class="wtap">詳しく見る →</div></div></div>
+        </div>
       </div>
-      <div class="wc rev" onclick="openWork(1)">
+      <div class="wc" onclick="openWork(1)">
+        <div class="wc-inner"><div class="wc-scanline"></div>
         <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="130" y="30" width="160" height="230" rx="5" fill="#0E7AC4" opacity="0.22" stroke="#0E7AC4" stroke-width="1.5"/><rect x="130" y="30" width="22" height="230" rx="3" fill="#0E7AC4" opacity="0.32"/><rect x="162" y="52" width="116" height="90" rx="4" fill="#0E7AC4" opacity="0.13"/><rect x="172" y="66" width="96" height="11" rx="2" fill="#0E7AC4" opacity="0.55"/><rect x="260" y="50" width="120" height="170" rx="4" fill="#fff" stroke="#0A5A93" stroke-width="1.5" opacity="0.85"/><rect x="260" y="50" width="18" height="170" rx="2" fill="#0A5A93" opacity="0.22"/></svg>
         <div class="wo"><div class="wm"><strong>冊子印刷</strong><span>自費出版 A5 / 120P</span><div class="wtap">詳しく見る →</div></div></div>
+        </div>
       </div>
-      <div class="wc rev" onclick="openWork(2)">
+      <div class="wc" onclick="openWork(2)">
+        <div class="wc-inner"><div class="wc-scanline"></div>
         <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="30" width="300" height="230" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="50" y="30" width="300" height="80" rx="7" fill="#0E7AC4" opacity="0.82"/><rect x="50" y="102" width="300" height="8" fill="#0E7AC4" opacity="0.82"/><text x="200" y="78" text-anchor="middle" font-size="20" fill="#fff" font-weight="bold" font-family="sans-serif">OPEN</text><rect x="50" y="110" width="75" height="5" fill="#00AEEF"/><rect x="125" y="110" width="75" height="5" fill="#EC008C"/><rect x="200" y="110" width="75" height="5" fill="#FFF200"/><rect x="275" y="110" width="75" height="5" fill="#231F20" opacity="0.7"/><rect x="70" y="128" width="260" height="11" rx="2" fill="#ccc" opacity="0.5"/><rect x="70" y="190" width="110" height="60" rx="4" fill="#0E7AC4" opacity="0.15"/><rect x="195" y="190" width="135" height="60" rx="4" fill="#0A5A93" opacity="0.1"/></svg>
         <div class="wo"><div class="wm"><strong>チラシデザイン</strong><span>A4 フルカラー</span><div class="wtap">詳しく見る →</div></div></div>
+        </div>
       </div>
-      <div class="wc rev" onclick="openWork(3)">
+      <div class="wc" onclick="openWork(3)">
+        <div class="wc-inner"><div class="wc-scanline"></div>
         <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="65" width="300" height="190" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><polygon points="50,65 350,65 200,155" fill="#0E7AC4" opacity="0.18"/><polygon points="50,65 200,155 50,255" fill="#0E7AC4" opacity="0.09"/><polygon points="350,65 200,155 350,255" fill="#0E7AC4" opacity="0.09"/><rect x="72" y="88" width="90" height="34" rx="4" fill="#0E7AC4" opacity="0.14"/><text x="117" y="108" text-anchor="middle" font-size="11" fill="#0E7AC4" font-weight="bold" font-family="sans-serif">CENTRAL</text><rect x="200" y="168" width="120" height="10" rx="2" fill="#ccc" opacity="0.5"/><rect x="294" y="80" width="38" height="48" rx="2" fill="#0E7AC4" opacity="0.2" stroke="#0E7AC4" stroke-width="1" stroke-dasharray="3,2"/></svg>
         <div class="wo"><div class="wm"><strong>封筒印刷</strong><span>長形3号 社名入り</span><div class="wtap">詳しく見る →</div></div></div>
+        </div>
       </div>
-      <div class="wc rev" onclick="openWork(4)">
+      <div class="wc" onclick="openWork(4)">
+        <div class="wc-inner"><div class="wc-scanline"></div>
         <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="190" y="40" width="180" height="230" rx="5" fill="#fff" stroke="#0A5A93" stroke-width="1.5" opacity="0.75" transform="rotate(6,280,155)"/><rect x="150" y="50" width="180" height="230" rx="5" fill="#fff" stroke="#0E7AC4" stroke-width="1.5" opacity="0.95"/><g transform="translate(165,74)"><rect x="0" y="0" width="2" height="32" fill="#231F20"/><rect x="5" y="0" width="4" height="32" fill="#231F20"/><rect x="11" y="0" width="2" height="32" fill="#231F20"/><rect x="15" y="0" width="6" height="32" fill="#231F20"/><rect x="23" y="0" width="2" height="32" fill="#231F20"/><rect x="27" y="0" width="4" height="32" fill="#231F20"/><text x="0" y="46" font-size="8" fill="#231F20">1234567890</text></g><rect x="165" y="136" width="150" height="9" rx="2" fill="#0E7AC4" opacity="0.55"/><rect x="165" y="222" width="70" height="32" rx="4" fill="#0E7AC4" opacity="0.15"/><text x="200" y="242" text-anchor="middle" font-size="10" fill="#0E7AC4" font-weight="bold" font-family="sans-serif">可変印刷</text></svg>
         <div class="wo"><div class="wm"><strong>可変印刷DM</strong><span>バリアブル 宛名差込</span><div class="wtap">詳しく見る →</div></div></div>
+        </div>
       </div>
-      <div class="wc rev" onclick="openWork(5)">
+      <div class="wc" onclick="openWork(5)">
+        <div class="wc-inner"><div class="wc-scanline"></div>
         <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="100" y="24" width="200" height="260" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="2"/><rect x="100" y="24" width="200" height="130" rx="7" fill="#0E7AC4" opacity="0.78"/><rect x="100" y="146" width="200" height="8" fill="#0E7AC4" opacity="0.78"/><circle cx="158" cy="89" r="38" fill="#00AEEF" opacity="0.55"/><circle cx="200" cy="89" r="38" fill="#EC008C" opacity="0.5"/><circle cx="242" cy="89" r="38" fill="#FFF200" opacity="0.45"/><rect x="118" y="170" width="164" height="13" rx="2" fill="#0E7AC4" opacity="0.5"/><rect x="118" y="232" width="90" height="26" rx="5" fill="#0E7AC4" opacity="0.72"/><text x="163" y="250" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold" font-family="sans-serif">詳しくはこちら</text></svg>
         <div class="wo"><div class="wm"><strong>ポスター</strong><span>B1 イベント告知</span><div class="wtap">詳しく見る →</div></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1262,6 +1279,21 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
     });
   }, {threshold: 0.15});
   cards.forEach(c => obs.observe(c));
+})();
+
+(function(){
+  const wcs = document.querySelectorAll('.wg .wc');
+  wcs.forEach(c => { const inner=c.querySelector('.wc-inner'); if(inner) inner.classList.add('fade-hidden'); });
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if(entry.isIntersecting){
+        const inner=entry.target.querySelector('.wc-inner');
+        setTimeout(() => { if(inner) inner.classList.replace('fade-hidden','fade-show'); }, i * 1800);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.15});
+  wcs.forEach(c => obs.observe(c));
 })();
 </script>
 </body>
