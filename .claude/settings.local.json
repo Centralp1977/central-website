@@ -12,7 +12,14 @@
       "Bash(node /tmp/create_okurijyo.js)",
       "Read(//c/tmp/**)",
       "Bash(node create_okurijyo.js)",
-      "PowerShell(Get-Job)"
+      "PowerShell(Get-Job)",
+      "Bash(python3 -c ' *)",
+      "Bash(node --check /tmp/extracted.js)",
+      "Bash(node -e ' *)",
+      "Bash(node _test_runner.js)",
+      "Bash(curl -s \"https://centralp1977.github.io/central-website/\")",
+      "Read(//tmp/**)",
+      "Bash(cd \"/c/Users/okaga/Desktop/Central/4.website/Client/260613_central_website\" && rm -f _debug_check.py _minimal_check.py _minimal_test.html _minimal_test2.html _test_runner.js _extracted.js _debug_screenshot.png)"
     ]
   }
 }

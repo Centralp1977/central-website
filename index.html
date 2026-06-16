@@ -146,10 +146,11 @@ section{padding:76px 24px}
 ./* ── SERVICES グリッドカード（WORKSと同スタイル） ── */
 #services{background:var(--gray)}
 .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
-.sc.fade-hidden{clip-path:inset(0 0 100% 0);transform:translateY(-10px);box-shadow:0 0 0 rgba(0,0,0,0)}
-.sc.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path .9s cubic-bezier(.65,0,.2,1),transform .9s cubic-bezier(.65,0,.2,1)}
+.sc-inner{position:absolute;inset:0}
+.sc-inner.fade-hidden{clip-path:inset(0 0 100% 0);transform:translateY(-10px)}
+.sc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path .9s cubic-bezier(.65,0,.2,1),transform .9s cubic-bezier(.65,0,.2,1)}
 .sc-scanline{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00AEEF,#EC008C,#FFF200,#231F20);opacity:0;pointer-events:none;z-index:5;box-shadow:0 0 12px rgba(0,174,239,.6)}
-.sc.fade-show .sc-scanline{animation:scanDown .9s cubic-bezier(.65,0,.2,1) forwards}
+.sc-inner.fade-show .sc-scanline{animation:scanDown .9s cubic-bezier(.65,0,.2,1) forwards}
 @keyframes scanDown{0%{top:0;opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
 .sc{
   border-radius:14px;overflow:hidden;background:#fff;
@@ -651,6 +652,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 
       <!-- 01 複写伝票 -->
       <div class="sc" onclick="openSvc(0)">
+        <div class="sc-inner">
         <div class="sc-scanline"></div>
         <div class="sc-bg">
           <svg viewBox="0 0 400 300" aria-hidden="true">
@@ -686,10 +688,12 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
             <div class="sc-tap">詳しく見る →</div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- 02 オンデマンド印刷 -->
       <div class="sc" onclick="openSvc(1)">
+        <div class="sc-inner">
         <div class="sc-scanline"></div>
         <div class="sc-bg">
           <svg viewBox="0 0 400 300" aria-hidden="true">
@@ -722,9 +726,11 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
             <div class="sc-tap">詳しく見る →</div>
           </div>
         </div>
+        </div>
       </div>
       <!-- 04 デザイン・DTP -->
       <div class="sc" onclick="openSvc(3)">
+        <div class="sc-inner">
         <div class="sc-scanline"></div>
         <div class="sc-bg">
           <svg viewBox="0 0 400 300" aria-hidden="true">
@@ -758,6 +764,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
             <span>アイデアで貢献する制作チーム<br>組版・デザイン・イラスト制作</span>
             <div class="sc-tap">詳しく見る →</div>
           </div>
+        </div>
         </div>
       </div>
     </div><!-- /sg -->
@@ -1089,10 +1096,8 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 document.body.style.overflow='hidden';
 window.addEventListener('load',()=>{
   const logo=document.getElementById('ldlogo');
-  const sheet=document.getElementById('ldsheet');
   const loading=document.getElementById('loading');
   setTimeout(()=>logo.classList.add('show'),150);
-  setTimeout(()=>sheet.classList.add('out'),600);
   setTimeout(()=>{loading.classList.add('hide');document.body.style.overflow='';},2000);
 });
 
@@ -1242,13 +1247,17 @@ const spy=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){navLink
 document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
 
 // サービスカード フェードスライドアニメーション
+// 注意: clip-pathを監視対象の要素に直接適用すると、一部ブラウザでIntersectionObserverが
+// 再交差を検知しなくなる不具合があるため、clip-pathは内側の.sc-innerに適用し、
+// 外側の.sc（クリップなし）を監視対象にしている。
 (function(){
   const cards = document.querySelectorAll('.sg .sc');
-  cards.forEach(c => c.classList.add('fade-hidden'));
+  cards.forEach(c => { const inner=c.querySelector('.sc-inner'); if(inner) inner.classList.add('fade-hidden'); });
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if(entry.isIntersecting){
-        setTimeout(() => entry.target.classList.replace('fade-hidden','fade-show'), i * 150);
+        const inner=entry.target.querySelector('.sc-inner');
+        setTimeout(() => { if(inner) inner.classList.replace('fade-hidden','fade-show'); }, i * 150);
         obs.unobserve(entry.target);
       }
     });
