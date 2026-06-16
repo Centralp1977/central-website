@@ -145,7 +145,12 @@ section{padding:76px 24px}
 /* カード型スライダー */
 ./* ── SERVICES グリッドカード（WORKSと同スタイル） ── */
 #services{background:var(--gray)}
-.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.sc.fade-hidden{opacity:0;transform:translateY(40px)}.sc.fade-show{opacity:1;transform:translateY(0);transition:opacity .6s ease,transform .6s ease}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.sc.fade-hidden{clip-path:inset(0 0 100% 0);transform:translateY(-10px);box-shadow:0 0 0 rgba(0,0,0,0)}
+.sc.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path .9s cubic-bezier(.65,0,.2,1),transform .9s cubic-bezier(.65,0,.2,1)}
+.sc-scanline{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00AEEF,#EC008C,#FFF200,#231F20);opacity:0;pointer-events:none;z-index:5;box-shadow:0 0 12px rgba(0,174,239,.6)}
+.sc.fade-show .sc-scanline{animation:scanDown .9s cubic-bezier(.65,0,.2,1) forwards}
+@keyframes scanDown{0%{top:0;opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
 .sc{
   border-radius:14px;overflow:hidden;background:#fff;
   aspect-ratio:4/3;position:relative;
@@ -456,10 +461,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <div class="ml-dd-items">
         <a class="ml-dd-item" href="#services" onclick="closeMnav()">複写伝票</a>
         <a class="ml-dd-item" href="#services" onclick="closeMnav()">オンデマンド印刷</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav()">冊子・書籍・自費出版</a>
         <a class="ml-dd-item" href="#services" onclick="closeMnav()">デザイン・DTP</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav()">イベント企画・制作</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav()">Webデザイン・制作</a>
       </div>
     </div>
     <a class="ml" href="#reasons"  onclick="closeMnav()">選ばれる理由</a>
@@ -649,6 +651,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 
       <!-- 01 複写伝票 -->
       <div class="sc rev" onclick="openSvc(0)">
+        <div class="sc-scanline"></div>
         <div class="sc-bg">
           <svg viewBox="0 0 400 300" aria-hidden="true">
             <rect width="400" height="300" fill="#E8F4FC"/>
@@ -687,6 +690,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 
       <!-- 02 オンデマンド印刷 -->
       <div class="sc rev" onclick="openSvc(1)">
+        <div class="sc-scanline"></div>
         <div class="sc-bg">
           <svg viewBox="0 0 400 300" aria-hidden="true">
             <rect width="400" height="300" fill="#E8F4FC"/>
@@ -721,6 +725,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       </div>
       <!-- 04 デザイン・DTP -->
       <div class="sc rev" onclick="openSvc(3)">
+        <div class="sc-scanline"></div>
         <div class="sc-bg">
           <svg viewBox="0 0 400 300" aria-hidden="true">
             <rect width="400" height="300" fill="#E8F4FC"/>
