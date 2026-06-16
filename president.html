@@ -18,11 +18,15 @@ body{font-family:'Hiragino Sans','ヒラギノ角ゴ ProN','Yu Gothic UI','Meiry
 
 /* HEADER */
 #hdr{position:sticky;top:0;z-index:200;height:var(--hh);background:var(--blue);display:flex;align-items:center}
-.hdr-in{max-width:900px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
-.logo-a{display:flex;align-items:center;text-decoration:none}
-.logo-a svg{height:auto;max-height:48px;width:auto;max-width:200px}
-.back-link{color:#fff;font-size:14px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:6px}
-.back-link:hover{opacity:.85}
+.hdr-in{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+.logo-a{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+.logo-a svg{height:40px;width:auto;max-width:200px}
+nav.desk{display:flex;align-items:center;gap:4px}
+.nl{padding:9px 13px;border-radius:7px;font-size:14px;font-weight:700;color:rgba(255,255,255,.88);text-decoration:none;white-space:nowrap;transition:color .2s,background .2s}
+.nl:hover{color:#fff;background:rgba(255,255,255,.18)}
+.ncta{margin-left:12px;padding:10px 22px;background:#fff;color:var(--blue);border-radius:8px;font-size:14px;font-weight:800;text-decoration:none;white-space:nowrap;transition:background .15s,transform .1s}
+.ncta:hover{background:var(--blue-l);transform:translateY(-1px)}
+@media(max-width:900px){nav.desk{display:none}}
 
 /* CONTENT */
 main{max-width:760px;margin:0 auto;padding:56px 24px 80px}
@@ -65,7 +69,14 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:28px 24px;text-
         <path fill="#fff" d="M656.24,111.44h-255.24l-63.33,206.79s-63.34,1.86-141.59,1.86S26.56,409.51,26.56,510.11s78.24,106.19,78.24,106.19h305.51l18.65-72.65h-255.23s-55.9,0-55.9-54.04c0-74.51,67.08-89.42,67.08-89.42h130.41l-35.42,111.77h102.48l33.53-98.74h132.28s129.26-6.67,178.83-134.13c65.21-167.67-70.78-167.67-70.78-167.67ZM624.57,253.02c-19.93,79.79-70.79,81.97-70.79,81.97h-113.66l42.86-154.62h85.7s74.52-1.86,55.9,72.65Z"/>
       </svg>
     </a>
-    <a class="back-link" href="index.html">← トップへ戻る</a>
+    <nav class="desk">
+      <a class="nl" href="index.html#services">サービス</a>
+      <a class="nl" href="index.html#reasons">強み</a>
+      <a class="nl" href="index.html#works">実績</a>
+      <a class="nl" href="index.html#company">会社案内</a>
+      <a class="nl" href="index.html#news">お知らせ</a>
+      <a class="ncta" href="index.html#contact">お問い合わせ</a>
+    </nav>
   </div>
 </header>
 
