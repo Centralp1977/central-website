@@ -43,14 +43,14 @@ body{font-family:'Hiragino Sans','ヒラギノ角ゴ ProN','Yu Gothic UI','Meiry
 .logo-a img{height:auto;max-height:56px;width:auto;max-width:240px;object-fit:contain}
 .logo-a svg{height:58px;width:auto;max-width:280px}
 nav.desk{display:flex;align-items:center;gap:4px}
-.nl{padding:9px 13px;border-radius:7px;font-size:14px;font-weight:700;color:rgba(255,255,255,.88);text-decoration:none;white-space:nowrap;transition:color .2s,background .2s;letter-spacing:.1px}
+.nl{padding:9px 13px;border-radius:7px;font-size:16px;font-weight:700;color:rgba(255,255,255,.88);text-decoration:none;white-space:nowrap;transition:color .2s,background .2s;letter-spacing:.1px}
 .nl:hover,.nl.on{color:#fff;background:rgba(255,255,255,.18)}
-.ncta{margin-left:12px;padding:10px 22px;background:#fff;color:var(--blue);border-radius:8px;font-size:14px;font-weight:800;text-decoration:none;white-space:nowrap;transition:background .15s,transform .1s;letter-spacing:.2px;border:none;cursor:pointer}
+.ncta{margin-left:12px;padding:10px 22px;background:#fff;color:var(--blue);border-radius:8px;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;transition:background .15s,transform .1s;letter-spacing:.2px;border:none;cursor:pointer}
 .ncta:hover{background:var(--blue-l);transform:translateY(-1px)}
 
 /* hamburger */
 .hmb{display:none;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;padding:10px;cursor:pointer;background:none;border:none;margin-left:auto;border-radius:8px;transition:background .2s}
-.hmb:hover{background:var(--gray)}
+.hmb:hover{background:rgba(255,255,255,.18)}
 .hmb span{display:block;height:2.5px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s,width .3s}
 .hmb.open span:nth-child(1){transform:translateY(8.5px) rotate(45deg)}
 .hmb.open span:nth-child(2){opacity:0;width:0}
@@ -148,9 +148,9 @@ section{padding:76px 24px}
 .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
 .sc-inner{position:absolute;inset:0}
 .sc-inner.fade-hidden{clip-path:inset(0 0 100% 0);transform:translateY(-10px)}
-.sc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path .9s cubic-bezier(.65,0,.2,1),transform .9s cubic-bezier(.65,0,.2,1)}
+.sc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path 1.4s cubic-bezier(.65,0,.2,1),transform 1.4s cubic-bezier(.65,0,.2,1)}
 .sc-scanline{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00AEEF,#EC008C,#FFF200,#231F20);opacity:0;pointer-events:none;z-index:5;box-shadow:0 0 12px rgba(0,174,239,.6)}
-.sc-inner.fade-show .sc-scanline{animation:scanDown .9s cubic-bezier(.65,0,.2,1) forwards}
+.sc-inner.fade-show .sc-scanline{animation:scanDown 1.4s cubic-bezier(.65,0,.2,1) forwards}
 @keyframes scanDown{0%{top:0;opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
 .sc{
   border-radius:14px;overflow:hidden;background:#fff;
@@ -484,7 +484,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   </div>
   <div class="mnav-btns">
     <a class="mnav-btn mnav-btn-a" href="#" onclick="closeMnav();openContact();return false">お問い合わせ</a>
-    <a class="mnav-btn mnav-btn-b" href="#" onclick="closeMnav();openContact();return false">お見積り依頼</a>
   </div>
 </nav>
 
@@ -1257,7 +1256,7 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
     entries.forEach((entry, i) => {
       if(entry.isIntersecting){
         const inner=entry.target.querySelector('.sc-inner');
-        setTimeout(() => { if(inner) inner.classList.replace('fade-hidden','fade-show'); }, i * 150);
+        setTimeout(() => { if(inner) inner.classList.replace('fade-hidden','fade-show'); }, i * 1400);
         obs.unobserve(entry.target);
       }
     });
