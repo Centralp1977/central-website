@@ -150,9 +150,9 @@ section{padding:76px 24px}
 /* カード型スライダー */
 ./* ── SERVICES グリッドカード（WORKSと同スタイル） ── */
 #services{background:var(--gray)}
-.sg{display:flex;flex-direction:column;gap:20px;margin-top:32px}
-.sc{border-radius:14px;overflow:hidden;background:#fff;height:190px;display:flex;flex-direction:row;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 12px rgba(14,122,196,.08)}
-.sc:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(14,122,196,.18)}
+.sg{display:flex;flex-direction:column;gap:0;margin-top:32px;width:100%}
+.sc{border-radius:0;overflow:hidden;background:#fff;height:200px;display:flex;flex-direction:row;cursor:pointer;transition:background .2s;border-bottom:1px solid rgba(14,122,196,.12)}
+.sc:hover{background:var(--blue-l)}
 .sc-visual{width:38%;flex-shrink:0;position:relative;overflow:hidden;background:var(--blue-l)}
 .sc-visual svg{position:absolute;inset:0;width:100%;height:100%}
 .sc-text{flex:1;display:flex;flex-direction:column;justify-content:center;padding:28px 36px}
@@ -650,7 +650,8 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <h2 class="sh">サービス</h2>
       <p class="ss">複写伝票を根幹に、印刷・デザイン・DTP・イベント企画まで。まずはお気軽にご相談ください。</p>
     </div>
-    <div class="sg">
+  </div>
+  <div class="sg">
 
       <!-- 01 複写伝票 -->
       <div class="sc" onclick="openSvc(0)">
@@ -717,7 +718,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
         </div>
       </div>
     </div><!-- /sg -->
-  </div>
 </section>
 
 <!-- SERVICE DETAIL OVERLAY -->
