@@ -19,7 +19,12 @@
       "Bash(node _test_runner.js)",
       "Bash(curl -s \"https://centralp1977.github.io/central-website/\")",
       "Read(//tmp/**)",
-      "Bash(cd \"/c/Users/okaga/Desktop/Central/4.website/Client/260613_central_website\" && rm -f _debug_check.py _minimal_check.py _minimal_test.html _minimal_test2.html _test_runner.js _extracted.js _debug_screenshot.png)"
+      "Bash(cd \"/c/Users/okaga/Desktop/Central/4.website/Client/260613_central_website\" && rm -f _debug_check.py _minimal_check.py _minimal_test.html _minimal_test2.html _test_runner.js _extracted.js _debug_screenshot.png)",
+      "WebFetch(domain:centralp1977.github.io)",
+      "Bash(gh api *)",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(python -c ' *)"
     ]
   }
 }
