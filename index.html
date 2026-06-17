@@ -41,8 +41,13 @@ body{font-family:'Hiragino Sans','ヒラギノ角ゴ ProN','Yu Gothic UI','Meiry
 .hdr-in{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
 .logo-a{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
 .logo-a img{height:auto;max-height:56px;width:auto;max-width:240px;object-fit:contain}
-.logo-a svg{height:96px;width:auto;max-width:360px}
+.logo-a svg{height:70px;width:auto;max-width:320px}
 nav.desk{display:flex;align-items:center;gap:4px}
+.nd-wrap{position:relative;display:inline-flex}
+.nd{position:absolute;top:calc(100% + 6px);left:0;min-width:160px;background:#fff;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.15);padding:6px 0;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s;z-index:300}
+.nd-wrap:hover .nd,.nd-wrap:focus-within .nd{opacity:1;pointer-events:auto;transform:translateY(0)}
+.nd a{display:block;padding:11px 18px;font-size:14px;font-weight:700;color:var(--blue);text-decoration:none;white-space:nowrap;transition:background .15s}
+.nd a:hover{background:var(--blue-l)}
 .nl{padding:9px 13px;border-radius:7px;font-size:16px;font-weight:700;color:rgba(255,255,255,.88);text-decoration:none;white-space:nowrap;transition:color .2s,background .2s;letter-spacing:.1px}
 .nl:hover,.nl.on{color:#fff;background:rgba(255,255,255,.18)}
 .ncta{margin-left:12px;padding:10px 22px;background:#fff;color:var(--blue);border-radius:8px;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;transition:background .15s,transform .1s;letter-spacing:.2px;border:none;cursor:pointer}
@@ -376,7 +381,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 @media(max-width:768px){.footer-in{grid-template-columns:1fr;gap:24px;justify-items:center;text-align:center}.footer-right{align-items:center}}
 @media(max-width:768px){.logo-a svg,.footer-logo svg{height:50px;max-width:220px}}
 .footer-logo img{height:auto;max-height:56px;width:auto;max-width:240px;object-fit:contain}
-.footer-logo svg{height:96px;width:auto;max-width:360px}
+.footer-logo svg{height:70px;width:auto;max-width:320px}
 .footer-links{display:flex;flex-direction:row;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:center}
 .footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;font-weight:600;transition:color .2s}
 .footer-links a:hover{color:#fff}
@@ -443,9 +448,26 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   <path fill="#fff" d="M656.24,111.44h-255.24l-63.33,206.79s-63.34,1.86-141.59,1.86S26.56,409.51,26.56,510.11s78.24,106.19,78.24,106.19h305.51l18.65-72.65h-255.23s-55.9,0-55.9-54.04c0-74.51,67.08-89.42,67.08-89.42h130.41l-35.42,111.77h102.48l33.53-98.74h132.28s129.26-6.67,178.83-134.13c65.21-167.67-70.78-167.67-70.78-167.67ZM624.57,253.02c-19.93,79.79-70.79,81.97-70.79,81.97h-113.66l42.86-154.62h85.7s74.52-1.86,55.9,72.65Z"/>
 </svg></a>
     <nav class="desk">
-      <a class="nl" href="#services">サービス</a>
+      <div class="nd-wrap">
+        <a class="nl" href="#services">サービス</a>
+        <div class="nd">
+          <a href="#services">複写伝票</a>
+          <a href="#services">オンデマンド印刷</a>
+          <a href="#services">デザイン・DTP</a>
+        </div>
+      </div>
       <a class="nl" href="#reasons">強み</a>
-      <a class="nl" href="#works">実績</a>
+      <div class="nd-wrap">
+        <a class="nl" href="#works">実績</a>
+        <div class="nd">
+          <a href="#works">複写伝票</a>
+          <a href="#works">冊子印刷</a>
+          <a href="#works">チラシデザイン</a>
+          <a href="#works">封筒印刷</a>
+          <a href="#works">可変印刷DM</a>
+          <a href="#works">ポスター</a>
+        </div>
+      </div>
       <a class="nl" href="#company">会社案内</a>
       <a class="nl" href="#news">お知らせ</a>
       <a class="ncta" href="#" onclick="openContact();return false">お問い合わせ</a>
