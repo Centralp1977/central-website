@@ -148,14 +148,14 @@ section{padding:76px 24px}
 .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
 .sc-inner{position:absolute;inset:0}
 .sc-inner.fade-hidden{clip-path:inset(0 0 100% 0);transform:translateY(-10px)}
-.sc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path 1.8s cubic-bezier(.65,0,.2,1),transform 1.8s cubic-bezier(.65,0,.2,1)}
+.sc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path 1.5s cubic-bezier(.65,0,.2,1),transform 1.5s cubic-bezier(.65,0,.2,1)}
 .sc-scanline{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00AEEF,#EC008C,#FFF200,#231F20);opacity:0;pointer-events:none;z-index:5;box-shadow:0 0 12px rgba(0,174,239,.6)}
-.sc-inner.fade-show .sc-scanline{animation:scanDown 1.8s cubic-bezier(.65,0,.2,1) forwards}
+.sc-inner.fade-show .sc-scanline{animation:scanDown 1.5s cubic-bezier(.65,0,.2,1) forwards}
 .wc-inner{position:absolute;inset:0}
 .wc-inner.fade-hidden{clip-path:inset(0 0 100% 0);transform:translateY(-10px)}
-.wc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path 1.8s cubic-bezier(.65,0,.2,1),transform 1.8s cubic-bezier(.65,0,.2,1)}
+.wc-inner.fade-show{clip-path:inset(0 0 0% 0);transform:translateY(0);transition:clip-path 1.5s cubic-bezier(.65,0,.2,1),transform 1.5s cubic-bezier(.65,0,.2,1)}
 .wc-scanline{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00AEEF,#EC008C,#FFF200,#231F20);opacity:0;pointer-events:none;z-index:5;box-shadow:0 0 12px rgba(0,174,239,.6)}
-.wc-inner.fade-show .wc-scanline{animation:scanDown 1.8s cubic-bezier(.65,0,.2,1) forwards}
+.wc-inner.fade-show .wc-scanline{animation:scanDown 1.5s cubic-bezier(.65,0,.2,1) forwards}
 @keyframes scanDown{0%{top:0;opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
 .sc{
   border-radius:14px;overflow:hidden;background:#fff;
@@ -1288,7 +1288,7 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
     entries.forEach((entry, i) => {
       if(entry.isIntersecting){
         const inner=entry.target.querySelector('.wc-inner');
-        setTimeout(() => { if(inner) inner.classList.replace('fade-hidden','fade-show'); }, i * 1800);
+        setTimeout(() => { if(inner) inner.classList.replace('fade-hidden','fade-show'); }, i * 1500);
         obs.unobserve(entry.target);
       }
     });
