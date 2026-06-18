@@ -185,11 +185,19 @@ section{padding:76px 24px}
 
 /* ── REASONS ── */
 #reasons{background:var(--blue);color:#fff}
-.rg{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
-.rc{text-align:center;padding:28px 12px;background:rgba(255,255,255,.1);border-radius:14px}
-.rn{font-size:clamp(30px,4vw,44px);font-weight:900;line-height:1.1}
-.ru{font-size:14px;opacity:.8;font-weight:700}
-.rl{font-size:13px;opacity:.75;margin-top:8px;font-weight:600}
+.ws-wrap{margin-top:40px}
+.ws-lead{font-size:clamp(18px,2.4vw,26px);font-weight:900;color:#fff;line-height:1.5;margin-bottom:32px;text-align:center}
+.ws-flow{display:flex;align-items:flex-start;justify-content:center;gap:0;margin-bottom:36px}
+.ws-step{flex:1;max-width:200px;text-align:center;padding:24px 12px;background:rgba(255,255,255,.08);border-radius:16px;border:1px solid rgba(255,255,255,.18)}
+.ws-icon{width:56px;height:56px;margin:0 auto 12px}
+.ws-icon svg{width:100%;height:100%}
+.ws-step-num{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--cyan);margin-bottom:6px}
+.ws-step-name{font-size:15px;font-weight:900;color:#fff;margin-bottom:6px}
+.ws-step-desc{font-size:12px;color:rgba(255,255,255,.65);line-height:1.6}
+.ws-arrow{font-size:24px;color:rgba(255,255,255,.4);padding:0 10px;align-self:center;flex-shrink:0}
+.ws-bullets{display:flex;flex-direction:column;gap:12px;max-width:680px;margin:0 auto}
+.ws-bullet{font-size:15px;color:rgba(255,255,255,.9);display:flex;align-items:flex-start;gap:10px;padding:14px 20px;background:rgba(255,255,255,.08);border-radius:10px;border:1px solid rgba(255,255,255,.15)}
+.ws-bicon{color:var(--cyan);font-weight:900;font-size:16px;flex-shrink:0;margin-top:1px}
 
 /* ── WORKS ── */
 #works{background:#fff}
@@ -399,6 +407,9 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   .company-split{flex-direction:column}
   .cs-left{width:100%}
   .cs-watermark{font-size:80px}
+  .ws-flow{flex-wrap:wrap;gap:12px}
+  .ws-step{max-width:calc(50% - 6px);flex:0 0 calc(50% - 6px)}
+  .ws-arrow{display:none}
 }
 @media(max-width:580px){
   .rg,.wg{grid-template-columns:1fr}
@@ -765,6 +776,51 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 <section id="reasons">
   <div class="si">
     <div class="rev" style="color:#fff"><div class="slb" style="color:rgba(255,255,255,.75)">WHY CENTRAL</div><h2 class="sh" style="color:#fff">選ばれる理由</h2></div>
+    <div class="ws-wrap rev">
+      <div class="ws-lead">企画・デザイン・印刷・発送まで、<br>一社で完結</div>
+      <div class="ws-flow">
+        <div class="ws-step">
+          <div class="ws-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="22" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><path d="M16 28 Q24 14 32 20" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="32" cy="20" r="3" fill="#00AEEF"/><rect x="13" y="30" width="22" height="4" rx="2" fill="rgba(255,255,255,.4)"/></svg>
+          </div>
+          <div class="ws-step-num">01</div>
+          <div class="ws-step-name">企画・ヒアリング</div>
+          <div class="ws-step-desc">担当者が丁寧にご要望をお聞きします</div>
+        </div>
+        <div class="ws-arrow">→</div>
+        <div class="ws-step">
+          <div class="ws-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="22" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><rect x="14" y="16" width="20" height="16" rx="3" stroke="#fff" stroke-width="2"/><path d="M18 22h12M18 26h8" stroke="#00AEEF" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div class="ws-step-num">02</div>
+          <div class="ws-step-name">デザイン・DTP</div>
+          <div class="ws-step-desc">ロゴ・チラシ・帳票のDTPまで対応</div>
+        </div>
+        <div class="ws-arrow">→</div>
+        <div class="ws-step">
+          <div class="ws-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="22" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><rect x="12" y="18" width="24" height="14" rx="2" fill="rgba(255,255,255,.15)" stroke="#fff" stroke-width="1.8"/><rect x="17" y="14" width="14" height="4" rx="1.5" fill="#00AEEF"/><circle cx="18" cy="28" r="2" fill="#fff" opacity=".6"/><circle cx="24" cy="28" r="2" fill="#fff" opacity=".6"/><circle cx="30" cy="28" r="2" fill="#fff" opacity=".6"/></svg>
+          </div>
+          <div class="ws-step-num">03</div>
+          <div class="ws-step-name">印刷・製本</div>
+          <div class="ws-step-desc">小ロット〜大量印刷、製本まで自社対応</div>
+        </div>
+        <div class="ws-arrow">→</div>
+        <div class="ws-step">
+          <div class="ws-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="22" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><rect x="12" y="20" width="24" height="14" rx="3" stroke="#fff" stroke-width="1.8"/><path d="M17 20V17a7 7 0 0 1 14 0v3" stroke="#00AEEF" stroke-width="1.8" stroke-linecap="round"/><path d="M20 27l2.5 2.5L28 24" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ws-step-num">04</div>
+          <div class="ws-step-name">発送・納品</div>
+          <div class="ws-step-desc">発送代行まで、ワンストップで完結</div>
+        </div>
+      </div>
+      <div class="ws-bullets">
+        <div class="ws-bullet"><span class="ws-bicon">✓</span>ロゴ制作からチラシDTP・印刷・発送代行まで一貫対応</div>
+        <div class="ws-bullet"><span class="ws-bicon">✓</span>初めての方も担当者が丁寧にヒアリング</div>
+        <div class="ws-bullet"><span class="ws-bicon">✓</span>複数業者への発注が不要でコスト・手間を削減</div>
+      </div>
+    </div>
   </div>
 </section>
 
