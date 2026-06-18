@@ -143,7 +143,7 @@ section{padding:76px 24px}
 .si{max-width:1280px;margin:0 auto}
 .slb{font-size:13px;letter-spacing:5px;color:var(--blue);font-weight:800;margin-bottom:10px;text-transform:uppercase}
 .sh{font-size:clamp(22px,3vw,34px);font-weight:900;margin-bottom:10px;letter-spacing:-.3px}
-.ss{font-size:15px;color:var(--sub);line-height:1.75;max-width:560px;font-weight:500}
+.ss{font-size:15px;color:var(--sub);line-height:1.75;max-width:560px;font-weight:500;word-break:keep-all;overflow-wrap:break-word}
 
 /* ── SERVICES 新晃社風 ── */
 #services{background:var(--gray)}
@@ -245,23 +245,17 @@ section{padding:76px 24px}
 
 /* ── COMPANY ── */
 #company{background:var(--gray)}
-.company-split{display:flex;border-radius:20px;overflow:hidden;margin-top:32px;min-height:360px;box-shadow:0 4px 24px rgba(14,122,196,.12)}
+.company-split{display:flex;border-radius:20px;overflow:hidden;margin-top:32px;min-height:420px;box-shadow:0 4px 24px rgba(14,122,196,.12)}
 .cs-left{width:40%;background:var(--blue);padding:36px 28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.cs-watermark{position:absolute;bottom:-20px;right:-16px;font-size:120px;font-weight:900;color:rgba(255,255,255,.07);line-height:1;user-select:none;pointer-events:none}
-.cs-slb{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.55);margin-bottom:10px}
-.cs-h{font-size:22px;font-weight:900;color:#fff;line-height:1.35;margin-bottom:8px}
-.cs-sub{font-size:13px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:24px}
-.cs-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.cs-stat{background:rgba(255,255,255,.1);border-radius:10px;padding:12px 14px;border:1px solid rgba(255,255,255,.15)}
-.cs-stat-n{font-size:24px;font-weight:900;color:#fff;line-height:1}
-.cs-stat-u{font-size:13px;font-weight:700;color:rgba(255,255,255,.8)}
-.cs-stat-l{font-size:10px;color:rgba(255,255,255,.5);margin-top:4px}
-.cs-pres{display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(255,255,255,.1);border-radius:10px;border:1px solid rgba(255,255,255,.2);text-decoration:none;transition:background .2s}
-.cs-pres:hover{background:rgba(255,255,255,.18)}
-.cs-pres-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
-.cs-pres-title{font-size:10px;color:rgba(255,255,255,.55)}
-.cs-pres-name{font-size:13px;font-weight:700;color:#fff}
-.cs-pres-arr{margin-left:auto;color:rgba(255,255,255,.6);font-size:16px;font-weight:700}
+.cs-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;flex:1;align-content:start}
+.cs-stat{background:rgba(255,255,255,.15);border-radius:14px;padding:20px 18px;border:1.5px solid rgba(255,255,255,.28)}
+.cs-stat-n{font-size:clamp(28px,3vw,40px);font-weight:900;color:#fff;line-height:1}
+.cs-stat-u{font-size:15px;font-weight:700;color:rgba(255,255,255,.9)}
+.cs-stat-l{font-size:12px;color:rgba(255,255,255,.7);margin-top:6px}
+.cs-pres{display:flex;align-items:center;gap:12px;padding:16px 20px;background:#fff;border-radius:12px;border:none;text-decoration:none;transition:background .2s}
+.cs-pres:hover{background:var(--blue-l)}
+.cs-pres-title{font-size:11px;color:var(--blue);opacity:.7;font-weight:700;letter-spacing:1px}
+.cs-pres-name{font-size:15px;font-weight:900;color:var(--blue)}
 .cs-right{flex:1;background:#fff;padding:36px 28px}
 .cs-rtitle{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--blue);margin-bottom:14px}
 .ir{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--gmid);font-size:14px;font-weight:500}
@@ -893,29 +887,21 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 <!-- COMPANY -->
 <section id="company">
   <div class="si">
-    <div class="rev"><div class="slb">COMPANY</div><h2 class="sh">会社案内</h2><p class="ss">1977年、新宿に生まれた印刷会社。半世紀近くにわたり、お客様のものづくりを支えてきました。</p></div>
+    <div class="rev"><div class="slb">COMPANY</div><h2 class="sh">会社案内</h2><p class="ss">1977年創業。東京・文京区から全国のものづくりを支えています</p></div>
     <div class="company-split rev">
       <!-- 左パネル：青背景 -->
       <div class="cs-left">
-        <div class="cs-watermark">1977</div>
-        <div>
-          <div class="cs-slb">会社案内</div>
-          <div class="cs-h">セントラル印刷<br>株式会社</div>
-          <div class="cs-sub">1977年創業。東京・文京区から<br>全国のものづくりを支えてきました。</div>
-          <div class="cs-stats">
-            <div class="cs-stat"><div class="cs-stat-n">49<span class="cs-stat-u">年</span></div><div class="cs-stat-l">創業からの歴史</div></div>
-            <div class="cs-stat"><div class="cs-stat-n">2<span class="cs-stat-u">拠点</span></div><div class="cs-stat-l">音羽 ＋ 新宿</div></div>
-            <div class="cs-stat"><div class="cs-stat-n">1<span class="cs-stat-u">枚〜</span></div><div class="cs-stat-l">小ロット対応</div></div>
-            <div class="cs-stat"><div class="cs-stat-n">全国</div><div class="cs-stat-l">対応エリア</div></div>
-          </div>
+        <div class="cs-stats">
+          <div class="cs-stat"><div class="cs-stat-n">49<span class="cs-stat-u">年</span></div><div class="cs-stat-l">創業からの歴史</div></div>
+          <div class="cs-stat"><div class="cs-stat-n">2<span class="cs-stat-u">拠点</span></div><div class="cs-stat-l">音羽 ＋ 新宿</div></div>
+          <div class="cs-stat"><div class="cs-stat-n">1<span class="cs-stat-u">枚〜</span></div><div class="cs-stat-l">小ロット対応</div></div>
+          <div class="cs-stat"><div class="cs-stat-n">全国</div><div class="cs-stat-l">対応エリア</div></div>
         </div>
         <a class="cs-pres" href="president.html">
-          <div class="cs-pres-av">👤</div>
           <div>
             <div class="cs-pres-title">代表取締役</div>
-            <div class="cs-pres-name">代表メッセージを読む</div>
+            <div class="cs-pres-name">代表メッセージを読む →</div>
           </div>
-          <span class="cs-pres-arr">→</span>
         </a>
       </div>
       <!-- 右パネル：白背景 -->
@@ -936,10 +922,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
               <a href="https://maps.google.com/?q=東京都新宿区築地町13+赤城ビル3F" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:9px 14px;background:#fff;border-radius:8px;border:1px solid var(--gmid);text-decoration:none;font-size:13px;font-weight:600;color:var(--text)">工場・営業部（新宿）をGoogleマップで開く</a>
             </div>
           </div>
-        </div>
-        <div class="cs-addrs">
-          <div class="cs-addr"><strong>本社・経理部（音羽）</strong>〒112-0013 東京都文京区音羽1-20-14<br>MBS音羽ビル2F<br>TEL：03-5981-8911</div>
-          <div class="cs-addr"><strong>工場・営業部（新宿）</strong>〒162-0818 東京都新宿区築地町13<br>赤城ビル3F<br>TEL：03-3267-4441</div>
         </div>
       </div>
     </div>
