@@ -185,19 +185,20 @@ section{padding:76px 24px}
 
 /* ── REASONS ── */
 #reasons{background:var(--blue);color:#fff}
-.ws-wrap{margin-top:40px}
-.ws-lead{font-size:clamp(18px,2.4vw,26px);font-weight:900;color:#fff;line-height:1.5;margin-bottom:32px;text-align:center}
-.ws-flow{display:flex;align-items:flex-start;justify-content:center;gap:0;margin-bottom:36px}
-.ws-step{flex:1;max-width:200px;text-align:center;padding:24px 12px;background:rgba(255,255,255,.08);border-radius:16px;border:1px solid rgba(255,255,255,.18)}
-.ws-icon{width:56px;height:56px;margin:0 auto 12px}
-.ws-icon svg{width:100%;height:100%}
-.ws-step-num{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--cyan);margin-bottom:6px}
-.ws-step-name{font-size:15px;font-weight:900;color:#fff;margin-bottom:6px}
-.ws-step-desc{font-size:12px;color:rgba(255,255,255,.65);line-height:1.6}
-.ws-arrow{font-size:24px;color:rgba(255,255,255,.4);padding:0 10px;align-self:center;flex-shrink:0}
-.ws-bullets{display:flex;flex-direction:column;gap:12px;max-width:680px;margin:0 auto}
-.ws-bullet{font-size:15px;color:rgba(255,255,255,.9);display:flex;align-items:flex-start;gap:10px;padding:14px 20px;background:rgba(255,255,255,.08);border-radius:10px;border:1px solid rgba(255,255,255,.15)}
-.ws-bicon{color:var(--cyan);font-weight:900;font-size:16px;flex-shrink:0;margin-top:1px}
+.ws-wrap{margin-top:clamp(32px,4vw,56px)}
+.ws-lead{font-size:clamp(22px,3vw,36px);font-weight:900;color:#fff;line-height:1.5;margin-bottom:clamp(28px,3.5vw,48px);text-align:center}
+.ws-flow{display:flex;align-items:stretch;justify-content:center;gap:0;margin-bottom:clamp(28px,3.5vw,48px)}
+.ws-step{flex:1;max-width:clamp(160px,18vw,260px);text-align:center;padding:clamp(20px,2.5vw,36px) clamp(12px,1.5vw,24px);background:rgba(255,255,255,.13);border-radius:20px;border:1.5px solid rgba(255,255,255,.35);opacity:0;transform:translateX(-40px);transition:opacity .55s ease,transform .55s ease}
+.ws-step.ws-vis{opacity:1;transform:translateX(0)}
+.ws-icon{width:clamp(56px,6vw,80px);height:clamp(56px,6vw,80px);margin:0 auto clamp(10px,1.2vw,18px);background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.5)}
+.ws-icon svg{width:65%;height:65%}
+.ws-step-num{font-size:clamp(12px,1.1vw,15px);font-weight:900;letter-spacing:3px;color:#fff;opacity:.55;margin-bottom:clamp(6px,.8vw,10px)}
+.ws-step-name{font-size:clamp(16px,1.6vw,22px);font-weight:900;color:#fff;margin-bottom:clamp(6px,.8vw,10px)}
+.ws-step-desc{font-size:clamp(13px,1.1vw,15px);color:rgba(255,255,255,.85);line-height:1.7}
+.ws-arrow{font-size:clamp(20px,2.2vw,32px);color:rgba(255,255,255,.55);padding:0 clamp(6px,1vw,16px);align-self:center;flex-shrink:0}
+.ws-bullets{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,16px);max-width:800px;margin:0 auto}
+.ws-bullet{font-size:clamp(15px,1.3vw,18px);color:#fff;display:flex;align-items:flex-start;gap:14px;padding:clamp(14px,1.5vw,20px) clamp(18px,2vw,28px);background:rgba(255,255,255,.12);border-radius:12px;border:1.5px solid rgba(255,255,255,.28)}
+.ws-bicon{color:var(--cyan);font-weight:900;font-size:clamp(17px,1.4vw,20px);flex-shrink:0;margin-top:2px}
 
 /* ── WORKS ── */
 #works{background:#fff}
@@ -407,8 +408,8 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   .company-split{flex-direction:column}
   .cs-left{width:100%}
   .cs-watermark{font-size:80px}
-  .ws-flow{flex-wrap:wrap;gap:12px}
-  .ws-step{max-width:calc(50% - 6px);flex:0 0 calc(50% - 6px)}
+  .ws-flow{flex-wrap:wrap;gap:16px}
+  .ws-step{max-width:calc(50% - 8px);flex:0 0 calc(50% - 8px)}
   .ws-arrow{display:none}
 }
 @media(max-width:580px){
@@ -1268,6 +1269,17 @@ function submitForm(){
 const revEls=document.querySelectorAll('.rev');
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');}),{threshold:0.08});
 revEls.forEach(r=>io.observe(r));
+
+/* STEP CARDS — staggered left-to-right */
+const wsSteps=document.querySelectorAll('.ws-step');
+const wsIo=new IntersectionObserver(e=>e.forEach(x=>{
+  if(x.isIntersecting){
+    const idx=Array.from(wsSteps).indexOf(x.target);
+    setTimeout(()=>x.target.classList.add('ws-vis'),idx*160);
+    wsIo.unobserve(x.target);
+  }
+}),{threshold:0.15});
+wsSteps.forEach(s=>wsIo.observe(s));
 
 /* SCROLL SPY */
 const navLinks=document.querySelectorAll('nav.desk .nl');
