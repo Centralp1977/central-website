@@ -1121,9 +1121,9 @@ function loadHubSpotForm(){
   };
   document.head.appendChild(s);
 }
-function openContact(){cfOverlay.classList.add('open');document.body.style.overflow='hidden';loadHubSpotForm();}
-function closeContact(){cfOverlay.classList.remove('open');document.body.style.overflow='';}
-function closeCFOvl(e){if(e.target===cfOverlay)closeContact();}
+function openContact(){const o=document.getElementById('cfOverlay');if(!o)return;o.classList.add('open');document.body.style.overflow='hidden';try{loadHubSpotForm();}catch(e){}}
+function closeContact(){const o=document.getElementById('cfOverlay');if(!o)return;o.classList.remove('open');document.body.style.overflow='';}
+function closeCFOvl(e){if(e.target===e.currentTarget)closeContact();}
 function toggleSubmit(){
   const btn=document.getElementById('cfSubmitBtn');
   const chk=document.getElementById('agreeCheck');
