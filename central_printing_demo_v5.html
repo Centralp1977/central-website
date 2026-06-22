@@ -486,10 +486,34 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
         <a class="ml-dd-item" href="#services" onclick="closeMnav()">XR事業</a>
       </div>
     </div>
-    <a class="ml" href="#reasons"  onclick="closeMnav()">選ばれる理由</a>
-    <a class="ml" href="#works"    onclick="closeMnav()">実績</a>
-    <a class="ml" href="#company"  onclick="closeMnav()">会社案内</a>
-    <a class="ml" href="#news"     onclick="closeMnav()">お知らせ</a>
+    <a class="ml" href="#reasons" onclick="closeMnav()">選ばれる理由</a>
+    <!-- 実績 プルダウン -->
+    <div class="ml-dropdown">
+      <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
+        実績
+        <span class="ml-dd-arrow">▾</span>
+      </button>
+      <div class="ml-dd-items">
+        <a class="ml-dd-item" href="#works" onclick="closeMnav()">複写伝票</a>
+        <a class="ml-dd-item" href="#works" onclick="closeMnav()">冊子印刷</a>
+        <a class="ml-dd-item" href="#works" onclick="closeMnav()">チラシデザイン</a>
+        <a class="ml-dd-item" href="#works" onclick="closeMnav()">封筒印刷</a>
+      </div>
+    </div>
+    <!-- 会社案内 プルダウン -->
+    <div class="ml-dropdown">
+      <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
+        会社案内
+        <span class="ml-dd-arrow">▾</span>
+      </button>
+      <div class="ml-dd-items">
+        <a class="ml-dd-item" href="president.html#message"     onclick="closeMnav()">代表メッセージ</a>
+        <a class="ml-dd-item" href="president.html#initiatives" onclick="closeMnav()">セントラルの活動</a>
+        <a class="ml-dd-item" href="president.html#profile"     onclick="closeMnav()">会社概要</a>
+        <a class="ml-dd-item" href="president.html#access"      onclick="closeMnav()">アクセス</a>
+      </div>
+    </div>
+    <a class="ml" href="#news" onclick="closeMnav()">お知らせ</a>
   </div>
   <!-- SNSアイコン -->
   <div class="mnav-sns">
