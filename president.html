@@ -109,14 +109,22 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .ss{font-size:15px;color:var(--sub);line-height:1.75;max-width:640px;font-weight:500}
 
 /* PRESIDENT MESSAGE */
-.pres-card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(14,122,196,.1);padding:40px 36px;margin-top:40px}
-.pres-header{display:flex;align-items:center;gap:20px;margin-bottom:32px;flex-wrap:wrap}
-.pres-photo{width:80px;height:80px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:38px;flex-shrink:0;border:3px solid var(--blue)}
-.pres-info h2{font-size:20px;font-weight:900;color:var(--text);margin-bottom:4px}
-.pres-info p{font-size:14px;color:var(--sub)}
-.pres-body blockquote{font-size:19px;font-weight:800;color:var(--blue);border-left:4px solid var(--blue);padding:4px 0 4px 18px;margin:0 0 28px;line-height:1.7}
-.pres-body h3{font-size:17px;font-weight:800;color:var(--text);margin:28px 0 10px}
-.pres-body p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:14px}
+#message{background:var(--blue);color:#fff}
+#message .slb{color:rgba(255,255,255,.75)}
+#message .sh{color:#fff}
+.pres-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:40px}
+.pres-text{display:flex;flex-direction:column;gap:0}
+.pres-name-block{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.25)}
+.pres-name-block h3{font-size:18px;font-weight:900;color:#fff;margin-bottom:4px}
+.pres-name-block p{font-size:13px;color:rgba(255,255,255,.72)}
+.pres-body blockquote{font-size:18px;font-weight:800;color:#fff;border-left:4px solid rgba(255,255,255,.7);padding:4px 0 4px 18px;margin:0 0 24px;line-height:1.7}
+.pres-body h4{font-size:15px;font-weight:800;color:#fff;margin:22px 0 8px}
+.pres-body p{font-size:14px;line-height:1.9;color:rgba(255,255,255,.88);margin-bottom:12px;word-break:keep-all}
+.pres-img-wrap{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;min-height:420px}
+.pres-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.pres-img-placeholder{display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(255,255,255,.5);font-size:14px;font-weight:600}
+.pres-img-placeholder span{font-size:64px}
+@media(max-width:768px){.pres-layout{grid-template-columns:1fr}.pres-img-wrap{aspect-ratio:4/3;min-height:280px}}
 
 /* CSR / ACTIVITIES */
 .act-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:36px}
@@ -232,26 +240,36 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 
 <!-- ① 代表メッセージ -->
 <section class="sec" id="message">
-  <div class="si">
+  <div class="si" style="max-width:1080px">
     <div class="slb">MESSAGE</div>
     <h2 class="sh">代表メッセージ</h2>
-    <div class="pres-card">
-      <div class="pres-header">
-        <div class="pres-photo">👤</div>
-        <div class="pres-info">
-          <h2>代表取締役　関野 里美</h2>
-          <p>セントラル印刷株式会社</p>
+    <div class="pres-layout">
+      <!-- 左：テキスト -->
+      <div class="pres-text">
+        <div class="pres-name-block">
+          <div>
+            <h3>代表取締役　関野 里美</h3>
+            <p>セントラル印刷株式会社</p>
+          </div>
+        </div>
+        <div class="pres-body">
+          <blockquote>「印刷の力で、必要な情報を、必要な方に届ける」</blockquote>
+          <p>セントラル印刷は1977年、新宿で複写伝票の印刷会社として創業いたしました。創業以来、ビジネスの現場で欠かせない帳票類の印刷を通じ、多くのお客様のご支援をいただいてまいりました。</p>
+          <h4>変わること、変わらないこと</h4>
+          <p>時代とともにデジタル化が進む中、私たちは「紙に印刷する」という行為の本質的な価値を信じています。画面では伝わりにくい質感、手に取る重さ、匂い——印刷物にしか持てない力があります。</p>
+          <p>一方で、私たちも変わり続けています。複写伝票だけでなく、デザイン・DTP・オンデマンド印刷・冊子製本・イベント企画・Webデザインまで、お客様のものづくりを総合的にサポートできる体制を整えてきました。</p>
+          <h4>「必要な情報を、必要な方に」</h4>
+          <p>これが私たちの使命です。お客様の伝えたいことを、最も適切な形で、最も必要としている方に届ける——そのために、印刷の技術と制作のチカラを磨き続けています。</p>
+          <p>まずはお気軽にご相談ください。どんな小さなご要望も、私たちは誠実にお応えします。</p>
         </div>
       </div>
-      <div class="pres-body">
-        <blockquote>「印刷の力で、必要な情報を、必要な方に届ける」</blockquote>
-        <p>セントラル印刷は1977年、新宿で複写伝票の印刷会社として創業いたしました。創業以来、ビジネスの現場で欠かせない帳票類の印刷を通じ、多くのお客様のご支援をいただいてまいりました。</p>
-        <h3>変わること、変わらないこと</h3>
-        <p>時代とともにデジタル化が進む中、私たちは「紙に印刷する」という行為の本質的な価値を信じています。画面では伝わりにくい質感、手に取る重さ、匂い——印刷物にしか持てない力があります。</p>
-        <p>一方で、私たちも変わり続けています。複写伝票だけでなく、デザイン・DTP・オンデマンド印刷・冊子製本・イベント企画・Webデザインまで、お客様のものづくりを総合的にサポートできる体制を整えてきました。</p>
-        <h3>「必要な情報を、必要な方に」</h3>
-        <p>これが私たちの使命です。お客様の伝えたいことを、最も適切な形で、最も必要としている方に届ける——そのために、印刷の技術と制作のチカラを磨き続けています。</p>
-        <p>まずはお気軽にご相談ください。どんな小さなご要望も、私たちは誠実にお応えします。</p>
+      <!-- 右：写真 -->
+      <div class="pres-img-wrap">
+        <!-- 写真が用意できたら <img src="photo/president.jpg" alt="代表取締役 関野 里美"> に差し替え -->
+        <div class="pres-img-placeholder">
+          <span>🖼️</span>
+          代表写真
+        </div>
       </div>
     </div>
   </div>
