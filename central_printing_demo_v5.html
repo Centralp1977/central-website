@@ -850,12 +850,16 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     </div>
     <div class="cf-body">
       <div class="cf-2col">
-        <div class="cf-group"><label class="cf-label">お名前<span class="cf-req">必須</span></label><input class="cf-input" type="text" placeholder="山田 太郎"></div>
-        <div class="cf-group"><label class="cf-label">会社名</label><input class="cf-input" type="text" placeholder="株式会社〇〇"></div>
+        <div class="cf-group"><label class="cf-label">会社名</label><input class="cf-input" type="text" name="company" placeholder="株式会社〇〇"></div>
+        <div class="cf-group"><label class="cf-label">部署名</label><input class="cf-input" type="text" name="department" placeholder="営業部"></div>
       </div>
       <div class="cf-2col">
-        <div class="cf-group"><label class="cf-label">メールアドレス<span class="cf-req">必須</span></label><input class="cf-input" type="email" placeholder="info@example.com"></div>
-        <div class="cf-group"><label class="cf-label">電話番号</label><input class="cf-input" type="tel" placeholder="03-0000-0000"></div>
+        <div class="cf-group"><label class="cf-label">お名前<span class="cf-req">必須</span></label><input class="cf-input" type="text" name="lastname" placeholder="山田 太郎"></div>
+        <div class="cf-group"><label class="cf-label">メールアドレス<span class="cf-req">必須</span></label><input class="cf-input" type="email" name="email" required placeholder="info@example.com"></div>
+      </div>
+      <div class="cf-2col">
+        <div class="cf-group"><label class="cf-label">電話番号</label><input class="cf-input" type="tel" name="phone" placeholder="03-0000-0000"></div>
+        <div></div>
       </div>
       <div class="cf-group">
         <label class="cf-label">お問い合わせ種別<span class="cf-req">必須</span></label>
@@ -870,7 +874,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
           <option>その他</option>
         </select>
       </div>
-      <div class="cf-group"><label class="cf-label">お問い合わせ内容<span class="cf-req">必須</span></label><textarea class="cf-textarea" placeholder="ご依頼の内容・仕様・数量などをお書きください。仕様が未確定でもお気軽にどうぞ。"></textarea></div>
+      <div class="cf-group"><label class="cf-label">お問い合わせ内容<span class="cf-req">必須</span></label><textarea class="cf-textarea" name="message" placeholder="ご依頼の内容・仕様・数量などをお書きください。仕様が未確定でもお気軽にどうぞ。"></textarea></div>
       <div class="cf-privacy">
         <div class="cf-privacy-title">個人情報の取扱いについて</div>
         <div class="cf-privacy-body" id="privacyScroll">
