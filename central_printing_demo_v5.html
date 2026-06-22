@@ -325,12 +325,12 @@ section{padding:76px 24px}
 .cf-submit:disabled{background:var(--gmid);cursor:not-allowed;transform:none}
 .cf-note{font-size:12px;color:var(--sub);margin-top:14px;text-align:center;font-weight:500}
 /* HubSpot form styling inside modal */
-#hubspotFormContainer{padding:4px 0}
-#hubspotFormContainer .hs-form fieldset{max-width:100%!important}
-#hubspotFormContainer .hs-input{width:100%!important;padding:10px 14px;border:1.5px solid var(--gmid);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box}
-#hubspotFormContainer .hs-button{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;transition:background .15s}
-#hubspotFormContainer .hs-button:hover{background:var(--blue-d)}
-#hubspotFormContainer .hs-error-msgs{color:#c0392b;font-size:12px;margin-top:4px;list-style:none;padding:0}
+.cf-success{display:none;text-align:center;padding:40px 24px}
+.cf-success.show{display:block}
+.cf-success-icon{font-size:48px;margin-bottom:16px}
+.cf-success h3{font-size:20px;font-weight:800;color:var(--text);margin-bottom:10px}
+.cf-success p{font-size:14px;color:var(--sub);line-height:1.75}
+.cf-err{font-size:13px;color:#c0392b;margin-top:6px;display:none}
 .cf-privacy{background:var(--gray);border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid var(--gmid)}
 .cf-privacy-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .cf-privacy-title::before{content:'🔒';font-size:14px}
@@ -393,7 +393,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   .hb{text-align:center}
 }
 </style>
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
 </head>
 <body>
 
@@ -857,7 +856,44 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <p>お気軽にご連絡ください。通常2営業日以内にご返信いたします。</p>
     </div>
     <div class="cf-body">
-      <div id="hubspotFormContainer"></div>
+      <!-- 送信完了画面 -->
+      <div class="cf-success" id="cfSuccess">
+        <div class="cf-success-icon">✅</div>
+        <h3>送信が完了しました</h3>
+        <p>お問い合わせありがとうございます。<br>通常2営業日以内にご返信いたします。<br>迷惑メールフォルダもご確認ください。</p>
+      </div>
+      <!-- フォーム本体 -->
+      <div id="cfFormInner">
+        <div class="cf-2col">
+          <div class="cf-group"><label class="cf-label">会社名</label><input class="cf-input" id="cf_company" type="text" name="company" placeholder="株式会社〇〇"></div>
+          <div class="cf-group"><label class="cf-label">部署名</label><input class="cf-input" id="cf_department" type="text" name="department" placeholder="営業部"></div>
+        </div>
+        <div class="cf-2col">
+          <div class="cf-group"><label class="cf-label">お名前<span class="cf-req">必須</span></label><input class="cf-input" id="cf_lastname" type="text" name="lastname" placeholder="山田 太郎"></div>
+          <div class="cf-group"><label class="cf-label">メールアドレス<span class="cf-req">必須</span></label><input class="cf-input" id="cf_email" type="email" name="email" placeholder="info@example.com"></div>
+        </div>
+        <div class="cf-2col">
+          <div class="cf-group"><label class="cf-label">電話番号</label><input class="cf-input" id="cf_phone" type="tel" name="phone" placeholder="03-0000-0000"></div>
+          <div></div>
+        </div>
+        <div class="cf-group"><label class="cf-label">お問い合わせ内容<span class="cf-req">必須</span></label><textarea class="cf-textarea" id="cf_message" name="message" placeholder="ご依頼の内容・仕様・数量などをお書きください。仕様が未確定でもお気軽にどうぞ。"></textarea></div>
+        <div class="cf-privacy">
+          <div class="cf-privacy-title">個人情報の取扱いについて</div>
+          <div class="cf-privacy-body">
+            <h4>■ 取得する情報と利用目的</h4>
+            <p>ご入力いただいた情報は、お見積り・ご質問への返答および関連する業務連絡にのみ使用いたします。</p>
+            <h4>■ 個人情報保護に関するお問い合わせ</h4>
+            <p>セントラル印刷株式会社　TEL：03-5981-8911</p>
+          </div>
+          <label class="cf-agree">
+            <input type="checkbox" id="agreeCheck" onchange="toggleSubmit()">
+            <span class="cf-agree-text">上記の個人情報の取扱いについて確認し、<span>同意して送信します</span></span>
+          </label>
+        </div>
+        <p class="cf-err" id="cfErr">入力内容をご確認ください。</p>
+        <button class="cf-submit" id="cfSubmitBtn" onclick="submitForm()" disabled>送信する</button>
+        <p class="cf-note">送信後、確認メールをお送りします。迷惑メールフォルダもご確認ください。</p>
+      </div>
     </div>
   </div>
 </div>
@@ -1046,25 +1082,56 @@ function closeNewsOvl(e){if(e.target===ndOverlay)closeNews();}
 
 /* CONTACT FORM */
 const cfOverlay=document.getElementById('cfOverlay');
-let _hsFormLoaded=false;
-function loadHubSpotForm(){
-  if(_hsFormLoaded)return;
-  _hsFormLoaded=true;
-  hbspt.forms.create({
-    region:'na1',
-    portalId:'246535097',
-    formId:'e7bdea84-4e69-44b5-ad91-0e7c04e02309',
-    target:'#hubspotFormContainer'
-  });
+function openContact(){cfOverlay.classList.add('open');document.body.style.overflow='hidden';}
+function closeContact(){
+  cfOverlay.classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(()=>{
+    document.getElementById('cfSuccess').classList.remove('show');
+    document.getElementById('cfFormInner').style.display='';
+    document.getElementById('cfErr').style.display='none';
+    document.getElementById('cfSubmitBtn').disabled=true;
+    document.getElementById('agreeCheck').checked=false;
+  },400);
 }
-function openContact(){
-  cfOverlay.classList.add('open');
-  document.body.style.overflow='hidden';
-  if(window.hbspt){loadHubSpotForm();}
-  else{document.querySelector('script[src*="hsforms"]').addEventListener('load',loadHubSpotForm);}
-}
-function closeContact(){cfOverlay.classList.remove('open');document.body.style.overflow='';}
 function closeCFOvl(e){if(e.target===cfOverlay)closeContact();}
+function toggleSubmit(){document.getElementById('cfSubmitBtn').disabled=!document.getElementById('agreeCheck').checked;}
+async function submitForm(){
+  const lastname=document.getElementById('cf_lastname').value.trim();
+  const email=document.getElementById('cf_email').value.trim();
+  const message=document.getElementById('cf_message').value.trim();
+  const errEl=document.getElementById('cfErr');
+  if(!lastname||!email||!message){errEl.style.display='block';errEl.textContent='お名前・メールアドレス・お問い合わせ内容は必須です。';return;}
+  errEl.style.display='none';
+  const btn=document.getElementById('cfSubmitBtn');
+  btn.disabled=true;btn.textContent='送信中…';
+  const body={
+    fields:[
+      {name:'company',value:document.getElementById('cf_company').value.trim()},
+      {name:'department',value:document.getElementById('cf_department').value.trim()},
+      {name:'lastname',value:lastname},
+      {name:'email',value:email},
+      {name:'phone',value:document.getElementById('cf_phone').value.trim()},
+      {name:'message',value:message}
+    ],
+    context:{pageUri:location.href,pageName:document.title}
+  };
+  try{
+    const res=await fetch('https://api.hsforms.com/submissions/v3/integration/submit/246535097/e7bdea84-4e69-44b5-ad91-0e7c04e02309',{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)
+    });
+    if(res.ok){
+      document.getElementById('cfFormInner').style.display='none';
+      document.getElementById('cfSuccess').classList.add('show');
+    } else {
+      errEl.style.display='block';errEl.textContent='送信に失敗しました。しばらく経ってから再度お試しください。';
+      btn.disabled=false;btn.textContent='送信する';
+    }
+  }catch(e){
+    errEl.style.display='block';errEl.textContent='通信エラーが発生しました。ネットワークをご確認ください。';
+    btn.disabled=false;btn.textContent='送信する';
+  }
+}
 
 /* SCROLL REVEAL */
 const revEls=document.querySelectorAll('.rev');
