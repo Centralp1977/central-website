@@ -324,7 +324,6 @@ section{padding:76px 24px}
 .cf-submit:hover{background:var(--blue-d);transform:translateY(-1px)}
 .cf-submit:disabled{background:var(--gmid);cursor:not-allowed;transform:none}
 .cf-note{font-size:12px;color:var(--sub);margin-top:14px;text-align:center;font-weight:500}
-/* 個人情報同意エリア */
 .cf-privacy{background:var(--gray);border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid var(--gmid)}
 .cf-privacy-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .cf-privacy-title::before{content:'🔒';font-size:14px}
@@ -850,9 +849,47 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <p>お気軽にご連絡ください。通常2営業日以内にご返信いたします。</p>
     </div>
     <div class="cf-body">
-      <!-- HubSpot フォーム埋め込みエリア -->
-      <div id="hubspotFormContainer" style="min-height:200px"></div>
-      <p class="cf-note" style="margin-top:16px">送信後、確認メールをお送りします。迷惑メールフォルダもご確認ください。</p>
+      <div class="cf-2col">
+        <div class="cf-group"><label class="cf-label">お名前<span class="cf-req">必須</span></label><input class="cf-input" type="text" placeholder="山田 太郎"></div>
+        <div class="cf-group"><label class="cf-label">会社名</label><input class="cf-input" type="text" placeholder="株式会社〇〇"></div>
+      </div>
+      <div class="cf-2col">
+        <div class="cf-group"><label class="cf-label">メールアドレス<span class="cf-req">必須</span></label><input class="cf-input" type="email" placeholder="info@example.com"></div>
+        <div class="cf-group"><label class="cf-label">電話番号</label><input class="cf-input" type="tel" placeholder="03-0000-0000"></div>
+      </div>
+      <div class="cf-group">
+        <label class="cf-label">お問い合わせ種別<span class="cf-req">必須</span></label>
+        <select class="cf-select">
+          <option value="">選択してください</option>
+          <option>複写伝票のご依頼・お見積り</option>
+          <option>オンデマンド印刷のご依頼</option>
+          <option>冊子・自費出版のご相談</option>
+          <option>デザイン・DTPのご依頼</option>
+          <option>イベント企画・制作のご相談</option>
+          <option>Webデザイン・制作のご相談</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="cf-group"><label class="cf-label">お問い合わせ内容<span class="cf-req">必須</span></label><textarea class="cf-textarea" placeholder="ご依頼の内容・仕様・数量などをお書きください。仕様が未確定でもお気軽にどうぞ。"></textarea></div>
+      <div class="cf-privacy">
+        <div class="cf-privacy-title">個人情報の取扱いについて</div>
+        <div class="cf-privacy-body" id="privacyScroll">
+          <h4>■ 取得する情報と利用目的</h4>
+          <p>「お問い合わせ・お見積り・資料請求」の際にご入力いただく、お名前・会社名（部署名）・電話番号・FAX番号・メールアドレス等の情報は、お見積り書のご案内、ご質問へのご返答、および関連する業務連絡にのみ使用いたします。</p>
+          <p>各項目へのご入力は任意ですが、必須と表示された項目をご入力いただけない場合は、お問い合わせ・お見積りへの対応が難しくなる場合がございますので、あらかじめご了承ください。</p>
+          <h4>■ クッキー（Cookie）について</h4>
+          <p>当サイトでは、閲覧のご利便性を高めるためにクッキー（Cookie）を使用しています。クッキーを通じて取得する情報は、特定の個人を識別できるものは含まれていません。</p>
+          <div class="privacy-note">＊クッキーとは：Webサイトをご利用いただいた際に、ブラウザとサーバー間でやり取りされる閲覧履歴や入力内容などを、お客様のデバイス上のファイルとして保存する仕組みです。次回以降の同様の操作時に、スムーズにご利用いただけるようになります。</div>
+          <h4>■ 個人情報保護に関するお問い合わせ</h4>
+          <p>個人情報の取扱い方針、または苦情・ご相談につきましては、下記までお気軽にお問い合わせください。<br>セントラル印刷株式会社　TEL：03-5981-8911</p>
+        </div>
+        <label class="cf-agree">
+          <input type="checkbox" id="agreeCheck" onchange="toggleSubmit()">
+          <span class="cf-agree-text">上記の個人情報の取扱いについて確認し、<span>同意して送信します</span></span>
+        </label>
+      </div>
+      <button class="cf-submit" id="cfSubmitBtn" onclick="submitForm()" disabled>送信する</button>
+      <p class="cf-note">送信後、確認メールをお送りします。迷惑メールフォルダもご確認ください。</p>
     </div>
   </div>
 </div>
@@ -1041,33 +1078,9 @@ function closeNewsOvl(e){if(e.target===ndOverlay)closeNews();}
 
 /* CONTACT FORM */
 const cfOverlay=document.getElementById('cfOverlay');
-/* ── HubSpot フォーム設定 ─────────────────────────
-   portalId と formId は HubSpot 管理画面の
-   「マーケティング → フォーム → 埋め込みコード」で確認できます。
-   ─────────────────────────────────────────────── */
-const HS_PORTAL_ID = 'YOUR_PORTAL_ID'; // ← 例: '12345678'
-const HS_FORM_ID   = 'YOUR_FORM_ID';   // ← 例: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-
-let hsLoaded = false;
-function loadHubSpotForm(){
-  if(hsLoaded) return;
-  hsLoaded = true;
-  const s = document.createElement('script');
-  s.src = '//js.hsforms.net/forms/embed/v2.js';
-  s.charset = 'utf-8';
-  s.onload = () => {
-    window.hbspt.forms.create({
-      region: 'na1',
-      portalId: HS_PORTAL_ID,
-      formId: HS_FORM_ID,
-      target: '#hubspotFormContainer'
-    });
-  };
-  document.head.appendChild(s);
-}
-function openContact(){const o=document.getElementById('cfOverlay');if(!o)return;o.classList.add('open');document.body.style.overflow='hidden';try{loadHubSpotForm();}catch(e){}}
-function closeContact(){const o=document.getElementById('cfOverlay');if(!o)return;o.classList.remove('open');document.body.style.overflow='';}
-function closeCFOvl(e){if(e.target===e.currentTarget)closeContact();}
+function openContact(){cfOverlay.classList.add('open');document.body.style.overflow='hidden';}
+function closeContact(){cfOverlay.classList.remove('open');document.body.style.overflow='';}
+function closeCFOvl(e){if(e.target===cfOverlay)closeContact();}
 function toggleSubmit(){
   const btn=document.getElementById('cfSubmitBtn');
   const chk=document.getElementById('agreeCheck');
@@ -1078,8 +1091,6 @@ function submitForm(){
   alert('送信が完了しました。\n2営業日以内にご返信いたします。');
   closeContact();
 }
-
-/* PRESIDENT */
 
 /* SCROLL REVEAL */
 const revEls=document.querySelectorAll('.rev');
