@@ -246,45 +246,15 @@ section{padding:76px 24px}
 
 /* ── COMPANY ── */
 #company{background:var(--gray)}
-.company-split{display:flex;border-radius:20px;overflow:hidden;margin-top:32px;min-height:420px;box-shadow:0 4px 24px rgba(14,122,196,.12)}
-.cs-left{width:40%;background:var(--blue);padding:36px 28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.cs-stats{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;margin-bottom:24px;flex:1}
-.cs-stat{background:rgba(255,255,255,.15);border-radius:14px;padding:20px 18px;border:1.5px solid rgba(255,255,255,.28)}
-.cs-stat-n{font-size:clamp(28px,3vw,40px);font-weight:900;color:#fff;line-height:1}
-.cs-stat-u{font-size:15px;font-weight:700;color:rgba(255,255,255,.9)}
-.cs-stat-l{font-size:12px;color:rgba(255,255,255,.7);margin-top:6px}
-.cs-pres{display:flex;align-items:center;gap:12px;padding:16px 20px;background:#fff;border-radius:12px;border:none;text-decoration:none;transition:background .2s}
-.cs-pres:hover{background:var(--blue-l)}
-.cs-pres-title{font-size:11px;color:var(--blue);opacity:.7;font-weight:700;letter-spacing:1px}
-.cs-pres-name{font-size:15px;font-weight:900;color:var(--blue)}
-.cs-right{flex:1;background:#fff;padding:36px 28px}
-.cs-rtitle{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--blue);margin-bottom:14px}
-.ir{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--gmid);font-size:14px;font-weight:500}
-.ir:last-child{border-bottom:none}
-.ik{color:var(--sub);min-width:52px;flex-shrink:0;font-weight:700;font-size:12px;padding-top:1px}
-.cs-map{margin-top:20px;background:var(--blue-l);border-radius:10px;height:110px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--gmid);font-size:13px;color:var(--blue);font-weight:700;gap:8px}
-.cs-addrs{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.cs-addr{font-size:12px;color:var(--sub);line-height:1.7;padding:12px 14px;background:var(--blue-l);border-radius:8px}
-.cs-addr strong{color:var(--text);font-size:13px;display:block;margin-bottom:4px}
-/* Googleマップ */
-.map-embed{width:100%;height:220px;border-radius:10px;border:none;margin-bottom:16px}
-.bl{font-size:15px;color:var(--sub);margin-bottom:10px;font-weight:600;line-height:1.65}
-.bl strong{color:var(--text);font-size:16px}
-
-/* 社長メッセージリンク */
-.president-link{
-  display:flex;align-items:center;gap:16px;
-  background:#fff;border-radius:14px;padding:20px 24px;
-  text-decoration:none;color:var(--text);
-  border:1.5px solid var(--gmid);transition:border-color .2s,box-shadow .2s;
-  margin-top:16px;
-}
-.president-link:hover{border-color:var(--blue);box-shadow:0 4px 16px rgba(14,122,196,.1)}
-.pres-avatar{width:56px;height:56px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
-.pres-text h4{font-size:15px;font-weight:800;margin-bottom:4px}
-.pres-text p{font-size:13px;color:var(--sub);font-weight:500}
-.pres-arrow{margin-left:auto;font-size:18px;color:var(--blue);font-weight:700}
-
+.co-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.cs-stat{background:var(--blue);border-radius:16px;padding:28px 20px;border:1.5px solid rgba(255,255,255,.0);box-shadow:0 4px 16px rgba(14,122,196,.18)}
+.cs-stat-n{font-size:clamp(28px,3vw,42px);font-weight:900;color:#fff;line-height:1}
+.cs-stat-u{font-size:15px;font-weight:700;color:rgba(255,255,255,.88)}
+.cs-stat-l{font-size:12px;color:rgba(255,255,255,.72);margin-top:8px;font-weight:500}
+.co-link-wrap{margin-top:40px;text-align:center}
+.co-link{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(14,122,196,.28);transition:background .15s,transform .15s,box-shadow .15s}
+.co-link:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 10px 24px rgba(14,122,196,.35)}
+@media(max-width:700px){.co-stats{grid-template-columns:repeat(2,1fr)}}
 /* ── NEWS ── */
 #news{background:#fff}
 .nlist{margin-top:24px}
@@ -809,42 +779,14 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 <section id="company">
   <div class="si">
     <div class="rev"><div class="slb">COMPANY</div><h2 class="sh">会社案内</h2><p class="ss">1977年創業。東京・文京区から全国のものづくりを支えています</p></div>
-    <div class="company-split rev">
-      <!-- 左パネル：青背景 -->
-      <div class="cs-left">
-        <div class="cs-stats">
-          <div class="cs-stat"><div class="cs-stat-n">49<span class="cs-stat-u">年</span></div><div class="cs-stat-l">創業からの歴史</div></div>
-          <div class="cs-stat"><div class="cs-stat-n">2<span class="cs-stat-u">拠点</span></div><div class="cs-stat-l">音羽 ＋ 新宿</div></div>
-          <div class="cs-stat"><div class="cs-stat-n">1<span class="cs-stat-u">枚〜</span></div><div class="cs-stat-l">小ロット対応</div></div>
-          <div class="cs-stat"><div class="cs-stat-n">全国</div><div class="cs-stat-l">対応エリア</div></div>
-        </div>
-        <a class="cs-pres" href="president.html">
-          <div>
-            <div class="cs-pres-title">代表取締役</div>
-            <div class="cs-pres-name">代表メッセージを読む →</div>
-          </div>
-        </a>
-      </div>
-      <!-- 右パネル：白背景 -->
-      <div class="cs-right">
-        <div class="cs-rtitle">会社概要</div>
-        <div class="ir"><span class="ik">社名</span><span>セントラル印刷株式会社</span></div>
-        <div class="ir"><span class="ik">創業</span><span>1977年（昭和52年）10月</span></div>
-        <div class="ir"><span class="ik">代表</span><span>代表取締役　関野 里美</span></div>
-        <div class="ir"><span class="ik">本社</span><span>〒112-0013 東京都文京区音羽1-20-14 MBS音羽ビル2F</span></div>
-        <div class="ir"><span class="ik">工場</span><span>〒162-0818 東京都新宿区築地町13 赤城ビル3F</span></div>
-        <div class="ir"><span class="ik">TEL</span><span>本社：03-5981-8911 / 工場：03-3267-4441</span></div>
-        <div class="ir"><span class="ik">事業</span><span>複写伝票・オンデマンド印刷・冊子製本・デザイン・イベント企画</span></div>
-        <div class="cs-map">
-          <div id="mapFallback" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-            <div style="font-size:13px;font-weight:700;color:var(--blue)">アクセス（Googleマップ）</div>
-            <div style="display:flex;flex-direction:column;gap:8px;width:90%">
-              <a href="https://maps.google.com/?q=東京都文京区音羽1-20-14+MBS音羽ビル2F" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:9px 14px;background:#fff;border-radius:8px;border:1px solid var(--gmid);text-decoration:none;font-size:13px;font-weight:600;color:var(--text)">本社（音羽）をGoogleマップで開く</a>
-              <a href="https://maps.google.com/?q=東京都新宿区築地町13+赤城ビル3F" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:9px 14px;background:#fff;border-radius:8px;border:1px solid var(--gmid);text-decoration:none;font-size:13px;font-weight:600;color:var(--text)">工場・営業部（新宿）をGoogleマップで開く</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="co-stats rev">
+      <div class="cs-stat"><div class="cs-stat-n">49<span class="cs-stat-u">年</span></div><div class="cs-stat-l">創業からの歴史</div></div>
+      <div class="cs-stat"><div class="cs-stat-n">2<span class="cs-stat-u">拠点</span></div><div class="cs-stat-l">音羽 ＋ 新宿</div></div>
+      <div class="cs-stat"><div class="cs-stat-n">1<span class="cs-stat-u">枚〜</span></div><div class="cs-stat-l">小ロット対応</div></div>
+      <div class="cs-stat"><div class="cs-stat-n">全国</div><div class="cs-stat-l">対応エリア</div></div>
+    </div>
+    <div class="co-link-wrap rev">
+      <a class="co-link" href="president.html">私たちの想いと会社概要はこちら &rarr;</a>
     </div>
   </div>
 </section>
