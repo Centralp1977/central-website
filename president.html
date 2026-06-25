@@ -109,7 +109,9 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .ss{font-size:15px;color:var(--sub);line-height:1.75;max-width:640px;font-weight:500}
 
 /* PRESIDENT MESSAGE */
-#message{background:var(--blue)}
+#message{position:relative;background:var(--blue);background-image:url('photo/message_bg.jpg');background-size:cover;background-position:center}
+#message::before{content:'';position:absolute;inset:0;background:rgba(14,122,196,.6);z-index:0}
+#message>.si{position:relative;z-index:1}
 #message .slb{color:rgba(255,255,255,.75)}
 #message .sh{color:#fff}
 .pres-card{background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(14,122,196,.22);overflow:hidden;margin-top:40px;max-width:760px;margin-left:auto;margin-right:auto}
@@ -125,6 +127,10 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .pres-body h4{font-size:15px;font-weight:800;color:var(--text);margin:22px 0 8px}
 .pres-body p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:14px;word-break:keep-all}
 @media(max-width:640px){.pres-card-body{padding:24px 20px}}
+
+/* ACTIVITIES fade-in */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0}.fade-in.visible{animation:fadeInUp .6s ease forwards}
 
 /* ACTIVITIES */
 .act-section{margin-top:48px;padding-top:36px;border-top:2px solid var(--gmid)}
@@ -362,7 +368,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     <h2 class="sh">セントラルの活動</h2>
 
     <!-- 1. CSRの取り組み -->
-    <div class="act-section" style="border-top:none;margin-top:32px;padding-top:0">
+    <div class="act-section fade-in" style="border-top:none;margin-top:32px;padding-top:0">
       <h3 class="act-sh">CSRの取り組み</h3>
       <div class="csr-items">
         <div class="csr-item">
@@ -390,11 +396,12 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     </div>
 
     <!-- 2. 地域との共同支援 -->
-    <div class="act-section">
+    <div class="act-section fade-in">
       <h3 class="act-sh">地域との共同支援</h3>
       <div class="act-items">
         <div class="act-item">
           <h4>東京ユナイテッドFCの協賛支援</h4>
+          <img src="Certification_logo/tokyo_united_fc.png" alt="東京ユナイテッドFC" style="width:100px;height:auto;display:block;margin:10px 0 12px">
           <p>地元サッカークラブ・東京ユナイテッドFCへのスポンサーとして、チラシ・ポスター・応援グッズなど広報コンテンツの制作を支援しています。</p>
         </div>
         <div class="act-item">
@@ -405,7 +412,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     </div>
 
     <!-- 3. 社員の専門分野への支援 -->
-    <div class="act-section">
+    <div class="act-section fade-in">
       <h3 class="act-sh">社員の専門分野への支援</h3>
       <div class="skill-body">
         <div class="skill-text">
@@ -548,6 +555,9 @@ if(hmb && mnav){
   hmb.addEventListener('click',()=>{const o=mnav.classList.toggle('open');hmb.classList.toggle('open');hmb.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';});
   function toggleMlDd(btn){const items=btn.nextElementSibling;const open=items.classList.toggle('open');btn.classList.toggle('open',open);btn.setAttribute('aria-expanded',open?'true':'false');}
 }
+/* fade-in on scroll */
+const fadeObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});},{threshold:0.15});
+document.querySelectorAll('.fade-in').forEach(el=>fadeObs.observe(el));
 </script>
 </body>
 </html>
