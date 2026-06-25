@@ -434,10 +434,10 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <div class="nd-wrap">
         <a class="nl" href="#services">サービス</a>
         <div class="nd">
-          <a href="#services">複写伝票</a>
-          <a href="#services">オンデマンド印刷</a>
-          <a href="#services">デザイン・DTP</a>
-          <a href="#services">XR事業</a>
+          <a href="#services" onclick="openSvc(0);return false">複写伝票</a>
+          <a href="#services" onclick="openSvc(2);return false">オンデマンド印刷</a>
+          <a href="#services" onclick="openSvc(1);return false">デザイン・DTP</a>
+          <a href="#services" onclick="openSvc(6);return false">XR事業</a>
         </div>
       </div>
       <a class="nl" href="#reasons">強み</a>
@@ -480,10 +480,10 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
         <span class="ml-dd-arrow">▾</span>
       </button>
       <div class="ml-dd-items">
-        <a class="ml-dd-item" href="#services" onclick="closeMnav()">複写伝票</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav()">オンデマンド印刷</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav()">デザイン・DTP</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav()">XR事業</a>
+        <a class="ml-dd-item" href="#services" onclick="closeMnav();openSvc(0);return false">複写伝票</a>
+        <a class="ml-dd-item" href="#services" onclick="closeMnav();openSvc(2);return false">オンデマンド印刷</a>
+        <a class="ml-dd-item" href="#services" onclick="closeMnav();openSvc(1);return false">デザイン・DTP</a>
+        <a class="ml-dd-item" href="#services" onclick="closeMnav();openSvc(6);return false">XR事業</a>
       </div>
     </div>
     <a class="ml" href="#reasons" onclick="closeMnav()">選ばれる理由</a>
@@ -1002,8 +1002,24 @@ document.body.style.overflow='hidden';
 window.addEventListener('load',()=>{
   const logo=document.getElementById('ldlogo');
   const loading=document.getElementById('loading');
-  setTimeout(()=>logo.classList.add('show'),150);
-  setTimeout(()=>{loading.classList.add('hide');document.body.style.overflow='';},2000);
+  const hash=location.hash;
+  if(hash){
+    /* hash付き遷移はローディングをスキップ */
+    loading.classList.add('hide');
+    document.body.style.overflow='';
+    /* #svc-N → サービスオーバーレイを自動オープン */
+    const m=hash.match(/^#svc-(\d+)$/);
+    if(m){
+      const svcId=parseInt(m[1],10);
+      requestAnimationFrame(()=>{
+        document.getElementById('services')?.scrollIntoView({behavior:'instant'});
+        openSvc(svcId);
+      });
+    }
+  } else {
+    setTimeout(()=>logo.classList.add('show'),150);
+    setTimeout(()=>{loading.classList.add('hide');document.body.style.overflow='';},2000);
+  }
 });
 
 /* HERO SLIDESHOW */
