@@ -45,7 +45,8 @@ body{font-family:'Hiragino Sans','ヒラギノ角ゴ ProN','Yu Gothic UI','Meiry
 .logo-a svg{height:70px;width:auto;max-width:320px}
 nav.desk{display:flex;align-items:center;gap:4px}
 .nd-wrap{position:relative;display:inline-flex}
-.nd{position:absolute;top:calc(100% + 6px);left:0;min-width:160px;background:#fff;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.15);padding:6px 0;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s;z-index:300}
+.nd{position:absolute;top:100%;left:0;min-width:160px;background:#fff;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.15);padding:12px 0 6px;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s;z-index:300}
+.nd::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}
 .nd-wrap:hover .nd,.nd-wrap:focus-within .nd{opacity:1;pointer-events:auto;transform:translateY(0)}
 .nd a{display:block;padding:11px 18px;font-size:14px;font-weight:700;color:var(--blue);text-decoration:none;white-space:nowrap;transition:background .15s}
 .nd a:hover{background:var(--blue-l)}
