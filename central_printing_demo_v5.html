@@ -39,7 +39,12 @@ body{font-family:'Hiragino Sans','ヒラギノ角ゴ ProN','Yu Gothic UI','Meiry
 
 /* ── HEADER ── */
 #hdr{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--hh);background:var(--blue)}
-.hdr-in{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+.hdr-in{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:relative}
+.hdr-sns{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px}
+.hdr-sns a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;transition:background .2s}
+.hdr-sns a:hover{background:rgba(255,255,255,.35)}
+.hdr-sns svg{width:18px;height:18px;flex-shrink:0}
+@media(max-width:900px){.hdr-sns{display:none}}
 .logo-a{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
 .logo-a img{height:auto;max-height:56px;width:auto;max-width:240px;object-fit:contain}
 .logo-a svg{height:70px;width:auto;max-width:320px}
@@ -472,6 +477,17 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <a class="nl" href="#news">お知らせ</a>
       <a class="ncta" href="#" onclick="openContact();return false">お問い合わせ</a>
     </nav>
+    <div class="hdr-sns">
+      <a href="https://www.instagram.com/centralp_1977/?hl=ja" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+      </a>
+      <a href="https://x.com/centralp_1977" target="_blank" rel="noopener" aria-label="X（Twitter）">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L2.25 2.25h6.845l4.263 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="https://note.com/centralp_1977" target="_blank" rel="noopener" aria-label="note">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="2"/><path d="M7 8h10M7 12h7M7 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
     <button class="hmb" id="hmb" aria-label="メニューを開く" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
