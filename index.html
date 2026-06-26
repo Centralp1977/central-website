@@ -399,12 +399,12 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   .hb{text-align:center}
 }
 /* ── SCROLL TO TOP ── */
-#topBtn{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;background:none;border:none;padding:40px 0 8px;margin:0 auto;width:fit-content}
-#topBtn img{width:80px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.18));transition:transform .25s}
-#topBtn:hover img{transform:translateY(-6px) rotate(-6deg)}
-#topBtn span{font-size:12px;font-weight:900;color:#fff;letter-spacing:.14em;background:var(--blue);border-radius:20px;padding:4px 14px;box-shadow:0 2px 8px rgba(14,122,196,.35);transition:background .2s}
-#topBtn:hover span{background:var(--blue-d)}
-@media(max-width:600px){#topBtn img{width:60px}}
+#topBtn{position:fixed;bottom:32px;right:28px;z-index:900;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(16px);transition:opacity .35s,transform .35s;background:none;border:none;padding:0}
+#topBtn.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+#topBtn img{width:72px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.22));transition:transform .2s}
+#topBtn:hover img{transform:translateY(-4px) rotate(-5deg)}
+#topBtn span{font-size:11px;font-weight:900;color:var(--blue);letter-spacing:.12em;background:#fff;border-radius:20px;padding:3px 10px;box-shadow:0 2px 8px rgba(14,122,196,.25)}
+@media(max-width:600px){#topBtn{bottom:20px;right:14px}#topBtn img{width:56px}}
 </style>
 </head>
 <body>
@@ -943,14 +943,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   </div>
 </div>
 
-<!-- SCROLL TO TOP -->
-<div style="background:var(--gray);text-align:center">
-  <button id="topBtn" aria-label="トップへ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <img src="cat_top.png" alt="トップへ戻る猫">
-    <span>TOP</span>
-  </button>
-</div>
-
 <!-- PRESIDENT OVERLAY -->
 <!-- FOOTER -->
 <footer>
@@ -1260,6 +1252,19 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
 
 </script>
 
+<!-- SCROLL TO TOP -->
+<button id="topBtn" aria-label="トップへ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <img src="top_cat_1.png" alt="トップへ戻る猫">
+  <span>TOP</span>
+</button>
+<script>
+(function(){
+  var btn=document.getElementById('topBtn');
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('show',window.scrollY>300);
+  },{passive:true});
+})();
+</script>
 </body>
 </html>
 
