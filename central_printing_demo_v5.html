@@ -398,6 +398,13 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   .h-btns{flex-direction:column}
   .hb{text-align:center}
 }
+/* ── SCROLL TO TOP ── */
+#topBtn{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;background:none;border:none;padding:40px 0 8px;margin:0 auto;width:fit-content}
+#topBtn img{width:80px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.18));transition:transform .25s}
+#topBtn:hover img{transform:translateY(-6px) rotate(-6deg)}
+#topBtn span{font-size:12px;font-weight:900;color:#fff;letter-spacing:.14em;background:var(--blue);border-radius:20px;padding:4px 14px;box-shadow:0 2px 8px rgba(14,122,196,.35);transition:background .2s}
+#topBtn:hover span{background:var(--blue-d)}
+@media(max-width:600px){#topBtn img{width:60px}}
 </style>
 </head>
 <body>
@@ -936,6 +943,14 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   </div>
 </div>
 
+<!-- SCROLL TO TOP -->
+<div style="background:var(--gray);text-align:center">
+  <button id="topBtn" aria-label="トップへ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <img src="cat_top.png" alt="トップへ戻る猫">
+    <span>TOP</span>
+  </button>
+</div>
+
 <!-- PRESIDENT OVERLAY -->
 <!-- FOOTER -->
 <footer>
@@ -1244,6 +1259,7 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
 })();
 
 </script>
+
 </body>
 </html>
 
