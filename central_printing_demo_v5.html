@@ -39,6 +39,7 @@ body{font-family:'Hiragino Sans','ヒラギノ角ゴ ProN','Yu Gothic UI','Meiry
 
 /* ── HEADER ── */
 #hdr{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--hh);background:var(--blue)}
+#hdr::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,#00AEEF 25%,#E4007F 25% 50%,#FFF200 50% 75%,#231F20 75%)}
 .hdr-in{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
 .logo-a{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
 .logo-a img{height:auto;max-height:56px;width:auto;max-width:240px;object-fit:contain}
