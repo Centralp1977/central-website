@@ -108,6 +108,12 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .sh{font-size:clamp(22px,3vw,32px);font-weight:900;margin-bottom:8px}
 .ss{font-size:15px;color:var(--sub);line-height:1.75;max-width:640px;font-weight:500}
 
+/* ILLUST STAGE */
+#illust-stage{background:var(--blue);padding:0 24px 0;display:flex;justify-content:center;align-items:flex-end;gap:32px;overflow:hidden;height:180px}
+.illust-char{opacity:0;transform:translateY(80px);transition:opacity .6s ease, transform .6s ease}
+.illust-char img{height:160px;width:auto;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.2))}
+@media(max-width:600px){#illust-stage{height:120px;gap:16px}.illust-char img{height:110px}}
+
 /* PRESIDENT MESSAGE */
 #message{position:relative;background:var(--blue);background-image:url('top_image_1.png');background-size:cover;background-position:center}
 #message::before{content:'';position:absolute;inset:0;background:rgba(14,122,196,.6);z-index:0}
@@ -333,6 +339,14 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 <div class="page-hero">
   <div class="ph-label">COMPANY</div>
   <h1>会社案内</h1>
+</div>
+
+<!-- ILLUST STAGE -->
+<div id="illust-stage">
+  <div class="illust-char"><img src="currel_1.PNG" alt="リスのイラスト"></div>
+  <div class="illust-char"><img src="zebra_1.png" alt="ゼブラのイラスト"></div>
+  <div class="illust-char"><img src="cat_2.png" alt="猫のイラスト"></div>
+  <div class="illust-char"><img src="cat_3.png" alt="猫2匹のイラスト"></div>
 </div>
 
 <!-- ① 代表メッセージ -->
@@ -592,6 +606,19 @@ if(hmb && mnav){
 /* fade-in on scroll */
 const fadeObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});},{threshold:0.15});
 document.querySelectorAll('.fade-in').forEach(el=>fadeObs.observe(el));
+</script>
+
+<!-- ILLUST ANIMATION -->
+<script>
+(function(){
+  var chars = document.querySelectorAll('.illust-char');
+  chars.forEach(function(el, i){
+    setTimeout(function(){
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 200 + i * 180);
+  });
+})();
 </script>
 
 <!-- SCROLL TO TOP -->
