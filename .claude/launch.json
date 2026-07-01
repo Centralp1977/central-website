@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "central-website",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "python -m http.server ${PORT:-8787} --directory 'C:/Users/okaga/Desktop/Central/4.website/Client/260613_central_website'"],
+      "port": 8787,
+      "autoPort": true
+    }
+  ]
+}
