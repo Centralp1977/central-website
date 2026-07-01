@@ -120,8 +120,8 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .illust-title .ph-label{font-size:11px;letter-spacing:5px;font-weight:700;opacity:.8;margin-bottom:8px}
 .illust-title h1{font-size:clamp(24px,3.5vw,36px);font-weight:900;line-height:1.2;margin:0}
 #message{position:relative;z-index:2}
-@media(max-width:600px){.page-hero{padding-bottom:220px}#illust-stage{gap:12px}.illust-char img{height:90px}}
-@media(min-width:601px) and (max-width:900px){.page-hero{padding-bottom:200px}.illust-char img{height:120px}}
+@media(max-width:600px){.page-hero{padding-bottom:220px}#illust-stage{gap:4px;padding:0 4px}.illust-char img{width:60px;height:auto}.illust-title h1{font-size:20px}.illust-title .ph-label{font-size:9px;letter-spacing:3px}}
+@media(min-width:601px) and (max-width:900px){.page-hero{padding-bottom:200px}#illust-stage{gap:12px;padding:0 12px}.illust-char img{width:100px;height:auto}}
 
 /* PRESIDENT MESSAGE */
 #message{position:relative;background:var(--blue);background-image:url('top_image_1.png');background-size:cover;background-position:center}
@@ -624,7 +624,7 @@ document.querySelectorAll('.fade-in').forEach(el=>fadeObs.observe(el));
      currel 50% visible → 75px hidden, zebra 60% visible → 60px hidden,
      cat_2 45% visible → 83px hidden, cat_5 50% visible → 75px hidden */
   var w = window.innerWidth;
-  var finalY = w <= 600 ? [30, 25, 30, 25] : w <= 900 ? [45, 40, 50, 45] : [75, 60, 83, 75];
+  var finalY = w <= 600 ? [15, 20, 18, 12] : w <= 900 ? [25, 35, 30, 20] : [75, 60, 83, 75];
   var chars = document.querySelectorAll('.illust-char');
   chars.forEach(function(el, i){
     setTimeout(function(){
