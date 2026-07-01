@@ -160,12 +160,17 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .csr-item-logo{flex-shrink:0;width:125px;display:flex;align-items:center;justify-content:center}
 .csr-item-logo a{display:flex;align-items:center;justify-content:center;width:100%}
 .csr-item-logo img{width:100%;height:auto;object-fit:contain;max-height:90px;display:block}
-.csr-item-text{flex:1}
+.csr-item-text{flex:1;min-width:0;overflow-wrap:break-word}
 .csr-item-text h4{font-size:14px;font-weight:800;color:var(--blue);margin-bottom:6px}
 .csr-item-text h4 a{color:inherit;text-decoration:none;transition:color .2s,background .2s;padding:2px 4px;border-radius:4px}
 .csr-item-text h4 a:hover{text-decoration:underline;background:#fff;color:var(--blue-d)}
 .csr-item-text p{font-size:13px;color:var(--sub);line-height:1.8;word-break:keep-all}
 @media(max-width:480px){.csr-item{flex-direction:column}.csr-item-logo{width:80px}}
+.kasuga-photos{display:flex;gap:12px;margin-top:16px;align-items:flex-start}
+.kasuga-photos img{border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.kasuga-photos img:first-child{height:120px;width:auto}
+.kasuga-photos img:last-child{width:42%}
+@media(max-width:600px){.kasuga-photos{flex-direction:column}.kasuga-photos img,.kasuga-photos img:first-child,.kasuga-photos img:last-child{width:100%;height:auto}}
 /* Community / Regional */
 .act-items{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:0}
 .act-item{background:#fff;border-radius:12px;padding:22px;border:1.5px solid var(--gmid)}
@@ -442,9 +447,9 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
         <div class="act-item">
           <h4>跡見女子学園との産学連携</h4>
           <p>毎年10月に行われる麟祥院の春日忌にて、生徒と共に春日局の生涯を描いた4コマ漫画やスタンプラリーの企画・関連グッズの開発に携わっています。</p>
-          <div style="display:flex;gap:12px;margin-top:16px;align-items:flex-start">
-            <img src="kasuga_4.png" alt="春日忌制作物" style="height:120px;width:auto;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15)">
-            <img src="kasuga_1.png" alt="春日忌ポスター" style="width:42%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15)">
+          <div class="kasuga-photos">
+            <img src="kasuga_4.png" alt="春日忌制作物">
+            <img src="kasuga_1.png" alt="春日忌ポスター">
           </div>
         </div>
       </div>
