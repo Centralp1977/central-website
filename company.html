@@ -109,13 +109,17 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .ss{font-size:15px;color:var(--sub);line-height:1.75;max-width:640px;font-weight:500}
 
 /* ILLUST STAGE */
-.page-hero{position:relative;overflow:visible;z-index:0;padding-bottom:160px}
+.page-hero{position:relative;overflow:visible;z-index:0;padding-top:20px;padding-bottom:100px}
 #illust-stage{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:center;align-items:flex-end;gap:40px;padding:0 24px;z-index:1}
 .illust-char{opacity:0;transform:translateY(360px);transition:opacity .7s ease, transform .8s cubic-bezier(.22,.61,.36,1)}
 .illust-char img{height:150px;width:auto;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
 .illust-char img.blend{mix-blend-mode:multiply}
+.illust-char:has(img.blend){mix-blend-mode:multiply}
+.illust-title{opacity:0;transform:translateY(60px);transition:opacity .7s ease, transform .8s cubic-bezier(.22,.61,.36,1);text-align:center;color:#fff;white-space:nowrap;padding-bottom:16px}
+.illust-title .ph-label{font-size:11px;letter-spacing:5px;font-weight:700;opacity:.8;margin-bottom:8px}
+.illust-title h1{font-size:clamp(24px,3.5vw,36px);font-weight:900;line-height:1.2;margin:0}
 #message{position:relative;z-index:2}
-@media(max-width:600px){.page-hero{padding-bottom:110px}#illust-stage{gap:12px}.illust-char img{height:90px}}
+@media(max-width:600px){.page-hero{padding-bottom:70px}#illust-stage{gap:12px}.illust-char img{height:90px}}
 
 /* PRESIDENT MESSAGE */
 #message{position:relative;background:var(--blue);background-image:url('top_image_1.png');background-size:cover;background-position:center}
@@ -340,13 +344,15 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 
 <!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="ph-label">COMPANY</div>
-  <h1>会社案内</h1>
   <div id="illust-stage">
     <div class="illust-char"><img src="currel_1.PNG" alt="リスのイラスト"></div>
     <div class="illust-char"><img src="zebra_1.png" alt="ゼブラのイラスト"></div>
+    <div class="illust-title">
+      <div class="ph-label">COMPANY</div>
+      <h1>会社案内</h1>
+    </div>
     <div class="illust-char"><img src="cat_2.png" alt="猫のイラスト"></div>
-    <div class="illust-char"><img src="cat_3.png" alt="猫2匹のイラスト" class="blend"></div>
+    <div class="illust-char"><img src="cat_5.png" alt="猫のイラスト" class="blend"></div>
   </div>
 </div>
 
@@ -612,13 +618,24 @@ document.querySelectorAll('.fade-in').forEach(el=>fadeObs.observe(el));
 <!-- ILLUST ANIMATION -->
 <script>
 (function(){
+  /* Final translateY per character: positive = shifted into #message (partially hidden)
+     currel 50% visible → 75px hidden, zebra 60% visible → 60px hidden,
+     cat_2 45% visible → 83px hidden, cat_5 50% visible → 75px hidden */
+  var finalY = [75, 60, 83, 75];
   var chars = document.querySelectorAll('.illust-char');
   chars.forEach(function(el, i){
     setTimeout(function(){
       el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
+      el.style.transform = 'translateY(' + (finalY[i] || 0) + 'px)';
     }, 200 + i * 180);
   });
+  var title = document.querySelector('.illust-title');
+  if(title){
+    setTimeout(function(){
+      title.style.opacity = '1';
+      title.style.transform = 'translateY(0)';
+    }, 200 + 1 * 180 + 90);
+  }
 })();
 </script>
 
