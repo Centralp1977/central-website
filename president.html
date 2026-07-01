@@ -114,19 +114,18 @@ nav.desk{display:flex;align-items:center;gap:4px}
 #message>.si{position:relative;z-index:1}
 #message .slb{color:rgba(255,255,255,.75)}
 #message .sh{color:#fff}
-.pres-card{background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(14,122,196,.22);overflow:hidden;margin-top:40px;max-width:760px;margin-left:auto;margin-right:auto}
-.pres-img-wrap{width:100%;aspect-ratio:4/3;background:var(--blue-l);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.pres-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-.pres-img-placeholder{display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--sub);font-size:14px;font-weight:600}
-.pres-img-placeholder span{font-size:64px}
-.pres-card-body{padding:36px 40px}
+.pres-card{background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(14,122,196,.22);overflow:hidden;margin-top:40px;max-width:860px;margin-left:auto;margin-right:auto;display:flex;align-items:stretch}
+.pres-card-body{flex:1;padding:36px 40px;display:flex;flex-direction:column}
 .pres-name-block{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:24px;border-bottom:1.5px solid var(--gmid)}
 .pres-name-block h3{font-size:18px;font-weight:900;color:var(--text);margin-bottom:4px}
 .pres-name-block p{font-size:13px;color:var(--sub)}
+.pres-body{flex:1}
 .pres-body blockquote{font-size:17px;font-weight:800;color:var(--blue);border-left:4px solid var(--blue);padding:4px 0 4px 18px;margin:0 0 24px;line-height:1.7}
 .pres-body h4{font-size:15px;font-weight:800;color:var(--text);margin:22px 0 8px}
 .pres-body p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:14px;word-break:keep-all}
-@media(max-width:640px){.pres-card-body{padding:24px 20px}}
+.pres-photo-col{width:260px;flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end;background:var(--blue-l)}
+.pres-photo-col img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+@media(max-width:700px){.pres-card{flex-direction:column}.pres-photo-col{width:100%;height:260px}.pres-card-body{padding:24px 20px}}
 
 /* ACTIVITIES fade-in */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -336,16 +335,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     <div class="slb">MESSAGE</div>
     <h2 class="sh">代表メッセージ</h2>
     <div class="pres-card">
-      <!-- 写真（上） -->
-      <div class="pres-img-wrap">
-        <!-- 写真が用意できたら下の行を有効化し、プレースホルダーdivを削除 -->
-        <!-- <img src="photo/president.jpg" alt="代表取締役 関野 里美"> -->
-        <div class="pres-img-placeholder">
-          <span>🖼️</span>
-          代表写真
-        </div>
-      </div>
-      <!-- テキスト（下） -->
+      <!-- テキスト（左） -->
       <div class="pres-card-body">
         <div class="pres-name-block">
           <div>
@@ -363,6 +353,10 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
           <p>これが私たちの使命です。お客様の伝えたいことを、最も適切な形で、最も必要としている方に届ける——そのために、印刷の技術と制作のチカラを磨き続けています。</p>
           <p>まずはお気軽にご相談ください。どんな小さなご要望も、私たちは誠実にお応えします。</p>
         </div>
+      </div>
+      <!-- 写真（右下） -->
+      <div class="pres-photo-col">
+        <img src="ceo_photo.png" alt="代表取締役 関野 里美">
       </div>
     </div>
   </div>
