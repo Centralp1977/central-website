@@ -164,7 +164,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .csr-item-text h4{font-size:14px;font-weight:800;color:var(--blue);margin-bottom:6px;overflow-wrap:break-word;word-break:break-word}
 .csr-item-text h4 a{color:inherit;text-decoration:none;transition:color .2s,background .2s;padding:2px 4px;border-radius:4px}
 .csr-item-text h4 a:hover{text-decoration:underline;background:#fff;color:var(--blue-d)}
-.csr-item-text p{font-size:13px;color:var(--sub);line-height:1.8;word-break:keep-all}
+.csr-item-text p{font-size:13px;color:var(--sub);line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}
 @media(max-width:480px){.csr-item{flex-direction:column}.csr-item-logo{width:80px}}
 .kasuga-photos{display:flex;gap:12px;margin-top:16px;align-items:flex-start}
 .kasuga-photos img{border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
@@ -172,10 +172,10 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .kasuga-photos img:last-child{width:27%}
 @media(max-width:900px){.kasuga-photos img:first-child{height:auto;width:auto;max-width:60%;max-height:180px}.kasuga-photos img:last-child{width:auto;max-width:36%;max-height:180px}}
 /* Community / Regional */
-.act-items{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:0}
-.act-item{background:#fff;border-radius:12px;padding:22px;border:1.5px solid var(--gmid)}
-.act-item h4{font-size:15px;font-weight:800;color:var(--blue);margin-bottom:8px}
-.act-item p{font-size:13px;color:var(--sub);line-height:1.8;word-break:keep-all}
+.act-items{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:0}
+.act-item{background:#fff;border-radius:12px;padding:22px;border:1.5px solid var(--gmid);min-width:0}
+.act-item h4{font-size:15px;font-weight:800;color:var(--blue);margin-bottom:8px;overflow-wrap:anywhere}
+.act-item p{font-size:13px;color:var(--sub);line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}
 /* Staff skills */
 .skill-body{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
 .skill-text{flex:1;min-width:200px}
@@ -195,7 +195,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .mud-logo-bar span:nth-child(3){flex:1;background:#3aad8a}
 .mud-logo-advisor{font-size:20px;font-weight:700;color:#888;letter-spacing:.5px}
 .mud-logo-note{font-size:11px;color:var(--sub);text-align:center;font-weight:500}
-@media(max-width:640px){.act-items{grid-template-columns:1fr}.csr-logos{justify-content:center}.skill-body{flex-direction:column}}
+@media(max-width:640px){.act-items{grid-template-columns:minmax(0,1fr)}.csr-logos{justify-content:center}.skill-body{flex-direction:column}}
 
 /* COMPANY INFO */
 .co-table{margin-top:36px;border-radius:14px;overflow:hidden;border:1.5px solid var(--gmid)}
