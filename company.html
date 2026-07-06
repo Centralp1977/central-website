@@ -120,8 +120,8 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .illust-title .ph-label{font-size:11px;letter-spacing:5px;font-weight:700;opacity:.8;margin-bottom:8px}
 .illust-title h1{font-size:clamp(24px,3.5vw,36px);font-weight:900;line-height:1.2;margin:0}
 #message{position:relative;z-index:2}
-@media(max-width:600px){.page-hero{padding-bottom:220px}#illust-stage{gap:4px;padding:0 4px}.illust-char img{width:72px;height:auto}.illust-title h1{font-size:20px}.illust-title .ph-label{font-size:9px;letter-spacing:3px}}
-@media(min-width:601px) and (max-width:900px){.page-hero{padding-bottom:200px}#illust-stage{gap:12px;padding:0 12px}.illust-char img{width:100px;height:auto}}
+@media(max-width:600px){.page-hero{padding-bottom:220px}#illust-stage{gap:4px;padding:0 4px}.illust-char img{width:61px;height:auto}.illust-title h1{font-size:20px}.illust-title .ph-label{font-size:9px;letter-spacing:3px}}
+@media(min-width:601px) and (max-width:900px){.page-hero{padding-bottom:200px}#illust-stage{gap:12px;padding:0 12px}.illust-char img{width:85px;height:auto}}
 
 /* PRESIDENT MESSAGE */
 #message{position:relative;background:var(--blue);background-image:url('top_image_1.png');background-size:cover;background-position:center}
@@ -215,6 +215,9 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .back-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:background .15s,transform .15s}
 .back-btn:hover{background:var(--blue-d);transform:translateY(-2px)}
 @media(max-width:900px){nav.desk{display:none}.hmb{display:flex}}
+@media(max-width:900px){
+  .pres-body p,.csr-item-text p,.act-item p,.skill-text p,.map-card p,.iv{font-size:15px}
+}
 @media(max-width:640px){
   .pres-card{padding:28px 20px}
   .map-cards{grid-template-columns:1fr}
