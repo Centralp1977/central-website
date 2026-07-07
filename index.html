@@ -219,49 +219,6 @@ section{padding:76px 24px}
 .ws-bullet{font-size:clamp(15px,1.3vw,18px);color:#fff;display:flex;align-items:flex-start;gap:14px;padding:clamp(14px,1.5vw,20px) clamp(18px,2vw,28px);background:rgba(255,255,255,.12);border-radius:12px;border:1.5px solid rgba(255,255,255,.28)}
 .ws-bicon{color:var(--cyan);font-weight:900;font-size:clamp(17px,1.4vw,20px);flex-shrink:0;margin-top:2px}
 
-/* ── WORKS ── */
-#works{background:#fff}
-.wg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
-.wc{border-radius:14px;overflow:hidden;background:var(--gray);aspect-ratio:4/3;position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.wc:hover{transform:scale(1.02);box-shadow:0 10px 30px rgba(14,122,196,.15)}
-.wc svg{position:absolute;inset:0;width:100%;height:100%}
-.wo{position:absolute;inset:0;background:rgba(10,90,147,0);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;transition:background .3s}
-.wc:hover .wo{background:rgba(10,90,147,.82)}
-.wm{opacity:0;color:#fff;text-align:center;transition:opacity .3s}
-.wc:hover .wm{opacity:1}
-.wm strong{font-size:15px;font-weight:800;display:block;margin-bottom:6px}
-.wm span{font-size:12px;opacity:.9;font-weight:500;display:block}
-.wtap{margin-top:12px;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.6);color:#fff;font-size:12px;font-weight:800}
-
-/* ── WORK DETAIL ── */
-.wd-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);overflow-y:auto}
-.wd-overlay.open{display:block}
-.wd-box{background:#fff;max-width:740px;width:94%;margin:40px auto;border-radius:20px;overflow:hidden;animation:slideup .35s ease}
-@keyframes slideup{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
-.wd-thumbs{display:flex;gap:12px;overflow-x:auto;padding:16px 20px;scroll-snap-type:x mandatory;scrollbar-width:none}
-.wd-thumbs::-webkit-scrollbar{display:none}
-.wd-thumb{flex:0 0 72px;width:72px;height:72px;border-radius:50%;overflow:hidden;border:3px solid var(--blue-l);cursor:pointer;transition:border-color .2s,transform .2s;background:#E8F4FC}
-.wd-lightbox{display:none;position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:32px;cursor:zoom-out}
-.wd-lightbox.open{display:flex}
-.wd-lightbox-inner{max-width:min(90vw,640px);max-height:90vh;width:100%;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.wd-lightbox-inner svg{width:100%;height:100%;display:block}
-.wd-hero{cursor:zoom-in}
-.wd-thumb.active{border-color:var(--blue)}
-.wd-thumb svg{width:100%;height:100%}
-.wd-hero{height:280px;position:relative;display:flex;align-items:center;justify-content:center;background:var(--blue-l)}
-.wd-hero svg{position:absolute;inset:0;width:100%;height:100%}
-.wd-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:2;font-weight:800}
-.wd-body{padding:32px}
-.wd-cat{font-size:11px;letter-spacing:3px;color:var(--blue);font-weight:800;margin-bottom:8px}
-.wd-title{font-size:24px;font-weight:900;margin-bottom:12px}
-.wd-desc{font-size:14px;color:var(--sub);line-height:1.8;font-weight:500;margin-bottom:20px}
-.wd-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.wd-spec{background:var(--gray);border-radius:10px;padding:14px}
-.wd-sk{font-size:11px;color:var(--sub);font-weight:700;margin-bottom:4px}
-.wd-sv{font-size:14px;font-weight:800}
-.wd-cta{display:block;padding:16px;border-radius:10px;background:var(--blue);color:#fff;text-align:center;font-size:15px;font-weight:800;text-decoration:none;transition:background .15s}
-.wd-cta:hover{background:var(--blue-d)}
-
 /* ── COMPANY ── */
 #company{background:var(--blue)}
 #company .slb{color:rgba(255,255,255,.75)}
@@ -466,17 +423,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       </div>
       <a class="nl" href="#reasons">強み</a>
       <div class="nd-wrap">
-        <a class="nl" href="#works">実績</a>
-        <div class="nd">
-          <a href="#works">複写伝票</a>
-          <a href="#works">冊子印刷</a>
-          <a href="#works">チラシデザイン</a>
-          <a href="#works">封筒印刷</a>
-          <a href="#works">可変印刷DM</a>
-          <a href="#works">ポスター</a>
-        </div>
-      </div>
-      <div class="nd-wrap">
         <a class="nl" href="#company">会社案内</a>
         <div class="nd">
           <a href="company.html#message">代表メッセージ</a>
@@ -511,19 +457,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       </div>
     </div>
     <a class="ml" href="#reasons" onclick="closeMnav()">選ばれる理由</a>
-    <!-- 実績 プルダウン -->
-    <div class="ml-dropdown">
-      <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
-        実績
-        <span class="ml-dd-arrow">▾</span>
-      </button>
-      <div class="ml-dd-items">
-        <a class="ml-dd-item" href="#works" onclick="closeMnav()">複写伝票</a>
-        <a class="ml-dd-item" href="#works" onclick="closeMnav()">冊子印刷</a>
-        <a class="ml-dd-item" href="#works" onclick="closeMnav()">チラシデザイン</a>
-        <a class="ml-dd-item" href="#works" onclick="closeMnav()">封筒印刷</a>
-      </div>
-    </div>
     <!-- 会社案内 プルダウン -->
     <div class="ml-dropdown">
       <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
@@ -566,7 +499,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <p class="h-sub">セントラル印刷株式会社は東京都文京区を中心に全国対応いたします。印刷、加工、発送から企画、デザイン全般まで是非ご依頼ください。</p>
       <div class="h-btns">
         <a class="hb hb-p" href="#" onclick="openContact();return false">お問い合わせ・お見積り</a>
-        <a class="hb hb-s" href="#works">実績を見る</a>
       </div>
     </div>
   </div>
@@ -772,71 +704,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
   </div>
 </section>
 
-<!-- WORKS -->
-<section id="works">
-  <div class="si">
-    <div class="rev"><div class="slb">WORKS</div><h2 class="sh">制作実績</h2><p class="ss">タップすると詳しい内容をご覧いただけます。</p></div>
-    <div class="wg">
-      <div class="wc" onclick="openWork(0)">
-        <div class="wc-inner"><div class="wc-scanline"></div>
-        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="40" width="300" height="220" rx="5" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="50" y="40" width="300" height="52" rx="5" fill="#0E7AC4" opacity="0.8"/><text x="200" y="73" text-anchor="middle" font-size="15" fill="#fff" font-weight="bold" font-family="sans-serif">納　品　書</text><line x1="70" y1="114" x2="330" y2="114" stroke="#ccc" stroke-width="1"/><line x1="70" y1="138" x2="330" y2="138" stroke="#ccc" stroke-width="1"/><line x1="70" y1="162" x2="330" y2="162" stroke="#ccc" stroke-width="1"/><line x1="70" y1="186" x2="330" y2="186" stroke="#ccc" stroke-width="1"/><line x1="70" y1="210" x2="330" y2="210" stroke="#ccc" stroke-width="1"/><line x1="200" y1="96" x2="200" y2="230" stroke="#ccc" stroke-width="0.8"/><line x1="280" y1="96" x2="280" y2="230" stroke="#ccc" stroke-width="0.8"/><rect x="70" y="100" width="80" height="8" rx="2" fill="#ccc" opacity="0.5"/><rect x="210" y="100" width="60" height="8" rx="2" fill="#ccc" opacity="0.4"/><rect x="50" y="235" width="75" height="4" rx="1" fill="#00AEEF"/><rect x="126" y="235" width="75" height="4" rx="1" fill="#EC008C"/><rect x="202" y="235" width="74" height="4" rx="1" fill="#FFF200"/><rect x="277" y="235" width="73" height="4" rx="1" fill="#231F20" opacity="0.7"/></svg>
-        <div class="wo"><div class="wm"><strong>複写伝票</strong><span>受注管理用 3枚複写</span><div class="wtap">詳しく見る →</div></div></div>
-        </div>
-      </div>
-      <div class="wc" onclick="openWork(1)">
-        <div class="wc-inner"><div class="wc-scanline"></div>
-        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="130" y="30" width="160" height="230" rx="5" fill="#0E7AC4" opacity="0.22" stroke="#0E7AC4" stroke-width="1.5"/><rect x="130" y="30" width="22" height="230" rx="3" fill="#0E7AC4" opacity="0.32"/><rect x="162" y="52" width="116" height="90" rx="4" fill="#0E7AC4" opacity="0.13"/><rect x="172" y="66" width="96" height="11" rx="2" fill="#0E7AC4" opacity="0.55"/><rect x="260" y="50" width="120" height="170" rx="4" fill="#fff" stroke="#0A5A93" stroke-width="1.5" opacity="0.85"/><rect x="260" y="50" width="18" height="170" rx="2" fill="#0A5A93" opacity="0.22"/></svg>
-        <div class="wo"><div class="wm"><strong>冊子印刷</strong><span>自費出版 A5 / 120P</span><div class="wtap">詳しく見る →</div></div></div>
-        </div>
-      </div>
-      <div class="wc" onclick="openWork(2)">
-        <div class="wc-inner"><div class="wc-scanline"></div>
-        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="30" width="300" height="230" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="50" y="30" width="300" height="80" rx="7" fill="#0E7AC4" opacity="0.82"/><rect x="50" y="102" width="300" height="8" fill="#0E7AC4" opacity="0.82"/><text x="200" y="78" text-anchor="middle" font-size="20" fill="#fff" font-weight="bold" font-family="sans-serif">OPEN</text><rect x="50" y="110" width="75" height="5" fill="#00AEEF"/><rect x="125" y="110" width="75" height="5" fill="#EC008C"/><rect x="200" y="110" width="75" height="5" fill="#FFF200"/><rect x="275" y="110" width="75" height="5" fill="#231F20" opacity="0.7"/><rect x="70" y="128" width="260" height="11" rx="2" fill="#ccc" opacity="0.5"/><rect x="70" y="190" width="110" height="60" rx="4" fill="#0E7AC4" opacity="0.15"/><rect x="195" y="190" width="135" height="60" rx="4" fill="#0A5A93" opacity="0.1"/></svg>
-        <div class="wo"><div class="wm"><strong>チラシデザイン</strong><span>A4 フルカラー</span><div class="wtap">詳しく見る →</div></div></div>
-        </div>
-      </div>
-      <div class="wc" onclick="openWork(3)">
-        <div class="wc-inner"><div class="wc-scanline"></div>
-        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="50" y="65" width="300" height="190" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><polygon points="50,65 350,65 200,155" fill="#0E7AC4" opacity="0.18"/><polygon points="50,65 200,155 50,255" fill="#0E7AC4" opacity="0.09"/><polygon points="350,65 200,155 350,255" fill="#0E7AC4" opacity="0.09"/><rect x="72" y="88" width="90" height="34" rx="4" fill="#0E7AC4" opacity="0.14"/><text x="117" y="108" text-anchor="middle" font-size="11" fill="#0E7AC4" font-weight="bold" font-family="sans-serif">CENTRAL</text><rect x="200" y="168" width="120" height="10" rx="2" fill="#ccc" opacity="0.5"/><rect x="294" y="80" width="38" height="48" rx="2" fill="#0E7AC4" opacity="0.2" stroke="#0E7AC4" stroke-width="1" stroke-dasharray="3,2"/></svg>
-        <div class="wo"><div class="wm"><strong>封筒印刷</strong><span>長形3号 社名入り</span><div class="wtap">詳しく見る →</div></div></div>
-        </div>
-      </div>
-      <div class="wc" onclick="openWork(4)">
-        <div class="wc-inner"><div class="wc-scanline"></div>
-        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="190" y="40" width="180" height="230" rx="5" fill="#fff" stroke="#0A5A93" stroke-width="1.5" opacity="0.75" transform="rotate(6,280,155)"/><rect x="150" y="50" width="180" height="230" rx="5" fill="#fff" stroke="#0E7AC4" stroke-width="1.5" opacity="0.95"/><g transform="translate(165,74)"><rect x="0" y="0" width="2" height="32" fill="#231F20"/><rect x="5" y="0" width="4" height="32" fill="#231F20"/><rect x="11" y="0" width="2" height="32" fill="#231F20"/><rect x="15" y="0" width="6" height="32" fill="#231F20"/><rect x="23" y="0" width="2" height="32" fill="#231F20"/><rect x="27" y="0" width="4" height="32" fill="#231F20"/><text x="0" y="46" font-size="8" fill="#231F20">1234567890</text></g><rect x="165" y="136" width="150" height="9" rx="2" fill="#0E7AC4" opacity="0.55"/><rect x="165" y="222" width="70" height="32" rx="4" fill="#0E7AC4" opacity="0.15"/><text x="200" y="242" text-anchor="middle" font-size="10" fill="#0E7AC4" font-weight="bold" font-family="sans-serif">可変印刷</text></svg>
-        <div class="wo"><div class="wm"><strong>可変印刷DM</strong><span>バリアブル 宛名差込</span><div class="wtap">詳しく見る →</div></div></div>
-        </div>
-      </div>
-      <div class="wc" onclick="openWork(5)">
-        <div class="wc-inner"><div class="wc-scanline"></div>
-        <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#E8F4FC"/><rect x="100" y="24" width="200" height="260" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="2"/><rect x="100" y="24" width="200" height="130" rx="7" fill="#0E7AC4" opacity="0.78"/><rect x="100" y="146" width="200" height="8" fill="#0E7AC4" opacity="0.78"/><circle cx="158" cy="89" r="38" fill="#00AEEF" opacity="0.55"/><circle cx="200" cy="89" r="38" fill="#EC008C" opacity="0.5"/><circle cx="242" cy="89" r="38" fill="#FFF200" opacity="0.45"/><rect x="118" y="170" width="164" height="13" rx="2" fill="#0E7AC4" opacity="0.5"/><rect x="118" y="232" width="90" height="26" rx="5" fill="#0E7AC4" opacity="0.72"/><text x="163" y="250" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold" font-family="sans-serif">詳しくはこちら</text></svg>
-        <div class="wo"><div class="wm"><strong>ポスター</strong><span>B1 イベント告知</span><div class="wtap">詳しく見る →</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WORK DETAIL OVERLAY -->
-<div class="wd-overlay" id="wdOverlay" onclick="closeWorkOvl(event)">
-  <div class="wd-box">
-    <div class="wd-hero" id="wdHero"><button class="wd-close" onclick="closeWork()" aria-label="閉じる">✕</button></div>
-    <div class="wd-body">
-      <div class="wd-cat" id="wdCat"></div>
-      <div class="wd-title" id="wdTitle"></div>
-      <div class="wd-desc" id="wdDesc"></div>
-      <div class="wd-specs" id="wdSpecs"></div>
-      <div class="wd-thumbs" id="wdThumbs"></div>
-      <a class="wd-cta" href="#" onclick="closeWork();openContact();return false">この印刷についてお問い合わせ</a>
-    </div>
-  </div>
-</div>
-
-<!-- WORK IMAGE LIGHTBOX -->
-<div class="wd-lightbox" id="wdLightbox" onclick="closeLightbox()">
-  <div class="wd-lightbox-inner" id="wdLightboxInner"></div>
-</div>
-
 <!-- COMPANY -->
 <section id="company">
   <div class="si">
@@ -981,7 +848,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
     <div class="footer-links">
       <a href="#services">サービス</a>
       <a href="#reasons">選ばれる理由</a>
-      <a href="#works">実績</a>
       <a href="#company">会社案内</a>
       <a href="#news">お知らせ</a>
       <a href="#" onclick="openContact();return false">お問い合わせ</a>
@@ -1073,60 +939,6 @@ function openSvc(i){
 }
 function closeSvc(){svOverlay.classList.remove('open');document.body.style.overflow='';}
 function closeSvcOvl(e){if(e.target===svOverlay)closeSvc();}
-
-/* WORKS DETAIL */
-const workData=[
-  {cat:'複写伝票',title:'受注管理用 3枚複写伝票',desc:'ノーカーボン紙を使用した3枚複写の受注伝票。上・中・下の3枚が1セットで、筆圧だけで複写されます。枚数・サイズ・罫線のレイアウトはすべてオーダーメイドで対応しています。小ロットから短納期で全国に発送可能です。',specs:[{k:'種別',v:'ノーカーボン複写'},{k:'枚数',v:'3枚複写'},{k:'納期',v:'最短3営業日〜'},{k:'ロット',v:'50部〜対応'}],svgIdx:0,thumbs:['<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="15" y="10" width="70" height="80" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="15" y="10" width="70" height="18" fill="#0E7AC4" opacity=".8"/><line x1="25" y1="38" x2="75" y2="38" stroke="#ccc" stroke-width="1"/><line x1="25" y1="50" x2="75" y2="50" stroke="#ccc" stroke-width="1"/><line x1="25" y1="62" x2="75" y2="62" stroke="#ccc" stroke-width="1"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="15" y="10" width="70" height="80" rx="2" fill="#fff" stroke="#0A5A93" stroke-width="1.5" opacity=".7"/><rect x="20" y="15" width="60" height="70" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="20" y="15" width="60" height="16" fill="#0E7AC4" opacity=".75"/><line x1="28" y1="40" x2="72" y2="40" stroke="#ccc" stroke-width="1"/><line x1="28" y1="52" x2="72" y2="52" stroke="#ccc" stroke-width="1"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="12" y="8" width="76" height="84" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="12" y="8" width="76" height="20" fill="#0E7AC4" opacity=".8"/><text x="50" y="23" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold" font-family="sans-serif">納品書</text><line x1="22" y1="42" x2="78" y2="42" stroke="#ccc" stroke-width="1"/><line x1="22" y1="55" x2="78" y2="55" stroke="#ccc" stroke-width="1"/><line x1="22" y1="68" x2="78" y2="68" stroke="#ccc" stroke-width="1"/><rect x="12" y="88" width="19" height="4" fill="#00AEEF"/><rect x="31" y="88" width="19" height="4" fill="#EC008C"/><rect x="50" y="88" width="19" height="4" fill="#FFF200"/><rect x="69" y="88" width="19" height="4" fill="#231F20" opacity=".7"/></svg>']},
-  {cat:'冊子・書籍',title:'自費出版 A5 / 120P',desc:'個人の詩集・句集・回想録など、100部からの自費出版に対応。企画・編集・組版から製本まで一貫して承ります。表紙デザインも制作チームがご提案します。',specs:[{k:'仕様',v:'A5 / 120ページ'},{k:'製本',v:'無線綴じ'},{k:'部数',v:'100部〜'},{k:'対応',v:'企画・編集・デザインも可'}],svgIdx:1,thumbs:['<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="28" y="12" width="44" height="76" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="28" y="12" width="8" height="76" fill="#0E7AC4" opacity=".3"/><rect x="40" y="28" width="28" height="9" rx="1" fill="#0E7AC4" opacity=".55"/><rect x="40" y="44" width="22" height="6" rx="1" fill="#ccc" opacity=".5"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="10" y="22" width="38" height="58" rx="2" fill="#fff" stroke="#0A5A93" stroke-width="1.2"/><rect x="52" y="22" width="38" height="58" rx="2" fill="#fff" stroke="#0A5A93" stroke-width="1.2"/><line x1="16" y1="36" x2="42" y2="36" stroke="#ccc" stroke-width="1"/><line x1="16" y1="48" x2="42" y2="48" stroke="#ccc" stroke-width="1"/><line x1="58" y1="36" x2="84" y2="36" stroke="#ccc" stroke-width="1"/><line x1="58" y1="48" x2="84" y2="48" stroke="#ccc" stroke-width="1"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="22" y="62" width="56" height="14" rx="2" fill="#0E7AC4" opacity=".25"/><rect x="26" y="48" width="48" height="14" rx="2" fill="#0E7AC4" opacity=".45"/><rect x="30" y="34" width="40" height="14" rx="2" fill="#0E7AC4" opacity=".75"/><rect x="34" y="20" width="32" height="14" rx="2" fill="#0A5A93"/></svg>']},
-  {cat:'デザイン・DTP',title:'A4チラシ フルカラー制作',desc:'店舗のオープン告知チラシ。企画・コピーライティング・デザインから印刷まで一括対応。CMYKのカラーマネジメントにも精通した制作チームが意図した色で仕上げます。',specs:[{k:'サイズ',v:'A4 両面'},{k:'カラー',v:'フルカラー（CMYK）'},{k:'納期',v:'デザイン込み10日〜'},{k:'備考',v:'企画・コピーも対応'}],svgIdx:2,thumbs:['<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="20" y="8" width="60" height="84" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="20" y="8" width="60" height="26" rx="2" fill="#0E7AC4" opacity=".82"/><text x="50" y="25" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold" font-family="sans-serif">OPEN</text><rect x="30" y="46" width="40" height="6" rx="1" fill="#ccc" opacity=".5"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><circle cx="38" cy="50" r="22" fill="#00AEEF" opacity=".6"/><circle cx="58" cy="50" r="22" fill="#EC008C" opacity=".55"/><circle cx="48" cy="66" r="22" fill="#FFF200" opacity=".5"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="14" y="14" width="72" height="72" rx="3" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="22" y="22" width="30" height="20" rx="2" fill="#0E7AC4" opacity=".18"/><rect x="56" y="22" width="22" height="20" rx="2" fill="#0A5A93" opacity=".14"/><rect x="22" y="50" width="56" height="6" rx="1" fill="#ccc" opacity=".5"/><rect x="22" y="62" width="40" height="6" rx="1" fill="#ccc" opacity=".4"/></svg>']},
-  {cat:'封筒印刷',title:'長形3号 社名・ロゴ入り封筒',desc:'企業の社名・ロゴを印刷したビジネス封筒。オフセット印刷で鮮やかな仕上がりに。窓付き・糊なし・のり付きなど各種仕様に対応します。',specs:[{k:'サイズ',v:'長形3号'},{k:'印刷',v:'1色〜フルカラー'},{k:'ロット',v:'500枚〜'},{k:'仕様',v:'窓付き・糊付き対応'}],svgIdx:3,thumbs:['<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="14" y="28" width="72" height="46" rx="3" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><path d="M14,28 L50,54 L86,28" fill="none" stroke="#0E7AC4" stroke-width="1.2"/><rect x="24" y="46" width="22" height="8" rx="1" fill="#0E7AC4" opacity=".18"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="14" y="28" width="72" height="46" rx="3" fill="#fff" stroke="#0A5A93" stroke-width="1.5"/><rect x="56" y="40" width="20" height="14" rx="1" fill="#0E7AC4" opacity=".15" stroke="#0E7AC4" stroke-width="1" stroke-dasharray="2,2"/><rect x="22" y="44" width="26" height="6" rx="1" fill="#ccc" opacity=".5"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="20" y="38" width="68" height="42" rx="3" fill="#fff" stroke="#0E7AC4" stroke-width="1" opacity=".55"/><rect x="14" y="32" width="68" height="42" rx="3" fill="#fff" stroke="#0E7AC4" stroke-width="1" opacity=".8"/><rect x="8" y="26" width="68" height="42" rx="3" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/></svg>']},
-  {cat:'可変印刷・DM',title:'バリアブルDM 宛名差込印刷',desc:'1枚ごとに宛名・番号・QRコードなどを変えて印刷するバリアブル印刷。DMの開封率・反応率向上に効果的です。住所リストをご用意いただければデータ処理から印刷まで対応します。',specs:[{k:'種別',v:'バリアブル印刷'},{k:'差込',v:'宛名・番号・QR・バーコード'},{k:'ロット',v:'100部〜'},{k:'備考',v:'データ処理・発送も相談可'}],svgIdx:4,thumbs:['<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="18" y="14" width="64" height="72" rx="3" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/><rect x="28" y="30" width="44" height="8" rx="1" fill="#0E7AC4" opacity=".55"/><rect x="28" y="64" width="20" height="10" rx="1" fill="#0E7AC4" opacity=".15"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="32" y="32" width="36" height="36" rx="2" fill="#fff" stroke="#231F20" stroke-width="1.5"/><rect x="38" y="38" width="8" height="8" fill="#231F20"/><rect x="54" y="38" width="8" height="8" fill="#231F20"/><rect x="38" y="54" width="8" height="8" fill="#231F20"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="16" y="38" width="20" height="24" fill="#231F20"/><rect x="40" y="38" width="4" height="24" fill="#231F20"/><rect x="48" y="38" width="8" height="24" fill="#231F20"/><rect x="60" y="38" width="4" height="24" fill="#231F20"/><rect x="68" y="38" width="16" height="24" fill="#231F20"/></svg>']},
-  {cat:'デザイン・DTP',title:'B1イベント告知ポスター',desc:'コンサート・展覧会・地域イベントなどの告知ポスター。視認性の高いデザインと印刷現場の知識を活かした配色・出力で目を引く仕上がりを実現します。',specs:[{k:'サイズ',v:'B1（1030×728mm）'},{k:'カラー',v:'フルカラー'},{k:'用紙',v:'コート135K'},{k:'備考',v:'小部数〜大部数対応'}],svgIdx:5,thumbs:['<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="22" y="8" width="56" height="84" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="2"/><rect x="22" y="8" width="56" height="36" rx="2" fill="#0E7AC4" opacity=".78"/><circle cx="40" cy="26" r="11" fill="#00AEEF" opacity=".6"/><circle cx="58" cy="26" r="11" fill="#EC008C" opacity=".55"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="30" y="60" width="40" height="30" fill="#0E7AC4" opacity=".15"/><rect x="44" y="20" width="12" height="64" fill="#0E7AC4" opacity=".5"/><rect x="20" y="74" width="60" height="6" fill="#0A5A93" opacity=".3"/></svg>','<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8F4FC"/><rect x="20" y="14" width="60" height="72" rx="2" fill="#fff" stroke="#0E7AC4" stroke-width="1.5" transform="rotate(-4,50,50)"/><rect x="28" y="22" width="44" height="14" rx="2" fill="#0E7AC4" opacity=".7" transform="rotate(-4,50,50)"/></svg>']},
-];
-const wdOverlay=document.getElementById('wdOverlay');
-const wdHero=document.getElementById('wdHero');
-function openWork(i){
-  const d=workData[i];
-  document.getElementById('wdCat').textContent=d.cat;
-  document.getElementById('wdTitle').textContent=d.title;
-  document.getElementById('wdDesc').textContent=d.desc;
-  document.getElementById('wdSpecs').innerHTML=d.specs.map(s=>`<div class="wd-spec"><div class="wd-sk">${s.k}</div><div class="wd-sv">${s.v}</div></div>`).join('');
-  const srcSvg=document.querySelectorAll('.wc svg')[i];
-  const ex=wdHero.querySelector('svg');if(ex)ex.remove();
-  if(srcSvg){const cl=srcSvg.cloneNode(true);cl.style.cssText='position:absolute;inset:0;width:100%;height:100%';wdHero.prepend(cl);}
-  const wdThumbs=document.getElementById('wdThumbs');
-  if(d.thumbs && d.thumbs.length){
-    wdThumbs.style.display='flex';
-    wdThumbs.innerHTML=d.thumbs.map((t,idx)=>`<div class="wd-thumb${idx===0?' active':''}" onclick="selectWdThumb(this)">${t}</div>`).join('');
-  }else{
-    wdThumbs.style.display='none';
-    wdThumbs.innerHTML='';
-  }
-  wdOverlay.classList.add('open');document.body.style.overflow='hidden';
-}
-function selectWdThumb(el){
-  el.parentNode.querySelectorAll('.wd-thumb').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  el.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
-  const svg=el.querySelector('svg');
-  if(svg)openLightbox(svg.outerHTML);
-}
-function closeWork(){wdOverlay.classList.remove('open');document.body.style.overflow='';}
-function closeWorkOvl(e){if(e.target===wdOverlay)closeWork();}
-
-/* WORK IMAGE LIGHTBOX */
-const wdLightbox=document.getElementById('wdLightbox');
-const wdLightboxInner=document.getElementById('wdLightboxInner');
-function openLightbox(svgHtml){
-  wdLightboxInner.innerHTML=svgHtml;
-  wdLightbox.classList.add('open');
-}
-function closeLightbox(){wdLightbox.classList.remove('open');}
-wdHero.addEventListener('click',(e)=>{
-  if(e.target.closest('.wd-close'))return;
-  const svg=wdHero.querySelector('svg');
-  if(svg)openLightbox(svg.outerHTML);
-});
 
 /* NEWS DETAIL */
 const newsData=[
