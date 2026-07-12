@@ -210,6 +210,22 @@ section{padding:76px 24px}
   .msg-pin-outer{display:block;height:300vh}
 }
 
+/* ── SERVICES ── */
+#services{background:var(--gray)}
+.svc-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+.svc-card{background:#fff;border:1px solid var(--gmid);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s ease,transform .2s ease}
+.svc-card:hover{box-shadow:0 14px 30px rgba(16,24,50,.12);transform:translateY(-3px)}
+.svc-thumb{height:132px;flex:none;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-d) 100%);display:flex;align-items:center;justify-content:center}
+.svc-thumb svg{width:44px;height:44px}
+.svc-body{padding:22px 18px 20px;flex:1;display:flex;flex-direction:column}
+.svc-title{font-size:16px;font-weight:800;margin:0 0 8px;word-break:keep-all}
+.svc-desc{font-size:13px;line-height:1.75;color:var(--sub);margin:0;flex:1;font-weight:500;word-break:keep-all;overflow-wrap:break-word}
+.svc-arrow{margin-top:16px;width:30px;height:30px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;align-self:flex-end;transition:background .15s ease}
+.svc-card:hover .svc-arrow{background:var(--blue-d)}
+.svc-arrow svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2}
+@media(min-width:600px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.svc-grid{grid-template-columns:repeat(5,1fr)}}
+
 /* ── REASONS ── */
 #reasons{background:var(--blue);color:#fff}
 .ws-wrap{margin-top:clamp(32px,4vw,56px)}
@@ -417,6 +433,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
   <path fill="#fff" d="M656.24,111.44h-255.24l-63.33,206.79s-63.34,1.86-141.59,1.86S26.56,409.51,26.56,510.11s78.24,106.19,78.24,106.19h305.51l18.65-72.65h-255.23s-55.9,0-55.9-54.04c0-74.51,67.08-89.42,67.08-89.42h130.41l-35.42,111.77h102.48l33.53-98.74h132.28s129.26-6.67,178.83-134.13c65.21-167.67-70.78-167.67-70.78-167.67ZM624.57,253.02c-19.93,79.79-70.79,81.97-70.79,81.97h-113.66l42.86-154.62h85.7s74.52-1.86,55.9,72.65Z"/>
 </svg></a>
     <nav class="desk">
+      <a class="nl" href="#services">サービス</a>
       <a class="nl" href="#reasons">強み</a>
       <div class="nd-wrap">
         <a class="nl" href="#company">会社案内</a>
@@ -439,6 +456,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 <!-- MOBILE NAV -->
 <nav id="mnav" aria-label="モバイルメニュー">
   <div class="mnav-links">
+    <a class="ml" href="#services" onclick="closeMnav()">サービス</a>
     <a class="ml" href="#reasons" onclick="closeMnav()">選ばれる理由</a>
     <!-- 会社案内 プルダウン -->
     <div class="ml-dropdown">
@@ -558,6 +576,55 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
           <div class="msg-pin-dots">
             <span class="dot on"></span><span class="dot"></span><span class="dot"></span>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="si">
+    <div class="rev"><div class="slb">SERVICES</div><h2 class="sh">課題に合わせて、最適なカタチを。</h2><p class="ss">複写伝票を根幹に、印刷・デザイン・DTP・XR事業まで。まずはお気軽にご相談ください。</p></div>
+    <div class="svc-grid rev">
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v3h3"/><path d="M9 11h6M9 15h6M9 19h3"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">複写伝票</h3>
+          <p class="svc-desc">納品書や請求書など、業務に欠かせない複写伝票を制作します。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="5" y="8" width="14" height="8" rx="1"/><path d="M7 8V4h10v4M7 16v4h10v-4"/><circle cx="16" cy="11" r="0.8" fill="#fff"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">デジタル印刷</h3>
+          <p class="svc-desc">小ロットや短納期にも対応するデジタル印刷でスピーディに制作します。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 20l3-1 10-10-2-2L5 17l-1 3z"/><path d="M13 5l2 2"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">デザイン・DTP</h3>
+          <p class="svc-desc">企画からデザイン・DTPまで、伝わる紙面づくりをサポートします。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">XR・デジタルコンテンツ事業</h3>
+          <p class="svc-desc">Webサイトやデジタルカタログなど企画・制作します。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3l2.5 5 5.5.7-4 3.9.9 5.4-4.9-2.6-4.9 2.6.9-5.4-4-3.9 5.5-.7z"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">創業支援パックサービス</h3>
+          <p class="svc-desc">創業に必要な名刺や印刷物をまとめてサポートするサービスです。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
       </div>
     </div>
@@ -758,6 +825,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
   <path fill="#fff" d="M656.24,111.44h-255.24l-63.33,206.79s-63.34,1.86-141.59,1.86S26.56,409.51,26.56,510.11s78.24,106.19,78.24,106.19h305.51l18.65-72.65h-255.23s-55.9,0-55.9-54.04c0-74.51,67.08-89.42,67.08-89.42h130.41l-35.42,111.77h102.48l33.53-98.74h132.28s129.26-6.67,178.83-134.13c65.21-167.67-70.78-167.67-70.78-167.67ZM624.57,253.02c-19.93,79.79-70.79,81.97-70.79,81.97h-113.66l42.86-154.62h85.7s74.52-1.86,55.9,72.65Z"/>
 </svg></div>
     <div class="footer-links">
+      <a href="#services">サービス</a>
       <a href="#reasons">選ばれる理由</a>
       <a href="#company">会社案内</a>
       <a href="#news">お知らせ</a>
