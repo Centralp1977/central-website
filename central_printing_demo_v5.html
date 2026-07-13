@@ -168,38 +168,49 @@ section{padding:76px 24px}
 #message{background:#fff}
 .msg-stripe{display:block;width:64px;height:4px;border-radius:2px;margin-bottom:18px;background:linear-gradient(90deg,#00AEEF 0 25%,#EC008C 25% 50%,#FFF200 50% 75%,#231F20 75% 100%)}
 .msg-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+.msg-body{order:2}
 .msg-body .ss{max-width:44em;margin-bottom:28px}
 .msg-link{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--blue);text-decoration:none}
 .msg-link .arrow{display:inline-block;transition:transform .25s ease}
 .msg-link:hover{color:var(--blue-d)}
 .msg-link:hover .arrow{transform:translateX(5px)}
-.msg-collage{display:none}
-.msg-tile{position:absolute;overflow:hidden;border-radius:8px;background:var(--gray);box-shadow:0 18px 40px rgba(16,24,50,.18)}
+.msg-collage{display:none;order:1}
+.msg-bg-charm{position:absolute;top:-13%;left:6%;width:52%;z-index:0;opacity:.95;pointer-events:none;user-select:none}
+.msg-tile{position:absolute;overflow:hidden;border-radius:8px;background:var(--gray);box-shadow:0 18px 40px rgba(16,24,50,.18);transition:transform .5s cubic-bezier(.2,.85,.25,1),box-shadow .5s ease}
 .msg-tile img{width:100%;height:100%;object-fit:cover;display:block}
+.msg-tile:hover{box-shadow:0 28px 58px rgba(16,24,50,.32);z-index:9}
 .msg-g0{top:-9%;left:12%;width:80%;height:54%;transform:rotate(-8deg);z-index:1}
 .msg-g1{top:0;left:0;width:57%;height:64%;transform:rotate(-3deg);z-index:3}
 .msg-g2{top:0;right:0;width:32%;height:92%;transform:rotate(2.5deg);z-index:2}
 .msg-g3{top:58%;left:0;width:23%;height:42%;transform:rotate(5deg);z-index:5}
 .msg-g4{top:50%;left:20%;width:23%;height:40%;transform:rotate(-5deg);z-index:6}
 .msg-g5{top:56%;left:40%;width:23%;height:42%;transform:rotate(3.5deg);z-index:4}
-.msg-mobile-list{display:flex;flex-direction:column;gap:20px;margin-top:8px}
+.msg-g0:hover{transform:rotate(-3deg) translateY(-10px) scale(1.03)}
+.msg-g1:hover{transform:rotate(-1deg) translateY(-10px) scale(1.035)}
+.msg-g2:hover{transform:rotate(1deg) translateY(-10px) scale(1.035)}
+.msg-g3:hover{transform:rotate(2deg) translateY(-10px) scale(1.07)}
+.msg-g4:hover{transform:rotate(-2deg) translateY(-10px) scale(1.07)}
+.msg-g5:hover{transform:rotate(1.5deg) translateY(-10px) scale(1.07)}
+.msg-mobile-list{display:flex;flex-direction:column;gap:20px;margin-top:8px;order:1}
 .msg-mobile-list .frame{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/3;background:var(--gray);box-shadow:0 8px 22px rgba(16,24,50,.12)}
 .msg-mobile-list .frame img{width:100%;height:100%;object-fit:cover;display:block}
 .msg-cap{font-size:13px;color:var(--sub);margin-top:8px;word-break:keep-all;overflow-wrap:break-word;text-align:center}
-.msg-pin-outer{display:none}
-.msg-pin-stage{position:sticky;top:var(--hh);height:calc(100vh - var(--hh));display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 0}
-.msg-pin-frame{position:relative;width:100%;max-width:504px;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:var(--gray);box-shadow:0 14px 34px rgba(20,30,60,.16)}
+.msg-pin-outer{display:none;order:1}
+.msg-pin-stage{position:sticky;top:var(--hh);height:calc(100vh - var(--hh));display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 0}
+.msg-pin-frame-wrap{position:relative;width:min(74%,420px,calc((100vh - var(--hh) - 110px) * 3 / 4 * .77))}
+.msg-pin-frame-wrap .msg-bg-charm{position:absolute;top:40%;left:50%;width:150%;transform:translate(-50%,-50%) scaleX(-1);z-index:0;opacity:.95;pointer-events:none;user-select:none}
+.msg-pin-frame{position:relative;z-index:1;width:100%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:var(--gray);box-shadow:0 14px 34px rgba(20,30,60,.16)}
 .msg-pin-sheet{position:absolute;inset:0;clip-path:inset(0 0 100% 0)}
 .msg-pin-sheet img{width:100%;height:100%;object-fit:cover;display:block}
 .msg-pin-scan{position:absolute;left:0;right:0;height:5px;top:0;opacity:0;pointer-events:none;transform:translateY(-50%);z-index:2;background:linear-gradient(90deg,#00AEEF,#EC008C,#FFF200,#00AEEF);background-size:200% 100%;box-shadow:0 0 12px 1px rgba(14,122,196,.55);animation:msgScanRun 1s linear infinite;transition:opacity .15s ease}
 .msg-pin-scan.on{opacity:1}
 @keyframes msgScanRun{0%{background-position:0% 0}100%{background-position:200% 0}}
-.msg-pin-stage .msg-cap{margin-top:18px;min-height:1.6em}
-.msg-pin-dots{display:flex;gap:6px;margin-top:12px}
+.msg-pin-stage .msg-cap{margin-top:16px;min-height:1.6em;font-size:16px;font-weight:700;color:var(--text)}
+.msg-pin-dots{display:flex;gap:8px;margin-top:14px}
 .msg-pin-dots .dot{width:7px;height:7px;border-radius:50%;background:rgba(26,43,60,.18);transition:background .25s}
 .msg-pin-dots .dot.on{background:var(--blue)}
 @media(min-width:1024px){
-  .msg-grid{grid-template-columns:1fr 1.4fr;gap:56px}
+  .msg-grid{grid-template-columns:1.4fr 1fr;gap:56px}
   .msg-collage{display:block;position:relative;aspect-ratio:16/13}
   .msg-mobile-list{display:none}
   .msg-pin-outer{display:none}
@@ -209,43 +220,21 @@ section{padding:76px 24px}
   .msg-pin-outer{display:block;height:300vh}
 }
 
-/* ── SERVICES 新晃社風 ── */
+/* ── SERVICES ── */
 #services{background:var(--gray)}
-/* カード型スライダー */
-./* ── SERVICES グリッドカード（WORKSと同スタイル） ── */
-#services{background:var(--gray)}
-.sg{display:flex;flex-direction:column;gap:0;margin-top:32px;width:100%}
-.sc{border-radius:0;overflow:hidden;background:#fff;height:200px;display:flex;flex-direction:row;cursor:pointer;transition:background .2s;border-bottom:1px solid rgba(14,122,196,.12)}
-.sc:hover{background:var(--blue-l)}
-.sc-visual{width:38%;flex-shrink:0;position:relative;overflow:hidden;background:var(--blue-l)}
-.sc-visual svg{position:absolute;inset:0;width:100%;height:100%}
-.sc-text{flex:1;display:flex;flex-direction:column;justify-content:center;padding:28px 36px}
-.sc-name{font-size:21px;font-weight:900;color:var(--blue);margin-bottom:10px;display:block}
-.sc-desc{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:16px;margin:0 0 16px}
-.sc-arrow{font-size:14px;font-weight:700;color:var(--cyan)}
-.wc-inner{position:absolute;inset:0}
-/* サービス詳細オーバーレイ */
-.sv-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.58);backdrop-filter:blur(5px);overflow-y:auto}
-.sv-overlay.open{display:block}
-.sv-box{background:#fff;max-width:780px;width:94%;margin:40px auto;border-radius:22px;overflow:hidden;animation:slideup .35s ease}
-.sv-header{min-height:240px;position:relative;display:flex;align-items:flex-end;padding:36px}
-.sv-header-bg{position:absolute;inset:0;background:var(--blue)}
-.sv-header-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,55,110,.88) 0%,rgba(14,90,160,.3) 60%,transparent 100%)}
-.sv-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.22);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;z-index:2}
-.sv-header-body{position:relative;z-index:2;color:#fff}
-.sv-h-verb{font-size:11px;letter-spacing:3px;font-weight:700;opacity:.8;margin-bottom:8px;text-transform:uppercase}
-.sv-h-icon{font-size:40px;margin-bottom:10px;display:block}
-.sv-h-name{font-size:28px;font-weight:900;margin-bottom:6px}
-.sv-h-desc{font-size:14px;opacity:.88;font-weight:500;line-height:1.65}
-.sv-body{padding:36px}
-.sv-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
-.sv-feat{background:var(--gray);border-radius:12px;padding:18px}
-.sv-feat-icon{font-size:22px;margin-bottom:8px}
-.sv-feat h4{font-size:14px;font-weight:800;margin-bottom:4px}
-.sv-feat p{font-size:13px;color:var(--sub);line-height:1.6;font-weight:500}
-.sv-cta{display:block;padding:17px;border-radius:12px;background:var(--blue);color:#fff;text-align:center;font-size:16px;font-weight:900;text-decoration:none;transition:background .15s}
-.sv-cta:hover{background:var(--blue-d)}
-@media(max-width:580px){.sv-features{grid-template-columns:1fr}}
+.svc-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+.svc-card{background:#fff;border:1px solid var(--gmid);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s ease,transform .2s ease}
+.svc-card:hover{box-shadow:0 14px 30px rgba(16,24,50,.12);transform:translateY(-3px)}
+.svc-thumb{height:132px;flex:none;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-d) 100%);display:flex;align-items:center;justify-content:center}
+.svc-thumb svg{width:44px;height:44px}
+.svc-body{padding:22px 18px 20px;flex:1;display:flex;flex-direction:column}
+.svc-title{font-size:16px;font-weight:800;margin:0 0 8px;word-break:keep-all}
+.svc-desc{font-size:13px;line-height:1.75;color:var(--sub);margin:0;flex:1;font-weight:500;word-break:keep-all;overflow-wrap:break-word}
+.svc-arrow{margin-top:16px;width:30px;height:30px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;align-self:flex-end;transition:background .15s ease}
+.svc-card:hover .svc-arrow{background:var(--blue-d)}
+.svc-arrow svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2}
+@media(min-width:600px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.svc-grid{grid-template-columns:repeat(5,1fr)}}
 
 /* ── REASONS ── */
 #reasons{background:var(--blue);color:#fff}
@@ -403,9 +392,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 }
 @media(max-width:580px){
   .rg,.wg{grid-template-columns:1fr}
-  .sc{height:auto;flex-direction:column}
-  .sc-visual{width:100%;height:150px;position:relative}
-  .sc-text{padding:20px 24px}
   .wd-specs{grid-template-columns:1fr}
   .h-btns{flex-direction:column}
   .hb{text-align:center}
@@ -457,15 +443,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
   <path fill="#fff" d="M656.24,111.44h-255.24l-63.33,206.79s-63.34,1.86-141.59,1.86S26.56,409.51,26.56,510.11s78.24,106.19,78.24,106.19h305.51l18.65-72.65h-255.23s-55.9,0-55.9-54.04c0-74.51,67.08-89.42,67.08-89.42h130.41l-35.42,111.77h102.48l33.53-98.74h132.28s129.26-6.67,178.83-134.13c65.21-167.67-70.78-167.67-70.78-167.67ZM624.57,253.02c-19.93,79.79-70.79,81.97-70.79,81.97h-113.66l42.86-154.62h85.7s74.52-1.86,55.9,72.65Z"/>
 </svg></a>
     <nav class="desk">
-      <div class="nd-wrap">
-        <a class="nl" href="#services">サービス</a>
-        <div class="nd">
-          <a href="#services" onclick="openSvc(0);return false">複写伝票</a>
-          <a href="#services" onclick="openSvc(2);return false">オンデマンド印刷</a>
-          <a href="#services" onclick="openSvc(1);return false">デザイン・DTP</a>
-          <a href="#services" onclick="openSvc(6);return false">XR事業</a>
-        </div>
-      </div>
+      <a class="nl" href="#services">サービス</a>
       <a class="nl" href="#reasons">強み</a>
       <div class="nd-wrap">
         <a class="nl" href="#company">会社案内</a>
@@ -488,19 +466,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 <!-- MOBILE NAV -->
 <nav id="mnav" aria-label="モバイルメニュー">
   <div class="mnav-links">
-    <!-- サービス プルダウン -->
-    <div class="ml-dropdown">
-      <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
-        サービス
-        <span class="ml-dd-arrow">▾</span>
-      </button>
-      <div class="ml-dd-items">
-        <a class="ml-dd-item" href="#services" onclick="closeMnav();openSvc(0);return false">複写伝票</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav();openSvc(2);return false">オンデマンド印刷</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav();openSvc(1);return false">デザイン・DTP</a>
-        <a class="ml-dd-item" href="#services" onclick="closeMnav();openSvc(6);return false">XR事業</a>
-      </div>
-    </div>
+    <a class="ml" href="#services" onclick="closeMnav()">サービス</a>
     <a class="ml" href="#reasons" onclick="closeMnav()">選ばれる理由</a>
     <!-- 会社案内 プルダウン -->
     <div class="ml-dropdown">
@@ -587,6 +553,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
         <a class="msg-link" href="company.html">私たちについてはこちら<span class="arrow">→</span></a>
       </div>
       <div class="msg-collage">
+        <img class="msg-bg-charm" src="message_bg_charm.png" alt="" loading="lazy">
         <div class="msg-tile msg-g0"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy"></div>
         <div class="msg-tile msg-g1"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy"></div>
         <div class="msg-tile msg-g2"><img src="DSCF1653.jpg" alt="冊子印刷の実績" loading="lazy"></div>
@@ -610,11 +577,14 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       </div>
       <div class="msg-pin-outer" id="msgPinOuter">
         <div class="msg-pin-stage">
-          <div class="msg-pin-frame">
-            <div class="msg-pin-sheet"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy"></div>
-            <div class="msg-pin-sheet"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy"></div>
-            <div class="msg-pin-sheet"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy"></div>
-            <div class="msg-pin-scan" id="msgPinScan"></div>
+          <div class="msg-pin-frame-wrap">
+            <img class="msg-bg-charm" src="message_bg_charm.png" alt="" loading="lazy">
+            <div class="msg-pin-frame">
+              <div class="msg-pin-sheet"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy"></div>
+              <div class="msg-pin-sheet"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy"></div>
+              <div class="msg-pin-sheet"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy"></div>
+              <div class="msg-pin-scan" id="msgPinScan"></div>
+            </div>
           </div>
           <p class="msg-cap" id="msgPinCap">一枚の紙に、想いを込めて。</p>
           <div class="msg-pin-dots">
@@ -629,124 +599,51 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 <!-- SERVICES -->
 <section id="services">
   <div class="si">
-    <div class="rev">
-      <div class="slb">SERVICES</div>
-      <h2 class="sh">サービス</h2>
-      <p class="ss">複写伝票を根幹に、印刷・デザイン・DTP・イベント企画・XR事業まで。まずはお気軽にご相談ください。</p>
+    <div class="rev"><div class="slb">SERVICES</div><h2 class="sh">課題に合わせて、最適なカタチを。</h2><p class="ss">複写伝票を根幹に、印刷・デザイン・DTP・XR事業まで。まずはお気軽にご相談ください。</p></div>
+    <div class="svc-grid rev">
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v3h3"/><path d="M9 11h6M9 15h6M9 19h3"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">複写伝票</h3>
+          <p class="svc-desc">納品書や請求書など、業務に欠かせない複写伝票を制作します。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="5" y="8" width="14" height="8" rx="1"/><path d="M7 8V4h10v4M7 16v4h10v-4"/><circle cx="16" cy="11" r="0.8" fill="#fff"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">デジタル印刷</h3>
+          <p class="svc-desc">小ロットや短納期にも対応するデジタル印刷でスピーディに制作します。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 20l3-1 10-10-2-2L5 17l-1 3z"/><path d="M13 5l2 2"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">デザイン・DTP</h3>
+          <p class="svc-desc">企画からデザイン・DTPまで、伝わる紙面づくりをサポートします。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">XR・デジタルコンテンツ事業</h3>
+          <p class="svc-desc">Webサイトやデジタルカタログなど企画・制作します。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3l2.5 5 5.5.7-4 3.9.9 5.4-4.9-2.6-4.9 2.6.9-5.4-4-3.9 5.5-.7z"/></svg></div>
+        <div class="svc-body">
+          <h3 class="svc-title">創業支援パックサービス</h3>
+          <p class="svc-desc">創業に必要な名刺や印刷物をまとめてサポートするサービスです。</p>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="sg">
-
-      <!-- 01 複写伝票 -->
-      <div class="sc" onclick="openSvc(0)">
-        <div class="sc-visual">
-          <svg viewBox="0 0 400 300" aria-hidden="true">
-            <rect width="400" height="300" fill="#E8F4FC"/>
-            <rect x="55" y="55" width="290" height="200" rx="5" fill="rgba(14,122,196,.12)" stroke="#0E7AC4" stroke-width="1" transform="rotate(3,200,155)"/>
-            <rect x="50" y="48" width="290" height="200" rx="5" fill="rgba(14,122,196,.18)" stroke="#0E7AC4" stroke-width="1" transform="rotate(1.5,200,148)"/>
-            <rect x="45" y="40" width="295" height="205" rx="5" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/>
-            <rect x="45" y="40" width="295" height="46" rx="5" fill="#0E7AC4" opacity=".82"/>
-            <text x="193" y="70" text-anchor="middle" font-size="15" fill="#fff" font-weight="bold" font-family="sans-serif">納　品　書</text>
-            <line x1="65" y1="108" x2="320" y2="108" stroke="#ccc" stroke-width="1"/><line x1="65" y1="130" x2="320" y2="130" stroke="#ccc" stroke-width="1"/><line x1="65" y1="152" x2="320" y2="152" stroke="#ccc" stroke-width="1"/><line x1="65" y1="174" x2="320" y2="174" stroke="#ccc" stroke-width="1"/><line x1="65" y1="196" x2="320" y2="196" stroke="#ccc" stroke-width="1"/>
-            <rect x="45" y="228" width="74" height="5" rx="1" fill="#00AEEF"/><rect x="120" y="228" width="74" height="5" rx="1" fill="#EC008C"/><rect x="195" y="228" width="74" height="5" rx="1" fill="#FFF200"/><rect x="270" y="228" width="70" height="5" rx="1" fill="#231F20" opacity=".7"/>
-          </svg>
-        </div>
-        <div class="sc-text">
-          <span class="sc-name">複写伝票</span>
-          <p class="sc-desc">セントラル印刷の得意な仕事。ベテラン営業が細かくフォロー<br>ノーカーボン複写・小ロット・短納期で全国対応</p>
-          <span class="sc-arrow">詳しく見る →</span>
-        </div>
-      </div>
-
-      <!-- 02 オンデマンド印刷 -->
-      <div class="sc" onclick="openSvc(2)">
-        <div class="sc-visual">
-          <svg viewBox="0 0 400 300" aria-hidden="true">
-            <rect width="400" height="300" fill="#E8F4FC"/>
-            <rect x="80" y="130" width="240" height="120" rx="10" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/>
-            <rect x="80" y="130" width="240" height="42" rx="10" fill="#0E7AC4" opacity=".75"/>
-            <rect x="100" y="164" width="200" height="7" rx="4" fill="rgba(255,255,255,.4)"/>
-            <circle cx="275" cy="149" r="6" fill="#00AEEF" opacity=".9"/><circle cx="292" cy="149" r="6" fill="#EC008C" opacity=".85"/><circle cx="309" cy="149" r="6" fill="#FFF200" opacity=".8"/>
-            <rect x="115" y="72" width="170" height="90" rx="3" fill="#fff" stroke="#0E7AC4" stroke-width="1.2"/>
-            <rect x="130" y="88" width="70" height="9" rx="2" fill="#0E7AC4" opacity=".55"/>
-            <rect x="130" y="104" width="120" height="7" rx="2" fill="#ccc" opacity=".55"/><rect x="130" y="118" width="100" height="7" rx="2" fill="#ccc" opacity=".45"/>
-            <rect x="110" y="54" width="170" height="30" rx="3" fill="rgba(255,255,255,.65)" stroke="#ccc" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="sc-text">
-          <span class="sc-name">オンデマンド印刷</span>
-          <p class="sc-desc">少部数×多品種×短納期。RICOH ProC設備でワンランク上の仕上がり<br>ホワイト・クリア・メタリックのスペシャルカラーにも対応</p>
-          <span class="sc-arrow">詳しく見る →</span>
-        </div>
-      </div>
-
-      <!-- 03 デザイン・DTP -->
-      <div class="sc" onclick="openSvc(1)">
-        <div class="sc-visual">
-          <svg viewBox="0 0 400 300" aria-hidden="true">
-            <rect width="400" height="300" fill="#E8F4FC"/>
-            <rect x="110" y="30" width="180" height="240" rx="7" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/>
-            <rect x="110" y="30" width="180" height="75" rx="7" fill="#0E7AC4" opacity=".82"/>
-            <rect x="110" y="97" width="180" height="8" fill="#0E7AC4" opacity=".82"/>
-            <circle cx="165" cy="68" r="28" fill="#00AEEF" opacity=".55"/><circle cx="197" cy="68" r="28" fill="#EC008C" opacity=".5"/><circle cx="229" cy="68" r="28" fill="#FFF200" opacity=".45"/>
-            <rect x="126" y="118" width="148" height="10" rx="2" fill="#0E7AC4" opacity=".55"/>
-            <rect x="126" y="136" width="120" height="8" rx="2" fill="#ccc" opacity=".5"/><rect x="126" y="151" width="136" height="8" rx="2" fill="#ccc" opacity=".45"/>
-            <rect x="126" y="178" width="100" height="30" rx="6" fill="#0E7AC4" opacity=".75"/>
-            <text x="176" y="198" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold" font-family="sans-serif">詳しくはこちら</text>
-          </svg>
-        </div>
-        <div class="sc-text">
-          <span class="sc-name">デザイン・DTP</span>
-          <p class="sc-desc">営業より制作スタッフが多い印刷会社。版組み・デザイン・イラストと個性豊かなメンバー揃い<br>会社ロゴ・チラシ・イベントポスターのデザインなど安心してお任せいただけます</p>
-          <span class="sc-arrow">詳しく見る →</span>
-        </div>
-      </div>
-      <!-- 04 XR事業 -->
-      <div class="sc" onclick="openSvc(6)">
-        <div class="sc-visual">
-          <svg viewBox="0 0 400 300" aria-hidden="true">
-            <rect width="400" height="300" fill="#E8F4FC"/>
-            <rect x="80" y="100" width="240" height="120" rx="24" fill="#fff" stroke="#0E7AC4" stroke-width="1.5"/>
-            <rect x="80" y="100" width="240" height="120" rx="24" fill="#0E7AC4" opacity=".08"/>
-            <ellipse cx="155" cy="160" rx="45" ry="30" fill="#0E7AC4" opacity=".18" stroke="#0E7AC4" stroke-width="1.5"/>
-            <ellipse cx="245" cy="160" rx="45" ry="30" fill="#0E7AC4" opacity=".18" stroke="#0E7AC4" stroke-width="1.5"/>
-            <rect x="196" y="145" width="8" height="30" rx="4" fill="#0E7AC4" opacity=".4"/>
-            <circle cx="155" cy="160" r="18" fill="#00AEEF" opacity=".55"/>
-            <circle cx="245" cy="160" r="18" fill="#0A5A93" opacity=".55"/>
-            <rect x="88" y="112" width="40" height="14" rx="7" fill="#0E7AC4" opacity=".6"/>
-            <rect x="272" y="112" width="40" height="14" rx="7" fill="#0E7AC4" opacity=".6"/>
-            <text x="200" y="240" text-anchor="middle" font-size="13" fill="#0E7AC4" font-weight="bold" font-family="sans-serif" opacity=".7">VR / AR / MR</text>
-          </svg>
-        </div>
-        <div class="sc-text">
-          <span class="sc-name">XR事業</span>
-          <p class="sc-desc">VR・AR・MRの技術を融合し、新しい体験を創り出す2023年設立の新事業部<br>印刷物だけでは伝わらない立体的なコンテンツ制作・教育や医療現場での活用をご提案</p>
-          <span class="sc-arrow">詳しく見る →</span>
-        </div>
-      </div>
-    </div><!-- /sg -->
 </section>
-
-<!-- SERVICE DETAIL OVERLAY -->
-<div class="sv-overlay" id="svOverlay" onclick="closeSvcOvl(event)">
-  <div class="sv-box">
-    <div class="sv-header">
-      <div class="sv-header-bg" id="svHeaderBg"></div>
-      <div class="sv-header-overlay"></div>
-      <button class="sv-close" onclick="closeSvc()" aria-label="閉じる">✕</button>
-      <div class="sv-header-body">
-        <div class="sv-h-verb" id="svVerb"></div>
-        <span class="sv-h-icon" id="svIcon"></span>
-        <div class="sv-h-name" id="svName"></div>
-        <div class="sv-h-desc" id="svDesc"></div>
-      </div>
-    </div>
-    <div class="sv-body">
-      <div class="sv-features" id="svFeatures"></div>
-      <a class="sv-cta" href="#" onclick="closeSvc();openContact();return false">このサービスについてお問い合わせ</a>
-    </div>
-  </div>
-</div>
 
 <!-- REASONS -->
 <section id="reasons">
@@ -983,15 +880,6 @@ window.addEventListener('load',()=>{
     /* hash付き遷移はローディングをスキップ */
     loading.classList.add('hide');
     document.body.style.overflow='';
-    /* #svc-N → サービスオーバーレイを自動オープン */
-    const m=hash.match(/^#svc-(\d+)$/);
-    if(m){
-      const svcId=parseInt(m[1],10);
-      requestAnimationFrame(()=>{
-        document.getElementById('services')?.scrollIntoView({behavior:'instant'});
-        openSvc(svcId);
-      });
-    }
   } else {
     setTimeout(()=>logo.classList.add('show'),150);
     setTimeout(()=>{loading.classList.add('hide');document.body.style.overflow='';},2000);
@@ -1011,30 +899,6 @@ function toggleMlDd(btn){
   btn.classList.toggle('open', open);
   btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
-
-/* SERVICE DETAIL */
-const svcData=[
-  {verb:'伝票をつくる',icon:'📋',name:'複写伝票',desc:'セントラル印刷の一番得意な仕事は事務系の複写伝票印刷です。印刷と製本加工の工場は毎日フル稼働。ネット通販では伝えるのが難しいノーカーボンの複写伝票も、ベテランの営業が細かくフォローします。ぜひご相談ください。',bg:'linear-gradient(135deg,#0A4F80,#0E7AC4 60%,#1a95e0)',features:[{icon:'📄',h:'ノーカーボン複写',p:'2〜5枚複写に対応。受注伝票・納品書・領収書など各種帳票を製作します。'},{icon:'🔢',h:'可変印刷・バリアブルDM',p:'宛名・番号・バーコードを1枚ごとに変えて印刷。DM効果を最大化します。'},{icon:'✉️',h:'封筒・厚紙・特殊紙',p:'長形・角形各種封筒や厚紙・特殊紙への印刷も承ります。'},{icon:'💬',h:'仕様未確定でもOK',p:'何部必要か分からない、サイズが決まっていないという段階でもお気軽にご相談ください。'}]},
-  {verb:'デザインする',icon:'🎨',name:'デザイン・DTP',desc:'実は営業部員より制作部員が多いセントラル印刷。得意分野も版組み、デザイン、イラストと個性豊かなメンバー揃い。会社ロゴ・チラシのレイアウト・イベントポスターのデザインなど、安心してお任せいただけます。',bg:'linear-gradient(135deg,#07406B,#0c6aab 55%,#0E7AC4)',features:[{icon:'🖊️',h:'ロゴ・CI・ブランディング',p:'会社・ブランドの顔となるロゴをゼロから設計します。'},{icon:'📰',h:'チラシ・ポスターデザイン',p:'目を引くビジュアルで訴求力の高い販促物を制作します。'},{icon:'📖',h:'冊子・カタログ組版',p:'DTPソフトを使った精度の高い組版・レイアウトを行います。'},{icon:'✏️',h:'イラスト制作',p:'オリジナルイラストやアイコン制作にも対応しています。'}]},
-  {verb:'印刷する',icon:'🖨️',name:'オンデマンド印刷',desc:'少部数×多品種×短納期はもう当たり前のオンデマンド印刷。セントラル印刷では厚紙印刷・ノーカーボン印刷・封筒印刷、さらにホワイト・クリア・メタリックといったスペシャルカラーまで対応するRICOH ProC7210・ProC5310を設備。ワンランク上の製品をお届けします。',bg:'linear-gradient(135deg,#0E7AC4,#0050A0 55%,#003A78)',features:[{icon:'📦',h:'1枚〜小ロット対応',p:'まとめ注文が難しい場合でも、1枚から印刷を承ります。'},{icon:'⚡',h:'短納期・スピード対応',p:'急ぎの案件にも柔軟に対応。お気軽にご相談ください。'},{icon:'✨',h:'特殊カラー印刷',p:'ホワイト・クリア・メタリックカラーなど通常では難しい色も対応。'},{icon:'🗂️',h:'多品種対応',p:'チラシ・名刺・ポスター・ポストカードなど多様な印刷物に対応します。'}]},
-  {verb:'つくる',icon:'📚',name:'冊子・書籍・自費出版',desc:'100部からの自費出版はオンデマンドで経費を抑えてご提案。箔押しや特殊装丁もご希望に沿って対応します。',bg:'linear-gradient(135deg,#0A5A93,#0E7AC4)',features:[{icon:'📗',h:'自費出版・リプリント',p:'詩集・句集・回想録など、100部〜の少部数出版に対応します。'},{icon:'🏅',h:'箔押し・特殊装丁',p:'金銀の箔押しや特殊な装丁で、特別感のある一冊に仕上げます。'},{icon:'✍️',h:'企画・編集・組版',p:'書き上がった原稿の編集・組版から製本まで一貫して対応します。'},{icon:'💰',h:'コスト最適化提案',p:'部数・仕様に応じた最適な印刷方式をご提案します。'}]},
-  {verb:'企画する',icon:'🎪',name:'イベント企画・制作',desc:'イベントの告知物から当日ツール一式まで、企画段階から印刷・製作まで一括サポートします。',bg:'linear-gradient(135deg,#084E8A,#0E7AC4)',features:[{icon:'📣',h:'フライヤー・ポスター',p:'イベント告知の紙面を、コンセプトからデザイン・印刷まで対応します。'},{icon:'📋',h:'プログラム・パンフレット',p:'当日配布するプログラムや冊子型パンフレットを制作します。'},{icon:'🚩',h:'バナー・のぼり制作',p:'会場で使うバナースタンドや、のぼり旗も対応します。'},{icon:'🎯',h:'企画・ディレクション',p:'何を作ればいいか分からない段階からご相談いただけます。'}]},
-  {verb:'Webをつくる',icon:'💻',name:'Webデザイン・制作',desc:'印刷物と連動したWebデザイン・制作にも対応。ブランドの統一感を保ちながら紙とWebから情報を届けます。',bg:'linear-gradient(135deg,#0c6aab,#0E7AC4 50%,#0A5A93)',features:[{icon:'📱',h:'レスポンシブ対応',p:'スマートフォン・タブレット・PCすべてで最適表示するサイトを制作します。'},{icon:'🏢',h:'コーポレートサイト',p:'会社の顔となるWebサイトをゼロから設計・制作します。'},{icon:'🔗',h:'印刷物とのブランド統合',p:'チラシ・名刺などの印刷物とデザインの統一感を持たせます。'},{icon:'🖼️',h:'SNS用バナー・素材',p:'Instagram・X・Noteなどで使えるSNS用の画像素材も制作します。'}]},
-  {verb:'XRで体験する',icon:'🥽',name:'XR事業',desc:'仮想現実(VR)、拡張現実(AR)、複合現実(MR)の技術を融合し、新しい体験を創り出すXR技術。2023年よりXR事業部を設立し、印刷物だけでは伝わらない立体的なコンテンツ制作のご提案をしています。一見印刷とはかけ離れた世界のようですが、実は親和性の高い分野でもあります。これから期待される教育や医療の現場での活用のお手伝いをいたします。',bg:'linear-gradient(135deg,#0A3D6B,#0E7AC4 55%,#00AEEF)',features:[{icon:'🥽',h:'VR（仮想現実）',p:'完全没入型の仮想空間を体験。展示会・内覧・教育コンテンツに活用できます。'},{icon:'📱',h:'AR（拡張現実）',p:'現実空間にデジタル情報を重ねる技術。チラシや名刺をARトリガーにした印刷連携も可能です。'},{icon:'🔮',h:'MR（複合現実）',p:'現実とデジタルを高度に融合。医療・製造・教育現場での活用をご提案します。'},{icon:'🖨️',h:'印刷×XRの連携',p:'印刷物と立体コンテンツを組み合わせた、セントラル印刷ならではのワンストップ提案が可能です。'}]},
-];
-const svOverlay=document.getElementById('svOverlay');
-function openSvc(i){
-  const d=svcData[i];
-  document.getElementById('svVerb').textContent=d.verb;
-  document.getElementById('svIcon').textContent=d.icon;
-  document.getElementById('svName').textContent=d.name;
-  document.getElementById('svDesc').textContent=d.desc;
-  document.getElementById('svHeaderBg').style.background=d.bg;
-  document.getElementById('svFeatures').innerHTML=d.features.map(f=>`<div class="sv-feat"><div class="sv-feat-icon">${f.icon}</div><h4>${f.h}</h4><p>${f.p}</p></div>`).join('');
-  svOverlay.classList.add('open');document.body.style.overflow='hidden';
-}
-function closeSvc(){svOverlay.classList.remove('open');document.body.style.overflow='';}
-function closeSvcOvl(e){if(e.target===svOverlay)closeSvc();}
 
 /* NEWS DETAIL */
 const newsData=[
