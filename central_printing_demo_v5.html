@@ -252,6 +252,15 @@ section{padding:76px 24px}
 .flow-step-desc{font-size:13px;line-height:1.8;color:rgba(255,255,255,0.65);margin:0;word-break:keep-all;overflow-wrap:break-word}
 @media(max-width:900px){.flow-steps{grid-template-columns:1fr;row-gap:32px}.flow-chevron{display:none}.flow-step{padding-right:0}}
 
+/* ── CTA ── */
+.cta{position:relative;width:100%;min-height:400px;background:url('cta-background.jpg') center/cover no-repeat;display:flex;align-items:center;box-sizing:border-box;padding:60px 80px}
+.cta-inner{max-width:640px}
+.cta-title{font-size:clamp(24px,3vw,38px);line-height:1.5;font-weight:700;color:#fff;margin:0 0 24px;word-break:keep-all;overflow-wrap:break-word}
+.cta-body{font-size:15px;line-height:1.9;color:rgba(255,255,255,.85);margin:0 0 36px;word-break:keep-all;overflow-wrap:break-word}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;font-size:16px;font-weight:600;padding:16px 32px;border-radius:4px;text-decoration:none;transition:background .2s}
+.cta-btn:hover{background:var(--blue-d);color:#fff}
+@media(max-width:900px){.cta{padding:48px 24px;min-height:340px}.cta-inner{max-width:100%}}
+
 /* ── NEWS ── */
 #news{background:#fff}
 .nlist{margin-top:24px}
@@ -657,6 +666,15 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
         <p class="flow-step-desc">厳しい品質チェックのもと、丁寧に納品します。</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <h2 class="cta-title">アイデアを、カタチに。<br>未来を、いっしょに。</h2>
+    <p class="cta-body">セントラル印刷は、企画・デザインから印刷・加工・納品まで、<br>お客様の想いをカタチにするパートナーです。</p>
+    <a class="cta-btn" href="#" onclick="openContact();return false">お問い合わせ <span>→</span></a>
   </div>
 </section>
 
