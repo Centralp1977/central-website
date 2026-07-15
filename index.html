@@ -148,12 +148,13 @@ nav.desk{display:flex;align-items:center;gap:4px}
 @media(max-width:860px){
   #hero{flex-direction:column}
   .hero-body{flex:none;width:100%;min-width:0;padding:88px 24px 24px}
-  .hero-illus{flex:none;width:100%;min-width:0;padding:32px 16px 56px}
+  .h-btns{margin-bottom:15px}
+  .hero-illus{flex:none;width:100%;min-width:0;padding:32px 16px 32px}
   .hero-illus-inner{max-width:none;width:120%;margin-left:-10%}
 }
 @media(max-width:600px){
   .hero-body{padding:80px 20px 16px}
-  .hero-illus{padding:24px 10px 40px}
+  .hero-illus{padding:24px 10px 24px}
   .hero-illus-caption{font-size:16px}
   .hero-dot{width:3.2cqw;height:3.2cqw;min-width:12px;min-height:12px}
 }
@@ -166,16 +167,16 @@ section{padding:76px 24px}
 
 /* ── MESSAGE ── */
 #message{background:#fff}
-.msg-stripe{display:block;width:64px;height:4px;border-radius:2px;margin-bottom:18px;background:linear-gradient(90deg,#00AEEF 0 25%,#EC008C 25% 50%,#FFF200 50% 75%,#231F20 75% 100%)}
+.msg-stripe{display:block;width:64px;height:4px;border-radius:2px;margin:0 auto 18px;background:linear-gradient(90deg,#00AEEF 0 25%,#EC008C 25% 50%,#FFF200 50% 75%,#231F20 75% 100%)}
 .msg-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
-.msg-body{order:2}
-.msg-body .ss{max-width:44em;margin-bottom:28px}
+.msg-body{order:2;position:relative;z-index:0;text-align:center}
+.msg-body .ss{max-width:44em;margin:0 auto 28px}
 .msg-link{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--blue);text-decoration:none}
 .msg-link .arrow{display:inline-block;transition:transform .25s ease}
 .msg-link:hover{color:var(--blue-d)}
 .msg-link:hover .arrow{transform:translateX(5px)}
 .msg-collage{display:none;order:1}
-.msg-bg-charm{position:absolute;top:-13%;left:6%;width:52%;z-index:0;opacity:.95;pointer-events:none;user-select:none}
+.msg-bg-charm{position:absolute;z-index:0;opacity:.95;pointer-events:none;user-select:none}
 .msg-tile{position:absolute;overflow:hidden;border-radius:8px;background:var(--gray);box-shadow:0 18px 40px rgba(16,24,50,.18);transition:transform .5s cubic-bezier(.2,.85,.25,1),box-shadow .5s ease}
 .msg-tile img{width:100%;height:100%;object-fit:cover;display:block}
 .msg-tile:hover{box-shadow:0 28px 58px rgba(16,24,50,.32);z-index:9}
@@ -197,7 +198,7 @@ section{padding:76px 24px}
 .msg-cap{font-size:13px;color:var(--sub);margin-top:8px;word-break:keep-all;overflow-wrap:break-word;text-align:center}
 .msg-pin-outer{display:none;order:1}
 .msg-pin-stage{position:sticky;top:var(--hh);height:calc(100vh - var(--hh));display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 0}
-.msg-pin-frame-wrap{position:relative;width:min(74%,420px,calc((100vh - var(--hh) - 110px) * 3 / 4 * .77))}
+.msg-pin-frame-wrap{position:relative;width:min(85.1%,483px,calc((100vh - var(--hh) - 110px) * 3 / 4 * .8855))}
 .msg-pin-frame-wrap .msg-bg-charm{position:absolute;top:40%;left:50%;width:150%;transform:translate(-50%,-50%) scaleX(-1);z-index:0;opacity:.95;pointer-events:none;user-select:none}
 .msg-pin-frame{position:relative;z-index:1;width:100%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:var(--gray);box-shadow:0 14px 34px rgba(20,30,60,.16)}
 .msg-pin-sheet{position:absolute;inset:0;clip-path:inset(0 0 100% 0)}
@@ -214,6 +215,9 @@ section{padding:76px 24px}
   .msg-collage{display:block;position:relative;aspect-ratio:16/13}
   .msg-mobile-list{display:none}
   .msg-pin-outer{display:none}
+  .msg-body{text-align:left}
+  .msg-body .ss{margin:0 0 28px}
+  .msg-stripe{margin:0 0 18px}
 }
 @media(max-width:1023px) and (prefers-reduced-motion:no-preference){
   .msg-mobile-list{display:none}
@@ -263,13 +267,22 @@ section{padding:76px 24px}
 
 /* ── NEWS ── */
 #news{background:#fff}
+.news-grid{display:flex;align-items:flex-start;gap:48px}
+.news-left{flex:1 1 55%;min-width:0}
+.news-photos{flex:1 1 40%;min-width:0;display:flex;gap:12px;margin-top:56px}
+.news-photos img{flex:1 1 0;min-width:0;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block}
 .nlist{margin-top:24px}
 .ni{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--gmid);cursor:pointer;transition:background .15s}
 .ni:hover{background:var(--gray);margin:0 -8px;padding:16px 8px}
 .nd{color:var(--sub);font-size:13px;white-space:nowrap;font-weight:700}
 .ncat{padding:3px 10px;border-radius:5px;font-size:11px;font-weight:800;background:var(--blue-l);color:var(--blue);white-space:nowrap}
+.ncat--company{background:var(--yel);color:var(--blk)}
+.ncat--president{background:var(--blue);color:#fff}
+.ncat--event{background:var(--mag);color:#fff}
+.ncat--sponsor{background:var(--blk);color:#fff}
 .n-title{font-size:15px;font-weight:600;flex:1}
 .n-arrow{color:var(--sub);font-size:14px;flex-shrink:0}
+@media(max-width:900px){.news-grid{flex-direction:column;align-items:stretch}.news-photos{margin-top:0}}
 
 /* ── NEWS DETAIL OVERLAY ── */
 .nd-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);overflow-y:auto}
@@ -510,7 +523,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 <section id="message">
   <div class="si">
     <div class="msg-grid">
-      <div class="msg-body">
+      <div class="msg-body rev">
         <span class="msg-stripe"></span>
         <div class="slb">MESSAGE</div>
         <h2 class="sh">お客様のお客様に向けて</h2>
@@ -518,7 +531,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
         <a class="msg-link" href="company.html">私たちについてはこちら<span class="arrow">→</span></a>
       </div>
       <div class="msg-collage">
-        <img class="msg-bg-charm" src="message_bg_charm.png" alt="" loading="lazy">
         <div class="msg-tile msg-g0"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy"></div>
         <div class="msg-tile msg-g1"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy"></div>
         <div class="msg-tile msg-g2"><img src="DSCF1653.jpg" alt="冊子印刷の実績" loading="lazy"></div>
@@ -648,12 +660,23 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 <!-- NEWS -->
 <section id="news">
   <div class="si">
-    <div class="rev"><div class="slb">NEWS</div><h2 class="sh">お知らせ</h2></div>
-    <div class="nlist rev">
-      <div class="ni" onclick="openNews(0)"><span class="nd">2026.06.10</span><span class="ncat">お知らせ</span><span class="n-title">ウェブサイトをリニューアルしました</span><span class="n-arrow">›</span></div>
-      <div class="ni" onclick="openNews(1)"><span class="nd">2026.05.20</span><span class="ncat">実績</span><span class="n-title">冊子印刷の制作事例を追加しました</span><span class="n-arrow">›</span></div>
-      <div class="ni" onclick="openNews(2)"><span class="nd">2026.04.15</span><span class="ncat">複写伝票</span><span class="n-title">複写伝票の小ロット対応プランを開始しました</span><span class="n-arrow">›</span></div>
-      <div class="ni" onclick="openNews(3)"><span class="nd">2026.03.01</span><span class="ncat">お知らせ</span><span class="n-title">2026年度の営業スケジュールを公開しました</span><span class="n-arrow">›</span></div>
+    <div class="news-grid">
+      <div class="news-left">
+        <div class="rev"><div class="slb">NEWS</div><h2 class="sh">お知らせ</h2></div>
+        <div class="nlist rev">
+          <div class="ni" onclick="openNews(0)"><span class="nd">2026.07.15</span><span class="ncat ncat--president">社長活動</span><span class="n-title">代表取締役社長が中小企業経営者向けセミナーで登壇しました</span><span class="n-arrow">›</span></div>
+          <div class="ni" onclick="openNews(1)"><span class="nd">2026.07.05</span><span class="ncat ncat--event">イベント</span><span class="n-title">「メディア総合展2026」に出展します</span><span class="n-arrow">›</span></div>
+          <div class="ni" onclick="openNews(2)"><span class="nd">2026.06.10</span><span class="ncat ncat--company">会社情報</span><span class="n-title">ウェブサイトをリニューアルしました</span><span class="n-arrow">›</span></div>
+          <div class="ni" onclick="openNews(3)"><span class="nd">2026.05.20</span><span class="ncat ncat--company">会社情報</span><span class="n-title">冊子印刷の制作事例を追加しました</span><span class="n-arrow">›</span></div>
+          <div class="ni" onclick="openNews(4)"><span class="nd">2026.04.15</span><span class="ncat ncat--company">会社情報</span><span class="n-title">複写伝票の小ロット対応プランを開始しました</span><span class="n-arrow">›</span></div>
+          <div class="ni" onclick="openNews(5)"><span class="nd">2026.03.01</span><span class="ncat ncat--company">会社情報</span><span class="n-title">2026年度の営業スケジュールを公開しました</span><span class="n-arrow">›</span></div>
+        </div>
+      </div>
+      <div class="news-photos rev">
+        <img src="AdobeStock_164729175.jpeg" alt="冊子印刷のイメージ" loading="lazy">
+        <img src="AdobeStock_329631163.jpeg" alt="製本ページのイメージ" loading="lazy">
+        <img src="AdobeStock_658378139.jpeg" alt="製本仕上がりのイメージ" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -819,15 +842,19 @@ function toggleMlDd(btn){
 
 /* NEWS DETAIL */
 const newsData=[
-  {cat:'お知らせ',date:'2026年6月10日',title:'ウェブサイトをリニューアルしました',body:`<p>この度、セントラル印刷株式会社の公式ウェブサイトをリニューアルいたしました。</p><p>より使いやすく、より分かりやすいサイトを目指し、デザインから構成まで全面的に見直しを行いました。</p><h3>主な変更点</h3><p>・スマートフォンでの閲覧に対応したレスポンシブデザインを採用しました。<br>・サービス内容をより詳しくご紹介するページを新設しました。<br>・制作実績のギャラリーを新たに追加しました。</p><p>今後も随時コンテンツを更新してまいります。引き続きよろしくお願いいたします。</p>`},
-  {cat:'実績',date:'2026年5月20日',title:'冊子印刷の制作事例を追加しました',body:`<div class="nd-img-ph">📚 冊子制作事例の画像（準備中）</div><p>このたび、制作実績ページに冊子・自費出版の制作事例を新たに追加いたしました。</p><p>個人の詩集・回想録から、企業のカタログ・社史まで、幅広い冊子印刷の実績をご覧いただけます。</p><h3>対応可能な冊子の種類</h3><p>・詩集・句集・歌集<br>・回想録・自叙伝<br>・同人誌・写真集<br>・企業カタログ・記念誌<br>・研究論文集・報告書</p><p>100部からの小部数に対応しており、オンデマンド印刷で経費を抑えた制作が可能です。</p>`},
-  {cat:'複写伝票',date:'2026年4月15日',title:'複写伝票の小ロット対応プランを開始しました',body:`<p>この度、複写伝票の小ロット対応プランを新たに開始いたしました。</p><p>これまで最低ロット数のご要望をいただいておりましたが、より多くのお客様にご利用いただけるよう、少部数からの対応を開始いたします。</p><h3>小ロットプランの概要</h3><p>・最小ロット：50部〜<br>・対応サイズ：B6〜A4（それ以外はご相談）<br>・複写枚数：2枚〜5枚<br>・納期：受注後3営業日〜（仕様によって異なります）</p><p>まずはお気軽にご相談ください。仕様が未確定でもお見積りいたします。</p>`},
-  {cat:'お知らせ',date:'2026年3月1日',title:'2026年度の営業スケジュールを公開しました',body:`<p>2026年度（令和8年度）の営業スケジュールを公開いたしました。</p><p>年末年始・夏季休業・その他の休業予定は以下の通りです。</p><h3>2026年度 主な休業日</h3><p>・ゴールデンウィーク：2026年5月3日（日）〜6日（水）<br>・夏季休業：2026年8月13日（木）〜16日（日）<br>・年末年始：2026年12月28日（月）〜2027年1月4日（日）</p><p>休業期間中のお問い合わせは、メールにて受け付けております。返信は翌営業日以降となりますのでご了承ください。</p>`},
+  {cat:'社長活動',catClass:'ncat--president',date:'2026年7月15日',title:'代表取締役社長が中小企業経営者向けセミナーで登壇しました',body:`<p>この度、代表取締役社長が文京区商工会主催の中小企業経営者向けセミナーに登壇し、「印刷業界における事業承継とDX推進」をテーマに講演を行いました。</p><p>創業からの歩みや、伝統的な印刷技術とデジタル技術を融合させた事業展開について、実例を交えながらお話しいたしました。</p><h3>講演内容（抜粋）</h3><p>・老舗印刷会社の事業承継における課題と対応<br>・XR事業など新規事業への挑戦<br>・地域企業との連携の重要性</p><p>今後も地域の発展に貢献できるよう、積極的に活動してまいります。</p>`},
+  {cat:'イベント',catClass:'ncat--event',date:'2026年7月5日',title:'「メディア総合展2026」に出展します',body:`<p>この度、東京ビッグサイトで開催される「メディア総合展2026」に出展いたします。</p><p>会場では、最新の印刷サンプルやデジタルブックのデモンストレーションをご覧いただけます。</p><h3>開催概要</h3><p>・会期：2026年8月19日（水）〜21日（金）<br>・会場：東京ビッグサイト　西展示棟<br>・小間番号：後日ご案内いたします</p><p>皆様のご来場を心よりお待ちしております。</p>`},
+  {cat:'会社情報',catClass:'ncat--company',date:'2026年6月10日',title:'ウェブサイトをリニューアルしました',body:`<p>この度、セントラル印刷株式会社の公式ウェブサイトをリニューアルいたしました。</p><p>より使いやすく、より分かりやすいサイトを目指し、デザインから構成まで全面的に見直しを行いました。</p><h3>主な変更点</h3><p>・スマートフォンでの閲覧に対応したレスポンシブデザインを採用しました。<br>・サービス内容をより詳しくご紹介するページを新設しました。<br>・制作実績のギャラリーを新たに追加しました。</p><p>今後も随時コンテンツを更新してまいります。引き続きよろしくお願いいたします。</p>`},
+  {cat:'会社情報',catClass:'ncat--company',date:'2026年5月20日',title:'冊子印刷の制作事例を追加しました',body:`<div class="nd-img-ph">📚 冊子制作事例の画像（準備中）</div><p>このたび、制作実績ページに冊子・自費出版の制作事例を新たに追加いたしました。</p><p>個人の詩集・回想録から、企業のカタログ・社史まで、幅広い冊子印刷の実績をご覧いただけます。</p><h3>対応可能な冊子の種類</h3><p>・詩集・句集・歌集<br>・回想録・自叙伝<br>・同人誌・写真集<br>・企業カタログ・記念誌<br>・研究論文集・報告書</p><p>100部からの小部数に対応しており、オンデマンド印刷で経費を抑えた制作が可能です。</p>`},
+  {cat:'会社情報',catClass:'ncat--company',date:'2026年4月15日',title:'複写伝票の小ロット対応プランを開始しました',body:`<p>この度、複写伝票の小ロット対応プランを新たに開始いたしました。</p><p>これまで最低ロット数のご要望をいただいておりましたが、より多くのお客様にご利用いただけるよう、少部数からの対応を開始いたします。</p><h3>小ロットプランの概要</h3><p>・最小ロット：50部〜<br>・対応サイズ：B6〜A4（それ以外はご相談）<br>・複写枚数：2枚〜5枚<br>・納期：受注後3営業日〜（仕様によって異なります）</p><p>まずはお気軽にご相談ください。仕様が未確定でもお見積りいたします。</p>`},
+  {cat:'会社情報',catClass:'ncat--company',date:'2026年3月1日',title:'2026年度の営業スケジュールを公開しました',body:`<p>2026年度（令和8年度）の営業スケジュールを公開いたしました。</p><p>年末年始・夏季休業・その他の休業予定は以下の通りです。</p><h3>2026年度 主な休業日</h3><p>・ゴールデンウィーク：2026年5月3日（日）〜6日（水）<br>・夏季休業：2026年8月13日（木）〜16日（日）<br>・年末年始：2026年12月28日（月）〜2027年1月4日（日）</p><p>休業期間中のお問い合わせは、メールにて受け付けております。返信は翌営業日以降となりますのでご了承ください。</p>`},
 ];
 const ndOverlay=document.getElementById('ndOverlay');
 function openNews(i){
   const d=newsData[i];
-  document.getElementById('ndCat').textContent=d.cat;
+  const ndCat=document.getElementById('ndCat');
+  ndCat.textContent=d.cat;
+  ndCat.className='ncat '+d.catClass;
   document.getElementById('ndDate').textContent=d.date;
   document.getElementById('ndTitle').textContent=d.title;
   document.getElementById('ndBody').innerHTML=d.body;
