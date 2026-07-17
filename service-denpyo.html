@@ -98,12 +98,6 @@ nav.desk{display:flex;align-items:center;gap:4px}
   .feat-card:nth-child(n+2){border-top:1px solid var(--gmid);padding-top:24px}
 }
 
-/* ── GALLERY ── */
-.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
-.gal-item{border-radius:10px;overflow:hidden;aspect-ratio:4/3;border:1px solid var(--gmid)}
-.gal-item img{width:100%;height:100%;object-fit:cover;display:block}
-@media(max-width:860px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
-
 /* ── CTA (index.html と共通デザイン) ── */
 .cta{position:relative;width:100%;min-height:400px;background:url('cta-background.jpg') center/cover no-repeat;display:flex;align-items:center;box-sizing:border-box;padding:60px 80px}
 .cta::before{content:'';position:absolute;inset:0;background:rgba(10,42,74,.15)}
@@ -284,20 +278,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
         <h3>仕様未確定でもOK</h3>
         <p>何部必要か分からない、サイズが決まっていないという段階でもお気軽にご相談ください。</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 制作事例 -->
-<section class="sec sec-gray" id="gallery">
-  <div class="si">
-    <div class="slb">WORKS</div>
-    <h2 class="sh">制作事例</h2>
-    <div class="gal-grid">
-      <div class="gal-item"><img src="work-denpyo-1.jpg" alt="複写伝票の制作事例（受注・発注書、領収書控など）"></div>
-      <div class="gal-item"><img src="work-denpyo-2.jpg" alt="複写伝票の制作事例（受注・発注書）"></div>
-      <div class="gal-item"><img src="work-denpyo-3.jpg" alt="複写伝票の制作事例（診療情報提供書）"></div>
-      <div class="gal-item"><img src="work-denpyo-4.jpg" alt="複写伝票の制作事例（点検・修理依頼書）"></div>
     </div>
   </div>
 </section>
