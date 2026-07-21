@@ -837,9 +837,10 @@ document.body.style.overflow='hidden';
 window.addEventListener('load',()=>{
   const logo=document.getElementById('ldlogo');
   const loading=document.getElementById('loading');
-  const hash=location.hash;
-  if(hash){
-    /* hash付き遷移はローディングをスキップ */
+  const navEntry=performance.getEntriesByType('navigation')[0];
+  const isReload=navEntry?navEntry.type==='reload':(performance.navigation&&performance.navigation.type===1);
+  if(!isReload){
+    /* リロード以外（他ページからの遷移など）はローディングをスキップ */
     loading.classList.add('hide');
     document.body.style.overflow='';
   } else {
