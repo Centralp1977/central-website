@@ -421,7 +421,16 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
   <path fill="#fff" d="M656.24,111.44h-255.24l-63.33,206.79s-63.34,1.86-141.59,1.86S26.56,409.51,26.56,510.11s78.24,106.19,78.24,106.19h305.51l18.65-72.65h-255.23s-55.9,0-55.9-54.04c0-74.51,67.08-89.42,67.08-89.42h130.41l-35.42,111.77h102.48l33.53-98.74h132.28s129.26-6.67,178.83-134.13c65.21-167.67-70.78-167.67-70.78-167.67ZM624.57,253.02c-19.93,79.79-70.79,81.97-70.79,81.97h-113.66l42.86-154.62h85.7s74.52-1.86,55.9,72.65Z"/>
 </svg></a>
     <nav class="desk">
-      <a class="nl" href="#services">サービス</a>
+      <div class="nd-wrap">
+        <a class="nl" href="#services">サービス</a>
+        <div class="nd">
+          <a href="service-denpyo.html">複写伝票</a>
+          <a href="service-digital.html">デジタル印刷</a>
+          <a href="service-design.html">デザイン・DTP</a>
+          <a href="service-xr.html">XR・デジタルコンテンツ事業</a>
+          <a href="service-kaiin.html">開院支援パック</a>
+        </div>
+      </div>
       <a class="nl" href="#flow">制作の流れ</a>
       <div class="nd-wrap">
         <a class="nl" href="company.html">会社案内</a>
@@ -444,7 +453,20 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 <!-- MOBILE NAV -->
 <nav id="mnav" aria-label="モバイルメニュー">
   <div class="mnav-links">
-    <a class="ml" href="#services" onclick="closeMnav()">サービス</a>
+    <!-- サービス プルダウン -->
+    <div class="ml-dropdown">
+      <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
+        サービス
+        <span class="ml-dd-arrow">▾</span>
+      </button>
+      <div class="ml-dd-items">
+        <a class="ml-dd-item" href="service-denpyo.html" onclick="closeMnav()">複写伝票</a>
+        <a class="ml-dd-item" href="service-digital.html" onclick="closeMnav()">デジタル印刷</a>
+        <a class="ml-dd-item" href="service-design.html" onclick="closeMnav()">デザイン・DTP</a>
+        <a class="ml-dd-item" href="service-xr.html" onclick="closeMnav()">XR・デジタルコンテンツ事業</a>
+        <a class="ml-dd-item" href="service-kaiin.html" onclick="closeMnav()">開院支援パック</a>
+      </div>
+    </div>
     <a class="ml" href="#flow" onclick="closeMnav()">制作の流れ</a>
     <!-- 会社案内 プルダウン -->
     <div class="ml-dropdown">
