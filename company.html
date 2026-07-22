@@ -124,7 +124,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 @media(min-width:601px) and (max-width:900px){.page-hero{padding-bottom:200px}#illust-stage{gap:12px;padding:0 12px}.illust-char img{width:85px;height:auto}}
 
 /* PRESIDENT MESSAGE */
-#message{position:relative;background:var(--blue);background-image:url('top_image_1.png');background-size:cover;background-position:center}
+#message{position:relative;background:var(--blue);background-image:url('top_image_1.jpg');background-size:cover;background-position:center}
 #message::before{content:'';position:absolute;inset:0;background:rgba(14,122,196,.6);z-index:0}
 #message>.si{position:relative;z-index:1}
 #message .slb{color:rgba(255,255,255,.75)}
@@ -143,7 +143,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .pres-name-block{padding-top:16px;text-align:center}
 .pres-name-block h3{font-size:15px;font-weight:900;color:var(--text);margin-bottom:4px}
 .pres-name-block p{font-size:12px;color:var(--sub)}
-@media(max-width:700px){.pres-card{flex-direction:column;align-items:stretch}.pres-photo-col{width:100%;padding:0 20px 20px}.pres-photo-col img{height:auto;object-fit:contain;object-position:top}.pres-card-body{padding:24px 20px}}
+@media(max-width:700px){.pres-card{flex-direction:column;align-items:stretch}.pres-photo-col{width:100%;padding:0 20px 20px;align-items:center}.pres-photo-col img{width:36%;height:auto;object-fit:contain;object-position:top;margin:0 auto}.pres-card-body{padding:24px 20px}}
 
 /* ACTIVITIES fade-in */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -166,11 +166,9 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .csr-item-text h4 a:hover{text-decoration:underline;background:#fff;color:var(--blue-d)}
 .csr-item-text p{font-size:13px;color:var(--sub);line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}
 @media(max-width:480px){.csr-item{flex-direction:column}.csr-item-logo{width:80px}}
-.kasuga-photos{display:flex;gap:12px;margin-top:16px;align-items:flex-start}
-.kasuga-photos img{border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
-.kasuga-photos img:first-child{height:78px;width:auto}
-.kasuga-photos img:last-child{width:27%}
-@media(max-width:900px){.kasuga-photos img:first-child{height:auto;width:auto;max-width:60%;max-height:180px}.kasuga-photos img:last-child{width:auto;max-width:36%;max-height:180px}}
+.kasuga-photos{display:flex;gap:12px;margin-top:16px;align-items:center}
+.kasuga-photos img{border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15);height:82px;width:auto;object-fit:contain}
+@media(max-width:900px){.kasuga-photos img{height:110px;width:auto;max-width:48%}}
 /* Community / Regional */
 .act-items{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:0}
 .act-item{background:#fff;border-radius:12px;padding:22px;border:1.5px solid var(--gmid);min-width:0}
@@ -180,6 +178,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .skill-body{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
 .skill-text{flex:1;min-width:200px}
 .skill-text p{font-size:14px;color:var(--sub);line-height:1.9;word-break:keep-all;overflow-wrap:anywhere;margin-bottom:12px}
+.skill-cards{display:flex;flex-direction:column;align-items:center;gap:16px}
 .skill-stats{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
 .skill-stat{background:var(--blue);color:#fff;border-radius:10px;padding:12px 20px;text-align:center}
 .skill-stat-n{font-size:26px;font-weight:900;line-height:1}
@@ -195,7 +194,19 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .mud-logo-bar span:nth-child(3){flex:1;background:#3aad8a}
 .mud-logo-advisor{font-size:20px;font-weight:700;color:#888;letter-spacing:.5px}
 .mud-logo-note{font-size:11px;color:var(--sub);text-align:center;font-weight:500}
-@media(max-width:640px){.act-items{grid-template-columns:minmax(0,1fr)}.csr-logos{justify-content:center}.skill-body{flex-direction:column}}
+@media(max-width:640px){
+  .act-items{grid-template-columns:minmax(0,1fr)}
+  .csr-logos{justify-content:center}
+  .skill-body{flex-direction:column}
+  .skill-cards{flex-direction:row;align-items:stretch;justify-content:center;gap:12px}
+  .skill-stats{flex:1;margin-top:0}
+  .skill-stat{flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 8px}
+  .mud-logo-wrap{flex:1}
+  .mud-logo-link{width:100%;box-sizing:border-box;padding:12px 10px;display:flex;justify-content:center}
+  .mud-logo-mud{font-size:24px}
+  .mud-logo-bar{width:90px}
+  .mud-logo-advisor{font-size:15px}
+}
 
 /* COMPANY INFO */
 .co-table{margin-top:36px;border-radius:14px;overflow:hidden;border:1.5px solid var(--gmid)}
@@ -234,7 +245,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 .footer-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:32px;padding-bottom:32px}
 @media(max-width:768px){.footer-in{grid-template-columns:1fr;gap:24px;justify-items:center;text-align:center}.footer-right{align-items:center}}
-@media(max-width:768px){.logo-a svg,.footer-logo svg{height:50px;max-width:220px}}
+@media(max-width:768px){.footer-logo svg{height:50px;max-width:220px}}
 .footer-logo img{height:auto;max-height:56px;width:auto;max-width:240px;object-fit:contain}
 .footer-logo svg{height:70px;width:auto;max-width:320px}
 .footer-links{display:flex;flex-direction:row;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:center}
@@ -356,14 +367,14 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div id="illust-stage">
-    <div class="illust-char"><img src="currel_1.PNG" alt="リスのイラスト"></div>
-    <div class="illust-char"><img src="zebra_1.png" alt="ゼブラのイラスト"></div>
+    <div class="illust-char"><img src="currel_1.PNG" alt="リスのイラスト" decoding="async"></div>
+    <div class="illust-char"><img src="zebra_1.png" alt="ゼブラのイラスト" decoding="async"></div>
     <div class="illust-title">
       <div class="ph-label">COMPANY</div>
       <h1>会社案内</h1>
     </div>
-    <div class="illust-char"><img src="cat_2.png" alt="猫のイラスト"></div>
-    <div class="illust-char"><img src="cat_5.png" alt="猫のイラスト" class="blend"></div>
+    <div class="illust-char"><img src="cat_2.png" alt="猫のイラスト" decoding="async"></div>
+    <div class="illust-char"><img src="cat_5.png" alt="猫のイラスト" class="blend" decoding="async"></div>
   </div>
 </div>
 
@@ -465,26 +476,24 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <div class="skill-body">
         <div class="skill-text">
           <p>MUDアドバイザーやDTP検定など専門性を高める資格取得への補助を行い、社員のスキルアップを全力でサポートしています。</p>
+        </div>
+        <div class="skill-cards">
           <div class="skill-stats">
             <div class="skill-stat">
               <div class="skill-stat-n">2名</div>
               <div class="skill-stat-l">MUDアドバイザー</div>
             </div>
-            <div class="skill-stat">
-              <div class="skill-stat-n">1名</div>
-              <div class="skill-stat-l">DTP検定合格者</div>
-            </div>
           </div>
-        </div>
-        <div class="mud-logo-wrap">
-          <a class="mud-logo-link" href="https://www.media-ud.org/introduction/intro/" target="_blank" rel="noopener" aria-label="MUDアドバイザー公式サイト">
-            <div class="mud-logo-text">
-              <span class="mud-logo-mud">MUD</span>
-              <div class="mud-logo-bar"><span></span><span></span><span></span></div>
-              <span class="mud-logo-advisor">Advisor</span>
-            </div>
-          </a>
-          <span class="mud-logo-note">▲ 公式サイトへ</span>
+          <div class="mud-logo-wrap">
+            <a class="mud-logo-link" href="https://www.media-ud.org/introduction/intro/" target="_blank" rel="noopener" aria-label="MUDアドバイザー公式サイト">
+              <div class="mud-logo-text">
+                <span class="mud-logo-mud">MUD</span>
+                <div class="mud-logo-bar"><span></span><span></span><span></span></div>
+                <span class="mud-logo-advisor">Advisor</span>
+              </div>
+            </a>
+            <span class="mud-logo-note">▲ 公式サイトへ</span>
+          </div>
         </div>
       </div>
     </div>
@@ -505,6 +514,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <div class="ir"><span class="ik">工場・営業部</span><span class="iv">〒162-0818 東京都新宿区築地町13 赤城ビル3F</span></div>
       <div class="ir"><span class="ik">TEL</span><span class="iv">本社：03-5981-8911 ／ 工場：03-3267-4441</span></div>
       <div class="ir"><span class="ik">事業内容</span><span class="iv">複写伝票・オンデマンド印刷・冊子製本・デザイン・DTP・イベント企画・XR事業</span></div>
+      <div class="ir"><span class="ik">お取引実績</span><span class="iv">学校法人 跡見学園<br>学校法人 医学アカデミー<br>株式会社サイサン<br>日本メジフィジックス株式会社<br>株式会社松永製作所</span></div>
       <div class="ir"><span class="ik">取引先銀行</span><span class="iv">みずほ銀行・朝日信用金庫</span></div>
       <div class="ir">
         <span class="ik">設備</span>
