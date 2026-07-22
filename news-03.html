@@ -72,10 +72,10 @@ nav.desk{display:flex;align-items:center;gap:4px}
 /* ── NEWS HERO ── */
 .nws-hero{background:var(--blue);margin:16px 24px 0;border-radius:20px;color:#fff;padding:56px 48px 48px}
 .nws-hero-in{max-width:760px;margin:0 auto}
-.nws-cat{display:inline-block;padding:4px 12px;border-radius:6px;font-size:12px;font-weight:800;background:rgba(255,255,255,.22);margin-bottom:16px}
-.nws-cat--company{background:var(--yel);color:var(--blk)}
-.nws-cat--president{background:rgba(255,255,255,.9);color:var(--blue-d)}
-.nws-cat--event{background:var(--mag);color:#fff}
+.nws-tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:12px;font-weight:800;margin-top:32px}
+.nws-tag--company{background:var(--yel);color:var(--blk)}
+.nws-tag--president{background:var(--blue);color:#fff}
+.nws-tag--event{background:var(--mag);color:#fff}
 .nws-date{font-size:13px;opacity:.8;font-weight:600;margin-bottom:12px}
 .nws-title{font-size:clamp(22px,3.2vw,32px);font-weight:900;line-height:1.5}
 @media(max-width:640px){.nws-hero{margin:12px 12px 0;padding:36px 24px}}
@@ -239,7 +239,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 <!-- NEWS HERO -->
 <div class="nws-hero">
   <div class="nws-hero-in">
-    <div class="nws-cat nws-cat--company">会社情報</div>
     <div class="nws-date">2026年6月10日</div>
     <h1 class="nws-title">ウェブサイトをリニューアルしました</h1>
   </div>
@@ -254,6 +253,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     <p>・スマートフォンでの閲覧に対応したレスポンシブデザインを採用しました。<br>・サービス内容をより詳しくご紹介するページを新設しました。<br>・制作実績のギャラリーを新たに追加しました。</p>
     <p>今後も随時コンテンツを更新してまいります。引き続きよろしくお願いいたします。</p>
 
+    <div class="nws-tag nws-tag--company">会社情報</div>
   </div>
 </section>
 
