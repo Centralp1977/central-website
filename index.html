@@ -116,11 +116,13 @@ nav.desk{display:flex;align-items:center;gap:4px}
   transition:background .2s;
 }
 .mnav-sns-btn:hover{background:var(--gmid)}
-.mnav-copy{position:relative;margin:20px 20px 0;padding:28px 24px;border-radius:12px;overflow:hidden;background:url('cta-background.jpg') center/cover no-repeat}
+.mnav-copy{position:relative;margin:20px 20px 0;min-height:340px;padding:28px 24px 32px;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:url('cta-background.jpg') center/cover no-repeat}
 .mnav-copy::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.mnav-copy-title,.mnav-copy-body{position:relative;z-index:1}
+.mnav-copy-title,.mnav-copy-body,.mnav-copy-btn{position:relative;z-index:1}
 .mnav-copy-title{font-size:19px;line-height:1.5;font-weight:700;color:#fff;margin:0 0 12px;word-break:keep-all;overflow-wrap:break-word}
-.mnav-copy-body{font-size:13.5px;line-height:1.8;color:rgba(255,255,255,.9);margin:0;word-break:keep-all;overflow-wrap:break-word}
+.mnav-copy-body{font-size:13.5px;line-height:1.8;color:rgba(255,255,255,.9);margin:0 0 22px;word-break:keep-all;overflow-wrap:break-word}
+.mnav-copy-btn{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:var(--blue);color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:4px;text-decoration:none;transition:background .2s}
+.mnav-copy-btn:hover{background:var(--blue-d)}
 .mnav-btns{padding:24px 20px 48px;display:flex;flex-direction:column;gap:14px}
 .mnav-btn{display:block;padding:18px;border-radius:12px;text-align:center;font-size:16px;font-weight:800;text-decoration:none;letter-spacing:.4px}
 .mnav-btn-a{background:var(--blue);color:#fff}
@@ -495,9 +497,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
   <div class="mnav-copy">
     <p class="mnav-copy-title">アイデアを、カタチに。<br>未来を、いっしょに。</p>
     <p class="mnav-copy-body">セントラル印刷は、企画・デザインから印刷・加工・納品まで、お客様の想いをカタチにするパートナーです。</p>
-  </div>
-  <div class="mnav-btns">
-    <a class="mnav-btn mnav-btn-a" href="#" onclick="closeMnav();openContact();return false">お問い合わせ</a>
+    <a class="mnav-copy-btn" href="#" onclick="closeMnav();openContact();return false">お問い合わせ <span>→</span></a>
   </div>
 </nav>
 
