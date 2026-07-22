@@ -41,8 +41,6 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .nd a:hover{background:var(--blue-l)}
 .nl{padding:9px 13px;border-radius:7px;font-size:16px;font-weight:700;color:rgba(255,255,255,.88);text-decoration:none;white-space:nowrap;transition:color .2s,background .2s;letter-spacing:.1px}
 .nl:hover,.nl.on{color:#fff;background:rgba(255,255,255,.18)}
-.nl-dd-arrow{display:inline-block;font-size:10px;margin-left:4px;opacity:.75;transition:transform .2s}
-.nd-wrap:hover .nl-dd-arrow,.nd-wrap:focus-within .nl-dd-arrow{transform:translateY(1px) rotate(180deg)}
 .ncta{margin-left:12px;padding:10px 22px;background:#fff;color:var(--blue);border-radius:8px;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;transition:background .15s,transform .1s;letter-spacing:.2px;border:none;cursor:pointer}
 .ncta:hover{background:var(--blue-l);transform:translateY(-1px)}
 
@@ -284,6 +282,15 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 </svg></a>
     <nav class="desk">
       <div class="nd-wrap">
+        <a class="nl" href="company.html">会社案内</a>
+        <div class="nd">
+          <a href="#message">代表メッセージ</a>
+          <a href="#initiatives">セントラルの活動</a>
+          <a href="#profile">会社概要</a>
+          <a href="#access">アクセス</a>
+        </div>
+      </div>
+      <div class="nd-wrap">
         <a class="nl" href="index.html#services">サービス</a>
         <div class="nd">
           <a href="service-denpyo.html">複写伝票</a>
@@ -295,15 +302,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       </div>
       <a class="nl" href="index.html#flow">制作の流れ</a>
       <a class="nl" href="index.html#news">お知らせ</a>
-      <div class="nd-wrap">
-        <a class="nl nl-has-dd" href="company.html">会社案内<span class="nl-dd-arrow">▾</span></a>
-        <div class="nd">
-          <a href="#message">代表メッセージ</a>
-          <a href="#initiatives">セントラルの活動</a>
-          <a href="#profile">会社概要</a>
-          <a href="#access">アクセス</a>
-        </div>
-      </div>
       <a class="ncta" href="index.html#contact">お問い合わせ</a>
     </nav>
     <button class="hmb" id="hmb" aria-label="メニューを開く" onclick="toggleMnav()">
@@ -314,6 +312,19 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 
 <nav id="mnav" aria-label="モバイルメニュー">
   <div class="mnav-links">
+    <!-- 会社案内 プルダウン -->
+    <div class="ml-dropdown">
+      <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
+        会社案内
+        <span class="ml-dd-arrow">+</span>
+      </button>
+      <div class="ml-dd-items">
+        <a class="ml-dd-item" href="#message"     onclick="closeMnav()">代表メッセージ</a>
+        <a class="ml-dd-item" href="#initiatives" onclick="closeMnav()">セントラルの活動</a>
+        <a class="ml-dd-item" href="#profile"     onclick="closeMnav()">会社概要</a>
+        <a class="ml-dd-item" href="#access"      onclick="closeMnav()">アクセス</a>
+      </div>
+    </div>
     <!-- サービス プルダウン -->
     <div class="ml-dropdown">
       <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
@@ -330,19 +341,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     </div>
     <a class="ml" href="index.html#flow" onclick="closeMnav()">制作の流れ</a>
     <a class="ml" href="index.html#news" onclick="closeMnav()">お知らせ</a>
-    <!-- 会社案内 プルダウン -->
-    <div class="ml-dropdown">
-      <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
-        会社案内
-        <span class="ml-dd-arrow">+</span>
-      </button>
-      <div class="ml-dd-items">
-        <a class="ml-dd-item" href="#message"     onclick="closeMnav()">代表メッセージ</a>
-        <a class="ml-dd-item" href="#initiatives" onclick="closeMnav()">セントラルの活動</a>
-        <a class="ml-dd-item" href="#profile"     onclick="closeMnav()">会社概要</a>
-        <a class="ml-dd-item" href="#access"      onclick="closeMnav()">アクセス</a>
-      </div>
-    </div>
   </div>
   <div class="mnav-sns">
     <a href="https://www.instagram.com/centralp_1977/?hl=ja" target="_blank" rel="noopener" aria-label="Instagram" class="mnav-sns-btn">
