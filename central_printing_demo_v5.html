@@ -840,8 +840,8 @@ document.body.style.overflow='hidden';
 /* HAMBURGER */
 const hmb=document.getElementById('hmb');
 const mnav=document.getElementById('mnav');
-function closeMnav(){mnav.classList.remove('open');hmb.classList.remove('open');hmb.setAttribute('aria-expanded','false');document.body.style.overflow='';}
-hmb.addEventListener('click',()=>{const o=mnav.classList.toggle('open');hmb.classList.toggle('open');hmb.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';});
+function closeMnav(){mnav.classList.remove('open');hmb.classList.remove('open');hmb.setAttribute('aria-expanded','false');document.documentElement.style.overflow='';document.body.style.overflow='';}
+hmb.addEventListener('click',()=>{const o=mnav.classList.toggle('open');hmb.classList.toggle('open');hmb.setAttribute('aria-expanded',o?'true':'false');document.documentElement.style.overflow=o?'hidden':'';document.body.style.overflow=o?'hidden':'';});
 function toggleMlDd(btn){
   const items = btn.nextElementSibling;
   const open = items.classList.toggle('open');
