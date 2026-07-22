@@ -175,16 +175,16 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .act-item h4{font-size:15px;font-weight:800;color:var(--blue);margin-bottom:8px;overflow-wrap:anywhere}
 .act-item p{font-size:13px;color:var(--sub);line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}
 /* Staff skills */
-.skill-body{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.skill-body{display:flex;flex-direction:column;gap:20px}
 .skill-text{flex:1;min-width:200px}
 .skill-text p{font-size:14px;color:var(--sub);line-height:1.9;word-break:keep-all;overflow-wrap:anywhere;margin-bottom:12px}
-.skill-cards{display:flex;flex-direction:column;align-items:center;gap:16px}
-.skill-stats{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
-.skill-stat{background:var(--blue);color:#fff;border-radius:10px;padding:12px 20px;text-align:center}
+.skill-cards{display:flex;flex-direction:row;align-items:stretch;gap:16px}
+.skill-stats{display:flex;gap:12px;margin-top:0;flex:1;flex-wrap:wrap}
+.skill-stat{background:var(--blue);color:#fff;border-radius:10px;padding:12px 20px;text-align:center;flex:1;display:flex;flex-direction:column;justify-content:center}
 .skill-stat-n{font-size:26px;font-weight:900;line-height:1}
 .skill-stat-l{font-size:11px;margin-top:4px;opacity:.85}
-.mud-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
-.mud-logo-link{display:block;background:#fff;border-radius:12px;padding:16px 24px;border:1.5px solid var(--gmid);transition:box-shadow .2s}
+.mud-logo-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;flex:1}
+.mud-logo-link{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:16px 24px;border:1.5px solid var(--gmid);transition:box-shadow .2s;width:100%;box-sizing:border-box}
 .mud-logo-link:hover{box-shadow:0 4px 16px rgba(14,122,196,.15)}
 .mud-logo-text{display:flex;flex-direction:column;align-items:center;gap:4px}
 .mud-logo-mud{font-size:32px;font-weight:900;color:#231f20;letter-spacing:-1px}
@@ -197,12 +197,9 @@ nav.desk{display:flex;align-items:center;gap:4px}
 @media(max-width:640px){
   .act-items{grid-template-columns:minmax(0,1fr)}
   .csr-logos{justify-content:center}
-  .skill-body{flex-direction:column}
-  .skill-cards{flex-direction:row;align-items:stretch;justify-content:center;gap:12px}
-  .skill-stats{flex:1;margin-top:0}
-  .skill-stat{flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 8px}
-  .mud-logo-wrap{flex:1}
-  .mud-logo-link{width:100%;box-sizing:border-box;padding:12px 10px;display:flex;justify-content:center}
+  .skill-cards{gap:12px}
+  .skill-stat{padding:12px 8px}
+  .mud-logo-link{padding:12px 10px}
   .mud-logo-mud{font-size:24px}
   .mud-logo-bar{width:90px}
   .mud-logo-advisor{font-size:15px}
@@ -460,8 +457,10 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
           <a href="https://tokyo-united-fc.jp/" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;padding:9px 20px;background:var(--blue);color:#fff;border-radius:6px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.04em">東京ユナイテッドFC 公式サイト →</a>
         </div>
         <div class="act-item">
-          <h4>跡見女子学園との産学連携</h4>
-          <p>毎年10月に行われる麟祥院の春日忌にて、生徒と共に春日局の生涯を描いた4コマ漫画やスタンプラリーの企画・関連グッズの開発に携わっています。</p>
+          <div style="display:flex;align-items:center;min-height:80px;margin-bottom:12px">
+            <h4 style="margin:0">跡見女子学園との産学連携</h4>
+          </div>
+          <p>毎年10月に麟祥院にて行われる春日忌や旧伊勢屋質店にて、生徒と共に春日局の生涯を描いた4コマ漫画やスタンプラリーの企画・関連グッズの開発に携わっています。</p>
           <div class="kasuga-photos">
             <img src="kasuga_4.png" alt="春日忌制作物">
             <img src="kasuga_1.png" alt="春日忌ポスター">
@@ -514,7 +513,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <div class="ir"><span class="ik">工場・営業部</span><span class="iv">〒162-0818 東京都新宿区築地町13 赤城ビル3F</span></div>
       <div class="ir"><span class="ik">TEL</span><span class="iv">本社：03-5981-8911 ／ 工場：03-3267-4441</span></div>
       <div class="ir"><span class="ik">事業内容</span><span class="iv">複写伝票・オンデマンド印刷・冊子製本・デザイン・DTP・イベント企画・XR事業</span></div>
-      <div class="ir"><span class="ik">お取引実績</span><span class="iv">学校法人 跡見学園<br>学校法人 医学アカデミー<br>株式会社サイサン<br>日本メジフィジックス株式会社<br>株式会社松永製作所</span></div>
+      <div class="ir"><span class="ik">お取引実績</span><span class="iv">学校法人 跡見学園<br>学校法人 医学アカデミー<br>株式会社サイサン<br>浄土宗 無量山 傳通院<br>東京ユナイテッドFC<br>日本メジフィジックス株式会社<br>株式会社松永製作所</span></div>
       <div class="ir"><span class="ik">取引先銀行</span><span class="iv">みずほ銀行・朝日信用金庫</span></div>
       <div class="ir">
         <span class="ik">設備</span>
