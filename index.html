@@ -820,7 +820,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 <script>
 /* LOADING */
 document.body.style.overflow='hidden';
-window.addEventListener('load',()=>{
+(()=>{
   const logo=document.getElementById('ldlogo');
   const loading=document.getElementById('loading');
   const hash=location.hash;
@@ -829,10 +829,11 @@ window.addEventListener('load',()=>{
     loading.classList.add('hide');
     document.body.style.overflow='';
   } else {
+    /* 画像の読み込み完了(load)を待たず、DOM構築直後にロゴを表示する */
     setTimeout(()=>logo.classList.add('show'),150);
     setTimeout(()=>{loading.classList.add('hide');document.body.style.overflow='';},2000);
   }
-});
+})();
 
 /* HERO SLIDESHOW */
 
