@@ -94,8 +94,8 @@ nav.desk{display:flex;align-items:center;gap:4px}
   padding:20px 28px;font-family:inherit;font-size:17px;font-weight:700;color:var(--text);
   cursor:pointer;text-align:left;
 }
-.ml-dd-arrow{font-size:16px;color:var(--sub);transition:transform .25s}
-.ml.ml-has-dd.open .ml-dd-arrow{transform:rotate(180deg)}
+.ml-dd-arrow{font-size:20px;font-weight:400;color:var(--sub);transition:transform .25s;line-height:1}
+.ml.ml-has-dd.open .ml-dd-arrow{transform:rotate(45deg)}
 .ml-dd-items{display:none;flex-direction:column;background:var(--blue-l)}
 .ml-dd-items.open{display:flex}
 .ml-dd-item{
@@ -456,7 +456,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
     <div class="ml-dropdown">
       <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
         サービス
-        <span class="ml-dd-arrow">▾</span>
+        <span class="ml-dd-arrow">+</span>
       </button>
       <div class="ml-dd-items">
         <a class="ml-dd-item" href="service-denpyo.html" onclick="closeMnav()">複写伝票</a>
@@ -471,7 +471,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
     <div class="ml-dropdown">
       <button class="ml ml-has-dd" onclick="toggleMlDd(this)" aria-expanded="false">
         会社案内
-        <span class="ml-dd-arrow">▾</span>
+        <span class="ml-dd-arrow">+</span>
       </button>
       <div class="ml-dd-items">
         <a class="ml-dd-item" href="company.html#message"     onclick="closeMnav()">代表メッセージ</a>
@@ -908,11 +908,11 @@ revEls.forEach(r=>io.observe(r));
 
 /* HERO — interactive service dots */
 const heroItems={
-  design:  {label:'デザイン',    detail:'グラフィックデザイン・レイアウトから各種データ制作まで対応。ロゴ・名刺・チラシ・カタログなど、お客様のブランドイメージを最高の形で表現いたします。'},
-  print:   {label:'印刷',        detail:'最新の印刷機器を駆使した高品質・高精細印刷。小ロットから大量印刷まで幅広く対応。名刺・チラシ・カタログ・ポスターなどあらゆる印刷物を美しく仕上げます。'},
-  ship:    {label:'発送',        detail:'全国どこへでも迅速・丁寧に発送いたします。大量発送・個別宛名印字・封入作業にも対応。納期厳守でお客様のビジネスをしっかりサポートします。'},
+  design:  {label:'デザイン',    detail:'グラフィックデザイン・レイアウトから各種データ制作まで対応。ロゴ・名刺・チラシ・カタログ、ウェブサイト制作など、お客様のブランドイメージを最高の形で表現いたします。'},
+  print:   {label:'印刷',        detail:'最新の印刷機器を駆使した高品質印刷。小ロットから大量印刷まで幅広く対応。証票・名刺・チラシ・カタログ・ポスターなどあらゆる印刷物を美しく仕上げます。'},
+  ship:    {label:'発送',        detail:'全国どこへでも迅速・丁寧に発送いたします。納期厳守でお客様のビジネスをしっかりサポートします。'},
   cut:     {label:'製本',        detail:'中綴じ・無線綴じ・上製本など、用途や仕様に合わせた製本加工に幅広く対応。冊子・カタログ・書籍まで、美しく丈夫な仕上がりでお届けします。'},
-  meeting: {label:'打合せ',      detail:'専任スタッフがお客様のご要望を丁寧にヒアリング。豊富な実績をもとに最適なプランをご提案いたします。初回ご相談は無料ですので、お気軽にご連絡ください。'},
+  meeting: {label:'打合せ',      detail:'専任スタッフがお客様のご要望を丁寧にヒアリング。豊富な実績をもとに最適なプランをご提案いたします。企画から製品化まで、伴走者として貴社をサポートいたします。'},
 };
 let _heroActive=null;
 function toggleHeroDot(key){
