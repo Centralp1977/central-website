@@ -555,35 +555,35 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
         <a class="msg-link" href="company.html">私たちについてはこちら<span class="arrow">→</span></a>
       </div>
       <div class="msg-collage">
-        <div class="msg-tile msg-g0"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy"></div>
-        <div class="msg-tile msg-g1"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy"></div>
-        <div class="msg-tile msg-g2"><img src="DSCF1653.jpg" alt="冊子印刷の実績" loading="lazy"></div>
-        <div class="msg-tile msg-g3"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy"></div>
-        <div class="msg-tile msg-g4"><img src="top-3.jpg" alt="特殊紙・ショップカード" loading="lazy"></div>
-        <div class="msg-tile msg-g5"><img src="DSCF1655.jpg" alt="スポーツ印刷の実績" loading="lazy"></div>
+        <div class="msg-tile msg-g0"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy" decoding="async"></div>
+        <div class="msg-tile msg-g1"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy" decoding="async"></div>
+        <div class="msg-tile msg-g2"><img src="DSCF1653.jpg" alt="冊子印刷の実績" loading="lazy" decoding="async"></div>
+        <div class="msg-tile msg-g3"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy" decoding="async"></div>
+        <div class="msg-tile msg-g4"><img src="top-3.jpg" alt="特殊紙・ショップカード" loading="lazy" decoding="async"></div>
+        <div class="msg-tile msg-g5"><img src="DSCF1655.jpg" alt="スポーツ印刷の実績" loading="lazy" decoding="async"></div>
       </div>
       <div class="msg-mobile-list">
         <div>
-          <div class="frame"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy"></div>
+          <div class="frame"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy" decoding="async"></div>
           <p class="msg-cap">一枚の紙に、想いを込めて。</p>
         </div>
         <div>
-          <div class="frame"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy"></div>
+          <div class="frame"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy" decoding="async"></div>
           <p class="msg-cap">試作を重ね、納得のいく色へ。</p>
         </div>
         <div>
-          <div class="frame"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy"></div>
+          <div class="frame"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy" decoding="async"></div>
           <p class="msg-cap">かたちになった瞬間。</p>
         </div>
       </div>
       <div class="msg-pin-outer" id="msgPinOuter">
         <div class="msg-pin-stage">
           <div class="msg-pin-frame-wrap">
-            <img class="msg-bg-charm" src="message_bg_charm.png" alt="" loading="lazy">
+            <img class="msg-bg-charm" src="message_bg_charm.png" alt="" loading="lazy" decoding="async">
             <div class="msg-pin-frame">
-              <div class="msg-pin-sheet"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy"></div>
-              <div class="msg-pin-sheet"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy"></div>
-              <div class="msg-pin-sheet"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy"></div>
+              <div class="msg-pin-sheet"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy" decoding="async"></div>
+              <div class="msg-pin-sheet"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy" decoding="async"></div>
+              <div class="msg-pin-sheet"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy" decoding="async"></div>
               <div class="msg-pin-scan" id="msgPinScan"></div>
             </div>
           </div>
@@ -694,9 +694,9 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
         </div>
       </div>
       <div class="news-photos rev">
-        <img src="Central_goods/DSCF1692.jpg" alt="冊子印刷のイメージ" loading="lazy">
-        <img src="Central_goods/DSCF1649.jpg" alt="製本ページのイメージ" loading="lazy">
-        <img src="Central_goods/DSCF1638.jpg" alt="製本仕上がりのイメージ" loading="lazy">
+        <img src="Central_goods/DSCF1692.jpg" alt="冊子印刷のイメージ" loading="lazy" decoding="async">
+        <img src="Central_goods/DSCF1649.jpg" alt="製本ページのイメージ" loading="lazy" decoding="async">
+        <img src="Central_goods/DSCF1638.jpg" alt="製本仕上がりのイメージ" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -929,6 +929,17 @@ function toggleHeroDot(key){
   panel.style.animation='panelIn .32s cubic-bezier(.22,.61,.36,1)';
 }
 function closeHeroDot(){_heroActive=null;document.getElementById('heroPanel').style.display='none';}
+
+/* PERF: pause hero-dot pulse animation when Hero is off-screen (continuous box-shadow animation was costing paint time during scroll) */
+const heroDots=document.querySelectorAll('.hero-dot');
+const heroSection=document.getElementById('hero');
+if(heroSection&&heroDots.length){
+  const heroVis=new IntersectionObserver(e=>{
+    const state=e[0].isIntersecting?'running':'paused';
+    heroDots.forEach(d=>d.style.animationPlayState=state);
+  },{threshold:0});
+  heroVis.observe(heroSection);
+}
 
 /* SCROLL SPY */
 const navLinks=document.querySelectorAll('nav.desk .nl');
