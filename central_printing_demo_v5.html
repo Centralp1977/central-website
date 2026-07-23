@@ -932,7 +932,7 @@ function closeHeroDot(){_heroActive=null;document.getElementById('heroPanel').st
 
 /* SCROLL SPY */
 const navLinks=document.querySelectorAll('nav.desk .nl');
-const spy=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){navLinks.forEach(l=>l.classList.remove('on'));const l=document.querySelector(`nav.desk .nl[href="#${x.target.id}"]`);if(l)l.classList.add('on');}}),{threshold:0.3});
+const spy=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){navLinks.forEach(l=>l.classList.remove('on'));let l=document.querySelector(`nav.desk .nl[href="#${x.target.id}"]`);if(!l&&x.target.id==='message')l=document.querySelector('nav.desk .nl[href="company.html"]');if(l)l.classList.add('on');}}),{threshold:0.3});
 document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
 
 
