@@ -78,7 +78,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .hmb.open span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg)}
 
 /* mobile nav */
-#mnav{position:fixed;top:var(--hh);left:0;right:0;bottom:0;background:#fff;z-index:190;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+#mnav{position:fixed;top:var(--hh);left:0;right:0;bottom:0;background:#fff;z-index:190;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 #mnav.open{transform:translateX(0)}
 .mnav-links{flex:1;padding:8px 0}
 .ml{display:flex;align-items:center;gap:14px;padding:18px 28px;font-size:17px;font-weight:700;color:var(--text);text-decoration:none;border-bottom:1px solid var(--gray);transition:background .15s,color .15s}
