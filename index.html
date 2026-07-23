@@ -142,6 +142,16 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .hero-dot:hover,.hero-dot:focus{animation:hoverPulse 1.2s ease-in-out infinite}
 @keyframes panelIn{from{opacity:0;transform:translateY(110%)}to{opacity:1;transform:translateY(0)}}
 .hero-panel{position:absolute;left:0;right:0;bottom:0;z-index:50;background:linear-gradient(180deg,rgba(255,255,255,.985) 0%,rgba(247,249,252,.985) 100%);border-top:1px solid rgba(14,122,196,.15);box-shadow:0 -10px 32px rgba(15,32,60,.18);border-radius:0 0 6px 6px;animation:panelIn .32s cubic-bezier(.22,.61,.36,1)}
+.hp-row{display:flex;align-items:flex-start;gap:18px;padding:20px 22px 22px}
+.hp-bar{flex:none;width:4px;align-self:stretch;background:#0e7ac4;border-radius:2px;margin-top:2px}
+.hp-body{flex:1;min-width:0}
+.hp-taghead{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.hp-tag{font-size:11px;font-weight:500;letter-spacing:.18em;color:#7a8aa0}
+.hp-rule{height:1px;flex:1;background:rgba(14,122,196,.18)}
+.hp-label{font-size:18px;font-weight:700;color:#15314f;letter-spacing:.04em;margin-bottom:8px;line-height:1.2}
+.hp-detail{font-size:13.5px;color:#3d4a5c;line-height:1.85;letter-spacing:.01em;word-break:keep-all;overflow-wrap:break-word}
+.hp-close{flex:none;width:30px;height:30px;border-radius:50%;background:rgba(14,122,196,.06);border:none;cursor:pointer;color:#0e7ac4;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;font-family:inherit;transition:background .15s}
+.hp-close:hover{background:rgba(14,122,196,.14)}
 .h-eye{font-size:clamp(13px,1.05vw,15px);font-weight:500;letter-spacing:.26em;color:var(--blue);margin-bottom:28px}
 .h-tit{font-size:clamp(30px,3.4vw,50px);font-weight:700;line-height:1.42;letter-spacing:.02em;color:var(--text);margin:0 0 28px;word-break:keep-all;overflow-wrap:break-word}
 .h-sub{font-size:clamp(14px,1.05vw,16px);line-height:1.95;letter-spacing:.02em;color:var(--sub);margin:0 0 40px;word-break:keep-all;overflow-wrap:break-word}
@@ -158,6 +168,10 @@ nav.desk{display:flex;align-items:center;gap:4px}
   .h-btns{margin-bottom:15px}
   .hero-illus{flex:none;width:100%;min-width:0;padding:32px 16px 32px}
   .hero-illus-inner{max-width:none;width:144%;margin-left:-22%}
+  .hp-row{flex-direction:column;gap:10px;padding:18px 20px 20px;position:relative}
+  .hp-bar{width:36px;height:4px;align-self:auto;margin-top:0}
+  .hp-body{padding-right:36px}
+  .hp-close{position:absolute;top:14px;right:14px}
 }
 @media(max-width:600px){
   .hero-body{padding:80px 20px 16px}
@@ -524,19 +538,19 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <button class="hero-dot" onclick="toggleHeroDot('ship')"   aria-label="発送の詳細を見る"   style="left:58%;top:50%;animation:idlePulse 2.2s ease-in-out infinite .7s;"></button>
       <button class="hero-dot" onclick="toggleHeroDot('cut')"    aria-label="製本の詳細を見る"   style="left:74%;top:53%;animation:idlePulse 2.2s ease-in-out infinite 1.05s;"></button>
       <button class="hero-dot" onclick="toggleHeroDot('meeting')" aria-label="打合せの詳細を見る" style="left:57%;top:68%;animation:idlePulse 2.2s ease-in-out infinite 1.75s;"></button>
-      <div id="heroPanel" class="hero-panel" style="display:none;">
-        <div style="display:flex;align-items:flex-start;gap:18px;padding:20px 22px 22px;">
-          <div style="flex:none;width:4px;align-self:stretch;background:#0e7ac4;border-radius:2px;margin-top:2px;"></div>
-          <div style="flex:1;min-width:0;">
-            <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
-              <div style="font-size:11px;font-weight:500;letter-spacing:.18em;color:#7a8aa0;">SERVICE</div>
-              <div style="height:1px;flex:1;background:rgba(14,122,196,.18);"></div>
-            </div>
-            <div id="heroPanelLabel" style="font-size:18px;font-weight:700;color:#15314f;letter-spacing:.04em;margin-bottom:8px;line-height:1.2;"></div>
-            <div id="heroPanelDetail" style="font-size:13.5px;color:#3d4a5c;line-height:1.85;letter-spacing:.01em;word-break:keep-all;overflow-wrap:break-word;"></div>
+    </div>
+    <div id="heroPanel" class="hero-panel" style="display:none;">
+      <div class="hp-row">
+        <div class="hp-bar"></div>
+        <div class="hp-body">
+          <div class="hp-taghead">
+            <div class="hp-tag">SERVICE</div>
+            <div class="hp-rule"></div>
           </div>
-          <button onclick="closeHeroDot()" aria-label="閉じる" style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(14,122,196,.06);border:none;cursor:pointer;color:#0e7ac4;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;font-family:inherit;transition:background .15s;" onmouseover="this.style.background='rgba(14,122,196,.14)'" onmouseout="this.style.background='rgba(14,122,196,.06)'">✕</button>
+          <div id="heroPanelLabel" class="hp-label"></div>
+          <div id="heroPanelDetail" class="hp-detail"></div>
         </div>
+        <button class="hp-close" onclick="closeHeroDot()" aria-label="閉じる">✕</button>
       </div>
     </div>
     <p class="hero-illus-caption">必要な情報を届ける、セントラルの舞台裏</p>
