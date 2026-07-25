@@ -266,6 +266,20 @@ section{padding:76px 24px}
 @media(min-width:600px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.svc-grid{grid-template-columns:repeat(5,1fr)}}
 
+/* ── SERVICES: mobile/tablet card-stack scroll effect ── */
+.svc-pin-outer{display:none}
+.svc-pin-stage{position:sticky;top:var(--hh);padding:28px 0 16px;display:flex;flex-direction:column;align-items:center}
+.svc-pin-stack{--card-h:min(56vh,400px);--peek:54px;position:relative;width:100%;max-width:400px;height:calc(var(--card-h) + 4*var(--peek));border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(16,24,50,.16)}
+.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);box-shadow:0 -8px 18px rgba(16,24,50,.14)}
+.svc-pin-card .svc-thumb{height:auto;flex:1;min-height:0}
+.svc-pin-dots{display:flex;gap:8px;margin-top:16px}
+.svc-pin-dots .dot{width:7px;height:7px;border-radius:50%;background:rgba(26,43,60,.18);transition:background .25s}
+.svc-pin-dots .dot.on{background:var(--blue)}
+@media(max-width:1023px) and (prefers-reduced-motion:no-preference){
+  .svc-grid{display:none}
+  .svc-pin-outer{display:block;height:300vh}
+}
+
 /* ── FLOW ── */
 #flow{background:#000;color:#fff;position:relative;overflow:hidden}
 #flow .si{position:relative;z-index:1}
@@ -663,6 +677,55 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
         </div>
       </a>
     </div>
+    <div class="svc-pin-outer" id="svcPinOuter">
+      <div class="svc-pin-stage">
+        <div class="svc-pin-stack" id="svcPinStack">
+          <a class="svc-card svc-pin-card" href="service-denpyo.html">
+            <div class="svc-thumb" style="--svc-thumb-img:url('service-denpyo-hero.jpeg')"></div>
+            <div class="svc-body">
+              <h3 class="svc-title">複写伝票</h3>
+              <p class="svc-desc">納品書や請求書など、業務に欠かせない複写伝票を制作します。</p>
+              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </a>
+          <a class="svc-card svc-pin-card" href="service-digital.html">
+            <div class="svc-thumb" style="--svc-thumb-img:url('service-digital-hero.jpeg')"></div>
+            <div class="svc-body">
+              <h3 class="svc-title">デジタル印刷</h3>
+              <p class="svc-desc">小ロットや短納期にも対応するデジタル印刷でスピーディに制作します。</p>
+              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </a>
+          <a class="svc-card svc-pin-card" href="service-design.html">
+            <div class="svc-thumb" style="--svc-thumb-img:url('service-design-hero.jpeg')"></div>
+            <div class="svc-body">
+              <h3 class="svc-title">デザイン・DTP</h3>
+              <p class="svc-desc">企画からデザイン・DTPまで、伝わる紙面づくりをサポートします。</p>
+              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </a>
+          <a class="svc-card svc-pin-card" href="service-xr.html">
+            <div class="svc-thumb" style="--svc-thumb-img:url('service-xr-hero.jpeg')"></div>
+            <div class="svc-body">
+              <h3 class="svc-title">XR・デジタルコンテンツ事業</h3>
+              <p class="svc-desc">Webサイトやデジタルカタログなど企画・制作します。</p>
+              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </a>
+          <a class="svc-card svc-pin-card" href="service-kaiin.html">
+            <div class="svc-thumb" style="--svc-thumb-img:url('AdobeStock_160933988.jpeg')"></div>
+            <div class="svc-body">
+              <h3 class="svc-title">開院支援パック</h3>
+              <p class="svc-desc">クリニックの開業に必要な印刷物をまとめてサポートするサービスです。</p>
+              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="svc-pin-dots">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1034,6 +1097,53 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll);
   update();
+})();
+</script>
+
+<!-- SERVICES: mobile/tablet card-stack scroll effect -->
+<script>
+(function(){
+  var pinOuter=document.getElementById('svcPinOuter');
+  if(!pinOuter) return;
+  var stack=document.getElementById('svcPinStack');
+  var cards=Array.prototype.slice.call(stack.querySelectorAll('.svc-pin-card'));
+  var dots=pinOuter.querySelectorAll('.svc-pin-dots .dot');
+  var n=cards.length;
+  var peek=54,cardH=400;
+  var ticking=false;
+  function measure(){
+    var cs=getComputedStyle(stack);
+    peek=parseFloat(cs.getPropertyValue('--peek'))||54;
+    cardH=parseFloat(cs.getPropertyValue('--card-h'))||400;
+    cards.forEach(function(card,i){
+      card.style.top=((n-1-i)*peek)+'px';
+      card.style.zIndex=i+1;
+    });
+  }
+  function update(){
+    ticking=false;
+    if(pinOuter.offsetParent===null) return;
+    var rect=pinOuter.getBoundingClientRect();
+    var vh=window.innerHeight;
+    var total=pinOuter.offsetHeight-vh;
+    if(total<=0) return;
+    var scrolled=Math.min(Math.max(-rect.top,0),total);
+    var p=scrolled/total;
+    var segLen=1/n;
+    var idx=Math.min(n-1,Math.floor(p/segLen));
+    var localP=(p-idx*segLen)/segLen;
+    cards.forEach(function(card,i){
+      var pi=i<idx?1:(i===idx?Math.max(0,Math.min(1,localP)):0);
+      var hiddenY=cardH+i*peek;
+      card.style.transform='translateY('+(hiddenY*(1-pi))+'px)';
+    });
+    dots.forEach(function(d,i){ d.classList.toggle('on',i===idx); });
+  }
+  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
+  measure();
+  update();
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',function(){ measure(); update(); });
 })();
 </script>
 </body>
