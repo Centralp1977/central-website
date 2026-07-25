@@ -221,6 +221,9 @@ section{padding:76px 24px}
 .msg-pin-outer{display:none;order:1}
 .msg-pin-stage{position:sticky;top:var(--hh);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:32px 0 16px}
 .msg-pin-frame-wrap{position:relative;width:min(85.1%,483px,calc((100vh - var(--hh) - 110px) * 0.664125))}
+@supports (height:100svh){
+  .msg-pin-frame-wrap{width:min(85.1%,483px,calc((100svh - var(--hh) - 110px) * 0.664125))}
+}
 .msg-pin-frame-wrap .msg-bg-charm{position:absolute;top:40%;left:50%;width:150%;transform:translate(-50%,-50%) scaleX(-1);z-index:0;opacity:.95;pointer-events:none;user-select:none}
 .msg-pin-frame{position:relative;z-index:1;width:100%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:var(--gray);box-shadow:0 14px 34px rgba(20,30,60,.16)}
 .msg-pin-sheet{position:absolute;inset:0;clip-path:inset(0 0 100% 0)}
