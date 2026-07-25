@@ -266,15 +266,17 @@ section{padding:76px 24px}
 /* ── SERVICES: mobile/tablet card-stack scroll effect ── */
 .svc-pin-outer{display:none}
 .svc-pin-stage{position:sticky;top:var(--hh);padding:28px 0 16px;display:flex;flex-direction:column;align-items:center}
-.svc-pin-stack{--card-h:min(58vh,420px);--peek:112px;position:relative;width:100%;max-width:400px;height:calc(var(--card-h) + 4*var(--peek));border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(16,24,50,.16)}
-.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);box-shadow:0 -8px 18px rgba(16,24,50,.14);transition:transform .18s cubic-bezier(.22,.8,.36,1)}
+.svc-pin-stack{--card-h:min(52vh,380px);--peek:52px;position:relative;width:100%;max-width:400px;height:calc(var(--card-h) + 4*var(--peek))}
+.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);box-shadow:0 -6px 20px rgba(16,24,50,.16);transition:transform .18s cubic-bezier(.22,.8,.36,1)}
+.svc-pin-tab{flex:none;height:var(--peek);display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--gmid);background:#fff}
+.svc-pin-tab .svc-title{margin:0;font-size:15px}
 .svc-pin-card .svc-thumb{height:auto;flex:1;min-height:0}
-.svc-pin-card .svc-body{flex:none;position:relative;padding:16px 54px 16px 18px}
+.svc-pin-card .svc-body{flex:none;position:relative;padding:14px 54px 14px 18px}
 .svc-pin-card .svc-desc{flex:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.svc-pin-card .svc-arrow{position:absolute;right:14px;bottom:14px;margin-top:0}
+.svc-pin-card .svc-arrow{position:absolute;right:14px;bottom:12px;margin-top:0}
 @media(max-width:1023px) and (prefers-reduced-motion:no-preference){
   .svc-grid{display:none}
-  .svc-pin-outer{display:block;height:300vh}
+  .svc-pin-outer{display:block;height:260vh}
 }
 
 /* ── FLOW ── */
@@ -675,41 +677,41 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <div class="svc-pin-stage">
         <div class="svc-pin-stack" id="svcPinStack">
           <a class="svc-card svc-pin-card" href="service-denpyo.html">
+            <div class="svc-pin-tab"><h3 class="svc-title">複写伝票</h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('service-denpyo-hero.jpeg')"></div>
             <div class="svc-body">
-              <h3 class="svc-title">複写伝票</h3>
               <p class="svc-desc">納品書や請求書など、業務に欠かせない複写伝票を制作します。</p>
               <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-digital.html">
+            <div class="svc-pin-tab"><h3 class="svc-title">デジタル印刷</h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('service-digital-hero.jpeg')"></div>
             <div class="svc-body">
-              <h3 class="svc-title">デジタル印刷</h3>
               <p class="svc-desc">小ロットや短納期にも対応するデジタル印刷でスピーディに制作します。</p>
               <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-design.html">
+            <div class="svc-pin-tab"><h3 class="svc-title">デザイン・DTP</h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('service-design-hero.jpeg')"></div>
             <div class="svc-body">
-              <h3 class="svc-title">デザイン・DTP</h3>
               <p class="svc-desc">企画からデザイン・DTPまで、伝わる紙面づくりをサポートします。</p>
               <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-xr.html">
+            <div class="svc-pin-tab"><h3 class="svc-title">XR・デジタルコンテンツ事業</h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('service-xr-hero.jpeg')"></div>
             <div class="svc-body">
-              <h3 class="svc-title">XR・デジタルコンテンツ事業</h3>
               <p class="svc-desc">Webサイトやデジタルカタログなど企画・制作します。</p>
               <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-kaiin.html">
+            <div class="svc-pin-tab"><h3 class="svc-title">開院支援パック</h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('AdobeStock_160933988.jpeg')"></div>
             <div class="svc-body">
-              <h3 class="svc-title">開院支援パック</h3>
               <p class="svc-desc">クリニックの開業に必要な印刷物をまとめてサポートするサービスです。</p>
               <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
@@ -1097,19 +1099,18 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   var stack=document.getElementById('svcPinStack');
   var cards=Array.prototype.slice.call(stack.querySelectorAll('.svc-pin-card'));
   var n=cards.length;
-  var peek=112,cardH=420;
+  var peek=52,cardH=380,stackH=0;
   var ticking=false;
   function easeOutCubic(t){ return 1-Math.pow(1-t,3); }
   function measure(){
-    var maxBody=0;
-    cards.forEach(function(card){
-      var b=card.querySelector('.svc-body').offsetHeight;
-      if(b>maxBody) maxBody=b;
-    });
-    if(maxBody>0){ peek=maxBody; stack.style.setProperty('--peek',peek+'px'); }
-    cardH=parseFloat(getComputedStyle(stack).getPropertyValue('--card-h'))||420;
+    var cs=getComputedStyle(stack);
+    peek=parseFloat(cs.getPropertyValue('--peek'))||52;
+    cardH=parseFloat(cs.height)||380;
+    var one=cards[0].offsetHeight;
+    if(one>0) cardH=one;
+    stackH=cardH+(n-1)*peek;
     cards.forEach(function(card,i){
-      card.style.top=((n-1-i)*peek)+'px';
+      card.style.top=(i*peek)+'px';
       card.style.zIndex=i+1;
     });
   }
@@ -1122,12 +1123,14 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
     if(total<=0) return;
     var scrolled=Math.min(Math.max(-rect.top,0),total);
     var p=scrolled/total;
-    var segLen=1/n;
-    var idx=Math.min(n-1,Math.floor(p/segLen));
-    var localP=(p-idx*segLen)/segLen;
+    var segCount=n-1;
+    var segLen=1/segCount;
+    var seg=Math.min(segCount-1,Math.floor(p/segLen));
+    var idx=1+seg;
+    var localP=(p-seg*segLen)/segLen;
     cards.forEach(function(card,i){
-      var pi=i<idx?1:(i===idx?easeOutCubic(Math.max(0,Math.min(1,localP))):0);
-      var hiddenY=cardH+i*peek;
+      var pi=i===0?1:(i<idx?1:(i===idx?easeOutCubic(Math.max(0,Math.min(1,localP))):0));
+      var hiddenY=stackH-i*peek;
       card.style.transform='translateY('+(hiddenY*(1-pi))+'px)';
     });
   }
