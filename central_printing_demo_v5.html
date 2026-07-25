@@ -163,10 +163,10 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .hb-s{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
 .hb-s:hover{background:var(--blue-l)}
 @media(max-width:860px){
-  #hero{flex-direction:column;min-height:auto;overflow:hidden}
+  #hero{flex-direction:column;min-height:auto;overflow:hidden;transform:translateZ(0)}
   .hero-body{flex:none;width:100%;min-width:0;padding:88px 24px 24px}
   .h-btns{margin-bottom:15px}
-  .hero-illus{flex:none;width:100%;min-width:0;padding:32px 16px 32px;overflow:hidden}
+  .hero-illus{flex:none;width:100%;min-width:0;padding:32px 16px 32px;overflow:hidden;transform:translateZ(0)}
   .hero-illus-inner{max-width:none;width:144%;margin-left:-22%}
   .hp-row{flex-direction:column;gap:10px;padding:18px 20px 20px;position:relative}
   .hp-bar{width:36px;height:4px;align-self:auto;margin-top:0}
@@ -178,7 +178,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
   .hero-illus{padding:24px 10px 24px}
   .hero-illus-caption{font-size:16px}
   .hero-dot{width:3.2cqw;height:3.2cqw;min-width:12px;min-height:12px}
-  .msg-pin-frame-wrap{overflow:hidden}
+  .msg-pin-frame-wrap{overflow:hidden;transform:translateZ(0)}
 }
 /* ── SECTIONS ── */
 section{padding:76px 24px}
@@ -221,6 +221,9 @@ section{padding:76px 24px}
 .msg-pin-outer{display:none;order:1}
 .msg-pin-stage{position:sticky;top:var(--hh);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:32px 0 16px}
 .msg-pin-frame-wrap{position:relative;width:min(85.1%,483px,calc((100vh - var(--hh) - 110px) * 0.664125))}
+@supports (height:100svh){
+  .msg-pin-frame-wrap{width:min(85.1%,483px,calc((100svh - var(--hh) - 110px) * 0.664125))}
+}
 .msg-pin-frame-wrap .msg-bg-charm{position:absolute;top:40%;left:50%;width:150%;transform:translate(-50%,-50%) scaleX(-1);z-index:0;opacity:.95;pointer-events:none;user-select:none}
 .msg-pin-frame{position:relative;z-index:1;width:100%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:var(--gray);box-shadow:0 14px 34px rgba(20,30,60,.16)}
 .msg-pin-sheet{position:absolute;inset:0;clip-path:inset(0 0 100% 0)}
@@ -286,7 +289,7 @@ section{padding:76px 24px}
 
 /* ── CTA ── */
 .cta{position:relative;width:100%;min-height:400px;background:url('cta-background.jpg') center/cover no-repeat;display:flex;align-items:center;box-sizing:border-box;padding:60px 80px}
-.cta-inner{max-width:640px}
+.cta-inner{max-width:640px;min-width:0}
 .cta-title{font-size:clamp(24px,3vw,38px);line-height:1.5;font-weight:700;color:#fff;margin:0 0 24px;word-break:keep-all;overflow-wrap:break-word}
 .cta-body{font-size:15px;line-height:1.9;color:rgba(255,255,255,.85);margin:0 0 36px;word-break:keep-all;overflow-wrap:break-word}
 .cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;font-size:16px;font-weight:600;padding:16px 32px;border-radius:4px;text-decoration:none;transition:background .2s}
@@ -308,7 +311,7 @@ section{padding:76px 24px}
 .ncat--president{background:var(--blue);color:#fff}
 .ncat--event{background:var(--mag);color:#fff}
 .ncat--sponsor{background:var(--blk);color:#fff}
-.n-title{font-size:15px;font-weight:600;flex:1}
+.n-title{font-size:15px;font-weight:600;flex:1;min-width:0}
 .n-arrow{color:var(--sub);font-size:14px;flex-shrink:0}
 @media(max-width:900px){.news-grid{flex-direction:column;align-items:stretch}.news-photos{margin-top:0}}
 
@@ -395,6 +398,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 #topBtn:hover img{transform:translateY(-4px) rotate(-5deg)}
 #topBtn span{font-size:11px;font-weight:900;color:var(--blue);letter-spacing:.12em;background:#fff;border-radius:20px;padding:3px 10px;box-shadow:0 2px 8px rgba(14,122,196,.25)}
 @media(max-width:600px){#topBtn{bottom:20px;right:14px}#topBtn img{width:56px}}
+@media(max-width:900px){#mnav.open~#topBtn{display:none}}
 </style>
 </head>
 <body>
@@ -966,7 +970,7 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
 <!-- SCROLL TO TOP -->
 <button id="topBtn" aria-label="トップへ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <img src="top_cat_1.png" alt="トップへ戻る猫">
-  <span>TOP</span>
+  <span>UP</span>
 </button>
 <script>
 (function(){
