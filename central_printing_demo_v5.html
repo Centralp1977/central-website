@@ -233,9 +233,6 @@ section{padding:76px 24px}
 .msg-pin-scan.on{opacity:1}
 @keyframes msgScanRun{0%{background-position:0% 0}100%{background-position:200% 0}}
 .msg-pin-stage .msg-cap{margin-top:16px;min-height:1.6em;font-size:16px;font-weight:700;color:var(--text)}
-.msg-pin-dots{display:flex;gap:8px;margin-top:14px}
-.msg-pin-dots .dot{width:7px;height:7px;border-radius:50%;background:rgba(26,43,60,.18);transition:background .25s}
-.msg-pin-dots .dot.on{background:var(--blue)}
 @media(min-width:1024px){
   .msg-grid{grid-template-columns:1.4fr 1fr;gap:56px}
   .msg-collage{display:block;position:relative;aspect-ratio:16/13;overflow:hidden;border-radius:8px}
@@ -269,12 +266,12 @@ section{padding:76px 24px}
 /* ── SERVICES: mobile/tablet card-stack scroll effect ── */
 .svc-pin-outer{display:none}
 .svc-pin-stage{position:sticky;top:var(--hh);padding:28px 0 16px;display:flex;flex-direction:column;align-items:center}
-.svc-pin-stack{--card-h:min(56vh,400px);--peek:54px;position:relative;width:100%;max-width:400px;height:calc(var(--card-h) + 4*var(--peek));border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(16,24,50,.16)}
-.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);box-shadow:0 -8px 18px rgba(16,24,50,.14)}
+.svc-pin-stack{--card-h:min(58vh,420px);--peek:112px;position:relative;width:100%;max-width:400px;height:calc(var(--card-h) + 4*var(--peek));border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(16,24,50,.16)}
+.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);box-shadow:0 -8px 18px rgba(16,24,50,.14);transition:transform .18s cubic-bezier(.22,.8,.36,1)}
 .svc-pin-card .svc-thumb{height:auto;flex:1;min-height:0}
-.svc-pin-dots{display:flex;gap:8px;margin-top:16px}
-.svc-pin-dots .dot{width:7px;height:7px;border-radius:50%;background:rgba(26,43,60,.18);transition:background .25s}
-.svc-pin-dots .dot.on{background:var(--blue)}
+.svc-pin-card .svc-body{flex:none;position:relative;padding:16px 54px 16px 18px}
+.svc-pin-card .svc-desc{flex:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.svc-pin-card .svc-arrow{position:absolute;right:14px;bottom:14px;margin-top:0}
 @media(max-width:1023px) and (prefers-reduced-motion:no-preference){
   .svc-grid{display:none}
   .svc-pin-outer{display:block;height:300vh}
@@ -622,9 +619,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
             </div>
           </div>
           <p class="msg-cap" id="msgPinCap">一枚の紙に、想いを込めて。</p>
-          <div class="msg-pin-dots">
-            <span class="dot on"></span><span class="dot"></span><span class="dot"></span>
-          </div>
         </div>
       </div>
     </div>
@@ -721,9 +715,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
             </div>
           </a>
         </div>
-      </div>
-      <div class="svc-pin-dots">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
       </div>
     </div>
   </div>
@@ -1052,7 +1043,6 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   var pinOuter=document.getElementById('msgPinOuter');
   if(!pinOuter) return;
   var sheets=pinOuter.querySelectorAll('.msg-pin-sheet');
-  var dots=pinOuter.querySelectorAll('.msg-pin-dots .dot');
   var capEl=document.getElementById('msgPinCap');
   var scanEl=document.getElementById('msgPinScan');
   var captions=['一枚の紙に、想いを込めて。','試作を重ね、納得のいく色へ。','かたちになった瞬間。'];
@@ -1080,7 +1070,6 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
         el.style.clipPath='inset(0 0 100% 0)';
       }
     });
-    dots.forEach(function(d,i){ d.classList.toggle('on',i===idx); });
     if(capEl) capEl.textContent=captions[idx]||'';
     if(scanEl){
       if(reveal>0&&reveal<1){
@@ -1107,14 +1096,18 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   if(!pinOuter) return;
   var stack=document.getElementById('svcPinStack');
   var cards=Array.prototype.slice.call(stack.querySelectorAll('.svc-pin-card'));
-  var dots=pinOuter.querySelectorAll('.svc-pin-dots .dot');
   var n=cards.length;
-  var peek=54,cardH=400;
+  var peek=112,cardH=420;
   var ticking=false;
+  function easeOutCubic(t){ return 1-Math.pow(1-t,3); }
   function measure(){
-    var cs=getComputedStyle(stack);
-    peek=parseFloat(cs.getPropertyValue('--peek'))||54;
-    cardH=parseFloat(cs.getPropertyValue('--card-h'))||400;
+    var maxBody=0;
+    cards.forEach(function(card){
+      var b=card.querySelector('.svc-body').offsetHeight;
+      if(b>maxBody) maxBody=b;
+    });
+    if(maxBody>0){ peek=maxBody; stack.style.setProperty('--peek',peek+'px'); }
+    cardH=parseFloat(getComputedStyle(stack).getPropertyValue('--card-h'))||420;
     cards.forEach(function(card,i){
       card.style.top=((n-1-i)*peek)+'px';
       card.style.zIndex=i+1;
@@ -1125,7 +1118,7 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
     if(pinOuter.offsetParent===null) return;
     var rect=pinOuter.getBoundingClientRect();
     var vh=window.innerHeight;
-    var total=pinOuter.offsetHeight-vh;
+    var total=(pinOuter.offsetHeight-vh)*0.9;
     if(total<=0) return;
     var scrolled=Math.min(Math.max(-rect.top,0),total);
     var p=scrolled/total;
@@ -1133,11 +1126,10 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
     var idx=Math.min(n-1,Math.floor(p/segLen));
     var localP=(p-idx*segLen)/segLen;
     cards.forEach(function(card,i){
-      var pi=i<idx?1:(i===idx?Math.max(0,Math.min(1,localP)):0);
+      var pi=i<idx?1:(i===idx?easeOutCubic(Math.max(0,Math.min(1,localP))):0);
       var hiddenY=cardH+i*peek;
       card.style.transform='translateY('+(hiddenY*(1-pi))+'px)';
     });
-    dots.forEach(function(d,i){ d.classList.toggle('on',i===idx); });
   }
   function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
   measure();
