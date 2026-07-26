@@ -267,7 +267,8 @@ section{padding:76px 24px}
 .svc-pin-outer{display:none}
 .svc-pin-stage{position:sticky;top:var(--hh);padding:28px 0 16px;display:flex;flex-direction:column;align-items:center}
 .svc-pin-stack{--card-h:min(52vh,380px);--peek:52px;position:relative;width:100%;max-width:400px;height:calc(var(--card-h) + 4*var(--peek))}
-.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);box-shadow:0 -6px 20px rgba(16,24,50,.16);transition:transform .18s cubic-bezier(.22,.8,.36,1)}
+/* .svc-card の transform トランジションはスクロール追従と競合するため打ち消す */
+.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);box-shadow:0 -6px 20px rgba(16,24,50,.16);transition:none;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .svc-pin-tab{flex:none;height:var(--peek);display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--gmid);background:#fff}
 .svc-pin-tab .svc-title{margin:0;font-size:15px}
 .svc-pin-card .svc-thumb{height:auto;flex:1;min-height:0}
@@ -1100,8 +1101,12 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   var cards=Array.prototype.slice.call(stack.querySelectorAll('.svc-pin-card'));
   var n=cards.length;
   var peek=52,cardH=380,stackH=0;
-  var ticking=false;
-  function easeOutCubic(t){ return 1-Math.pow(1-t,3); }
+  /* 目標値(targetY)へ毎フレーム一定割合で近づける慣性スムージング。
+     スクロール量を直接描画せずワンクッション挟むことで、速いスクロールや
+     惰性スクロールでも位置が飛ばず、区間の切り替わりも滑らかにつながる。 */
+  var targetY=new Array(n),curY=new Array(n);
+  var SMOOTH=0.2;            /* 60fps 換算の追従率 */
+  var rafId=0,inView=false,primed=false;
   function measure(){
     var cs=getComputedStyle(stack);
     peek=parseFloat(cs.getPropertyValue('--peek'))||52;
@@ -1114,31 +1119,63 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
       card.style.zIndex=i+1;
     });
   }
-  function update(){
-    ticking=false;
-    if(pinOuter.offsetParent===null) return;
+  function computeTargets(){
     var rect=pinOuter.getBoundingClientRect();
-    var vh=window.innerHeight;
-    var total=(pinOuter.offsetHeight-vh)*0.9;
-    if(total<=0) return;
-    var scrolled=Math.min(Math.max(-rect.top,0),total);
-    var p=scrolled/total;
+    var total=(pinOuter.offsetHeight-window.innerHeight)*0.9;
+    if(total<=0) return false;
+    var p=Math.min(Math.max(-rect.top,0),total)/total;
     var segCount=n-1;
-    var segLen=1/segCount;
-    var seg=Math.min(segCount-1,Math.floor(p/segLen));
-    var idx=1+seg;
-    var localP=(p-seg*segLen)/segLen;
-    cards.forEach(function(card,i){
-      var pi=i===0?1:(i<idx?1:(i===idx?easeOutCubic(Math.max(0,Math.min(1,localP))):0));
-      var hiddenY=stackH-i*peek;
-      card.style.transform='translateY('+(hiddenY*(1-pi))+'px)';
-    });
+    for(var i=0;i<n;i++){
+      /* イージングは lerp 側が担うため、目標値は区間内で線形にする
+         （二重イージングによる境界での速度の不連続を避ける） */
+      var pi;
+      if(i===0){ pi=1; }
+      else{
+        var t=(p-(i-1)/segCount)*segCount;
+        pi=t<0?0:(t>1?1:t);
+      }
+      targetY[i]=(stackH-i*peek)*(1-pi);
+    }
+    return true;
   }
-  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
+  function render(){
+    for(var i=0;i<n;i++){
+      cards[i].style.transform='translate3d(0,'+curY[i].toFixed(2)+'px,0)';
+    }
+  }
+  var lastT=0;
+  function tick(now){
+    rafId=0;
+    if(pinOuter.offsetParent===null||!computeTargets()){ lastT=0; return; }
+    /* 120Hz 端末でも追従速度が変わらないよう経過時間で補正 */
+    var dt=lastT?Math.min(now-lastT,64):16.67;
+    lastT=now;
+    var k=1-Math.pow(1-SMOOTH,dt/16.67);
+    for(var i=0;i<n;i++){
+      var d=targetY[i]-curY[i];
+      curY[i]=Math.abs(d)<0.1?targetY[i]:curY[i]+d*k;
+    }
+    render();
+    if(inView) rafId=requestAnimationFrame(tick);
+    else lastT=0;
+  }
+  function start(){ if(!rafId){ lastT=0; rafId=requestAnimationFrame(tick); } }
+  function reset(){
+    /* 初回表示時は補間せず目標値をそのまま反映（下からせり上がる誤動作を防ぐ） */
+    measure();
+    if(!computeTargets()) return;
+    for(var i=0;i<n;i++) curY[i]=targetY[i];
+    render();
+    primed=true;
+  }
+  var io=new IntersectionObserver(function(es){
+    inView=es[0].isIntersecting;
+    if(inView){ if(!primed) reset(); start(); }
+    else if(rafId){ cancelAnimationFrame(rafId); rafId=0; lastT=0; }
+  },{rootMargin:'200px 0px'});
+  io.observe(pinOuter);
   measure();
-  update();
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',function(){ measure(); update(); });
+  window.addEventListener('resize',function(){ primed=false; reset(); });
 })();
 </script>
 </body>
