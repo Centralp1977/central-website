@@ -315,10 +315,12 @@ section{padding:76px 24px}
 /* ── NEWS ── */
 #news{background:#fff}
 .news-grid{display:flex;align-items:flex-start;gap:48px}
-.news-left{flex:1 1 55%;min-width:0}
+.news-left{flex:1 1 55%;min-width:0;display:grid;grid-template-columns:1fr auto;grid-template-areas:"title more" "list list";column-gap:20px;align-items:end}
+.news-title{grid-area:title}
 .news-photos{flex:1 1 40%;min-width:0;display:flex;gap:12px;margin-top:56px}
 .news-photos img{flex:1 1 0;min-width:0;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block}
-.nlist{margin-top:24px}
+.nlist{grid-area:list;margin-top:24px}
+@media(min-width:901px){.news-grid{align-items:stretch}.news-photos img{aspect-ratio:auto;height:100%}}
 .ni{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--gmid);cursor:pointer;transition:background .15s;color:inherit;text-decoration:none}
 .ni:hover{background:var(--gray);margin:0 -8px;padding:16px 8px}
 .ni-main{flex:1;min-width:0}
@@ -332,11 +334,14 @@ section{padding:76px 24px}
 .ncat--media{background:var(--gmid);color:var(--text)}
 .n-title{font-size:15px;font-weight:600;min-width:0}
 .n-arrow{color:var(--sub);font-size:14px;flex-shrink:0}
-.news-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.news-more{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;padding:13px 28px;border:1.5px solid var(--blue);border-radius:8px;color:var(--blue);font-size:15px;font-weight:700;text-decoration:none;transition:background .15s,color .15s}
+.news-more{grid-area:more;justify-self:end;display:inline-flex;align-items:center;gap:8px;flex-shrink:0;padding:13px 28px;border:1.5px solid var(--blue);border-radius:8px;color:var(--blue);font-size:15px;font-weight:700;text-decoration:none;transition:background .15s,color .15s}
 .news-more:hover{background:var(--blue);color:#fff}
-@media(max-width:520px){.news-more{padding:11px 20px;font-size:14px}}
-@media(max-width:900px){.news-grid{flex-direction:column;align-items:stretch}.news-photos{margin-top:0}}
+@media(max-width:900px){
+  .news-grid{flex-direction:column;align-items:stretch}
+  .news-photos{margin-top:0}
+  .news-left{grid-template-columns:1fr;grid-template-areas:"title" "list" "more"}
+  .news-more{justify-self:center;margin-top:28px;padding:11px 20px;font-size:14px}
+}
 
 /* CONTACT FORM OVERLAY */
 .cf-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);overflow-y:auto}
@@ -770,10 +775,8 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
   <div class="si">
     <div class="news-grid">
       <div class="news-left">
-        <div class="news-head rev">
-          <div><div class="slb">NEWS</div><h2 class="sh">お知らせ</h2></div>
-          <a class="news-more" href="news.html">お知らせ一覧を見る <span>→</span></a>
-        </div>
+        <div class="news-title rev"><div class="slb">NEWS</div><h2 class="sh">お知らせ</h2></div>
+        <a class="news-more rev" href="news.html">お知らせ一覧を見る <span>→</span></a>
         <div class="nlist rev">
           <a class="ni" href="news-08.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.07.24</span><span class="ncat ncat--president">社長活動</span></div><span class="n-title">「ペーパーサミット2026」に参加いたしました</span></div><span class="n-arrow">›</span></a>
           <a class="ni" href="news-07.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.07.22</span><span class="ncat ncat--company">会社情報</span></div><span class="n-title">夏季休業のご案内</span></div><span class="n-arrow">›</span></a>
