@@ -131,6 +131,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 #message .sh{color:#fff}
 .pres-card{background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(14,122,196,.22);overflow:hidden;margin-top:40px;max-width:860px;margin-left:auto;margin-right:auto;display:flex;align-items:flex-end}
 .pres-card-body{flex:1;min-width:0;padding:36px 40px;display:flex;flex-direction:column}
+.pres-top-photo{width:100%;height:220px;object-fit:cover;object-position:center 30%;border-radius:14px;margin-bottom:24px;display:block}
 .pres-name-block{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:24px;border-bottom:1.5px solid var(--gmid)}
 .pres-name-block h3{font-size:18px;font-weight:900;color:var(--text);margin-bottom:4px}
 .pres-name-block p{font-size:13px;color:var(--sub)}
@@ -143,7 +144,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .pres-name-block{padding-top:16px;text-align:center}
 .pres-name-block h3{font-size:15px;font-weight:900;color:var(--text);margin-bottom:4px}
 .pres-name-block p{font-size:12px;color:var(--sub)}
-@media(max-width:700px){.pres-card{flex-direction:column;align-items:stretch}.pres-photo-col{width:100%;padding:0 20px 20px;align-items:center}.pres-photo-col img{width:36%;height:auto;object-fit:contain;object-position:top;margin:0 auto}.pres-card-body{padding:24px 20px}}
+@media(max-width:700px){.pres-card{flex-direction:column;align-items:stretch}.pres-photo-col{width:100%;padding:0 20px 20px;align-items:center}.pres-photo-col img{width:36%;height:auto;object-fit:contain;object-position:top;margin:0 auto}.pres-card-body{padding:24px 20px}.pres-top-photo{height:160px;margin-bottom:18px}}
 
 /* ACTIVITIES fade-in */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -381,6 +382,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     <div class="pres-card">
       <!-- テキスト（左） -->
       <div class="pres-card-body">
+        <img class="pres-top-photo" src="ceo_photo_outdoor.jpg" alt="代表取締役 関野 里美">
         <div class="pres-body">
           <blockquote>「印刷の力で、必要な情報を、必要な方に届ける」</blockquote>
           <p>セントラル印刷は1977年、新宿で複写伝票の印刷会社として創業いたしました。創業以来、ビジネスの現場で欠かせない帳票類の印刷を通じ、多くのお客様のご支援をいただいてまいりました。</p>
@@ -457,7 +459,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
         <div class="act-item">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">
             <a href="https://www.atomi.ac.jp/univ/" target="_blank" rel="noopener" style="flex-shrink:0">
-              <img src="atomi_logo.svg" alt="跡見学園女子大学" style="width:80px;height:auto;display:block">
+              <img src="atomi_logo.svg" alt="跡見学園女子大学" style="width:100px;height:auto;display:block">
             </a>
             <h4 style="margin:0">跡見女子学園との産学連携</h4>
           </div>
