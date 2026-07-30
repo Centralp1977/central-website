@@ -129,22 +129,18 @@ nav.desk{display:flex;align-items:center;gap:4px}
 #message>.si{position:relative;z-index:1}
 #message .slb{color:rgba(255,255,255,.75)}
 #message .sh{color:#fff}
-.pres-card{background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(14,122,196,.22);overflow:hidden;margin-top:40px;max-width:860px;margin-left:auto;margin-right:auto;display:flex;align-items:flex-end}
+.pres-card{background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(14,122,196,.22);overflow:hidden;margin-top:40px;max-width:860px;margin-left:auto;margin-right:auto;display:flex;flex-direction:column}
 .pres-card-body{flex:1;min-width:0;padding:36px 40px;display:flex;flex-direction:column}
 .pres-top-photo{width:100%;height:300px;object-fit:cover;object-position:center 25%;border-radius:14px;margin-bottom:24px;display:block}
-.pres-name-block{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:24px;border-bottom:1.5px solid var(--gmid)}
-.pres-name-block h3{font-size:18px;font-weight:900;color:var(--text);margin-bottom:4px}
-.pres-name-block p{font-size:13px;color:var(--sub)}
 .pres-body{flex:1}
 .pres-body blockquote{font-size:17px;font-weight:800;color:var(--blue);border-left:4px solid var(--blue);padding:4px 0 4px 18px;margin:0 0 24px;line-height:1.7}
 .pres-body h4{font-size:15px;font-weight:800;color:var(--text);margin:22px 0 8px}
 .pres-body p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:14px;word-break:keep-all}
-.pres-photo-col{width:132px;flex-shrink:0;background:#fff;padding:0 20px 20px 0;display:flex;flex-direction:column}
-.pres-photo-col img{width:100%;height:162px;object-fit:cover;object-position:top;display:block;border-radius:12px;mix-blend-mode:multiply}
-.pres-name-block{padding-top:16px;text-align:center}
+.pres-photo-col{width:100%;flex-shrink:0;background:#fff;padding:0 20px 20px;display:flex;flex-direction:column;align-items:center}
+.pres-name-block{padding-top:16px;text-align:center;padding-bottom:24px;border-bottom:1.5px solid var(--gmid)}
 .pres-name-block h3{font-size:15px;font-weight:900;color:var(--text);margin-bottom:4px}
 .pres-name-block p{font-size:12px;color:var(--sub)}
-@media(max-width:700px){.pres-card{flex-direction:column;align-items:stretch}.pres-photo-col{width:100%;padding:0 20px 20px;align-items:center}.pres-photo-col img{width:36%;height:auto;object-fit:contain;object-position:top;margin:0 auto}.pres-card-body{padding:24px 20px}.pres-top-photo{height:160px;margin-bottom:18px}}
+@media(max-width:700px){.pres-card-body{padding:24px 20px}.pres-top-photo{height:160px;margin-bottom:18px}}
 
 /* ACTIVITIES fade-in */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -396,7 +392,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       </div>
       <!-- 写真＋名前（右） -->
       <div class="pres-photo-col">
-        <img src="ceo_photo.png" alt="代表取締役 関野 里美">
         <div class="pres-name-block">
           <div>
             <h3>代表取締役　関野&nbsp;里美</h3>
