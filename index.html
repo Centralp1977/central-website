@@ -256,7 +256,9 @@ section{padding:76px 24px}
 .svc-card:hover{box-shadow:0 14px 30px rgba(16,24,50,.12);transform:translateY(-3px)}
 .svc-thumb{height:132px;flex:none;background:var(--svc-thumb-img) center/cover no-repeat}
 .svc-body{padding:22px 18px 20px;flex:1;display:flex;flex-direction:column}
-.svc-title{font-size:16px;font-weight:800;margin:0 0 8px;word-break:keep-all}
+.svc-title{font-size:19.2px;font-weight:800;margin:0 0 8px;word-break:keep-all;text-align:center}
+/* 英語表記はゴシックではなくセリフ体（Webフォント追加なしで和欧とも安定するスタック） */
+.svc-title-en{display:block;margin-top:4px;font-family:Georgia,'Times New Roman','Hiragino Mincho ProN','Yu Mincho',serif;font-size:.75em;font-weight:600;letter-spacing:.03em;color:var(--sub)}
 .svc-desc{font-size:13px;line-height:1.75;color:var(--sub);margin:0;flex:1;font-weight:500;word-break:keep-all;overflow-wrap:break-word}
 .svc-arrow{margin-top:16px;width:30px;height:30px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;align-self:flex-end;transition:background .15s ease}
 .svc-card:hover .svc-arrow{background:var(--blue-d)}
@@ -272,8 +274,9 @@ section{padding:76px 24px}
 .svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);border:none;border-radius:24px;overflow:hidden;background:#0d1420;box-shadow:0 20px 44px rgba(0,0,0,.3);transition:none;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:center top}
 .svc-pin-card .svc-thumb{position:absolute;inset:0;height:100%;z-index:0}
 .svc-pin-card::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(6,10,20,.82) 0%,rgba(6,10,20,.26) 30%,rgba(6,10,20,0) 55%),linear-gradient(to bottom,rgba(6,10,20,.22) 0%,rgba(6,10,20,0) 14%)}
-.svc-pin-tab{position:absolute;z-index:2;top:30px;left:24px;right:24px;height:24px}
-.svc-pin-tab .svc-title{margin:0;font-size:19px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.svc-pin-tab{position:absolute;z-index:2;top:30px;left:24px;right:24px;height:auto}
+.svc-pin-tab .svc-title{margin:0;font-size:22.8px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.svc-pin-tab .svc-title-en{color:rgba(255,255,255,.88);text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .svc-pin-card .svc-body{position:absolute;z-index:2;left:14px;right:14px;bottom:18px;padding:16px;background:rgba(8,12,20,.46);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-radius:16px}
 .svc-pin-card .svc-desc{font-size:16px;line-height:1.7;color:#fff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:1023px) and (prefers-reduced-motion:no-preference){
@@ -649,7 +652,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <a class="svc-card" href="service-denpyo.html">
         <div class="svc-thumb" style="--svc-thumb-img:url('service-denpyo-hero.jpeg')"></div>
         <div class="svc-body">
-          <h3 class="svc-title">複写伝票</h3>
+          <h3 class="svc-title">複写伝票<span class="svc-title-en">Form</span></h3>
           <p class="svc-desc">納品書や請求書など、業務に欠かせない複写伝票を制作します。</p>
           <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
@@ -657,7 +660,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <a class="svc-card" href="service-digital.html">
         <div class="svc-thumb" style="--svc-thumb-img:url('service-digital-hero.jpeg')"></div>
         <div class="svc-body">
-          <h3 class="svc-title">デジタル印刷</h3>
+          <h3 class="svc-title">デジタル印刷<span class="svc-title-en">Print-on-Demand</span></h3>
           <p class="svc-desc">小ロットや短納期にも対応するデジタル印刷でスピーディに制作します。</p>
           <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
@@ -665,7 +668,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <a class="svc-card" href="service-design.html">
         <div class="svc-thumb" style="--svc-thumb-img:url('service-design-hero.jpeg')"></div>
         <div class="svc-body">
-          <h3 class="svc-title">デザイン・DTP</h3>
+          <h3 class="svc-title">デザイン・DTP<span class="svc-title-en">Design・DTP</span></h3>
           <p class="svc-desc">企画からデザイン・DTPまで、伝わる紙面づくりをサポートします。</p>
           <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
@@ -673,7 +676,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <a class="svc-card" href="service-xr.html">
         <div class="svc-thumb" style="--svc-thumb-img:url('service-xr-hero.jpeg')"></div>
         <div class="svc-body">
-          <h3 class="svc-title">XR・デジタルコンテンツ事業</h3>
+          <h3 class="svc-title">XR・デジタルコンテンツ事業<span class="svc-title-en">XR・Digital Contents</span></h3>
           <p class="svc-desc">Webサイトやデジタルカタログなど企画・制作します。</p>
           <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
@@ -681,7 +684,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <a class="svc-card" href="service-kaiin.html">
         <div class="svc-thumb" style="--svc-thumb-img:url('AdobeStock_160933988.jpeg')"></div>
         <div class="svc-body">
-          <h3 class="svc-title">開院支援パック</h3>
+          <h3 class="svc-title">開院支援パック<span class="svc-title-en">Opening Clinic Support</span></h3>
           <p class="svc-desc">クリニックの開業に必要な印刷物をまとめてサポートするサービスです。</p>
           <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
@@ -691,35 +694,35 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <div class="svc-pin-stage">
         <div class="svc-pin-stack" id="svcPinStack">
           <a class="svc-card svc-pin-card" href="service-denpyo.html">
-            <div class="svc-pin-tab"><h3 class="svc-title">複写伝票</h3></div>
+            <div class="svc-pin-tab"><h3 class="svc-title">複写伝票<span class="svc-title-en">Form</span></h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('service-denpyo-hero.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">納品書や請求書など、業務に欠かせない複写伝票を制作します。</p>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-digital.html">
-            <div class="svc-pin-tab"><h3 class="svc-title">デジタル印刷</h3></div>
+            <div class="svc-pin-tab"><h3 class="svc-title">デジタル印刷<span class="svc-title-en">Print-on-Demand</span></h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('service-digital-hero.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">小ロットや短納期にも対応するデジタル印刷でスピーディに制作します。</p>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-design.html">
-            <div class="svc-pin-tab"><h3 class="svc-title">デザイン・DTP</h3></div>
+            <div class="svc-pin-tab"><h3 class="svc-title">デザイン・DTP<span class="svc-title-en">Design・DTP</span></h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('service-design-hero.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">企画からデザイン・DTPまで、伝わる紙面づくりをサポートします。</p>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-xr.html">
-            <div class="svc-pin-tab"><h3 class="svc-title">XR・デジタルコンテンツ事業</h3></div>
+            <div class="svc-pin-tab"><h3 class="svc-title">XR・デジタルコンテンツ事業<span class="svc-title-en">XR・Digital Contents</span></h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('service-xr-hero.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">Webサイトやデジタルカタログなど企画・制作します。</p>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-kaiin.html">
-            <div class="svc-pin-tab"><h3 class="svc-title">開院支援パック</h3></div>
+            <div class="svc-pin-tab"><h3 class="svc-title">開院支援パック<span class="svc-title-en">Opening Clinic Support</span></h3></div>
             <div class="svc-thumb" style="--svc-thumb-img:url('AdobeStock_160933988.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">クリニックの開業に必要な印刷物をまとめてサポートするサービスです。</p>
