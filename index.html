@@ -193,7 +193,7 @@ section{padding:76px 24px}
 .msg-stripe{display:block;width:64px;height:4px;border-radius:2px;margin:0 0 18px;background:linear-gradient(90deg,#00AEEF 0 25%,#EC008C 25% 50%,#FFF200 50% 75%,#231F20 75% 100%)}
 .msg-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
 .msg-body{order:2;position:relative;z-index:0;text-align:left}
-.msg-body .sh{text-align:center}
+.msg-body .sh{text-align:left}
 .msg-body .ss{max-width:44em;margin:0 0 28px}
 .msg-link{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--blue);text-decoration:none}
 .msg-link .arrow{display:inline-block;transition:transform .25s ease}
@@ -264,21 +264,21 @@ section{padding:76px 24px}
 @media(min-width:600px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.svc-grid{grid-template-columns:repeat(5,1fr)}}
 
-/* ── SERVICES: mobile/tablet card-stack scroll effect ── */
+/* ── SERVICES: mobile/tablet card-stack scroll effect(フルスクリーン・ビジュアル重視) ── */
 .svc-pin-outer{display:none}
-.svc-pin-stage{position:sticky;top:var(--hh);padding:28px 0 16px;display:flex;flex-direction:column;align-items:center}
-.svc-pin-stack{--card-h:min(52vh,380px);--peek:52px;position:relative;width:100%;max-width:400px;height:calc(var(--card-h) + 4*var(--peek))}
+.svc-pin-stage{position:sticky;top:var(--hh);padding:14px 0 16px;display:flex;flex-direction:column;align-items:center}
+.svc-pin-stack{--card-h:min(76vh,620px);--peek:18px;position:relative;width:calc(100% + 16px);margin:0 -8px;height:calc(var(--card-h) + 4*var(--peek))}
 /* .svc-card の transform トランジションはスクロール追従と競合するため打ち消す */
-.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);box-shadow:0 -6px 20px rgba(16,24,50,.16);transition:none;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.svc-pin-tab{flex:none;height:var(--peek);display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--gmid);background:#fff}
-.svc-pin-tab .svc-title{margin:0;font-size:15px}
-.svc-pin-card .svc-thumb{height:auto;flex:1;min-height:0}
-.svc-pin-card .svc-body{flex:none;position:relative;padding:14px 54px 14px 18px}
-.svc-pin-card .svc-desc{flex:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.svc-pin-card .svc-arrow{position:absolute;right:14px;bottom:12px;margin-top:0}
+.svc-pin-card{position:absolute;left:0;right:0;height:var(--card-h);border:none;border-radius:24px;overflow:hidden;background:#0d1420;box-shadow:0 20px 44px rgba(0,0,0,.3);transition:none;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:center top}
+.svc-pin-card .svc-thumb{position:absolute;inset:0;height:100%;z-index:0}
+.svc-pin-card::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(6,10,20,.82) 0%,rgba(6,10,20,.26) 30%,rgba(6,10,20,0) 55%),linear-gradient(to bottom,rgba(6,10,20,.22) 0%,rgba(6,10,20,0) 14%)}
+.svc-pin-tab{position:absolute;z-index:2;top:30px;left:24px;right:24px;height:24px}
+.svc-pin-tab .svc-title{margin:0;font-size:19px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.svc-pin-card .svc-body{position:absolute;z-index:2;left:14px;right:14px;bottom:18px;padding:16px;background:rgba(8,12,20,.46);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-radius:16px}
+.svc-pin-card .svc-desc{font-size:16px;line-height:1.7;color:#fff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:1023px) and (prefers-reduced-motion:no-preference){
   .svc-grid{display:none}
-  .svc-pin-outer{display:block;height:260vh}
+  .svc-pin-outer{display:block;height:410vh}
 }
 
 /* ── FLOW ── */
@@ -598,7 +598,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
         <span class="msg-stripe"></span>
         <div class="slb">MESSAGE</div>
         <h2 class="sh">お客様のお客様に向けて</h2>
-        <p class="ss">「印刷」という技術はどの業界でも必要とされており、これからも多くの可能性を秘めています。我々は既成概念にとらわれずに「印刷」という技術をとおして人創り、物作り、事創りを目指しています。</p>
+        <p class="ss">「印刷」という技術はどの業界でも必要とされており、これからも多くの可能性を秘めています。我々は既成概念にとらわれずに「印刷」という技術をとおして人創り、物作り、事創りを目指しています。デジタルでは伝わりにくい質感や想いも、紙という形にすることでしっかりと届けることができます。私たちは、お客様の先にいらっしゃる「お客様のお客様」にまで想いを馳せながら、一つひとつの仕事に丁寧に向き合ってまいります。</p>
         <a class="msg-link" href="company.html">私たちについてはこちら<span class="arrow">→</span></a>
       </div>
       <div class="msg-collage">
@@ -695,7 +695,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
             <div class="svc-thumb" style="--svc-thumb-img:url('service-denpyo-hero.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">納品書や請求書など、業務に欠かせない複写伝票を制作します。</p>
-              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-digital.html">
@@ -703,7 +702,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
             <div class="svc-thumb" style="--svc-thumb-img:url('service-digital-hero.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">小ロットや短納期にも対応するデジタル印刷でスピーディに制作します。</p>
-              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-design.html">
@@ -711,7 +709,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
             <div class="svc-thumb" style="--svc-thumb-img:url('service-design-hero.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">企画からデザイン・DTPまで、伝わる紙面づくりをサポートします。</p>
-              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-xr.html">
@@ -719,7 +716,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
             <div class="svc-thumb" style="--svc-thumb-img:url('service-xr-hero.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">Webサイトやデジタルカタログなど企画・制作します。</p>
-              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
           <a class="svc-card svc-pin-card" href="service-kaiin.html">
@@ -727,7 +723,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
             <div class="svc-thumb" style="--svc-thumb-img:url('AdobeStock_160933988.jpeg')"></div>
             <div class="svc-body">
               <p class="svc-desc">クリニックの開業に必要な印刷物をまとめてサポートするサービスです。</p>
-              <div class="svc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             </div>
           </a>
         </div>
@@ -1120,6 +1115,12 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
      スクロール量を直接描画せずワンクッション挟むことで、速いスクロールや
      惰性スクロールでも位置が飛ばず、区間の切り替わりも滑らかにつながる。 */
   var targetY=new Array(n),curY=new Array(n);
+  /* 次のカードに覆われる進行度に応じて、自分自身を少し縮小＋沈み込ませる
+     （上に重なる瞬間、下のカードが後ろに沈んでいくような視覚効果） */
+  var targetScale=new Array(n),curScale=new Array(n);
+  var targetSink=new Array(n),curSink=new Array(n);
+  var SINK_SCALE=0.06,SINK_PX=14;
+  var HOLD=0.35;             /* 各区間のうち待機に充てる割合 */
   var SMOOTH=0.2;            /* 60fps 換算の追従率 */
   var rafId=0,inView=false,primed=false;
   function measure(){
@@ -1136,26 +1137,35 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   }
   function computeTargets(){
     var rect=pinOuter.getBoundingClientRect();
-    var total=(pinOuter.offsetHeight-window.innerHeight)*0.9;
+    var total=(pinOuter.offsetHeight-window.innerHeight)*0.72;
     if(total<=0) return false;
     var p=Math.min(Math.max(-rect.top,0),total)/total;
     var segCount=n-1;
+    var piArr=new Array(n);
     for(var i=0;i<n;i++){
       /* イージングは lerp 側が担うため、目標値は区間内で線形にする
          （二重イージングによる境界での速度の不連続を避ける） */
       var pi;
       if(i===0){ pi=1; }
       else{
-        var t=(p-(i-1)/segCount)*segCount;
+        /* 区間の先頭 HOLD 分は次のカードを動かさず待機させる。
+           これで前のカードが説明文まで完全に見えた状態で一度止まる */
+        var t=((p-(i-1)/segCount)*segCount-HOLD)/(1-HOLD);
         pi=t<0?0:(t>1?1:t);
       }
+      piArr[i]=pi;
       targetY[i]=(stackH-i*peek)*(1-pi);
+    }
+    for(var j=0;j<n;j++){
+      var coverP=(j<n-1)?piArr[j+1]:0;
+      targetScale[j]=1-SINK_SCALE*coverP;
+      targetSink[j]=SINK_PX*coverP;
     }
     return true;
   }
   function render(){
     for(var i=0;i<n;i++){
-      cards[i].style.transform='translate3d(0,'+curY[i].toFixed(2)+'px,0)';
+      cards[i].style.transform='translate3d(0,'+(curY[i]+curSink[i]).toFixed(2)+'px,0) scale('+curScale[i].toFixed(4)+')';
     }
   }
   var lastT=0;
@@ -1169,6 +1179,10 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
     for(var i=0;i<n;i++){
       var d=targetY[i]-curY[i];
       curY[i]=Math.abs(d)<0.1?targetY[i]:curY[i]+d*k;
+      var ds=targetSink[i]-curSink[i];
+      curSink[i]=Math.abs(ds)<0.1?targetSink[i]:curSink[i]+ds*k;
+      var dc=targetScale[i]-curScale[i];
+      curScale[i]=Math.abs(dc)<0.0005?targetScale[i]:curScale[i]+dc*k;
     }
     render();
     if(inView) rafId=requestAnimationFrame(tick);
@@ -1179,7 +1193,7 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
     /* 初回表示時は補間せず目標値をそのまま反映（下からせり上がる誤動作を防ぐ） */
     measure();
     if(!computeTargets()) return;
-    for(var i=0;i<n;i++) curY[i]=targetY[i];
+    for(var i=0;i<n;i++){ curY[i]=targetY[i]; curScale[i]=targetScale[i]; curSink[i]=targetSink[i]; }
     render();
     primed=true;
   }
