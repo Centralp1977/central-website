@@ -1207,6 +1207,22 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   window.addEventListener('resize',function(){ primed=false; reset(); });
 })();
 </script>
+
+<!-- NEWS: トップページは日付の新しい順に最大5件まで表示（全件は news.html） -->
+<script>
+(function(){
+  var list=document.querySelector('#news .nlist');
+  if(!list) return;
+  var MAX=5;
+  var items=Array.prototype.slice.call(list.querySelectorAll('.ni'));
+  var dateOf=function(el){var d=el.querySelector('.n-date');return d?Number(d.textContent.replace(/\D/g,'')):0;};
+  items.sort(function(a,b){return dateOf(b)-dateOf(a);});
+  items.forEach(function(it,i){
+    list.appendChild(it);
+    it.style.display = i<MAX ? '' : 'none';
+  });
+})();
+</script>
 </body>
 </html>
 
