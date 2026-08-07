@@ -1,5 +1,10 @@
 name = "central-website"
 compatibility_date = "2024-01-01"
 
+# デプロイ前に dist/ を生成する。ダッシュボードの Build command 設定に依存しないよう
+# wrangler.toml 側に持たせている。
+[build]
+command = "npm run build"
+
 [assets]
 directory = "dist"
