@@ -283,7 +283,12 @@ section{padding:76px 24px}
 .svc-pin-card .svc-desc{font-size:18.4px;line-height:1.7;color:#fff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:1023px) and (prefers-reduced-motion:no-preference){
   .svc-grid{display:none}
-  .svc-pin-outer{display:block;height:410vh}
+  /* 高さ×下記JSの係数でアニメ区間が決まる。最後のカードが出そろったあとに
+     残る「何も動かない区間」が長いと、下から上へ戻るときに無反応に感じるため、
+     余白は 25vh 程度に抑える（382vh - 100vh(sticky) = 282vh、うち 90% がアニメ）。
+     JSの SEG_W で3枚目の区間を 1.5 倍にしている分、他のカードの速さが変わらないよう
+     全体を 350vh → 382vh に伸ばしてある（1区間 ≒ 56vh x 重み合計 4.5） */
+  .svc-pin-outer{display:block;height:382vh}
 }
 
 /* ── FLOW ── */
@@ -1126,8 +1131,26 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   var targetScale=new Array(n),curScale=new Array(n);
   var targetSink=new Array(n),curSink=new Array(n);
   var SINK_SCALE=0.06,SINK_PX=14;
-  var HOLD=0.35;             /* 各区間のうち待機に充てる割合 */
+  var HOLD=0.35;             /* 各区間のうち待機に充てる割合（区間長 1 のとき） */
   var SMOOTH=0.2;            /* 60fps 換算の追従率 */
+  /* 各カードが現れる区間の相対的な長さ。1 が標準で、大きくするとそのカードだけ
+     ゆっくりスクロールする。並びは [2枚目,3枚目,4枚目,5枚目] に対応。
+     3枚目（デザイン・DTP）だけ 1.5 にして、流れてしまわないようにしている。
+     ここを変えたら .svc-pin-outer の height も合わせて調整すること
+     （1区間 ≒ 56vh 相当・合計 = 重みの合計 x 56vh になるように） */
+  var SEG_W=[1,1.5,1,1];
+  var segEdge=[0];           /* 0..1 に正規化した区間の境界 */
+  var segHold=0;             /* 待機の長さ（全区間で一定。重みで伸ばさない） */
+  (function(){
+    var m=n-1,i,sum=0;
+    while(SEG_W.length<m) SEG_W.push(1);
+    SEG_W.length=m;
+    for(i=0;i<m;i++) sum+=SEG_W[i];
+    for(i=0;i<m;i++) segEdge.push(segEdge[i]+SEG_W[i]/sum);
+    /* 重み 1 の区間を基準にした待機量。重みを上げた区間は待機ではなく
+       移動そのものが伸びるので、「そのカードだけゆっくり」になる */
+    segHold=HOLD/sum;
+  })();
   var rafId=0,inView=false,primed=false;
   function measure(){
     var cs=getComputedStyle(stack);
@@ -1143,10 +1166,11 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
   }
   function computeTargets(){
     var rect=pinOuter.getBoundingClientRect();
-    var total=(pinOuter.offsetHeight-window.innerHeight)*0.72;
+    /* ピン区間のうちアニメに使う割合。1に近いほど末尾の空走りが減り、
+       最後のカードから上へ戻すときすぐ前のカードが顔を出す */
+    var total=(pinOuter.offsetHeight-window.innerHeight)*0.90;
     if(total<=0) return false;
     var p=Math.min(Math.max(-rect.top,0),total)/total;
-    var segCount=n-1;
     var piArr=new Array(n);
     for(var i=0;i<n;i++){
       /* イージングは lerp 側が担うため、目標値は区間内で線形にする
@@ -1154,9 +1178,10 @@ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
       var pi;
       if(i===0){ pi=1; }
       else{
-        /* 区間の先頭 HOLD 分は次のカードを動かさず待機させる。
+        /* 区間の先頭 segHold 分は次のカードを動かさず待機させる。
            これで前のカードが説明文まで完全に見えた状態で一度止まる */
-        var t=((p-(i-1)/segCount)*segCount-HOLD)/(1-HOLD);
+        var a=segEdge[i-1],span=segEdge[i]-a-segHold;
+        var t=span>0?(p-a-segHold)/span:1;
         pi=t<0?0:(t>1?1:t);
       }
       piArr[i]=pi;
