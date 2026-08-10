@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="セントラル印刷株式会社からのお知らせ一覧です。会社情報・社長活動・メディア掲載など最新情報をお届けします。">
-<title>お知らせ一覧｜セントラル印刷株式会社</title>
+<meta name="description" content="セントラル印刷株式会社の個人情報保護方針および個人情報の取扱いについて。個人情報の適正な取得・利用・提供、安全管理措置、開示等の手続き、お問い合わせ窓口をご案内します。">
+<title>個人情報保護方針｜セントラル印刷株式会社</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -45,7 +45,6 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .mnav-links{flex:1;padding:8px 0}
 .ml{display:flex;align-items:center;gap:14px;padding:18px 28px;font-size:17px;font-weight:700;color:var(--text);text-decoration:none;border-bottom:1px solid var(--gray);transition:background .15s,color .15s}
 .ml:hover{background:var(--blue-l);color:var(--blue)}
-.ml.on{background:var(--blue-l);color:var(--blue)}
 .ml-dropdown{width:100%}
 .ml.ml-has-dd{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;border-bottom:1px solid var(--gray);padding:20px 28px;font-family:inherit;font-size:17px;font-weight:700;color:var(--text);cursor:pointer;text-align:left}
 .ml-dd-arrow{font-size:16px;color:var(--sub);transition:transform .25s}
@@ -62,52 +61,40 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .mnav-btn-a{background:var(--blue);color:#fff}
 @media(max-width:900px){nav.desk{display:none}.hmb{display:flex}}
 
-/* ── PAGE CRUMBS ── */
+/* ── PAGE HERO ── */
 .svc-crumbs-wrap{max-width:1120px;margin:calc(var(--hh) + 20px) auto 0;padding:0 24px}
 .svc-crumbs{font-size:12px;color:var(--sub)}
 .svc-crumbs a{color:var(--sub);text-decoration:none}
 .svc-crumbs a:hover{color:var(--blue)}
-@media(max-width:640px){.svc-crumbs-wrap{margin-top:calc(var(--hh) + 12px);padding:0 12px}}
+.svc-hero{position:relative;margin:16px 24px 0;border-radius:20px;overflow:hidden;min-height:360px;display:flex;align-items:center;color:#fff}
+.svc-hero-plain{background:linear-gradient(110deg,var(--blue-d) 0%,var(--blue) 55%,#1594E0 100%);min-height:240px}
+.svc-hero-in{position:relative;z-index:1;padding:48px 48px 44px;max-width:900px;min-width:0}
+.svc-hero-in h1{font-size:clamp(28px,4vw,38px);font-weight:900;margin-bottom:16px}
+.svc-hero-in p{font-size:15px;line-height:1.9;color:rgba(255,255,255,.94)}
+@media(max-width:640px){.svc-crumbs-wrap{margin-top:calc(var(--hh) + 12px);padding:0 12px}.svc-hero{margin:12px 12px 0;min-height:0}.svc-hero-in{padding:32px 24px}}
 
-/* ── LIST HERO ── */
-.nws-hero{background:var(--blue);margin:16px 24px 0;border-radius:20px;color:#fff;padding:56px 48px 48px}
-.nws-hero-in{max-width:760px;margin:0 auto}
-.nws-title{font-size:clamp(22px,3.2vw,32px);font-weight:900;line-height:1.5}
-@media(max-width:640px){.nws-hero{margin:12px 12px 0;padding:36px 24px}}
+.si{max-width:1120px;margin:0 auto}
+.sec{padding:72px 24px}
+.sec-gray{background:var(--gray)}
+.slb{font-size:12px;letter-spacing:5px;color:var(--blue);font-weight:700;margin-bottom:10px;text-transform:uppercase}
+.sh{font-size:clamp(22px,3vw,32px);font-weight:900;margin-bottom:8px}
 
-/* ── TAG FILTER ── */
-.tagbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.tagbtn{appearance:none;-webkit-appearance:none;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 20px;border:1.5px solid var(--gmid);border-radius:999px;background:#fff;color:var(--sub);font-size:15px;font-weight:700;line-height:1.2;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
-.tagbtn:hover{border-color:var(--blue);color:var(--blue)}
-.tagbtn.on{border-color:transparent}
-.tagbtn.on:hover{color:inherit}
-/* 選択中はそのタグ（カテゴリバッジ）と同じ色になる */
-.tagbtn.on.t-all{background:var(--blue);color:#fff}
-.tagbtn.on.t-company{background:var(--yel);color:var(--blk)}
-.tagbtn.on.t-president{background:var(--blue);color:#fff}
-.tagbtn.on.t-event{background:var(--mag);color:#fff}
-.tagbtn.on.t-sponsor{background:var(--blk);color:#fff}
-.tagbtn.on.t-media{background:var(--gmid);color:var(--text);border-color:#C3CEDA}
-.nlist-empty{padding:40px 0;text-align:center;font-size:15px;color:var(--sub)}
-@media(max-width:640px){.tagbtn{padding:10px 16px;font-size:14px}.tagbar{gap:8px}}
-
-/* ── NEWS LIST ── */
-.nws-wrap{max-width:760px;margin:0 auto;padding:56px 24px}
-.nlist{border-top:1px solid var(--gmid)}
-.ni{display:flex;align-items:center;gap:14px;padding:20px 0;border-bottom:1px solid var(--gmid);cursor:pointer;transition:background .15s;color:inherit;text-decoration:none}
-.ni:hover{background:var(--gray);margin:0 -8px;padding:20px 8px}
-.ni-main{flex:1;min-width:0}
-.ni-meta{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-.n-date{color:var(--sub);font-size:13px;white-space:nowrap;font-weight:400;letter-spacing:.3px}
-.ncat{padding:3px 10px;border-radius:5px;font-size:11px;font-weight:800;background:var(--blue-l);color:var(--blue);white-space:nowrap}
-.ncat--company{background:var(--yel);color:var(--blk)}
-.ncat--president{background:var(--blue);color:#fff}
-.ncat--event{background:var(--mag);color:#fff}
-.ncat--sponsor{background:var(--blk);color:#fff}
-.ncat--media{background:var(--gmid);color:var(--text)}
-.n-title{font-size:15px;font-weight:600;min-width:0}
-.n-arrow{color:var(--sub);font-size:14px;flex-shrink:0}
-@media(max-width:640px){.nws-wrap{padding:40px 20px}}
+/* ── FEATURES ── */
+.feat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:36px}
+.feat-card{padding:4px 28px;border-left:1px solid var(--gmid);min-width:0}
+.feat-card:first-child{border-left:none}
+.feat-card h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--blue)}
+.feat-card p{font-size:14px;line-height:1.8;color:var(--sub)}
+@media(max-width:860px){
+  .feat-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+  .feat-card:nth-child(2n+1){border-left:none}
+  .feat-card:nth-child(n+3){border-top:1px solid var(--gmid);padding-top:24px}
+}
+@media(max-width:520px){
+  .feat-grid{grid-template-columns:1fr}
+  .feat-card{border-left:none}
+  .feat-card:nth-child(n+2){border-top:1px solid var(--gmid);padding-top:24px}
+}
 
 /* ── CTA (index.html と共通デザイン) ── */
 .cta{position:relative;width:100%;min-height:400px;background:url('cta-background.jpg') center/cover no-repeat;display:flex;align-items:center;box-sizing:border-box;padding:60px 80px}
@@ -137,6 +124,56 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 .footer-sns a:hover{background:rgba(255,255,255,.22)}
 .footer-sns svg{width:20px;height:20px}
 .footer-copy{font-size:12px;font-weight:500;color:rgba(255,255,255,.45)}
+
+/* ── PRIVACY POLICY ── */
+.pp{max-width:920px}
+.pp-lead{font-size:15px;line-height:2;color:var(--text);margin-top:20px}
+.pp-lead a{color:var(--blue);font-weight:700}
+.pp-list{list-style:none;counter-reset:pp;margin-top:32px}
+.pp-list>li{counter-increment:pp;position:relative;padding:22px 0 22px 52px;border-top:1px solid var(--gmid)}
+.pp-list>li:last-child{border-bottom:1px solid var(--gmid)}
+.pp-list>li::before{content:counter(pp);position:absolute;left:0;top:22px;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.pp-list>li h3{font-size:17px;font-weight:800;margin-bottom:10px;color:var(--blue-d)}
+.pp-list>li p{font-size:15px;line-height:1.95;color:var(--sub)}
+.pp-sub{margin-top:16px}
+.pp-sub h4{font-size:15px;font-weight:800;color:var(--text);margin:20px 0 10px}
+.pp-sub p,.pp-sub li{font-size:15px;line-height:1.95;color:var(--sub)}
+.pp-sub ul{list-style:none;margin-top:8px}
+.pp-sub ul li{position:relative;padding-left:18px;margin-bottom:6px}
+.pp-sub ul li::before{content:'・';position:absolute;left:0;color:var(--blue)}
+.pp-sub ol{list-style:none;counter-reset:ppo;margin-top:8px}
+.pp-sub ol li{counter-increment:ppo;position:relative;padding-left:30px;margin-bottom:8px}
+.pp-sub ol li::before{content:counter(ppo)'.';position:absolute;left:0;font-weight:700;color:var(--blue)}
+.pp-table{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:12px;font-size:14px}
+.pp-table th,.pp-table td{border:1px solid var(--gmid);padding:12px 14px;text-align:left;line-height:1.8;vertical-align:top;overflow-wrap:anywhere}
+.pp-table th{background:var(--blue-l);color:var(--blue-d);font-weight:700;width:34%}
+.pp-table td{color:var(--sub)}
+.pp-box{margin-top:32px;background:var(--blue-l);border-radius:12px;padding:24px 28px}
+.pp-box h4{font-size:15px;font-weight:800;color:var(--blue-d);margin-bottom:8px}
+.pp-box p{font-size:15px;line-height:1.9;color:var(--text)}
+.pp-box a{color:var(--blue);font-weight:800;text-decoration:none}
+.pp-sign{margin-top:28px;text-align:right;font-size:14px;line-height:2;color:var(--sub)}
+.pp-pdf-wrap{text-align:center;margin-top:40px}
+.pp-pdf-note{font-size:13px;color:var(--sub);margin-top:10px}
+@media(max-width:640px){
+  .pp-list>li{padding:18px 0 18px 44px}
+  .pp-list>li::before{width:30px;height:30px;font-size:14px;top:18px}
+  .pp-table,.pp-table tbody{display:block}
+  .pp-table th,.pp-table td{display:block;width:100%;border-top:none}
+  .pp-table tr{display:block;border-top:1px solid var(--gmid);margin-bottom:-1px}
+  .pp-sign{text-align:left}
+}
+
+/* ── PDF POPUP ── */
+.pdf-overlay{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+.pdf-overlay.open{display:flex;align-items:center;justify-content:center;padding:24px}
+.pdf-box{background:#fff;border-radius:16px;overflow:hidden;width:100%;max-width:900px;height:88vh;display:flex;flex-direction:column;position:relative;animation:slideup .3s ease}
+.pdf-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;border:none;cursor:pointer;font-size:18px;font-weight:800;z-index:2}
+.pdf-box iframe{flex:1;width:100%;border:none}
+.pdf-btn{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:14px 28px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:background .15s;font-family:inherit}
+.pdf-btn:hover{background:var(--blue-d)}
+@keyframes slideup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){.pdf-box{height:92vh;max-width:100%}}
 </style>
 </head>
 <body>
@@ -184,10 +221,10 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
         </div>
       </div>
       <a class="nl" href="index.html#flow">制作の流れ</a>
-      <a class="nl on" href="news.html">お知らせ</a>
+      <a class="nl" href="news.html">お知らせ</a>
       <a class="ncta" href="index.html#contact">お問い合わせ</a>
     </nav>
-    <button class="hmb" id="hmb" aria-label="メニューを開く" onclick="toggleMnav()">
+    <button class="hmb" id="hmb" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -221,7 +258,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       </div>
     </div>
     <a class="ml" href="index.html#flow" onclick="closeMnav()">制作の流れ</a>
-    <a class="ml on" href="news.html" onclick="closeMnav()">お知らせ</a>
+    <a class="ml" href="news.html" onclick="closeMnav()">お知らせ</a>
   </div>
   <div class="mnav-sns">
     <a href="https://www.instagram.com/centralp_1977/?hl=ja" target="_blank" rel="noopener" aria-label="Instagram" class="mnav-sns-btn">
@@ -239,33 +276,173 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   </div>
 </nav>
 
-<!-- PAGE CRUMBS -->
-<div class="svc-crumbs-wrap"><div class="svc-crumbs"><a href="index.html">トップ</a> ＞ お知らせ一覧</div></div>
-
-<!-- LIST HERO -->
-<div class="nws-hero">
-  <div class="nws-hero-in">
-    <h1 class="nws-title">お知らせ一覧</h1>
+<!-- PAGE HERO -->
+<div class="svc-crumbs-wrap"><div class="svc-crumbs"><a href="index.html">トップ</a> ＞ 個人情報保護方針</div></div>
+<div class="svc-hero svc-hero-plain">
+  <div class="svc-hero-in">
+    <h1>個人情報保護方針</h1>
+    <p>セントラル印刷株式会社は、皆様の大切な個人情報を保護することが、継続的な事業活動の基本であると共に、重要な社会的責務であると認識し、その適正な取扱いに努めてまいります。</p>
   </div>
 </div>
 
-<!-- NEWS LIST -->
-<section class="nws-wrap">
-  <div class="tagbar" id="tagbar" role="group" aria-label="タグで絞り込み"></div>
-  <div class="nlist" id="nlist">
-    <a class="ni" href="news-08.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.07.24</span><span class="ncat ncat--president">社長活動</span></div><span class="n-title">「ペーパーサミット2026」に参加いたしました</span></div><span class="n-arrow">›</span></a>
-    <a class="ni" href="news-07.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.07.22</span><span class="ncat ncat--company">会社情報</span></div><span class="n-title">夏季休業のご案内</span></div><span class="n-arrow">›</span></a>
-    <a class="ni" href="news-09.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.07.15</span><span class="ncat ncat--media">メディア</span></div><span class="n-title">印刷業界新聞 プリテックステージニュース7月15日号にインタビュー記事が掲載されました</span></div><span class="n-arrow">›</span></a>
-    <a class="ni" href="news-03.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.06.10</span><span class="ncat ncat--company">会社情報</span></div><span class="n-title">ウェブサイトをリニューアルしました</span></div><span class="n-arrow">›</span></a>
+<!-- 個人情報保護方針 -->
+<section class="sec" id="policy">
+  <div class="si pp">
+    <div class="slb">PRIVACY POLICY</div>
+    <h2 class="sh">個人情報保護方針</h2>
+    <p class="pp-lead">セントラル印刷株式会社は、皆様に安心と信頼を頂ける、印刷業務及びそれに付帯する業務において、皆様の大切な個人情報、個人番号及び特定個人情報（以下「個人情報」）を保護することが、継続的な事業活動の基本であると共に、重要な社会的責務であると認識し、今後も引き続き個人情報の適正な取扱いに努めてまいります。<br>
+    尚、詳細は、<a href="#handling">「個人情報の取扱いについて」</a>をご覧ください。</p>
+
+    <ol class="pp-list">
+      <li>
+        <h3>適正な取得</h3>
+        <p>皆様の個人情報は、ご本人に利用目的をお知らせするとともに、適正な手段により取得いたします。</p>
+      </li>
+      <li>
+        <h3>個人情報の利用</h3>
+        <p>皆様の個人情報は、利用目的の達成に必要な範囲において取扱う措置を講じ、その範囲を超えての目的外利用はいたしません。利用目的の範囲を超えて、個人情報を利用する必要が生じた場合は、その旨をあらかじめご連絡し、同意をいただいた上で利用いたします。</p>
+      </li>
+      <li>
+        <h3>個人情報の提供</h3>
+        <p>あらかじめ、皆様からの同意をいただいている場合、及び法令等に基づく場合を除き、個人情報を第三者に対して提供いたしません。ただし、個人情報を扱う業務を他に委託する場合があります。この場合、委託先に対する個人情報保護の契約を締結し、適正な取扱いが行われるよう管理・監督いたします。</p>
+      </li>
+      <li>
+        <h3>安全管理措置</h3>
+        <p>お預かりした個人情報は、必要な安全管理措置を講じ、漏えい、滅失又はき損等を防止するとともに是正に努めてまいります。</p>
+      </li>
+      <li>
+        <h3>法令等の遵守</h3>
+        <p>個人情報に関して適用される個人情報保護法、番号法等の法令、国が定める指針及びその他の規範を遵守するとともに、本方針並びに社内規程を整備し、適切な運用が実施されるよう管理します。</p>
+      </li>
+      <li>
+        <h3>継続的改善</h3>
+        <p>事業内容の変化および事業を取り巻く社会環境・法令・情報技術の変化等に対応して、個人情報取扱体制の見直しを行い、継続的な改善に努めてまいります。</p>
+      </li>
+      <li>
+        <h3>苦情及びご相談及び開示等への対応に関すること</h3>
+        <p>個人情報に関する苦情やご相談、及び利用目的の通知、開示、訂正等、利用停止等に関するご質問・お問合せにつきましては、誠実かつ迅速な対応を行うよう努めてまいります。以下のお問合せ窓口までお寄せください。</p>
+      </li>
+    </ol>
+
+    <div class="pp-box">
+      <h4>個人情報に関するお問い合わせ先</h4>
+      <p>セントラル印刷株式会社　総務部<br>
+      電話番号：<a href="tel:0359818911">03-5981-8911</a></p>
+    </div>
+
+    <p class="pp-sign">制定：2016年4月1日<br>
+    セントラル印刷株式会社<br>
+    代表取締役　関野　里美</p>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
-  <div class="cta-inner">
-    <h2 class="cta-title">アイデアを、カタチに。<br>未来を、いっしょに。</h2>
-    <p class="cta-body">セントラル印刷は、企画・デザインから印刷・加工・納品まで、<br>お客様の想いをカタチにするパートナーです。</p>
-    <a class="cta-btn" href="index.html#contact">お問い合わせ <span>→</span></a>
+<!-- 個人情報の取扱いについて -->
+<section class="sec sec-gray" id="handling">
+  <div class="si pp">
+    <div class="slb">HANDLING OF PERSONAL DATA</div>
+    <h2 class="sh">個人情報の取扱いについて</h2>
+    <p class="pp-lead">当社は、個人情報、個人番号及び特定個人情報の重要性を認識しその保護の徹底を図るため、個人情報の取扱いに関する法令、国が定める指針その他の規範を遵守するとともに、個人情報を適切に取り扱うことを宣言します。</p>
+
+    <ol class="pp-list">
+      <li>
+        <h3>個人情報の利用目的について</h3>
+        <p>当社は、受託業務および印刷通販業務を主とした事業活動を通じてお預かりした個人情報を、次に示す利用目的の達成に必要な範囲内で取扱います。</p>
+        <div class="pp-sub">
+          <h4>【直接書面以外で取得する個人情報】</h4>
+          <table class="pp-table">
+            <tr><th>印刷業務の個人情報</th><td>お客様から受託を受けた印刷業務の遂行</td></tr>
+          </table>
+          <h4>【開示対象個人情報】</h4>
+          <table class="pp-table">
+            <tr><th>① 通販業務の個人情報</th><td>お客様から委託を受けた印刷業務及び商品発送業務の遂行</td></tr>
+            <tr><th>② 取引先個人情報</th><td>お取引先からの提案、見積、発注、受入、制作、これらに係る連絡</td></tr>
+            <tr><th>③ 従業員情報</th><td>従業者（在職者及び退職者）の雇用管理（給与・税務管理、健康管理、年金・保険管理、災害対策及び連絡等）</td></tr>
+            <tr><th>④ 従業者の扶養家族情報</th><td>保険加入、脱退手続、税務管理等に関する業務の遂行</td></tr>
+            <tr><th>⑤ 採用応募者</th><td>採用応募者への連絡及び採用に関する業務</td></tr>
+            <tr><th>⑥ 個人事業主の情報</th><td>報酬の支払い、支払調書の作成等これらに関する連絡</td></tr>
+            <tr><th>⑦ 上記に共通するお問い合わせ、ご相談、クレーム等に関する情報</th><td>お問い合わせ、ご相談、クレーム等、これらに関する連絡</td></tr>
+          </table>
+        </div>
+      </li>
+
+      <li>
+        <h3>個人情報の開示等について</h3>
+        <p>当社は、本人から開示対象個人情報等について利用目的の通知、開示、内容の訂正・追加・削除、利用の停止、消去及び第三者への提供の停止（以下、「開示等」という。）の求めがあった場合には、本人または代理人であることを確認の上、遅滞なく対応しますとともに、次のとおりその手続きを定めます。</p>
+        <div class="pp-sub">
+          <h4>① 申し出先</h4>
+          <p>開示等の求めは、下記を窓口とし、電話にて請求していただきます。<br>
+          個人情報に関するお問い合わせ先：個人情報管理責任者・取締役　TEL：<a href="tel:0359818911" style="color:var(--blue);font-weight:700;text-decoration:none">03-5981-8911</a></p>
+          <h4>② 開示等の求めに際して提出していただく書類等</h4>
+          <p>所定の「開示・停止等依頼書」に必要事項を記入の上、提出していただきます。</p>
+          <h4>③ 本人または代理人の確認方法</h4>
+          <ul>
+            <li>当社が保有するご本人の個人情報をもって、総合的に判断させていただきます。</li>
+            <li>法定代理人の場合は、戸籍謄本等を提出していただきます。</li>
+            <li>委任代理人の場合は、委任状を提出していただきます。</li>
+          </ul>
+          <h4>④ 回答方法</h4>
+          <ol>
+            <li>CD-ROM又はウェブサイト上でのダウンロードによる回答。</li>
+            <li>本人（又は代理人）の住所宛に、本人限定受取郵便にて回答。</li>
+            <li>電磁的記録（電子メール）での回答。</li>
+          </ol>
+          <h4>⑤ 利用目的の通知及び開示に関する手数料とお支払方法</h4>
+          <p>1回の請求ごとに1,500円（税込）の手数料をお振り込みいただきます。</p>
+        </div>
+      </li>
+
+      <li>
+        <h3>個人情報の取扱い及び個人情報保護に関する苦情・相談窓口について</h3>
+        <p>個人情報の取扱い及び個人情報保護に関する苦情・相談については、下記お問い合わせ先責任者までお申し出ください。</p>
+        <div class="pp-box">
+          <h4>セントラル印刷株式会社　個人情報管理責任者</h4>
+          <p>〒112-0013　東京都文京区音羽1-20-14　MBS音羽ビル2F<br>
+          TEL：<a href="tel:0359818911">03-5981-8911</a></p>
+        </div>
+      </li>
+
+      <li>
+        <h3>保有個人データの安全管理のために講じている措置</h3>
+        <div class="pp-sub">
+          <h4>【組織的安全管理措置】</h4>
+          <ul>
+            <li>個人情報保護管理者を設置し、個人情報保護の安全管理に関する従業者の責任と権限を明確に規定します。</li>
+            <li>個人情報の取り扱い状況の運用点検や監査などを定期的に実施します。</li>
+            <li>個人情報の取り扱いを委託する場合は個人情報保護の基準を満たす事業者を選定して、契約書の締結などによって個人情報保護を担保します。</li>
+          </ul>
+          <h4>【人的安全管理措置】</h4>
+          <ul>
+            <li>個人情報保護の安全管理に関する必要な教育研修を従業者に定期的に実施します。</li>
+            <li>就業規則や誓約書にて秘密保持義務の履行を担保します。</li>
+          </ul>
+          <h4>【物理的安全管理措置】</h4>
+          <ul>
+            <li>従業者の入退室管理及び電子機器の持ち込みや制限など、権限を有しない従業者などによる個人情報への不正アクセスを防止するための措置を講じます。</li>
+            <li>電子媒体や書類などの盗難・紛失などを防止するための措置を講じます。</li>
+          </ul>
+          <h4>【技術的安全管理措置】</h4>
+          <ul>
+            <li>個人情報を取り扱う情報システムへの不正アクセス又は不正ソフトウェアから保護する仕組みを導入します。</li>
+            <li>情報システムへのアクセス制御を実施し、担当者及び取り扱う個人情報データベース等の範囲を限定します。</li>
+            <li>情報システムのアクセスログを取得して定期的な確認を実施します。</li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <h3>クッキーについて</h3>
+        <p>クッキー（Cookie）とは、サーバー側で利用者を識別するために、サーバーから利用者のブラウザに送信され、利用者のコンピュータに蓄積される一時情報のことです。当サイトでは、クッキーを利用して、お客様のインターネットドメイン名、IPアドレス、当サイトのアクセス履歴等を自動的に収集します。サーバーはクッキーによりお客様のコンピュータを識別することができますが、これはサイトへ再訪したお客様に対するユーザビリティーの向上を目的とするもので、お名前・ご住所等の個人情報は一切含みません。なお、当サイト上で、お客様の個人情報をお客様の同意なしに取得することはありません。また、お客様のブラウザの設定によりクッキーの機能を無効にすることもできます。</p>
+      </li>
+    </ol>
+
+    <p class="pp-sign">制定：2024年4月1日<br>
+    セントラル印刷株式会社<br>
+    代表取締役　関野　里美</p>
+
+    <div class="pp-pdf-wrap">
+      <button class="pdf-btn" onclick="openPdf('privacy-policy.pdf')">PDF版（原本）を見る <span>→</span></button>
+      <p class="pp-pdf-note">このページ上にPDFを表示します</p>
+    </div>
   </div>
 </section>
 
@@ -329,6 +506,14 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   </div>
 </footer>
 
+<!-- PDF POPUP OVERLAY -->
+<div class="pdf-overlay" id="pdfOverlay" onclick="if(event.target===this)closePdf()">
+  <div class="pdf-box">
+    <button class="pdf-close" onclick="closePdf()" aria-label="閉じる">✕</button>
+    <iframe id="pdfFrame" src="" title="PDFプレビュー"></iframe>
+  </div>
+</div>
+
 <script>
 const hmb = document.getElementById('hmb');
 const mnav = document.getElementById('mnav');
@@ -337,69 +522,19 @@ if(hmb && mnav){
   hmb.addEventListener('click',()=>{const o=mnav.classList.toggle('open');hmb.classList.toggle('open');hmb.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';});
   function toggleMlDd(btn){const items=btn.nextElementSibling;const open=items.classList.toggle('open');btn.classList.toggle('open',open);btn.setAttribute('aria-expanded',open?'true':'false');}
 }
-
-/* ── お知らせ タグ絞り込み ──
-   タグボタンは記事の <span class="ncat ncat--xxx"> から自動生成するので、
-   記事を追加・削除してもボタン側の書き換えは不要 */
-(function(){
-  const list = document.getElementById('nlist');
-  const bar  = document.getElementById('tagbar');
-  if(!list || !bar) return;
-  const items = Array.prototype.slice.call(list.querySelectorAll('.ni'));
-  if(!items.length) return;
-
-  /* 日付（2026.07.24 形式）の新しい順に並べ替え */
-  const dateOf = el => { const d = el.querySelector('.n-date'); return d ? Number(d.textContent.replace(/\D/g,'')) : 0; };
-  items.slice().sort((a,b)=>dateOf(b)-dateOf(a)).forEach(it=>list.appendChild(it));
-
-  /* 記事に使われているタグを収集（重複なし・掲載順） */
-  const cats = [];
-  items.forEach(it=>{
-    const badge = it.querySelector('.ncat');
-    if(!badge) return;
-    let key = 'other';
-    Array.prototype.forEach.call(badge.classList, c=>{ if(c.indexOf('ncat--')===0) key = c.slice(6); });
-    it.dataset.cat = key;
-    if(!cats.some(c=>c.key===key)) cats.push({key:key, label:badge.textContent.trim()});
-  });
-
-  const empty = document.createElement('p');
-  empty.className = 'nlist-empty';
-  empty.textContent = '該当するお知らせはありません。';
-  empty.hidden = true;
-  list.parentNode.insertBefore(empty, list.nextSibling);
-
-  const buttons = [];
-  function makeBtn(key,label){
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'tagbtn t-' + key;
-    b.textContent = label;
-    b.dataset.tag = key;
-    b.setAttribute('aria-pressed','false');
-    b.addEventListener('click', ()=>select(key));
-    bar.appendChild(b);
-    buttons.push(b);
-  }
-  makeBtn('all','すべて');
-  cats.forEach(c=>makeBtn(c.key, c.label));
-
-  function select(key){
-    buttons.forEach(b=>{
-      const on = b.dataset.tag === key;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    let shown = 0;
-    items.forEach(it=>{
-      const hit = (key === 'all' || it.dataset.cat === key);
-      it.style.display = hit ? '' : 'none';
-      if(hit) shown++;
-    });
-    empty.hidden = shown > 0;
-  }
-  select('all');
-})();
+function openPdf(url){
+  document.getElementById('pdfFrame').src = url;
+  document.getElementById('pdfOverlay').classList.add('open');
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+}
+function closePdf(){
+  document.getElementById('pdfOverlay').classList.remove('open');
+  document.getElementById('pdfFrame').src = '';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePdf();});
 </script>
 </body>
 </html>
