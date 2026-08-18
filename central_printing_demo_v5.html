@@ -133,8 +133,10 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .hero-body{position:relative;flex:1 1 340px;min-width:280px;display:flex;align-items:center;padding:7vh 3.5vw 7vh 4.5vw;box-sizing:border-box}
 .hero-body-inner{position:relative;z-index:1;max-width:520px;width:100%}
 .hero-illus{position:relative;flex:3.2 1 620px;min-width:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2vh 1vw;box-sizing:border-box}
-.hero-illus-caption{color:var(--sub);font-size:18px;font-weight:700;letter-spacing:.12em;opacity:.9;margin-top:20px;text-align:center;word-break:keep-all;overflow-wrap:break-word}
 .hero-illus-inner{position:relative;width:100%;max-width:1080px;aspect-ratio:1619/971;overflow:visible;container-type:inline-size}
+@media(min-width:861px){
+  .hero-illus-inner{transform:scale(1.1)}
+}
 .hero-office{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;image-rendering:auto;user-select:none}
 .hero-dot{position:absolute;transform:translate(-50%,-50%);border-radius:50%;background:#0e7ac4;border:2px solid #fff;cursor:pointer;padding:0;outline:none;z-index:20;width:2.34cqw;height:2.34cqw;min-width:18.2px;min-height:18.2px;display:flex;align-items:center;justify-content:center}
 .hero-dot-icon{width:100%;height:100%;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;pointer-events:none}
@@ -177,7 +179,6 @@ nav.desk{display:flex;align-items:center;gap:4px}
 @media(max-width:600px){
   .hero-body{padding:80px 20px 16px}
   .hero-illus{padding:24px 10px 24px}
-  .hero-illus-caption{font-size:14.4px}
   .hero-dot{width:4.16cqw;height:4.16cqw;min-width:15.6px;min-height:15.6px}
   .msg-pin-frame-wrap{overflow:hidden;clip-path:inset(0);transform:translateZ(0)}
 }
@@ -565,7 +566,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
   <div class="hero-body">
     <div class="hero-body-inner">
       <div class="h-eye">CENTRAL&nbsp;PRINTING&nbsp;since&nbsp;1977</div>
-      <h1 class="h-tit">必要な情報、<br>必要な方に、<br>あらゆる方法<br>で届ける</h1>
+      <h1 class="h-tit">必要な情報を<br>必要な方へ。<br>あらゆる形で<br>お届けします。</h1>
       <p class="h-sub">セントラル印刷株式会社は<br>東京都文京区を中心に全国対応いたします。<br>印刷、加工、発送から企画、<br>デザイン全般まで是非ご依頼ください。</p>
       <div class="h-btns">
         <a class="hb hb-p" href="#" onclick="openContact();return false">お問い合わせ・お見積り</a>
@@ -596,7 +597,6 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
         <button class="hp-close" onclick="closeHeroDot()" aria-label="閉じる">✕</button>
       </div>
     </div>
-    <p class="hero-illus-caption">必要な情報を届ける、セントラルの舞台裏</p>
   </div>
 </section>
 
@@ -613,7 +613,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       </div>
       <div class="msg-collage">
         <div class="msg-tile msg-g0"><img src="DSCF1651.jpg" alt="冊子印刷・料理写真の実績" loading="lazy" decoding="async"></div>
-        <div class="msg-tile msg-g1"><img src="AdobeStock_312659084.jpeg" alt="デザイン・色校正の様子" loading="lazy" decoding="async"></div>
+        <div class="msg-tile msg-g1"><img src="dendsuin_flyer.jpg" alt="傳通院 於大の方生誕五百年祭 ポスター" loading="lazy" decoding="async"></div>
         <div class="msg-tile msg-g2"><img src="Goldsafari_1.png" alt="オリジナルグリーティングカード" loading="lazy" decoding="async"></div>
         <div class="msg-tile msg-g3"><img src="DSCF1676.jpg" alt="オリジナルクリアファイル" loading="lazy" decoding="async"></div>
         <div class="msg-tile msg-g4"><img src="top-3.jpg" alt="特殊紙・ショップカード" loading="lazy" decoding="async"></div>
