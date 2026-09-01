@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="セントラル印刷株式会社からのお知らせ一覧です。会社情報・社長活動・メディア掲載など最新情報をお届けします。">
-<title>お知らせ一覧｜セントラル印刷株式会社</title>
+<meta name="description" content="代表取締役・関野里美が交通安全推進委員として、2026年8月10日に交通安全啓発活動を実施いたしました。">
+<title>交通安全推進委員として 8月10日に啓発活動を実施しました｜お知らせ｜セントラル印刷株式会社</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -69,44 +69,28 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .svc-crumbs a:hover{color:var(--blue)}
 @media(max-width:640px){.svc-crumbs-wrap{margin-top:calc(var(--hh) + 12px);padding:0 12px}}
 
-/* ── LIST HERO ── */
+/* ── NEWS HERO ── */
 .nws-hero{background:var(--blue);margin:16px 24px 0;border-radius:20px;color:#fff;padding:56px 48px 48px}
 .nws-hero-in{max-width:760px;margin:0 auto}
+.nws-tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:12px;font-weight:800;margin-top:32px}
+.nws-tag--company{background:var(--yel);color:var(--blk)}
+.nws-tag--president{background:var(--blue);color:#fff}
+.nws-tag--event{background:var(--mag);color:#fff}
+.nws-tag--media{background:var(--gmid);color:var(--text)}
+.nws-body ul{margin:0 0 18px;padding-left:1.4em}
+.nws-body li{font-size:15px;line-height:1.9;color:var(--sub);font-weight:500;margin-bottom:4px}
+.nws-date{font-size:13px;opacity:.8;font-weight:600;margin-bottom:12px}
 .nws-title{font-size:clamp(22px,3.2vw,32px);font-weight:900;line-height:1.5}
 @media(max-width:640px){.nws-hero{margin:12px 12px 0;padding:36px 24px}}
 
-/* ── TAG FILTER ── */
-.tagbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.tagbtn{appearance:none;-webkit-appearance:none;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 20px;border:1.5px solid var(--gmid);border-radius:999px;background:#fff;color:var(--sub);font-size:15px;font-weight:700;line-height:1.2;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
-.tagbtn:hover{border-color:var(--blue);color:var(--blue)}
-.tagbtn.on{border-color:transparent}
-.tagbtn.on:hover{color:inherit}
-/* 選択中はそのタグ（カテゴリバッジ）と同じ色になる */
-.tagbtn.on.t-all{background:var(--blue);color:#fff}
-.tagbtn.on.t-company{background:var(--yel);color:var(--blk)}
-.tagbtn.on.t-president{background:var(--blue);color:#fff}
-.tagbtn.on.t-event{background:var(--mag);color:#fff}
-.tagbtn.on.t-sponsor{background:var(--blk);color:#fff}
-.tagbtn.on.t-media{background:var(--gmid);color:var(--text);border-color:#C3CEDA}
-.nlist-empty{padding:40px 0;text-align:center;font-size:15px;color:var(--sub)}
-@media(max-width:640px){.tagbtn{padding:10px 16px;font-size:14px}.tagbar{gap:8px}}
-
-/* ── NEWS LIST ── */
+/* ── NEWS BODY ── */
 .nws-wrap{max-width:760px;margin:0 auto;padding:56px 24px}
-.nlist{border-top:1px solid var(--gmid)}
-.ni{display:flex;align-items:center;gap:14px;padding:20px 0;border-bottom:1px solid var(--gmid);cursor:pointer;transition:background .15s;color:inherit;text-decoration:none}
-.ni:hover{background:var(--gray);margin:0 -8px;padding:20px 8px}
-.ni-main{flex:1;min-width:0}
-.ni-meta{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-.n-date{color:var(--sub);font-size:13px;white-space:nowrap;font-weight:400;letter-spacing:.3px}
-.ncat{padding:3px 10px;border-radius:5px;font-size:11px;font-weight:800;background:var(--blue-l);color:var(--blue);white-space:nowrap}
-.ncat--company{background:var(--yel);color:var(--blk)}
-.ncat--president{background:var(--blue);color:#fff}
-.ncat--event{background:var(--mag);color:#fff}
-.ncat--sponsor{background:var(--blk);color:#fff}
-.ncat--media{background:var(--gmid);color:var(--text)}
-.n-title{font-size:15px;font-weight:600;min-width:0}
-.n-arrow{color:var(--sub);font-size:14px;flex-shrink:0}
+.nws-body p{font-size:15px;line-height:1.9;color:var(--sub);font-weight:500;margin-bottom:18px}
+.nws-body h3{font-size:18px;font-weight:800;color:var(--text);margin:28px 0 12px}
+.nws-body a{color:var(--blue);font-weight:700;text-decoration:underline}
+.nws-body a:hover{color:var(--blue-d)}
+.nws-photo{display:block;width:100%;border-radius:16px;margin-top:8px;object-fit:cover}
+.nws-photo-ph{width:100%;min-height:220px;background:var(--gray);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--sub);margin-top:8px}
 @media(max-width:640px){.nws-wrap{padding:40px 20px}}
 
 /* ── CTA (index.html と共通デザイン) ── */
@@ -240,24 +224,31 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 </nav>
 
 <!-- PAGE CRUMBS -->
-<div class="svc-crumbs-wrap"><div class="svc-crumbs"><a href="index.html">トップ</a> ＞ お知らせ一覧</div></div>
+<div class="svc-crumbs-wrap"><div class="svc-crumbs"><a href="index.html">トップ</a> ＞ <a href="news.html">お知らせ</a> ＞ 交通安全推進委員として 8月10日に啓発活動を実施しました</div></div>
 
-<!-- LIST HERO -->
+<!-- NEWS HERO -->
 <div class="nws-hero">
   <div class="nws-hero-in">
-    <h1 class="nws-title">お知らせ一覧</h1>
+    <div class="nws-date">2026年8月10日</div>
+    <h1 class="nws-title">交通安全推進委員として 8月10日に啓発活動を実施しました</h1>
   </div>
 </div>
 
-<!-- NEWS LIST -->
+<!-- NEWS BODY -->
 <section class="nws-wrap">
-  <div class="tagbar" id="tagbar" role="group" aria-label="タグで絞り込み"></div>
-  <div class="nlist" id="nlist">
-    <a class="ni" href="news-10.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.08.10</span><span class="ncat ncat--president">社長活動</span></div><span class="n-title">交通安全推進委員として 8月10日に啓発活動を実施しました</span></div><span class="n-arrow">›</span></a>
-    <a class="ni" href="news-08.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.07.24</span><span class="ncat ncat--president">社長活動</span></div><span class="n-title">「ペーパーサミット2026」に参加いたしました</span></div><span class="n-arrow">›</span></a>
-    <a class="ni" href="news-07.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.07.22</span><span class="ncat ncat--company">会社情報</span></div><span class="n-title">夏季休業のご案内</span></div><span class="n-arrow">›</span></a>
-    <a class="ni" href="news-09.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.07.15</span><span class="ncat ncat--media">メディア</span></div><span class="n-title">印刷業界新聞 プリテックステージニュース7月15日号にインタビュー記事が掲載されました</span></div><span class="n-arrow">›</span></a>
-    <a class="ni" href="news-03.html"><div class="ni-main"><div class="ni-meta"><span class="n-date">2026.06.10</span><span class="ncat ncat--company">会社情報</span></div><span class="n-title">ウェブサイトをリニューアルしました</span></div><span class="n-arrow">›</span></a>
+  <div class="nws-body">
+    <p>平素よりお世話になっております。当社代表取締役・関野里美は、東京都警察官友の会の会員として、交通安全推進委員を務めております。このたび、8月10日に交通安全啓発活動を実施いたしました。</p>
+    <p>当日は、歩行者や自転車利用者に向けて、交通ルールの遵守と安全な通行を呼びかける啓発活動を行いました。地域の皆さまへ直接声をかけながら、交通事故防止に向けた意識向上を図る取り組みとなりました。</p>
+
+    <h3>活動内容</h3>
+    <ul>
+      <li>自転車利用者への交通ルール・マナーの周知</li>
+      <li>歩行者への安全な横断行動の呼びかけ</li>
+      <li>交通安全啓発資料の配布</li>
+      <li>交番前での注意喚起・声かけ活動</li>
+    </ul>
+
+    <div class="nws-tag nws-tag--president">社長活動</div>
   </div>
 </section>
 
@@ -271,7 +262,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
 </section>
 
 <div class="back-wrap">
-  <a class="back-btn" href="index.html">← トップページへ戻る</a>
+  <a class="back-btn" href="news.html">← お知らせ一覧へ戻る</a>
 </div>
 
 <footer>
@@ -338,69 +329,6 @@ if(hmb && mnav){
   hmb.addEventListener('click',()=>{const o=mnav.classList.toggle('open');hmb.classList.toggle('open');hmb.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';});
   function toggleMlDd(btn){const items=btn.nextElementSibling;const open=items.classList.toggle('open');btn.classList.toggle('open',open);btn.setAttribute('aria-expanded',open?'true':'false');}
 }
-
-/* ── お知らせ タグ絞り込み ──
-   タグボタンは記事の <span class="ncat ncat--xxx"> から自動生成するので、
-   記事を追加・削除してもボタン側の書き換えは不要 */
-(function(){
-  const list = document.getElementById('nlist');
-  const bar  = document.getElementById('tagbar');
-  if(!list || !bar) return;
-  const items = Array.prototype.slice.call(list.querySelectorAll('.ni'));
-  if(!items.length) return;
-
-  /* 日付（2026.07.24 形式）の新しい順に並べ替え */
-  const dateOf = el => { const d = el.querySelector('.n-date'); return d ? Number(d.textContent.replace(/\D/g,'')) : 0; };
-  items.slice().sort((a,b)=>dateOf(b)-dateOf(a)).forEach(it=>list.appendChild(it));
-
-  /* 記事に使われているタグを収集（重複なし・掲載順） */
-  const cats = [];
-  items.forEach(it=>{
-    const badge = it.querySelector('.ncat');
-    if(!badge) return;
-    let key = 'other';
-    Array.prototype.forEach.call(badge.classList, c=>{ if(c.indexOf('ncat--')===0) key = c.slice(6); });
-    it.dataset.cat = key;
-    if(!cats.some(c=>c.key===key)) cats.push({key:key, label:badge.textContent.trim()});
-  });
-
-  const empty = document.createElement('p');
-  empty.className = 'nlist-empty';
-  empty.textContent = '該当するお知らせはありません。';
-  empty.hidden = true;
-  list.parentNode.insertBefore(empty, list.nextSibling);
-
-  const buttons = [];
-  function makeBtn(key,label){
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'tagbtn t-' + key;
-    b.textContent = label;
-    b.dataset.tag = key;
-    b.setAttribute('aria-pressed','false');
-    b.addEventListener('click', ()=>select(key));
-    bar.appendChild(b);
-    buttons.push(b);
-  }
-  makeBtn('all','すべて');
-  cats.forEach(c=>makeBtn(c.key, c.label));
-
-  function select(key){
-    buttons.forEach(b=>{
-      const on = b.dataset.tag === key;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    let shown = 0;
-    items.forEach(it=>{
-      const hit = (key === 'all' || it.dataset.cat === key);
-      it.style.display = hit ? '' : 'none';
-      if(hit) shown++;
-    });
-    empty.hidden = shown > 0;
-  }
-  select('all');
-})();
 </script>
 </body>
 </html>
