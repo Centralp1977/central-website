@@ -975,13 +975,13 @@ async function submitForm(){
   btn.disabled=true;btn.textContent='送信中…';
   const body={
     fields:[
-      {name:'company',value:document.getElementById('cf_company').value.trim()},
-      {name:'department',value:document.getElementById('cf_department').value.trim()},
+      {name:'company_name',value:document.getElementById('cf_company').value.trim()},
+      {name:'depatment_name',value:document.getElementById('cf_department').value.trim()},
       {name:'firstname',value:lastname},
       {name:'lastname',value:lastname},
       {name:'email',value:email},
-      {name:'phone',value:document.getElementById('cf_phone').value.trim()},
-      {name:'message',value:message}
+      {name:'tel_number',value:document.getElementById('cf_phone').value.trim()},
+      {name:'inquiry',value:message}
     ],
     context:{pageUri:location.href,pageName:document.title}
   };
