@@ -1003,6 +1003,7 @@ async function submitForm(){
       method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)
     });
     if(res.ok){
+      if(typeof gtag==='function'){gtag('event','generate_lead',{form_name:'contact'});}
       document.getElementById('cfFormInner').style.display='none';
       document.getElementById('cfSuccess').classList.add('show');
     } else {
