@@ -195,7 +195,13 @@ nav.desk{display:flex;align-items:center;gap:4px}
   .msg-pin-frame-wrap{overflow:hidden;clip-path:inset(0);transform:translateZ(0)}
 }
 /* ── SCROLL CUE ── */
-.scroll-cue{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px 0 22px;background:#fff;color:var(--blue)}
+.scroll-cue-row{display:flex;background:#fff;margin-top:-104px}
+.scroll-cue-spacer{flex:1 1 340px;min-width:280px}
+.scroll-cue{flex:3.2 1 620px;min-width:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 0 22px;color:var(--blue)}
+@media(max-width:860px){
+  .scroll-cue-spacer{display:none}
+  .scroll-cue{flex:none;width:100%}
+}
 .scroll-cue-mouse{position:relative;width:22px;height:34px;border:2px solid var(--blue);border-radius:14px;box-sizing:border-box}
 .scroll-cue-wheel{position:absolute;top:6px;left:50%;width:4px;height:7px;background:var(--blue);border-radius:2px;transform:translateX(-50%)}
 .scroll-cue-arrow{color:var(--blue)}
@@ -657,9 +663,12 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
 </section>
 
 <!-- SCROLL CUE -->
-<div class="scroll-cue" aria-hidden="true">
-  <span class="scroll-cue-mouse"><span class="scroll-cue-wheel"></span></span>
-  <svg class="scroll-cue-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div class="scroll-cue-row">
+  <div class="scroll-cue-spacer" aria-hidden="true"></div>
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="scroll-cue-mouse"><span class="scroll-cue-wheel"></span></span>
+    <svg class="scroll-cue-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
 </div>
 
 <!-- DENPYO BANNER -->
