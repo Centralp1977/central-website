@@ -195,7 +195,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
   .msg-pin-frame-wrap{overflow:hidden;clip-path:inset(0);transform:translateZ(0)}
 }
 /* ── SCROLL CUE ── */
-.scroll-cue-row{display:flex;background:#fff;margin-top:-104px}
+.scroll-cue-row{display:none;background:#fff;margin-top:-104px}
 .scroll-cue-spacer{flex:1 1 340px;min-width:280px}
 .scroll-cue{flex:3.2 1 620px;min-width:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 0 22px;color:var(--blue)}
 @media(max-width:860px){
@@ -212,7 +212,7 @@ nav.desk{display:flex;align-items:center;gap:4px}
 @keyframes scrollWheel{0%{opacity:1;top:6px}70%{opacity:0;top:18px}100%{opacity:0;top:6px}}
 @keyframes scrollArrow{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(4px);opacity:1}}
 /* ── DENPYO BANNER ── */
-#denpyo-bnr{padding:0 0 76px;background:#fff}
+#denpyo-bnr{display:none;padding:0 0 76px;background:#fff}
 #denpyo-bnr .si{max-width:none;margin:0}
 .db-card{--db-grad:linear-gradient(115deg,var(--blue-d) 0%,var(--blue) 58%,#1A86D6 100%);position:relative;overflow:hidden;min-height:clamp(360px,42vw,440px);display:flex;flex-wrap:wrap}
 .db-photo{position:absolute;inset:0;background:var(--blue-l)}
