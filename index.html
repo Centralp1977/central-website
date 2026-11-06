@@ -194,6 +194,50 @@ nav.desk{display:flex;align-items:center;gap:4px}
   .hero-dot{width:4.16cqw;height:4.16cqw;min-width:15.6px;min-height:15.6px}
   .msg-pin-frame-wrap{overflow:hidden;clip-path:inset(0);transform:translateZ(0)}
 }
+/* ── SCROLL CUE ── */
+.scroll-cue{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px 0 22px;background:#fff;color:var(--blue)}
+.scroll-cue-mouse{position:relative;width:22px;height:34px;border:2px solid var(--blue);border-radius:14px;box-sizing:border-box}
+.scroll-cue-wheel{position:absolute;top:6px;left:50%;width:4px;height:7px;background:var(--blue);border-radius:2px;transform:translateX(-50%)}
+.scroll-cue-arrow{color:var(--blue)}
+@media(prefers-reduced-motion:no-preference){
+  .scroll-cue-wheel{animation:scrollWheel 1.6s ease-in-out infinite}
+  .scroll-cue-arrow{animation:scrollArrow 1.6s ease-in-out infinite}
+}
+@keyframes scrollWheel{0%{opacity:1;top:6px}70%{opacity:0;top:18px}100%{opacity:0;top:6px}}
+@keyframes scrollArrow{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(4px);opacity:1}}
+/* ── DENPYO BANNER ── */
+#denpyo-bnr{padding:0 0 76px;background:#fff}
+#denpyo-bnr .si{max-width:none;margin:0}
+.db-card{--db-grad:linear-gradient(115deg,var(--blue-d) 0%,var(--blue) 58%,#1A86D6 100%);position:relative;overflow:hidden;min-height:clamp(360px,42vw,440px);display:flex;flex-wrap:wrap}
+.db-photo{position:absolute;inset:0;background:var(--blue-l)}
+.db-photo-img{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity 1.1s ease}
+.db-photo-img.on{opacity:1}
+@media(prefers-reduced-motion:no-preference){.db-photo-img.on{animation:dbPan 20s ease-in-out infinite alternate}}
+@keyframes dbPan{0%{background-position:42% center}100%{background-position:58% center}}
+.db-blue{position:absolute;inset:0;z-index:1;width:52%;clip-path:polygon(0 0,100% 0,70% 100%,0 100%);background:var(--db-grad)}
+.db-white{position:absolute;inset:0;left:auto;right:0;z-index:1;width:48%;clip-path:polygon(calc(33% + 50px) 0,100% 0,100% 100%,50px 100%);background:#fff}
+.db-left{position:relative;z-index:2;flex:1 1 320px;min-width:0;box-sizing:border-box;padding:clamp(32px,4.4vw,52px) clamp(16px,2vw,28px) clamp(32px,4.4vw,52px) clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,1.6vw,18px)}
+.db-eye{font-size:clamp(14px,1.3vw,18px);font-weight:700;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.db-eye span{font-weight:900;font-size:1.4em;letter-spacing:0;padding:0 .06em}
+.db-tit{margin:0;padding-left:clamp(12px,1.3vw,18px);border-left:4px solid rgba(255,255,255,.9);font-family:'Noto Sans JP',sans-serif;font-size:clamp(26px,3.2vw,42px);line-height:1.32;font-weight:700;color:#fff;word-break:keep-all;overflow-wrap:break-word}
+.db-sub{margin:0;font-size:clamp(13.5px,1.05vw,15.5px);line-height:1.9;font-weight:500;color:rgba(255,255,255,.92);word-break:keep-all;overflow-wrap:break-word}
+.db-right{position:relative;z-index:2;flex:0 0 clamp(240px,30vw,320px);min-width:0;box-sizing:border-box;margin-left:auto;padding:clamp(28px,3.4vw,44px) clamp(24px,3vw,46px) clamp(26px,3.2vw,40px) clamp(60px,calc(2.4vw + 40px),72px);display:flex;flex-direction:column;justify-content:center;gap:clamp(42px,calc(1.4vw + 30px),48px)}
+.db-list{position:relative;top:30px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(10px,1.3vw,16px)}
+.db-list li{display:flex;align-items:center;gap:clamp(9px,1vw,13px)}
+.db-check{flex:none;color:var(--blue-d)}
+.db-list span{font-size:clamp(18px,1.44vw,21.6px);font-weight:700;color:var(--blue-d);line-height:1.4;word-break:keep-all}
+.db-list em{display:block;font-style:normal;font-size:.62em;font-weight:500;color:var(--sub)}
+.db-cta{margin-top:clamp(6px,1vw,12px);align-self:flex-end;display:inline-flex;align-items:center;gap:clamp(10px,1.4vw,18px);background:var(--blue);color:#fff;font-size:clamp(16.2px,1.32vw,19.2px);font-weight:700;letter-spacing:.02em;white-space:nowrap;padding:clamp(11px,1.2vw,15px) clamp(18px,2vw,26px);border-radius:4px;text-decoration:none;transition:background .2s,transform .15s}
+.db-cta:hover{background:var(--blue-d);transform:translateY(-2px)}
+.db-cta span{font-size:1.1em;font-weight:400}
+@media(max-width:860px){
+  #denpyo-bnr{padding:0 0 56px}
+  .db-card{flex-direction:column;min-height:0}
+  .db-blue,.db-white{display:none}
+  .db-left{flex:none;width:100%;padding:40px 24px 32px;background:linear-gradient(115deg,rgba(10,90,147,.9) 0%,rgba(14,122,196,.9) 58%,rgba(26,134,214,.9) 100%)}
+  .db-right{flex:none;width:100%;margin-left:0;padding:28px 24px 34px;background:#fff}
+  .db-cta{align-self:stretch;justify-content:center}
+}
 /* ── SECTIONS ── */
 section{padding:76px 24px}
 .si{max-width:1280px;margin:0 auto}
@@ -611,6 +655,53 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
     </div>
   </div>
 </section>
+
+<!-- SCROLL CUE -->
+<div class="scroll-cue" aria-hidden="true">
+  <span class="scroll-cue-mouse"><span class="scroll-cue-wheel"></span></span>
+  <svg class="scroll-cue-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+
+<!-- DENPYO BANNER -->
+<section id="denpyo-bnr">
+  <div class="si">
+    <div class="db-card">
+      <div class="db-photo" aria-hidden="true">
+        <div class="db-photo-img db-photo-a" style="background-image:url('denpyo-bnr-bg1.jpg')"></div>
+        <div class="db-photo-img db-photo-b" style="background-image:url('denpyo-bnr-bg2.jpg')"></div>
+      </div>
+      <div class="db-blue" aria-hidden="true"></div>
+      <div class="db-white" aria-hidden="true"></div>
+      <div class="db-left">
+        <div class="db-eye">創業<span>50</span>年の老舗印刷会社</div>
+        <h2 class="db-tit">いつもの伝票を、<br>これからも。</h2>
+        <p class="db-sub">複写伝票を中心に、企業の業務を支える帳票印刷を<br>長年にわたり手がけてきました。<br>これからも、確かな技術で変わらない安心をお届けします。</p>
+      </div>
+      <div class="db-right">
+        <ul class="db-list">
+          <li><svg class="db-check" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="1.4" y="1.4" width="19.2" height="19.2" rx="2.4" stroke="currentColor" stroke-width="2"/><path d="M5.8 11.2l3.6 3.6 6.8-7.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>単式伝票</span></li>
+          <li><svg class="db-check" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="1.4" y="1.4" width="19.2" height="19.2" rx="2.4" stroke="currentColor" stroke-width="2"/><path d="M5.8 11.2l3.6 3.6 6.8-7.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>複写式伝票</span></li>
+          <li><svg class="db-check" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="1.4" y="1.4" width="19.2" height="19.2" rx="2.4" stroke="currentColor" stroke-width="2"/><path d="M5.8 11.2l3.6 3.6 6.8-7.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>連続伝票</span></li>
+          <li><svg class="db-check" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="1.4" y="1.4" width="19.2" height="19.2" rx="2.4" stroke="currentColor" stroke-width="2"/><path d="M5.8 11.2l3.6 3.6 6.8-7.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>各種加工<em>（ミシン・ナンバリング 等）</em></span></li>
+        </ul>
+        <a class="db-cta" href="service-denpyo.html">帳票印刷について詳しく見る<span aria-hidden="true">›</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var imgs=document.querySelectorAll('#denpyo-bnr .db-photo-img');
+  if(imgs.length<2) return;
+  var i=0;
+  imgs[0].classList.add('on');
+  setInterval(function(){
+    imgs[i].classList.remove('on');
+    i=(i+1)%imgs.length;
+    imgs[i].classList.add('on');
+  },5000);
+})();
+</script>
 
 <!-- MESSAGE -->
 <section id="message">
