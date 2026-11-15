@@ -1,0 +1,7 @@
+# Cloudflare リダイレクト設定
+# 旧デモ版ページ（central_printing_demo*.html）はトップと重複するため非公開化した。
+# このサイトは不明URLをindex.htmlで200返しするため、ただ削除するとデモURLが
+# ソフト404になる。301でトップへ恒久転送し、検索評価をトップに統合する。
+# 「*」は末尾任意（.html あり/なし両方）にマッチ。
+
+/central_printing_demo*  /  301
