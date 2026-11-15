@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  セントラル印刷 サイトマップ
+  ・お知らせを追加したときは、ここに <url> を1件追加し、/news の lastmod も更新する
+  ・lastmod は「内容を更新した日」。YYYY-MM-DD 形式
+  ・URLは拡張子なし（Cloudflare が news-14.html を /news-14 として配信）
+  ・central_printing_demo*.html は旧デモ版のため意図的に未掲載
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- トップ -->
+  <url>
+    <loc>https://www.central-p.jp/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+
+  <!-- 会社案内 -->
+  <url>
+    <loc>https://www.central-p.jp/company</loc>
+    <lastmod>2026-11-06</lastmod>
+  </url>
+
+  <!-- サービス -->
+  <url>
+    <loc>https://www.central-p.jp/service-off-set-seihon</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/service-digital</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/service-design</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/service-xr</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/service-kaiin</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+
+  <!-- お知らせ -->
+  <url>
+    <loc>https://www.central-p.jp/news</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-14</loc>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-13</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-12</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-11</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-10</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-09</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-08</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-07</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-03</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+
+  <!-- その他 -->
+  <url>
+    <loc>https://www.central-p.jp/privacy</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+
+</urlset>
