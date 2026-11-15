@@ -16,9 +16,9 @@
 | ファイル | 役割 |
 |---|---|
 | `index.html` | トップページ（本番）|
-| `central_printing_demo_v5.html` | index.html と常に同内容に保つ（cp でコピー）|
 | `company.html` | 会社案内（旧 president.html）|
 | `services.html` 等 | 各下層ページ |
+| `central_printing_demo*.html` | 旧デモ版。非公開（`build-dist.js` でデプロイ対象外）。同期不要 |
 
 ## 4. CSS カスタムプロパティ（共通）
 ```css
@@ -43,7 +43,7 @@
 * サービス一覧など項目リストを変えるときは、モバイルハンバーガードロップダウンも必ず同時更新
 * **ユーザーの指示なく、フォルダやファイルを削除しない（`rm -rf` 等の一括削除は特に厳禁）**。作業用に展開したファイルや一見不要に見えるフォルダも、それ自体が今後使う素材（デザイン案・画像素材など）である可能性がある。「片付け」目的の削除であっても、必ず先にユーザーに確認する。git管理外（未コミット）のファイルはgitで復元できず、削除は原則として取り消せない
 
-## 8. GitHub Pages
-* `master` ブランチから自動デプロイ
-* 公開 URL: `https://centralp1977.github.io/central-website/`
-* デプロイ反映に 1〜2 分かかる
+## 8. デプロイ（Cloudflare）
+* GitHub の `master` ブランチへのマージを契機に Cloudflare へデプロイされる（GitHub 連携が必須。push・PR・マージは省略不可）
+* ビルドは `wrangler.toml` の `npm run build`（`build-dist.js`）。Git 管理下のファイルだけが `dist/` に集められる
+* GitHub Pages は使わない（無効化済み）

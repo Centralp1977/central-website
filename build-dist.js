@@ -12,6 +12,8 @@ const EXCLUDE = [
   /^package(-lock)?\.json$/,
   /^build-dist\.js$/,
   /\.(py|docx|xlsx)$/i,
+  // 旧デモ版。トップページと内容が重複し検索結果に出てしまうため非公開にする（ファイル自体は履歴として残す）
+  /^central_printing_demo.*\.html$/,
 ];
 
 const DIST = path.join(__dirname, 'dist');
