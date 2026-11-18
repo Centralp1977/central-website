@@ -223,13 +223,13 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .db-eye span{font-weight:900;font-size:1.45em;letter-spacing:0;padding:0 .06em}
 .db-tit{margin:0;font-family:'Noto Sans JP',sans-serif;font-size:clamp(28px,3.4vw,42px);line-height:1.3;font-weight:700;color:#0B4E8C;word-break:keep-all;overflow-wrap:break-word}
 .db-sub{margin:clamp(6px,.8vw,12px) 0 0;font-size:clamp(13.5px,1.05vw,15.5px);line-height:1.9;font-weight:500;color:#1A4B7D;word-break:keep-all;overflow-wrap:break-word}
-.db-collage{position:relative;z-index:1;flex:0 1 260px;min-width:160px;align-self:stretch;background:url('denpyo-bnr-collage.png') center center/contain no-repeat;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect;transform:scale(1.25)}
+.db-collage{position:relative;z-index:1;flex:0.85 1 260px;min-width:160px;max-width:420px;align-self:stretch;background:url('denpyo-bnr-collage.png') center center/cover no-repeat;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect}
 .db-right{position:relative;z-index:2;flex:0 0 clamp(240px,27vw,320px);min-width:0;box-sizing:border-box;padding:clamp(24px,3vw,40px) clamp(20px,2vw,30px) clamp(24px,3vw,40px) clamp(14px,1.8vw,28px);display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,1.3vw,17px)}
 .db-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(10px,1.3vw,16px)}
 .db-list li{display:flex;align-items:center;gap:clamp(8px,.9vw,13px)}
 .db-check{flex:none;color:#0B4E8C}
 .db-list span{font-size:clamp(16px,1.3vw,19px);font-weight:700;color:#0B4E8C;line-height:1.4;word-break:keep-all}
-.db-list em{display:block;font-style:normal;font-size:.62em;font-weight:500;color:#2B6FA8}
+.db-list em{display:inline;font-style:normal;font-size:.62em;font-weight:500;color:#2B6FA8}
 .db-cta{margin-top:clamp(8px,1.1vw,16px);align-self:flex-start;display:inline-flex;align-items:center;gap:clamp(10px,1.4vw,20px);background:#1076C8;color:#fff;font-size:clamp(13px,1.1vw,16px);font-weight:700;letter-spacing:.02em;white-space:nowrap;padding:clamp(11px,1.15vw,16px) clamp(16px,1.8vw,24px);border-radius:4px;text-decoration:none;transition:background .2s,transform .15s}
 .db-cta:hover{background:#0C5EA3;transform:translateY(-2px)}
 .db-cta span{font-size:1em;font-weight:400}
@@ -237,9 +237,11 @@ nav.desk{display:flex;align-items:center;gap:4px}
   #denpyo-bnr{padding:0 0 56px}
   .db-card{flex-direction:column;min-height:0}
   .db-dots,.db-corner{display:none}
-  .db-left{flex:none;width:100%;padding:36px 24px 8px}
-  .db-collage{flex:none;width:62%;max-width:260px;height:190px;margin:10px auto;align-self:center;transform:scale(1.15)}
-  .db-right{flex:none;width:100%;padding:8px 24px 36px}
+  .db-collage{order:-1;flex:none;width:62%;max-width:260px;height:190px;margin:32px auto 8px;align-self:center;transform:scale(1.15)}
+  .db-left{order:0;flex:none;width:100%;padding:8px 24px 8px}
+  .db-tit{font-size:clamp(19px,5.6vw,24px);white-space:nowrap}
+  .db-sub{margin:14px 0 0;font-size:17px;font-weight:700;line-height:1.85}
+  .db-right{order:1;flex:none;width:100%;padding:8px 24px 36px}
   .db-cta{align-self:stretch;justify-content:center}
 }
 /* ── SECTIONS ── */
@@ -677,7 +679,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:48px 24px 32px}
       <div class="db-corner" aria-hidden="true"></div>
       <div class="db-left">
         <div class="db-eye">創業<span>50</span>年の老舗印刷会社</div>
-        <h2 class="db-tit">いつもの伝票を、<br>これからも。</h2>
+        <h2 class="db-tit">いつもの伝票を、これからも。</h2>
         <p class="db-sub">複写伝票を中心に、企業の業務を支える帳票印刷を<br>長年にわたり手がけてきました。<br>これからも、確かな技術で変わらない安心をお届けします。</p>
       </div>
       <div class="db-collage" aria-hidden="true"></div>
