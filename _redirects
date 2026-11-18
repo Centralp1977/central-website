@@ -5,3 +5,11 @@
 # 「*」は末尾任意（.html あり/なし両方）にマッチ。
 
 /central_printing_demo*  /  301
+
+# 伝票印刷・製本ページ統合（2026-11-18）
+# service-off-set-seihon（オフセット印刷・製本）と service-denpyo（複写伝票）を
+# service-denpyo-seihon（伝票印刷・製本）に統合。旧URLは301で新URLへ転送し、
+# 外部リンク・検索評価を引き継ぐ。
+/service-off-set-seihon*  /service-denpyo-seihon  301
+/service-denpyo           /service-denpyo-seihon  301
+/service-denpyo.html      /service-denpyo-seihon  301
