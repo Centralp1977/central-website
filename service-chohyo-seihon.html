@@ -15,9 +15,9 @@
   gtag('js', new Date());
   gtag('config', 'G-RWBXYDVRQJ');
 </script>
-<meta name="description" content="セントラル印刷株式会社のオフセット印刷・製本サービス。複写伝票などの帳票類印刷から各種製本加工まで、ワンストップで対応します。">
-<title>オフセット印刷・製本｜セントラル印刷株式会社</title>
-<link rel="canonical" href="https://www.central-p.jp/service-off-set-seihon">
+<meta name="description" content="セントラル印刷株式会社の帳票印刷・製本サービス。ノーカーボン複写・減感印刷・特色印刷から、断裁・ミシン加工・半複写製本まで、様々な伝票にワンストップで対応します。">
+<title>帳票印刷・製本｜セントラル印刷株式会社</title>
+<link rel="canonical" href="https://www.central-p.jp/service-chohyo-seihon">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -74,42 +74,112 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .mnav-btn-a{background:var(--blue);color:#fff}
 @media(max-width:900px){nav.desk{display:none}.hmb{display:flex}}
 
-/* ── PAGE HERO ── */
+/* ── BREADCRUMB ── */
 .svc-crumbs-wrap{max-width:1120px;margin:calc(var(--hh) + 20px) auto 0;padding:0 24px}
 .svc-crumbs{font-size:12px;color:var(--sub)}
 .svc-crumbs a{color:var(--sub);text-decoration:none}
 .svc-crumbs a:hover{color:var(--blue)}
-.svc-hero{position:relative;margin:16px 24px 0;border-radius:20px;overflow:hidden;min-height:360px;display:flex;align-items:center;color:#fff}
-.svc-hero-photo{position:absolute;inset:0;background:url('service-denpyo-hero.jpeg') center/cover no-repeat}
-.svc-hero-fade{position:absolute;inset:0;background:linear-gradient(100deg,var(--blue) 0%,var(--blue) 28%,rgba(14,122,196,.82) 48%,rgba(10,90,147,.35) 72%,rgba(10,90,147,0) 100%)}
-.svc-hero-in{position:relative;z-index:1;padding:48px 48px 44px;max-width:900px;min-width:0}
-.svc-hero-in h1{font-size:clamp(28px,4vw,38px);font-weight:900;margin-bottom:16px}
-.svc-hero-in p{font-size:15px;line-height:1.9;color:rgba(255,255,255,.94)}
-@media(max-width:640px){.svc-crumbs-wrap{margin-top:calc(var(--hh) + 12px);padding:0 12px}.svc-hero{margin:12px 12px 0;min-height:0}.svc-hero-in{padding:32px 24px}}
+@media(max-width:640px){.svc-crumbs-wrap{margin-top:calc(var(--hh) + 12px);padding:0 12px}}
 
-.si{max-width:1120px;margin:0 auto}
-.sec{padding:72px 24px}
-.sec-gray{background:var(--gray)}
-.slb{font-size:12px;letter-spacing:5px;color:var(--blue);font-weight:700;margin-bottom:10px;text-transform:uppercase}
-.sh{font-family:'Noto Sans JP',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;margin-bottom:8px;letter-spacing:.02em}
+.dp{max-width:1120px;margin:0 auto;padding:0 24px}
+@media(max-width:640px){.dp{padding:0 18px}}
 
-/* ── FEATURES ── */
-.feat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:36px}
-.feat-card{padding:4px 28px;border-left:1px solid var(--gmid);min-width:0}
-.feat-card:first-child{border-left:none}
-.feat-card h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--blue)}
-.feat-card p{font-size:14px;line-height:1.8;color:var(--sub)}
-@media(max-width:860px){
-  .feat-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
-  .feat-card:nth-child(2n+1){border-left:none}
-  .feat-card:nth-child(n+3){border-top:1px solid var(--gmid);padding-top:24px}
+/* ── HERO ── */
+.dp-hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;background:linear-gradient(120deg,var(--blue-l) 0%,#E4EEFB 100%);border-radius:var(--radius);overflow:hidden;margin:16px 0 56px;min-height:380px}
+.dp-hero-txt{padding:48px 24px 48px 48px;position:relative;z-index:2}
+.dp-hero-txt h1{font-size:clamp(28px,4vw,42px);line-height:1.35;font-weight:900;color:var(--blue);margin:0 0 22px}
+.dp-hero-rule{width:100px;height:3px;background:var(--blue);margin-bottom:22px}
+.dp-hero-lead{font-size:16px;line-height:2;color:var(--text);margin:0}
+.dp-hero-photo{position:relative;align-self:stretch;min-height:280px}
+.dp-hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dp-hero-photo::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--blue-l) 0%,rgba(232,244,252,0) 24%)}
+@media(max-width:900px){
+  .dp-hero{grid-template-columns:1fr}
+  .dp-hero-txt{padding:36px 24px 24px}
+  .dp-hero-photo{min-height:240px}
+  .dp-hero-photo::after{background:linear-gradient(180deg,var(--blue-l) 0%,rgba(232,244,252,0) 20%)}
+}
+
+/* ── EXPERT INTRO + STRENGTHS ── */
+.dp-eyebrow{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;color:var(--blue);margin:0 0 16px}
+.dp-eyebrow::before{content:"";width:4px;height:19px;background:var(--blue)}
+.dp-intro{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.5fr);gap:48px;align-items:start;margin-bottom:64px}
+.dp-intro h2{font-size:clamp(22px,3vw,30px);line-height:1.4;font-weight:900;color:var(--blue);margin:0 0 20px}
+.dp-intro-rule{width:88px;height:3px;background:var(--blue);margin-bottom:20px}
+.dp-intro p{font-size:15px;line-height:1.95;color:var(--sub);margin:0}
+.dp-strength-head{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.dp-strength-head span{font-size:20px;font-weight:900;color:var(--blue);white-space:nowrap}
+.dp-strength-head i{flex:1;height:1px;background:var(--gmid)}
+.dp-strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:stretch}
+.dp-strength-col{display:flex;flex-direction:column;padding:0 22px;text-align:center;border-left:1px solid var(--gmid)}
+.dp-strength-col:first-child{border-left:0}
+.dp-strength-col h3{font-size:21px;line-height:1.35;font-weight:900;color:var(--blue);margin:0 0 14px;min-height:84px;display:flex;flex-direction:column;justify-content:flex-end}
+.dp-strength-col h3 em{font-size:32px;font-style:normal}
+.dp-strength-col h3 small{font-size:16px;font-weight:700}
+.dp-strength-col p{font-size:14px;line-height:1.8;color:var(--sub);margin:0}
+@media(max-width:900px){
+  .dp-intro{grid-template-columns:1fr;gap:36px;margin-bottom:48px}
+  .dp-strength-grid{grid-template-columns:1fr;gap:22px}
+  .dp-strength-col{border-left:0;padding:0}
+  .dp-strength-col h3{min-height:0}
+}
+
+/* ── FEATURE (印刷 / 製本) ── */
+.dp-feat{padding:56px 0}
+.dp-feat-photo{position:relative;width:100%;height:300px;border-radius:var(--radius);overflow:hidden;background:var(--gray);margin-bottom:40px}
+.dp-feat-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dp-feat-photo img.top{animation:dpfade 9s ease-in-out infinite}
+@keyframes dpfade{0%,40%{opacity:1}50%,90%{opacity:0}100%{opacity:1}}
+.dp-feat-txt h2{font-size:clamp(24px,3vw,32px);line-height:1.3;font-weight:900;color:var(--blue);margin:0 0 24px}
+.dp-feat-item{padding:20px 0;border-top:1px solid var(--gmid)}
+.dp-feat-item:first-child{border-top:0;padding-top:0}
+.dp-feat-item:last-child{padding-bottom:0}
+.dp-feat-item h3{display:flex;align-items:baseline;gap:12px;font-size:19px;font-weight:700;color:var(--text);margin:0;line-height:1.5;min-width:0}
+.dp-feat-item h3::before{content:"";flex:none;width:11px;height:11px;background:var(--blue);clip-path:polygon(0 0,100% 50%,0 100%);transform:translateY(3px)}
+.dp-feat-item h3 span{min-width:0;flex:1}
+.dp-feat-item p{font-size:15px;line-height:1.9;color:var(--sub);margin:8px 0 0 23px}
+.dp-feat-sub{display:flex;flex-direction:column;gap:9px;margin:12px 0 0 23px}
+.dp-feat-subli{font-size:15px;color:var(--sub)}
+.dp-feat-figure{margin:16px 0 4px 23px;max-width:440px;border:1px solid var(--gmid);border-radius:10px;overflow:hidden;background:#fff}
+.dp-feat-figure img{display:block;width:100%;height:auto}
+.dp-feat-figure figcaption{font-size:12px;line-height:1.6;color:var(--sub);padding:9px 13px;background:#fff;border-top:1px solid var(--gmid)}
+@media(max-width:900px){.dp-feat-figure{max-width:none}}
+.dp-proc-list{display:flex;flex-direction:column;gap:13px;margin:14px 0 0 23px}
+.dp-proc-item{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:16px;align-items:baseline}
+.dp-proc-name{font-size:15px;font-weight:700;color:var(--text)}
+.dp-proc-desc{font-size:14px;line-height:1.8;color:var(--sub)}
+.dp-proc-note{font-size:12px;line-height:1.8;color:var(--sub);margin:14px 0 0 23px}
+.dp-feat-note{font-size:22px;font-weight:700;color:var(--blue);margin:30px 0 0}
+@media(max-width:900px){
+  .dp-feat{padding:40px 0}
+  .dp-feat-photo{height:200px;margin-bottom:30px}
+  .dp-proc-item{grid-template-columns:1fr;gap:4px}
+}
+
+/* ── 対応業種・伝票の種類 ── */
+.dp-types{padding:56px 0 64px}
+.dp-types-head{display:flex;align-items:center;gap:0;margin-bottom:8px}
+.dp-types-head span{background:var(--blue);color:#fff;font-size:19px;font-weight:900;padding:11px 26px;clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%)}
+.dp-types-head i{flex:1;height:1px;background:var(--gmid)}
+.dp-types-lead{font-size:15px;line-height:1.95;color:var(--sub);max-width:860px;margin:0 0 48px}
+.dp-type-list{border-top:1px solid var(--blue)}
+.dp-type-item{display:grid;grid-template-columns:64px minmax(0,300px) minmax(0,1fr);gap:0 26px;align-items:baseline;padding:24px 4px;border-bottom:1px solid var(--gmid);transition:background .25s}
+.dp-type-item:hover{background:var(--blue-l)}
+.dp-type-num{font-size:28px;font-weight:900;line-height:1;color:#BCD0E6;font-feature-settings:"tnum";letter-spacing:-.02em}
+.dp-type-item h3{font-size:18px;font-weight:700;color:var(--text);margin:0;line-height:1.5}
+.dp-type-item p{font-size:14px;line-height:1.9;color:var(--sub);margin:0}
+@media(max-width:900px){
+  .dp-types-head span{font-size:16px;padding:10px 18px}
+  .dp-type-item{grid-template-columns:48px minmax(0,1fr);gap:4px 18px;padding:20px 2px}
+  .dp-type-item h3{grid-column:2}
+  .dp-type-item .dp-type-num{grid-row:span 2}
+  .dp-type-item p{grid-column:2;margin-top:6px}
 }
 @media(max-width:520px){
-  .feat-grid{grid-template-columns:1fr}
-  .feat-card{border-left:none}
-  .feat-card:nth-child(n+2){border-top:1px solid var(--gmid);padding-top:24px}
+  .dp-types-head span{white-space:normal}
 }
 
+.si{max-width:1120px;margin:0 auto}
 /* ── CTA (index.html と共通デザイン) ── */
 .cta{position:relative;width:100%;min-height:400px;background:url('cta-background.jpg') center/cover no-repeat;display:flex;align-items:center;box-sizing:border-box;padding:60px 80px}
 .cta::before{content:'';position:absolute;inset:0;background:rgba(10,42,74,.15)}
@@ -177,7 +247,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
       <div class="nd-wrap">
         <a class="nl" href="index.html#services">サービス</a>
         <div class="nd">
-          <a href="service-off-set-seihon.html" class="on">オフセット印刷・製本</a>
+          <a href="service-chohyo-seihon.html" class="on">帳票印刷・製本</a>
           <a href="service-digital.html">デジタル印刷</a>
           <a href="service-design.html">デザイン・DTP</a>
           <a href="service-xr.html">XR・デジタルコンテンツ</a>
@@ -214,7 +284,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
         <span class="ml-dd-arrow">+</span>
       </button>
       <div class="ml-dd-items">
-        <a class="ml-dd-item" href="service-off-set-seihon.html" onclick="closeMnav()">オフセット印刷・製本</a>
+        <a class="ml-dd-item" href="service-chohyo-seihon.html" onclick="closeMnav()">帳票印刷・製本</a>
         <a class="ml-dd-item" href="service-digital.html" onclick="closeMnav()">デジタル印刷</a>
         <a class="ml-dd-item" href="service-design.html" onclick="closeMnav()">デザイン・DTP</a>
         <a class="ml-dd-item" href="service-xr.html" onclick="closeMnav()">XR・デジタルコンテンツ</a>
@@ -240,42 +310,113 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   </div>
 </nav>
 
-<!-- PAGE HERO -->
-<div class="svc-crumbs-wrap"><div class="svc-crumbs"><a href="index.html">トップ</a> ＞ オフセット印刷・製本</div></div>
-<div class="svc-hero">
-  <div class="svc-hero-photo"></div>
-  <div class="svc-hero-fade"></div>
-  <div class="svc-hero-in">
-    <h1>オフセット印刷・製本</h1>
-    <p>複写伝票などの帳票類のデータ作成からオフセット印刷、製本、そして梱包まで対応可能です。自社工場だけではなく、パートナー工場と協力し、様々なご要望を丁寧にお伺いいたします。<br><br>仕様がまだ固まっていない段階でも、ぜひご相談ください。</p>
+<!-- 構造化：パンくず -->
+<div class="svc-crumbs-wrap"><div class="svc-crumbs"><a href="index.html">トップ</a> ＞ 帳票印刷・製本</div></div>
+
+<div class="dp">
+
+<!-- HERO -->
+<div class="dp-hero">
+  <div class="dp-hero-txt">
+    <h1>様々な伝票に<br>対応可能</h1>
+    <div class="dp-hero-rule"></div>
+    <p class="dp-hero-lead">50年の老舗印刷会社として、<br>確かな技術と経験で、<br>貴社の伝票を支えます。</p>
+  </div>
+  <div class="dp-hero-photo"><img src="denpyo-hero-photo.jpg" alt="請求書・領収書・納品書などノーカーボン複写伝票の写真" loading="lazy"></div>
+</div>
+
+<!-- 帳票印刷のエキスパート -->
+<div class="dp-intro">
+  <div>
+    <div class="dp-eyebrow">帳票印刷のエキスパート</div>
+    <h2>貴社の伝票と<br>同じものを製作可能</h2>
+    <div class="dp-intro-rule"></div>
+    <p>長年の経験と確かな技術で、<br>現在お使いの伝票をそのまま再現します。</p>
+  </div>
+  <div>
+    <div class="dp-strength-head"><i></i><span>セントラル印刷の強み</span><i></i></div>
+    <div class="dp-strength-grid">
+      <div class="dp-strength-col"><h3><em>50年</em><small>の経験と実績</small></h3><p>帳票印刷を支えてきた確かな実績</p></div>
+      <div class="dp-strength-col"><h3 style="text-align:center;justify-content:flex-start">帳票印刷の<br>専門性</h3><p>多様な仕様・業種に対応できるノウハウ</p></div>
+      <div class="dp-strength-col"><h3>再製作・<br>各種加工まで<br>ワンストップ</h3><p>現物からの版下作成・ナンバリング・ミシンなど</p></div>
+    </div>
   </div>
 </div>
 
-<!-- サービスの特長 -->
-<section class="sec" id="feature">
-  <div class="si">
-    <div class="slb">FEATURE</div>
-    <h2 class="sh">サービスの特長</h2>
-    <div class="feat-grid">
-      <div class="feat-card">
-        <h3>オフセット印刷</h3>
-        <p>自社工場では2色印刷が可能。パートナー工場では、4色、特色印刷など、パンフレット、チラシ、冊子などの商業印刷も取り扱っています。</p>
-      </div>
-      <div class="feat-card">
-        <h3>各種製本加工</h3>
-        <p>断裁、ドリル穴あけ、マーブル、ミシン、ナンバリングもご相談ください。</p>
-      </div>
-      <div class="feat-card">
-        <h3>帳票印刷</h3>
-        <p>納品書や請求書など、業務に欠かせない複写伝票・帳票類も制作します。</p>
-      </div>
-      <div class="feat-card">
-        <h3>仕様未確定でもOK</h3>
-        <p>何部必要か分からない、サイズが決まっていないという段階でもお気軽にご相談ください。</p>
-      </div>
+</div>
+
+<!-- 印刷 -->
+<section class="dp-feat"><div class="dp">
+  <div class="dp-feat-photo">
+    <img src="denpyo-print-press.jpg" alt="オフセット印刷機で伝票を印刷する様子" loading="lazy">
+    <img class="top" src="denpyo-print-ink.jpg" alt="特色インキの色見本" loading="lazy">
+  </div>
+  <div class="dp-feat-txt">
+    <h2>印刷</h2>
+    <div class="dp-feat-item"><h3><span>ノーカーボン用紙への印刷</span></h3>
+      <p>カーボン紙を使わず、筆圧だけで複写できる特殊な用紙です。用紙にあらかじめ発色剤などが加工されており、文字を書く際の圧力によって下の用紙に内容が複写されます。カーボン紙を挟む必要がないため、手や書類が汚れにくく、日常業務で扱いやすいのが特長です。また、別途カーボンインキを印刷する工程を省けるため、製造工程の簡略化や納期短縮にもつながります。</p>
+    </div>
+    <div class="dp-feat-item"><h3><span>減感印刷</span></h3>
+      <p>複写伝票の、必要な部分だけを複写できるようにする加工です。ノーカーボン用紙の特定の部分に減感インキを印刷し、その部分だけ発色しないようにする技術です。例えば、1枚目には記入した内容をすべて残し、2枚目以降には金額や個人情報などの一部を複写させない、といった使い方ができます。</p>
+    </div>
+    <div class="dp-feat-item"><h3><span>特色・特練り対応可能</span></h3>
+      <p>通常のカラー印刷では再現が難しい色も、専用のインキを調合することで表現。長年の経験と技術を活かし、ご指定の色見本に合わせた特色印刷に対応します。</p>
     </div>
   </div>
-</section>
+</div></section>
+
+<!-- 製本 -->
+<section class="dp-feat" style="background:var(--gray)"><div class="dp">
+  <div class="dp-feat-photo">
+    <img src="denpyo-bind-mishin.jpg" alt="伝票に入れるミシン目加工の写真" loading="lazy">
+    <img class="top" src="denpyo-bind-hanfukusha.jpg" alt="サイズの異なる用紙を組み合わせた半複写サンプル" loading="lazy">
+  </div>
+  <div class="dp-feat-txt">
+    <h2>製本</h2>
+    <div class="dp-feat-item"><h3><span>正確な断裁</span></h3>
+      <div class="dp-feat-sub">
+        <div class="dp-feat-subli">OCR（機械打ち）用紙に合わせた断裁が可能</div>
+      </div>
+    </div>
+    <div class="dp-feat-item"><h3><span>半複写可能</span></h3>
+      <p>異なるサイズの用紙を組み合わせた複写伝票です。通常の複写伝票とは異なり、1枚目と2枚目以降で用紙のサイズを変えて製本することができます。提出用と控え用など、用途に合わせて用紙の大きさを変えられるため、業務に適した使いやすい伝票に仕上がります。</p>
+    </div>
+    <div class="dp-feat-item"><h3><span>ナンバリング（連番印字）対応</span></h3>
+      <p>伝票・帳票に1枚ごとの通し番号を印字するナンバリングに対応します。納品書・領収書・受付票などの「No.」付けはもちろん、開始番号・桁数・印字位置のご指定にも対応。製本と合わせて社内で一貫対応できるため、番号の抜けや重複を防ぎ、確実な管理をサポートします。</p>
+      <figure class="dp-feat-figure">
+        <img src="denpyo-bind-number.jpg" alt="「No.000000」の連番を印字した帳票（ナンバリングの例）" loading="lazy">
+        <figcaption>連番（No.）を印字したナンバリングの一例</figcaption>
+      </figure>
+    </div>
+    <div class="dp-feat-item"><h3><span>ミシンはじめ様々な製本加工が可能</span></h3>
+      <div class="dp-proc-list">
+        <div class="dp-proc-item"><div class="dp-proc-name">マイクロミシン</div><div class="dp-proc-desc">細かいミシン目で切り離しやすく、断面がきれいに仕上がります。</div></div>
+        <div class="dp-proc-item"><div class="dp-proc-name">スリッターミシン</div><div class="dp-proc-desc">用紙を連続して裁断しながらミシン目を入れる加工方式です。</div></div>
+        <div class="dp-proc-item"><div class="dp-proc-name">クロス・マーブル加工</div><div class="dp-proc-desc">伝票の背を布や模様紙でくるみ、耐久性と見栄えを高めます。</div></div>
+        <div class="dp-proc-item"><div class="dp-proc-name">穴あけ・角丸加工</div><div class="dp-proc-desc">ファイリング用の穴あけや、用紙の角を丸くする加工に対応します。</div></div>
+        <div class="dp-proc-item"><div class="dp-proc-name">下敷き</div><div class="dp-proc-desc">複写時の裏写りを防ぐ下敷きの挿入に対応します。</div></div>
+        <div class="dp-proc-item"><div class="dp-proc-name">丁合（8段まで）</div><div class="dp-proc-desc">複数枚の用紙を正しい順序に組み合わせます（8ページまで対応）。</div></div>
+      </div>
+      <p class="dp-proc-note">※ミシン幅の調整も可能ですので、ご相談ください。</p>
+    </div>
+    <p class="dp-feat-note">製本のみの対応も可能です。</p>
+  </div>
+</div></section>
+
+<!-- 対応業種・伝票の種類 -->
+<section class="dp-types"><div class="dp">
+  <div class="dp-types-head"><span>さまざまな業界の帳票印刷に対応</span><i></i></div>
+  <p class="dp-types-lead">自動車、医療、学校・教育、物流、エネルギー、飲食、製造業など、幅広い業界の帳票印刷を手がけています。業界ごとに異なる用途や仕様に合わせ、納品書・請求書・作業報告書・各種複写伝票などを製作。長年培ってきた経験と技術で、お客様の業務に欠かせない帳票づくりを支えています。</p>
+  <div class="dp-types-head"><span>対応できる伝票の種類</span><i></i></div>
+  <div class="dp-type-list" style="margin-top:8px">
+    <div class="dp-type-item"><div class="dp-type-num">01</div><h3>複写伝票・納品書</h3><p>最も中心となる商品群。2枚複写、3枚複写、4枚複写など、実際の製品仕様をもとに製作。</p></div>
+    <div class="dp-type-item"><div class="dp-type-num">02</div><h3>請求書・領収書・経理帳票</h3><p>請求書、領収証、売上伝票、振替伝票など、経理業務に使う製品をまとめて製作。</p></div>
+    <div class="dp-type-item"><div class="dp-type-num">03</div><h3>連続伝票・プリンタ用帳票</h3><p>連続フォーム、プリンタに合わせた専用帳票など、技術的な強みを活かした対応。</p></div>
+    <div class="dp-type-item"><div class="dp-type-num">04</div><h3>作業指示書・点検報告書</h3><p>自動車整備、設備点検、運送業務など、現場で使われる帳票を製作。</p></div>
+    <div class="dp-type-item"><div class="dp-type-num">05</div><h3>医療・保険関連帳票</h3><p>療養費支給申請書や施術録など、専門性のある帳票を製作。</p></div>
+    <div class="dp-type-item"><div class="dp-type-num">06</div><h3>オリジナル帳票・各種加工</h3><p>既存の伝票からの再製作、ナンバリング、ミシン加工、折り加工など、用途に合わせた加工も対応。</p></div>
+  </div>
+</div></section>
 
 <!-- CTA -->
 <section class="cta">
