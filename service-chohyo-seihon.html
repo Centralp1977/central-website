@@ -140,6 +140,10 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .dp-feat-item p{font-size:15px;line-height:1.9;color:var(--sub);margin:8px 0 0 23px}
 .dp-feat-sub{display:flex;flex-direction:column;gap:9px;margin:12px 0 0 23px}
 .dp-feat-subli{font-size:15px;color:var(--sub)}
+.dp-feat-figure{margin:16px 0 4px 23px;max-width:440px;border:1px solid var(--gmid);border-radius:10px;overflow:hidden;background:#fff}
+.dp-feat-figure img{display:block;width:100%;height:auto}
+.dp-feat-figure figcaption{font-size:12px;line-height:1.6;color:var(--sub);padding:9px 13px;background:#fff;border-top:1px solid var(--gmid)}
+@media(max-width:900px){.dp-feat-figure{max-width:none}}
 .dp-proc-list{display:flex;flex-direction:column;gap:13px;margin:14px 0 0 23px}
 .dp-proc-item{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:16px;align-items:baseline}
 .dp-proc-name{font-size:15px;font-weight:700;color:var(--text)}
@@ -349,7 +353,7 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
   </div>
   <div class="dp-feat-txt">
     <h2>印刷</h2>
-    <div class="dp-feat-item"><h3><span>ノーカーボン用紙（NCR）への印刷</span></h3>
+    <div class="dp-feat-item"><h3><span>ノーカーボン用紙への印刷</span></h3>
       <p>カーボン紙を使わず、筆圧だけで複写できる特殊な用紙です。用紙にあらかじめ発色剤などが加工されており、文字を書く際の圧力によって下の用紙に内容が複写されます。カーボン紙を挟む必要がないため、手や書類が汚れにくく、日常業務で扱いやすいのが特長です。また、別途カーボンインキを印刷する工程を省けるため、製造工程の簡略化や納期短縮にもつながります。</p>
     </div>
     <div class="dp-feat-item"><h3><span>減感印刷</span></h3>
@@ -377,13 +381,20 @@ footer{background:var(--blk);color:rgba(255,255,255,.65);padding:40px 24px 0}
     <div class="dp-feat-item"><h3><span>半複写可能</span></h3>
       <p>異なるサイズの用紙を組み合わせた複写伝票です。通常の複写伝票とは異なり、1枚目と2枚目以降で用紙のサイズを変えて製本することができます。提出用と控え用など、用途に合わせて用紙の大きさを変えられるため、業務に適した使いやすい伝票に仕上がります。</p>
     </div>
+    <div class="dp-feat-item"><h3><span>ナンバリング（連番印字）対応</span></h3>
+      <p>伝票・帳票に1枚ごとの通し番号を印字するナンバリングに対応します。納品書・領収書・受付票などの「No.」付けはもちろん、開始番号・桁数・印字位置のご指定にも対応。製本と合わせて社内で一貫対応できるため、番号の抜けや重複を防ぎ、確実な管理をサポートします。</p>
+      <figure class="dp-feat-figure">
+        <img src="denpyo-bind-number.jpg" alt="「No.000000」の連番を印字した帳票（ナンバリングの例）" loading="lazy">
+        <figcaption>連番（No.）を印字したナンバリングの一例</figcaption>
+      </figure>
+    </div>
     <div class="dp-feat-item"><h3><span>ミシンはじめ様々な製本加工が可能</span></h3>
       <div class="dp-proc-list">
         <div class="dp-proc-item"><div class="dp-proc-name">マイクロミシン</div><div class="dp-proc-desc">細かいミシン目で切り離しやすく、断面がきれいに仕上がります。</div></div>
         <div class="dp-proc-item"><div class="dp-proc-name">スリッターミシン</div><div class="dp-proc-desc">用紙を連続して裁断しながらミシン目を入れる加工方式です。</div></div>
         <div class="dp-proc-item"><div class="dp-proc-name">クロス・マーブル加工</div><div class="dp-proc-desc">伝票の背を布や模様紙でくるみ、耐久性と見栄えを高めます。</div></div>
         <div class="dp-proc-item"><div class="dp-proc-name">穴あけ・角丸加工</div><div class="dp-proc-desc">ファイリング用の穴あけや、用紙の角を丸くする加工に対応します。</div></div>
-        <div class="dp-proc-item"><div class="dp-proc-name">ナンバー・下敷き</div><div class="dp-proc-desc">連番印字（ナンバリング）や下敷きの挿入に対応します。</div></div>
+        <div class="dp-proc-item"><div class="dp-proc-name">下敷き</div><div class="dp-proc-desc">複写時の裏写りを防ぐ下敷きの挿入に対応します。</div></div>
         <div class="dp-proc-item"><div class="dp-proc-name">丁合（8段まで）</div><div class="dp-proc-desc">複数枚の用紙を正しい順序に組み合わせます（8ページまで対応）。</div></div>
       </div>
       <p class="dp-proc-note">※ミシン幅の調整も可能ですので、ご相談ください。</p>
