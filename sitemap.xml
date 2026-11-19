@@ -11,7 +11,7 @@
   <!-- トップ -->
   <url>
     <loc>https://www.central-p.jp/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-19</lastmod>
   </url>
 
   <!-- 会社案内 -->
@@ -45,7 +45,11 @@
   <!-- お知らせ -->
   <url>
     <loc>https://www.central-p.jp/news</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.central-p.jp/news-15</loc>
+    <lastmod>2026-11-19</lastmod>
   </url>
   <url>
     <loc>https://www.central-p.jp/news-14</loc>
