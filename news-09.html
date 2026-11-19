@@ -86,8 +86,13 @@ nav.desk{display:flex;align-items:center;gap:4px}
 .nws-hero{background:var(--blue);margin:16px 24px 0;border-radius:20px;color:#fff;padding:56px 48px 48px}
 .nws-hero-in{max-width:760px;margin:0 auto}
 .nws-tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:12px;font-weight:800;margin-top:32px}
-.nws-tag{text-decoration:none;cursor:pointer;transition:opacity .15s,transform .15s}
-.nws-tag:hover{opacity:.82;transform:translateY(-1px)}
+.nws-body a.nws-tag{cursor:pointer;text-decoration:none;transition:opacity .15s,transform .15s}
+.nws-body a.nws-tag:hover{opacity:.82;transform:translateY(-1px);text-decoration:none}
+.nws-body a.nws-tag--company{color:var(--blk)}
+.nws-body a.nws-tag--president{color:#fff}
+.nws-body a.nws-tag--event{color:#fff}
+.nws-body a.nws-tag--csr{color:#fff}
+.nws-body a.nws-tag--media{color:var(--text)}
 .nws-tag--company{background:var(--yel);color:var(--blk)}
 .nws-tag--president{background:var(--blue);color:#fff}
 .nws-tag--event{background:var(--mag);color:#fff}
