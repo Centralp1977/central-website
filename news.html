@@ -456,7 +456,10 @@ if(hmb && mnav){
     empty.hidden = matched.length > 0;
     renderPager(totalPages);
   }
-  select('all');
+  /* 記事詳細ページのタグから ?tag=xxx で遷移してきた場合、そのタグを初期選択 */
+  const urlTag = new URLSearchParams(location.search).get('tag');
+  const initialKey = (urlTag && buttons.some(b=>b.dataset.tag===urlTag)) ? urlTag : 'all';
+  select(initialKey);
 })();
 </script>
 </body>
